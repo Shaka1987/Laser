@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+/Debug
+/laserMachine.sln
+/laserMachine.vcxproj.user
+/.vs/Laser/v15/ipch/AutoPCH/63ee682329820ac5
+/.vs/laserMachine/v15/ipch
+/.vs/laserMachine/v15
+/.vs/VSWorkspaceState.json
