@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+/laserMachine.sln
+/laserMachine.vcxproj.user
+/Debug
+/.vs/laserMachine/v15
