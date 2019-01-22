@@ -220,6 +220,7 @@
     <Image Include="res\main.bmp" />
     <Image Include="res\nav_large.bmp" />
     <Image Include="res\nav_large_hc.bmp" />
+    <Image Include="res\operation_large.bmp" />
     <Image Include="res\output_wnd.ico" />
     <Image Include="res\output_wnd_hc.ico" />
     <Image Include="res\pages.bmp" />
@@ -234,7 +235,6 @@
   <ItemGroup>
     <None Include="res\laserMachine.rc2" />
     <None Include="res\ribbon.mfcribbon-ms" />
-    <None Include="res\ribbon1.mfcribbon-ms" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

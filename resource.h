@@ -51,6 +51,7 @@
 #define IDS_FIND_TAB                    302
 #define IDS_EDIT_MENU                   306
 #define IDR_RIBBON                      307
+#define IDB_OPERATION_LARGE             311
 #define ID_WRITE_PASTEASHYPERLINK       32770
 #define ID_BUTTON2                      32772
 #define ID_BUTTON3                      32773
@@ -62,15 +63,22 @@
 #define ID_BUTTON_YMINUS                32781
 #define ID_BUTTON_ZMINUS                32783
 #define ID_CHECK2                       32784
+#define ID_CHECK_INC_CUT                32784
 #define ID_COMBO2                       32785
 #define ID_COMBO_INCR_VALUE             32786
+#define ID_CHECK_INC                    32787
+#define ID_EDIT_INC_VALUE               32789
+#define ID_CHECK_RAPID                  32790
+#define ID_EDIT_RAPID_VALUE             32791
+#define ID_BUTTON4                      32792
+#define ID_BUTTON_LIGHT                 32792
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        311
-#define _APS_NEXT_COMMAND_VALUE         32787
+#define _APS_NEXT_RESOURCE_VALUE        312
+#define _APS_NEXT_COMMAND_VALUE         32794
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
