@@ -27,8 +27,6 @@ IMPLEMENT_DYNCREATE(CMainFrame, CFrameWndEx)
 
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_WM_CREATE()
-	ON_COMMAND(ID_VIEW_CAPTION_BAR, &CMainFrame::OnViewCaptionBar)
-	ON_UPDATE_COMMAND_UI(ID_VIEW_CAPTION_BAR, &CMainFrame::OnUpdateViewCaptionBar)
 	ON_COMMAND(ID_TOOLS_OPTIONS, &CMainFrame::OnOptions)
 	ON_COMMAND(ID_FILE_PRINT, &CMainFrame::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CMainFrame::OnFilePrint)
@@ -81,19 +79,6 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// Navigation pane will be created at left, so temporary disable docking at the left side:
 	EnableDocking(CBRS_ALIGN_TOP | CBRS_ALIGN_BOTTOM | CBRS_ALIGN_RIGHT);
 
-	// Create and setup "Outlook" navigation bar:
-	if (!CreateOutlookBar(m_wndNavigationBar, ID_VIEW_NAVIGATION, m_wndTree, m_wndCalendar, 250))
-	{
-		TRACE0("Failed to create navigation pane\n");
-		return -1;      // fail to create
-	}
-
-	// Create a caption bar:
-	if (!CreateCaptionBar())
-	{
-		TRACE0("Failed to create caption bar\n");
-		return -1;      // fail to create
-	}
 
 	// Outlook bar is created and docking on the left side should be allowed.
 	EnableDocking(CBRS_ALIGN_LEFT);
@@ -151,93 +136,6 @@ void CMainFrame::SetDockingWindowIcons(BOOL bHiColorIcons)
 
 }
 
-BOOL CMainFrame::CreateOutlookBar(CMFCOutlookBar& bar, UINT uiID, CMFCShellTreeCtrl& tree, CCalendarBar& calendar, int nInitialWidth)
-{
-	bar.SetMode2003();
-
-	BOOL bNameValid;
-	CString strTemp;
-	bNameValid = strTemp.LoadString(IDS_SHORTCUTS);
-	ASSERT(bNameValid);
-	if (!bar.Create(strTemp, this, CRect(0, 0, nInitialWidth, 32000), uiID, WS_CHILD | WS_VISIBLE | CBRS_LEFT))
-	{
-		return FALSE; // fail to create
-	}
-
-	CMFCOutlookBarTabCtrl* pOutlookBar = (CMFCOutlookBarTabCtrl*)bar.GetUnderlyingWindow();
-
-	if (pOutlookBar == nullptr)
-	{
-		ASSERT(FALSE);
-		return FALSE;
-	}
-
-	pOutlookBar->EnableInPlaceEdit(TRUE);
-
-	static UINT uiPageID = 1;
-
-	// can float, can autohide, can resize, CAN NOT CLOSE
-	DWORD dwStyle = AFX_CBRS_FLOAT | AFX_CBRS_AUTOHIDE | AFX_CBRS_RESIZE;
-
-	CRect rectDummy(0, 0, 0, 0);
-	const DWORD dwTreeStyle = WS_CHILD | WS_VISIBLE | TVS_HASLINES | TVS_LINESATROOT | TVS_HASBUTTONS;
-
-	tree.Create(dwTreeStyle, rectDummy, &bar, 1200);
-	bNameValid = strTemp.LoadString(IDS_FOLDERS);
-	ASSERT(bNameValid);
-	pOutlookBar->AddControl(&tree, strTemp, 2, TRUE, dwStyle);
-
-	calendar.Create(rectDummy, &bar, 1201);
-	bNameValid = strTemp.LoadString(IDS_CALENDAR);
-	ASSERT(bNameValid);
-	pOutlookBar->AddControl(&calendar, strTemp, 3, TRUE, dwStyle);
-
-	bar.SetPaneStyle(bar.GetPaneStyle() | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC);
-
-	pOutlookBar->SetImageList(theApp.m_bHiColorIcons ? IDB_PAGES_HC : IDB_PAGES, 24);
-	pOutlookBar->SetToolbarImageList(theApp.m_bHiColorIcons ? IDB_PAGES_SMALL_HC : IDB_PAGES_SMALL, 16);
-	pOutlookBar->RecalcLayout();
-
-	BOOL bAnimation = theApp.GetInt(_T("OutlookAnimation"), TRUE);
-	CMFCOutlookBarTabCtrl::EnableAnimation(bAnimation);
-
-	bar.SetButtonsFont(&afxGlobalData.fontBold);
-
-	return TRUE;
-}
-
-BOOL CMainFrame::CreateCaptionBar()
-{
-	if (!m_wndCaptionBar.Create(WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS, this, ID_VIEW_CAPTION_BAR, -1, TRUE))
-	{
-		TRACE0("Failed to create caption bar\n");
-		return FALSE;
-	}
-
-	BOOL bNameValid;
-
-	CString strTemp, strTemp2;
-	bNameValid = strTemp.LoadString(IDS_CAPTION_BUTTON);
-	ASSERT(bNameValid);
-	m_wndCaptionBar.SetButton(strTemp, ID_TOOLS_OPTIONS, CMFCCaptionBar::ALIGN_LEFT, FALSE);
-	bNameValid = strTemp.LoadString(IDS_CAPTION_BUTTON_TIP);
-	ASSERT(bNameValid);
-	m_wndCaptionBar.SetButtonToolTip(strTemp);
-
-	bNameValid = strTemp.LoadString(IDS_CAPTION_TEXT);
-	ASSERT(bNameValid);
-	m_wndCaptionBar.SetText(strTemp, CMFCCaptionBar::ALIGN_LEFT);
-
-	m_wndCaptionBar.SetBitmap(IDB_INFO, RGB(255, 255, 255), FALSE, CMFCCaptionBar::ALIGN_LEFT);
-	bNameValid = strTemp.LoadString(IDS_CAPTION_IMAGE_TIP);
-	ASSERT(bNameValid);
-	bNameValid = strTemp2.LoadString(IDS_CAPTION_IMAGE_TEXT);
-	ASSERT(bNameValid);
-	m_wndCaptionBar.SetImageToolTip(strTemp, strTemp2);
-
-	return TRUE;
-}
-
 // CMainFrame diagnostics
 
 #ifdef _DEBUG
@@ -255,16 +153,8 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 // CMainFrame message handlers
 
-void CMainFrame::OnViewCaptionBar()
-{
-	m_wndCaptionBar.ShowWindow(m_wndCaptionBar.IsVisible() ? SW_HIDE : SW_SHOW);
-	RecalcLayout(FALSE);
-}
 
-void CMainFrame::OnUpdateViewCaptionBar(CCmdUI* pCmdUI)
-{
-	pCmdUI->SetCheck(m_wndCaptionBar.IsVisible());
-}
+
 
 void CMainFrame::OnOptions()
 {

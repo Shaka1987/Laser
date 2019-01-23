@@ -54,16 +54,10 @@ protected:  // control bar embedded members
 	CMFCToolBarImages m_PanelImages;
 	CMFCRibbonStatusBar  m_wndStatusBar;
 	COutputWnd        m_wndOutput;
-	COutlookBar       m_wndNavigationBar;
-	CMFCShellTreeCtrl m_wndTree;
-	CCalendarBar      m_wndCalendar;
-	CMFCCaptionBar    m_wndCaptionBar;
 
 // Generated message map functions
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg void OnViewCaptionBar();
-	afx_msg void OnUpdateViewCaptionBar(CCmdUI* pCmdUI);
 	afx_msg void OnOptions();
 	afx_msg void OnFilePrint();
 	afx_msg void OnFilePrintPreview();
@@ -73,8 +67,6 @@ protected:
 
 	BOOL CreateDockingWindows();
 	void SetDockingWindowIcons(BOOL bHiColorIcons);
-	BOOL CreateOutlookBar(CMFCOutlookBar& bar, UINT uiID, CMFCShellTreeCtrl& tree, CCalendarBar& calendar, int nInitialWidth);
-	BOOL CreateCaptionBar();
 
 	int FindFocusedOutlookWnd(CMFCOutlookBarTabCtrl** ppOutlookWnd);
 

@@ -16,7 +16,7 @@
 
 class COutputList : public CListBox
 {
-// Construction
+// Construction5
 public:
 	COutputList() noexcept;
 
