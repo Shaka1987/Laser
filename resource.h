@@ -2,6 +2,7 @@
 // Microsoft Visual C++ generated include file.
 // Used by laserMachine.rc
 //
+#define ID_EDIT_FEEDRATE_OVERRIDE       4
 #define IDD_ABOUTBOX                    100
 #define IDP_OLE_INIT_FAILED             100
 #define IDP_SOCKETS_INIT_FAILED         104
@@ -54,7 +55,9 @@
 #define IDB_OPERATION_LARGE             311
 #define ID_WRITE_PASTEASHYPERLINK       32770
 #define ID_BUTTON2                      32772
+#define ID_BUTTON_CYCLE_START           32772
 #define ID_BUTTON3                      32773
+#define ID_BUTTON_CYCLE_STOP            32773
 #define ID_BUTTON_XPLUS                 32776
 #define ID_BUTTON6                      32777
 #define ID_BUTTON_YPLUS                 32778
@@ -70,15 +73,17 @@
 #define ID_EDIT_INC_VALUE               32789
 #define ID_CHECK_RAPID                  32790
 #define ID_EDIT_RAPID_VALUE             32791
-#define ID_BUTTON4                      32792
-#define ID_BUTTON_LIGHT                 32792
+#define ID_BUTTON_CYCLE_RESET           32795
+#define ID_SLIDER2                      32796
+#define ID_SLIDER_FEEDRATE_OVERRIDE     32796
+#define ID_EDIT_FEED                    32799
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        312
-#define _APS_NEXT_COMMAND_VALUE         32794
+#define _APS_NEXT_COMMAND_VALUE         32800
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
