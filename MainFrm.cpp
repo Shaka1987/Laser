@@ -102,6 +102,11 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	return 0;
 }
 
+void CMainFrame::OpenProgramFile(CString strFileName)
+{
+	m_wndOutput.LoadProgram(strFileName);
+}
+
 BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 {
 	if( !CFrameWndEx::PreCreateWindow(cs) )

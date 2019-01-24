@@ -48,8 +48,12 @@
 #define IDS_FOLDERS                     253
 #define IDS_OUTLOOKBAR                  258
 #define IDS_BUILD_TAB                   300
+#define IDS_PROGRAM_TAB                 300
 #define IDS_DEBUG_TAB                   301
+#define IDS_ALARM_TAB                   301
 #define IDS_FIND_TAB                    302
+#define IDS_LOG_ALARM                   302
+#define IDS_LOG_TAB                     302
 #define IDS_EDIT_MENU                   306
 #define IDR_RIBBON                      307
 #define IDB_OPERATION_LARGE             311
@@ -74,7 +78,6 @@
 #define ID_CHECK_RAPID                  32790
 #define ID_EDIT_RAPID_VALUE             32791
 #define ID_BUTTON_CYCLE_RESET           32795
-#define ID_SLIDER2                      32796
 #define ID_SLIDER_FEEDRATE_OVERRIDE     32796
 #define ID_EDIT_FEED                    32799
 
