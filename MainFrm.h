@@ -17,11 +17,6 @@
 #include "CalendarBar.h"
 #include "Resource.h"
 
-class COutlookBar : public CMFCOutlookBar
-{
-	virtual BOOL AllowShowOnPaneMenu() const { return TRUE; }
-	virtual void GetPaneName(CString& strName) const { BOOL bNameValid = strName.LoadString(IDS_OUTLOOKBAR); ASSERT(bNameValid); if (!bNameValid) strName.Empty(); }
-};
 
 class CMainFrame : public CFrameWndEx
 {
@@ -35,7 +30,7 @@ public:
 
 // Operations
 public:
-
+	void OpenProgramFile(CString strFileName);
 // Overrides
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);

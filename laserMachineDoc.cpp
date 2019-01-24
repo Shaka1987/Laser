@@ -22,6 +22,7 @@
 #include "laserMachineDoc.h"
 
 #include <propkey.h>
+#include "MainFrm.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -33,6 +34,7 @@ IMPLEMENT_DYNCREATE(ClaserMachineDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(ClaserMachineDoc, CDocument)
 	ON_COMMAND(ID_EDIT_PASTE, &ClaserMachineDoc::OnEditPaste)
+	ON_COMMAND(ID_FILE_OPEN, &ClaserMachineDoc::OnFileOpen)
 END_MESSAGE_MAP()
 
 
@@ -151,4 +153,11 @@ void ClaserMachineDoc::Dump(CDumpContext& dc) const
 void ClaserMachineDoc::OnEditPaste()
 {
 	AfxMessageBox(_T("111"));
+}
+
+
+void ClaserMachineDoc::OnFileOpen()
+{
+	CMainFrame *pWndFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
+	pWndFrame->OpenProgramFile(_T("C:\\NCProgram\\bird.NC"));
 }

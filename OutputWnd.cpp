@@ -42,11 +42,11 @@ int COutputWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (CDockablePane::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
-	CRect rectDummy;
-	rectDummy.SetRectEmpty();
+	CRect rectEmpty;
+	rectEmpty.SetRectEmpty();
 
 	// Create tabs window:
-	if (!m_wndTabs.Create(CMFCTabCtrl::STYLE_FLAT, rectDummy, this, 1))
+	if (!m_wndTabs.Create(CMFCTabCtrl::STYLE_FLAT, rectEmpty, this, 1))
 	{
 		TRACE0("Failed to create output tab window\n");
 		return -1;      // fail to create
@@ -55,9 +55,9 @@ int COutputWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// Create output panes:
 	const DWORD dwStyle = LBS_NOINTEGRALHEIGHT | WS_CHILD | WS_VISIBLE | WS_HSCROLL | WS_VSCROLL;
 
-	if (!m_wndOutputBuild.Create(dwStyle, rectDummy, &m_wndTabs, 2) ||
-		!m_wndOutputDebug.Create(dwStyle, rectDummy, &m_wndTabs, 3) ||
-		!m_wndOutputFind.Create(dwStyle, rectDummy, &m_wndTabs, 4))
+	if (!m_wndProgram.Create(dwStyle, rectEmpty, &m_wndTabs, 2) ||
+		!m_wndAlarm.Create(dwStyle, rectEmpty, &m_wndTabs, 3) ||
+		!m_wndLog.Create(dwStyle, rectEmpty, &m_wndTabs, 4))
 	{
 		TRACE0("Failed to create output windows\n");
 		return -1;      // fail to create
@@ -69,20 +69,18 @@ int COutputWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	BOOL bNameValid;
 
 	// Attach list windows to tab:
-	bNameValid = strTabName.LoadString(IDS_BUILD_TAB);
+	bNameValid = strTabName.LoadString(IDS_PROGRAM_TAB);
 	ASSERT(bNameValid);
-	m_wndTabs.AddTab(&m_wndOutputBuild, strTabName, (UINT)0);
-	bNameValid = strTabName.LoadString(IDS_DEBUG_TAB);
-	ASSERT(bNameValid);
-	m_wndTabs.AddTab(&m_wndOutputDebug, strTabName, (UINT)1);
-	bNameValid = strTabName.LoadString(IDS_FIND_TAB);
-	ASSERT(bNameValid);
-	m_wndTabs.AddTab(&m_wndOutputFind, strTabName, (UINT)2);
+	m_wndTabs.AddTab(&m_wndProgram, strTabName, (UINT)0);
 
-	// Fill output tabs with some dummy text (nothing magic here)
-	FillBuildWindow();
-	FillDebugWindow();
-	FillFindWindow();
+	bNameValid = strTabName.LoadString(IDS_ALARM_TAB);
+	ASSERT(bNameValid);
+	m_wndTabs.AddTab(&m_wndAlarm, strTabName, (UINT)1);
+	bNameValid = strTabName.LoadString(IDS_LOG_TAB);
+	ASSERT(bNameValid);
+	m_wndTabs.AddTab(&m_wndLog, strTabName, (UINT)2);
+
+
 
 	return 0;
 }
@@ -114,32 +112,26 @@ void COutputWnd::AdjustHorzScroll(CListBox& wndListBox)
 	dc.SelectObject(pOldFont);
 }
 
-void COutputWnd::FillBuildWindow()
-{
-	m_wndOutputBuild.AddString(_T("Build output is being displayed here."));
-	m_wndOutputBuild.AddString(_T("The output is being displayed in rows of a list view"));
-	m_wndOutputBuild.AddString(_T("but you can change the way it is displayed as you wish..."));
-}
-
-void COutputWnd::FillDebugWindow()
-{
-	m_wndOutputDebug.AddString(_T("Debug output is being displayed here."));
-	m_wndOutputDebug.AddString(_T("The output is being displayed in rows of a list view"));
-	m_wndOutputDebug.AddString(_T("but you can change the way it is displayed as you wish..."));
-}
-
-void COutputWnd::FillFindWindow()
-{
-	m_wndOutputFind.AddString(_T("Find output is being displayed here."));
-	m_wndOutputFind.AddString(_T("The output is being displayed in rows of a list view"));
-	m_wndOutputFind.AddString(_T("but you can change the way it is displayed as you wish..."));
-}
 
 void COutputWnd::UpdateFonts()
 {
-	m_wndOutputBuild.SetFont(&afxGlobalData.fontRegular);
-	m_wndOutputDebug.SetFont(&afxGlobalData.fontRegular);
-	m_wndOutputFind.SetFont(&afxGlobalData.fontRegular);
+	m_wndProgram.SetFont(&afxGlobalData.fontRegular);
+	m_wndAlarm.SetFont(&afxGlobalData.fontRegular);
+	m_wndLog.SetFont(&afxGlobalData.fontRegular);
+}
+
+void COutputWnd::LoadProgram(CString fileProgram)
+{
+	CStdioFile file;
+	CString strCodeLine;
+
+	file.Open(fileProgram, CFile::modeRead);
+	while (file.ReadString(strCodeLine))
+	{
+		m_wndProgram.AddString(strCodeLine);
+		OutputDebugString(strCodeLine + _T("\n"));
+	}
+	file.Close();
 }
 
 /////////////////////////////////////////////////////////////////////////////

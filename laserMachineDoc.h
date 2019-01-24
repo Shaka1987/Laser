@@ -57,4 +57,5 @@ protected:
 #endif // SHARED_HANDLERS
 public:
 	afx_msg void OnEditPaste();
+	afx_msg void OnFileOpen();
 };
