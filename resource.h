@@ -13,10 +13,12 @@
 #define IDB_FILELARGE                   114
 #define IDB_FILESMALL                   115
 #define IDR_POPUP_EDIT                  119
-#define ID_STATUSBAR_PANE1              120
-#define ID_STATUSBAR_PANE2              121
+#define ID_STATUSBAR_MACHINE_STATUS     120
+#define ID_STATUSBAR_MOUSE_POSITION     121
 #define IDS_STATUS_PANE1                122
+#define IDS_MOUSE_POSITION              122
 #define IDS_STATUS_PANE2                123
+#define IDS_MACHINE_STATUS              123
 #define IDR_MAINFRAME                   128
 #define IDR_MAINFRAME_256               129
 #define IDR_laserMachineTYPE            130

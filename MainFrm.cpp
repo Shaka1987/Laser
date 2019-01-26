@@ -50,27 +50,17 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (CFrameWndEx::OnCreate(lpCreateStruct) == -1)
 		return -1;
-
-	BOOL bNameValid;
-
+	
 	m_wndRibbonBar.Create(this);
 	m_wndRibbonBar.LoadFromResource(IDR_RIBBON);
 
-	if (!m_wndStatusBar.Create(this))
+	//create status bar
+	if (!CreateStatusBar())
 	{
-		TRACE0("Failed to create status bar\n");
-		return -1;      // fail to create
+		TRACE0("Failed to create statusbar!!\n");
+		return -1;
 	}
-
-	CString strTitlePane1;
-	CString strTitlePane2;
-	bNameValid = strTitlePane1.LoadString(IDS_STATUS_PANE1);
-	ASSERT(bNameValid);
-	bNameValid = strTitlePane2.LoadString(IDS_STATUS_PANE2);
-	ASSERT(bNameValid);
-	m_wndStatusBar.AddElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE1, strTitlePane1, TRUE), strTitlePane1);
-	m_wndStatusBar.AddExtendedElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE2, strTitlePane2, TRUE), strTitlePane2);
-
+	
 	// enable Visual Studio 2005 style docking window behavior
 	CDockingManager::SetDockingMode(DT_SMART);
 	// enable Visual Studio 2005 style docking window auto-hide behavior
@@ -131,6 +121,35 @@ BOOL CMainFrame::CreateDockingWindows()
 	}
 
 	SetDockingWindowIcons(theApp.m_bHiColorIcons);
+	return TRUE;
+}
+
+BOOL CMainFrame::CreateStatusBar()
+{
+	if (!m_wndStatusBar.Create(this))
+	{
+		TRACE0("Failed to create status bar\n");
+		return FALSE;      // fail to create
+	}
+	
+	CString strTitlePane;
+	CMFCRibbonStatusBarPane *pPane = nullptr;
+	BOOL bNameValid = FALSE;
+
+	//Machine status
+	bNameValid = strTitlePane.LoadString(IDS_MACHINE_STATUS);
+	ASSERT(bNameValid);
+	pPane = new CMFCRibbonStatusBarPane(ID_STATUSBAR_MACHINE_STATUS, strTitlePane, TRUE);
+	pPane->SetToolTipText(strTitlePane);
+	m_wndStatusBar.AddElement(pPane, strTitlePane);
+
+	//Mouse position
+	bNameValid = strTitlePane.LoadString(IDS_MOUSE_POSITION);
+	ASSERT(bNameValid);
+	pPane = new CMFCRibbonStatusBarPane(ID_STATUSBAR_MOUSE_POSITION, strTitlePane, TRUE);
+	pPane->SetToolTipText(strTitlePane);
+	m_wndStatusBar.AddElement(pPane, strTitlePane);
+
 	return TRUE;
 }
 

@@ -61,13 +61,14 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 	BOOL CreateDockingWindows();
+	BOOL CreateStatusBar();
 	void SetDockingWindowIcons(BOOL bHiColorIcons);
 
-	int FindFocusedOutlookWnd(CMFCOutlookBarTabCtrl** ppOutlookWnd);
-
-	CMFCOutlookBarTabCtrl* FindOutlookParent(CWnd* pWnd);
-	CMFCOutlookBarTabCtrl* m_pCurrOutlookWnd;
-	CMFCOutlookBarPane*    m_pCurrOutlookPage;
+// 	int FindFocusedOutlookWnd(CMFCOutlookBarTabCtrl** ppOutlookWnd);
+// 
+// 	CMFCOutlookBarTabCtrl* FindOutlookParent(CWnd* pWnd);
+// 	CMFCOutlookBarTabCtrl* m_pCurrOutlookWnd;
+// 	CMFCOutlookBarPane*    m_pCurrOutlookPage;
 };
 
 
