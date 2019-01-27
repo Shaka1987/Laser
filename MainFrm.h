@@ -17,6 +17,7 @@
 #include "CalendarBar.h"
 #include "Resource.h"
 
+#define ID_MESSAGE_UPDATE (WM_USER+100)
 
 class CMainFrame : public CFrameWndEx
 {
@@ -58,16 +59,19 @@ protected:
 	afx_msg void OnFilePrintPreview();
 	afx_msg void OnUpdateFilePrintPreview(CCmdUI* pCmdUI);
 	afx_msg void OnSettingChange(UINT uFlags, LPCTSTR lpszSection);
+	LRESULT OnCmdUpdate(WPARAM wparam, LPARAM lparam);
 	DECLARE_MESSAGE_MAP()
 
 	BOOL CreateDockingWindows();
 	void SetDockingWindowIcons(BOOL bHiColorIcons);
+	void AddElementToStatusBar(UINT ID, UINT tipID, BOOL bExtennd);
+	BOOL CreateStatusBar();
 
-	int FindFocusedOutlookWnd(CMFCOutlookBarTabCtrl** ppOutlookWnd);
-
-	CMFCOutlookBarTabCtrl* FindOutlookParent(CWnd* pWnd);
-	CMFCOutlookBarTabCtrl* m_pCurrOutlookWnd;
-	CMFCOutlookBarPane*    m_pCurrOutlookPage;
+// 	int FindFocusedOutlookWnd(CMFCOutlookBarTabCtrl** ppOutlookWnd);
+// 
+// 	CMFCOutlookBarTabCtrl* FindOutlookParent(CWnd* pWnd);
+// 	CMFCOutlookBarTabCtrl* m_pCurrOutlookWnd;
+// 	CMFCOutlookBarPane*    m_pCurrOutlookPage;
 };
 
 

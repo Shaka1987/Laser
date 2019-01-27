@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="calendarbar.cpp" />
+    <ClCompile Include="laserMachine.cpp" />
+    <ClCompile Include="laserMachineDoc.cpp" />
+    <ClCompile Include="laserMachineView.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="OutputWnd.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="calendarbar.h" />
+    <ClInclude Include="laserMachine.h" />
+    <ClInclude Include="laserMachineDoc.h" />
+    <ClInclude Include="laserMachineView.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="OutputWnd.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\buttons.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\filelarge.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\filesmall.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\info.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\laserMachine.ico">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\nav_large.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\nav_large_hc.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\operation_large.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\output_wnd.ico">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\output_wnd_hc.ico">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\pages.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\pages_hc.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\pages_small.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\pages_small_hc.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\Toolbar256.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\writelarge.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\writesmall.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\main.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\laserMachineDoc.ico">
+      <Filter>Res</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\laserMachine.rc2">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="res\ribbon.mfcribbon-ms">
+      <Filter>Res</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Res">
+      <UniqueIdentifier>{1ef3a206-bcf7-4093-92ff-332e9d2b1ac2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="laserMachine.rc">
+      <Filter>Res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

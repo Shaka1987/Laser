@@ -33,6 +33,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CMainFrame::OnFilePrintPreview)
 	ON_UPDATE_COMMAND_UI(ID_FILE_PRINT_PREVIEW, &CMainFrame::OnUpdateFilePrintPreview)
 	ON_WM_SETTINGCHANGE()
+	ON_MESSAGE(ID_MESSAGE_UPDATE, &CMainFrame::OnCmdUpdate)
 END_MESSAGE_MAP()
 
 // CMainFrame construction/destruction
@@ -50,27 +51,17 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (CFrameWndEx::OnCreate(lpCreateStruct) == -1)
 		return -1;
-
-	BOOL bNameValid;
-
+	
 	m_wndRibbonBar.Create(this);
 	m_wndRibbonBar.LoadFromResource(IDR_RIBBON);
 
-	if (!m_wndStatusBar.Create(this))
+	//create status bar
+	if (!CreateStatusBar())
 	{
-		TRACE0("Failed to create status bar\n");
-		return -1;      // fail to create
+		TRACE0("Failed to create statusbar!!\n");
+		return -1;
 	}
-
-	CString strTitlePane1;
-	CString strTitlePane2;
-	bNameValid = strTitlePane1.LoadString(IDS_STATUS_PANE1);
-	ASSERT(bNameValid);
-	bNameValid = strTitlePane2.LoadString(IDS_STATUS_PANE2);
-	ASSERT(bNameValid);
-	m_wndStatusBar.AddElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE1, strTitlePane1, TRUE), strTitlePane1);
-	m_wndStatusBar.AddExtendedElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE2, strTitlePane2, TRUE), strTitlePane2);
-
+	
 	// enable Visual Studio 2005 style docking window behavior
 	CDockingManager::SetDockingMode(DT_SMART);
 	// enable Visual Studio 2005 style docking window auto-hide behavior
@@ -141,6 +132,37 @@ void CMainFrame::SetDockingWindowIcons(BOOL bHiColorIcons)
 
 }
 
+void CMainFrame::AddElementToStatusBar(UINT id, UINT tipID, BOOL bExtennd)
+{
+	CString strTip;
+	CMFCRibbonStatusBarPane *pPane = nullptr;
+	BOOL bNameValid = strTip.LoadStringW(tipID);
+	ASSERT(bNameValid);
+	pPane = new CMFCRibbonStatusBarPane(id, strTip, TRUE);
+	pPane->SetToolTipText(strTip);
+	if (bExtennd)
+	{
+		m_wndStatusBar.AddExtendedElement(pPane, strTip);
+	}
+	else
+	{
+		m_wndStatusBar.AddElement(pPane, strTip);
+	}	
+}
+BOOL CMainFrame::CreateStatusBar()
+{
+	if (!m_wndStatusBar.Create(this))
+	{
+		TRACE0("Failed to create status bar\n");
+		return FALSE;      // fail to create
+	}
+	AddElementToStatusBar(ID_STATUSBAR_MACHINE_STATUS, IDS_MACHINE_STATUS, FALSE);
+	AddElementToStatusBar(ID_STATUSBAR_AXES_POSITION, IDS_AXES_POSITION, FALSE);
+	AddElementToStatusBar(ID_STATUSBAR_MOUSE_POSITION, IDS_MOUSE_POSITION, TRUE);
+
+	return TRUE;
+}
+
 // CMainFrame diagnostics
 
 #ifdef _DEBUG
@@ -197,3 +219,17 @@ void CMainFrame::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 	CFrameWndEx::OnSettingChange(uFlags, lpszSection);
 	m_wndOutput.UpdateFonts();
 }
+
+
+LRESULT CMainFrame::OnCmdUpdate(WPARAM wparam, LPARAM lparam)
+{
+	UINT type = (UINT)wparam;
+	switch (type)
+	{
+	default:
+		break;
+	}
+	return 0;
+}
+
+

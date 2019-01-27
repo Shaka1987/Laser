@@ -21,6 +21,7 @@
 
 #include "laserMachineDoc.h"
 #include "laserMachineView.h"
+#include "MainFrm.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -104,6 +105,11 @@ void ClaserMachineView::OnRButtonUp(UINT /* nFlags */, CPoint point)
 {
 	ClientToScreen(&point);
 	OnContextMenu(this, point);
+	
+// 	CMainFrame *pWndFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
+// 	pWndFrame->SendMessage(ID_MESSAGE_UPDATE, (WPARAM)0,(LPARAM)0);
+	::PostMessage(HWND_BROADCAST, WM_COMMAND, (WPARAM)ID_FILE_PRINT_PREVIEW, (LPARAM)0);
+	//PostMessage(WM_COMMAND, ID_FILE_PRINT_PREVIEW);
 }
 
 void ClaserMachineView::OnContextMenu(CWnd* /* pWnd */, CPoint point)
