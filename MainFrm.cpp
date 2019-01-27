@@ -138,7 +138,7 @@ void CMainFrame::AddElementToStatusBar(UINT id, UINT tipID, BOOL bExtennd)
 	CMFCRibbonStatusBarPane *pPane = nullptr;
 	BOOL bNameValid = strTip.LoadStringW(tipID);
 	ASSERT(bNameValid);
-	pPane = new CMFCRibbonStatusBarPane(id, strTip, TRUE);
+	pPane = new CMFCRibbonStatusBarPane(id, strTip, FALSE);
 	pPane->SetToolTipText(strTip);
 	if (bExtennd)
 	{
@@ -161,6 +161,18 @@ BOOL CMainFrame::CreateStatusBar()
 	AddElementToStatusBar(ID_STATUSBAR_MOUSE_POSITION, IDS_MOUSE_POSITION, TRUE);
 
 	return TRUE;
+}
+
+void CMainFrame::UpdateMousePosition(CPoint point)
+{
+	CMFCRibbonStatusBarPane *pPane = (CMFCRibbonStatusBarPane *)m_wndStatusBar.FindByID(ID_STATUSBAR_MOUSE_POSITION);
+	if (pPane == nullptr)
+		return;
+	CString strMousePosition;
+	strMousePosition.Format(_T("%d:%d"),point.x, point.y);
+	pPane->SetText(strMousePosition);
+	pPane->Redraw();
+	OutputDebugString(strMousePosition);
 }
 
 // CMainFrame diagnostics
@@ -231,5 +243,3 @@ LRESULT CMainFrame::OnCmdUpdate(WPARAM wparam, LPARAM lparam)
 	}
 	return 0;
 }
-
-

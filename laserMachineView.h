@@ -55,6 +55,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnButtonXplus();
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };
 
 #ifndef _DEBUG  // debug version in laserMachineView.cpp

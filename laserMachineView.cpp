@@ -40,6 +40,7 @@ BEGIN_MESSAGE_MAP(ClaserMachineView, CView)
 	ON_WM_CONTEXTMENU()
 	ON_WM_RBUTTONUP()
 	ON_COMMAND(ID_BUTTON_XPLUS, &ClaserMachineView::OnButtonXplus)
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 // ClaserMachineView construction/destruction
@@ -105,11 +106,6 @@ void ClaserMachineView::OnRButtonUp(UINT /* nFlags */, CPoint point)
 {
 	ClientToScreen(&point);
 	OnContextMenu(this, point);
-	
-// 	CMainFrame *pWndFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
-// 	pWndFrame->SendMessage(ID_MESSAGE_UPDATE, (WPARAM)0,(LPARAM)0);
-	::PostMessage(HWND_BROADCAST, WM_COMMAND, (WPARAM)ID_FILE_PRINT_PREVIEW, (LPARAM)0);
-	//PostMessage(WM_COMMAND, ID_FILE_PRINT_PREVIEW);
 }
 
 void ClaserMachineView::OnContextMenu(CWnd* /* pWnd */, CPoint point)
@@ -147,4 +143,12 @@ ClaserMachineDoc* ClaserMachineView::GetDocument() const // non-debug version is
 void ClaserMachineView::OnButtonXplus()
 {
 	MessageBox(_T("X+"));
+}
+
+
+void ClaserMachineView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	CMainFrame *pWndFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
+	pWndFrame->UpdateMousePosition(point);
+	CView::OnMouseMove(nFlags, point);
 }

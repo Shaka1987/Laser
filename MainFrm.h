@@ -31,6 +31,8 @@ public:
 
 // Operations
 public:
+
+	void UpdateMousePosition(CPoint point);
 	void OpenProgramFile(CString strFileName);
 // Overrides
 public:
@@ -66,7 +68,6 @@ protected:
 	void SetDockingWindowIcons(BOOL bHiColorIcons);
 	void AddElementToStatusBar(UINT ID, UINT tipID, BOOL bExtennd);
 	BOOL CreateStatusBar();
-
 // 	int FindFocusedOutlookWnd(CMFCOutlookBarTabCtrl** ppOutlookWnd);
 // 
 // 	CMFCOutlookBarTabCtrl* FindOutlookParent(CWnd* pWnd);
