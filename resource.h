@@ -19,6 +19,7 @@
 #define IDS_MOUSE_POSITION              122
 #define IDS_STATUS_PANE2                123
 #define IDS_MACHINE_STATUS              123
+#define IDS_AXES_POSITION               124
 #define IDR_MAINFRAME                   128
 #define IDR_MAINFRAME_256               129
 #define IDR_laserMachineTYPE            130
@@ -58,6 +59,7 @@
 #define IDS_LOG_TAB                     302
 #define IDS_EDIT_MENU                   306
 #define IDR_RIBBON                      307
+#define ID_STATUSBAR_AXES_POSITION      310
 #define IDB_OPERATION_LARGE             311
 #define ID_WRITE_PASTEASHYPERLINK       32770
 #define ID_BUTTON2                      32772
@@ -90,6 +92,6 @@
 #define _APS_NEXT_RESOURCE_VALUE        312
 #define _APS_NEXT_COMMAND_VALUE         32800
 #define _APS_NEXT_CONTROL_VALUE         1000
-#define _APS_NEXT_SYMED_VALUE           310
+#define _APS_NEXT_SYMED_VALUE           314
 #endif
 #endif

@@ -21,7 +21,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\laserMachineDoc.ico" />
     <Image Include="res\buttons.bmp">
       <Filter>Res</Filter>
     </Image>
@@ -77,6 +76,9 @@
       <Filter>Res</Filter>
     </Image>
     <Image Include="res\main.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\laserMachineDoc.ico">
       <Filter>Res</Filter>
     </Image>
   </ItemGroup>

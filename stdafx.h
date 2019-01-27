@@ -62,4 +62,4 @@
 #endif
 #endif
 
-
+#define WM_MY_MESSAGE (WM_USER+100) 

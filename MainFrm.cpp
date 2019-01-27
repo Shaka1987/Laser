@@ -33,6 +33,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CMainFrame::OnFilePrintPreview)
 	ON_UPDATE_COMMAND_UI(ID_FILE_PRINT_PREVIEW, &CMainFrame::OnUpdateFilePrintPreview)
 	ON_WM_SETTINGCHANGE()
+	ON_MESSAGE(ID_MESSAGE_UPDATE, &CMainFrame::OnCmdUpdate)
 END_MESSAGE_MAP()
 
 // CMainFrame construction/destruction
@@ -124,6 +125,30 @@ BOOL CMainFrame::CreateDockingWindows()
 	return TRUE;
 }
 
+void CMainFrame::SetDockingWindowIcons(BOOL bHiColorIcons)
+{
+	HICON hOutputBarIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_OUTPUT_WND_HC : IDI_OUTPUT_WND), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
+	m_wndOutput.SetIcon(hOutputBarIcon, FALSE);
+
+}
+
+void CMainFrame::AddElementToStatusBar(UINT id, UINT tipID, BOOL bExtennd)
+{
+	CString strTip;
+	CMFCRibbonStatusBarPane *pPane = nullptr;
+	BOOL bNameValid = strTip.LoadStringW(tipID);
+	ASSERT(bNameValid);
+	pPane = new CMFCRibbonStatusBarPane(id, strTip, TRUE);
+	pPane->SetToolTipText(strTip);
+	if (bExtennd)
+	{
+		m_wndStatusBar.AddExtendedElement(pPane, strTip);
+	}
+	else
+	{
+		m_wndStatusBar.AddElement(pPane, strTip);
+	}	
+}
 BOOL CMainFrame::CreateStatusBar()
 {
 	if (!m_wndStatusBar.Create(this))
@@ -131,33 +156,11 @@ BOOL CMainFrame::CreateStatusBar()
 		TRACE0("Failed to create status bar\n");
 		return FALSE;      // fail to create
 	}
-	
-	CString strTitlePane;
-	CMFCRibbonStatusBarPane *pPane = nullptr;
-	BOOL bNameValid = FALSE;
-
-	//Machine status
-	bNameValid = strTitlePane.LoadString(IDS_MACHINE_STATUS);
-	ASSERT(bNameValid);
-	pPane = new CMFCRibbonStatusBarPane(ID_STATUSBAR_MACHINE_STATUS, strTitlePane, TRUE);
-	pPane->SetToolTipText(strTitlePane);
-	m_wndStatusBar.AddElement(pPane, strTitlePane);
-
-	//Mouse position
-	bNameValid = strTitlePane.LoadString(IDS_MOUSE_POSITION);
-	ASSERT(bNameValid);
-	pPane = new CMFCRibbonStatusBarPane(ID_STATUSBAR_MOUSE_POSITION, strTitlePane, TRUE);
-	pPane->SetToolTipText(strTitlePane);
-	m_wndStatusBar.AddElement(pPane, strTitlePane);
+	AddElementToStatusBar(ID_STATUSBAR_MACHINE_STATUS, IDS_MACHINE_STATUS, FALSE);
+	AddElementToStatusBar(ID_STATUSBAR_AXES_POSITION, IDS_AXES_POSITION, FALSE);
+	AddElementToStatusBar(ID_STATUSBAR_MOUSE_POSITION, IDS_MOUSE_POSITION, TRUE);
 
 	return TRUE;
-}
-
-void CMainFrame::SetDockingWindowIcons(BOOL bHiColorIcons)
-{
-	HICON hOutputBarIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_OUTPUT_WND_HC : IDI_OUTPUT_WND), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
-	m_wndOutput.SetIcon(hOutputBarIcon, FALSE);
-
 }
 
 // CMainFrame diagnostics
@@ -216,3 +219,17 @@ void CMainFrame::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 	CFrameWndEx::OnSettingChange(uFlags, lpszSection);
 	m_wndOutput.UpdateFonts();
 }
+
+
+LRESULT CMainFrame::OnCmdUpdate(WPARAM wparam, LPARAM lparam)
+{
+	UINT type = (UINT)wparam;
+	switch (type)
+	{
+	default:
+		break;
+	}
+	return 0;
+}
+
+
