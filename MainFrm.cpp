@@ -82,8 +82,6 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;
 	}
 
-	m_wndOutput.EnableDocking(CBRS_ALIGN_ANY);
-	DockPane(&m_wndOutput);
 
 
 	// set the visual manager used to draw all user interface elements
@@ -108,7 +106,7 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 	return TRUE;
 }
 
-BOOL CMainFrame::CreateDockingWindows()
+BOOL CMainFrame::CreateOutPutWnd()
 {
 	BOOL bNameValid;
 	// Create output window
@@ -117,15 +115,49 @@ BOOL CMainFrame::CreateDockingWindows()
 	ASSERT(bNameValid);
 	if (!m_wndOutput.Create(strOutputWnd, this, CRect(0, 0, 100, 100), TRUE, ID_VIEW_OUTPUTWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_BOTTOM | CBRS_FLOAT_MULTI))
 	{
-		TRACE0("Failed to create Output window\n");
 		return FALSE; // failed to create
 	}
 
-	SetDockingWindowIcons(theApp.m_bHiColorIcons);
+	SetOutPutWindowIcons(theApp.m_bHiColorIcons);
+
+
 	return TRUE;
 }
 
-void CMainFrame::SetDockingWindowIcons(BOOL bHiColorIcons)
+BOOL CMainFrame::CreateParamerWnd()
+{
+	if (!m_wndParameter.Create(_T("²ÎÊý"), this, CRect(0, 0, 100, 100), TRUE, ID_VIEW_PARAMETERWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI, AFX_CBRS_REGULAR_TABS, AFX_CBRS_CLOSE| AFX_CBRS_AUTOHIDE))
+	{
+		return FALSE; // failed to create
+	}
+	m_wndParameter.SetResizeMode(FALSE);
+	return TRUE;
+}
+
+BOOL CMainFrame::CreateDockingWindows()
+{
+	if (!CreateOutPutWnd())
+	{
+		TRACE0("Failed to create Output window\n");
+		return FALSE;
+	}
+	if (!CreateParamerWnd())
+	{
+		TRACE0("Failed to create Parameter window\n");
+		return FALSE;
+	}
+
+
+	m_wndOutput.EnableDocking(CBRS_ALIGN_ANY);
+	m_wndParameter.EnableDocking(CBRS_ORIENT_VERT);
+
+	DockPane(&m_wndOutput);
+	DockPane(&m_wndParameter);
+
+	return TRUE;
+}
+
+void CMainFrame::SetOutPutWindowIcons(BOOL bHiColorIcons)
 {
 	HICON hOutputBarIcon = (HICON) ::LoadImage(::AfxGetResourceHandle(), MAKEINTRESOURCE(bHiColorIcons ? IDI_OUTPUT_WND_HC : IDI_OUTPUT_WND), IMAGE_ICON, ::GetSystemMetrics(SM_CXSMICON), ::GetSystemMetrics(SM_CYSMICON), 0);
 	m_wndOutput.SetIcon(hOutputBarIcon, FALSE);
@@ -153,7 +185,6 @@ BOOL CMainFrame::CreateStatusBar()
 {
 	if (!m_wndStatusBar.Create(this))
 	{
-		TRACE0("Failed to create status bar\n");
 		return FALSE;      // fail to create
 	}
 	AddElementToStatusBar(ID_STATUSBAR_MACHINE_STATUS, IDS_MACHINE_STATUS, FALSE);

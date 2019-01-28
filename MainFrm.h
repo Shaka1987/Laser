@@ -14,7 +14,7 @@
 
 #pragma once
 #include "OutputWnd.h"
-#include "CalendarBar.h"
+#include "ParameterWnd.h"
 #include "Resource.h"
 
 #define ID_MESSAGE_UPDATE (WM_USER+100)
@@ -51,7 +51,8 @@ protected:  // control bar embedded members
 	CMFCRibbonApplicationButton m_MainButton;
 	CMFCToolBarImages m_PanelImages;
 	CMFCRibbonStatusBar  m_wndStatusBar;
-	COutputWnd        m_wndOutput;
+	COutputWnd m_wndOutput;
+	CParameterWnd m_wndParameter;
 
 // Generated message map functions
 protected:
@@ -64,8 +65,10 @@ protected:
 	LRESULT OnCmdUpdate(WPARAM wparam, LPARAM lparam);
 	DECLARE_MESSAGE_MAP()
 
+	BOOL CreateOutPutWnd();
+	BOOL CreateParamerWnd();
 	BOOL CreateDockingWindows();
-	void SetDockingWindowIcons(BOOL bHiColorIcons);
+	void SetOutPutWindowIcons(BOOL bHiColorIcons);
 	void AddElementToStatusBar(UINT ID, UINT tipID, BOOL bExtennd);
 	BOOL CreateStatusBar();
 // 	int FindFocusedOutlookWnd(CMFCOutlookBarTabCtrl** ppOutlookWnd);

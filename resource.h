@@ -61,6 +61,7 @@
 #define IDR_RIBBON                      307
 #define ID_STATUSBAR_AXES_POSITION      310
 #define IDB_OPERATION_LARGE             311
+#define ID_VIEW_PARAMETERWND            314
 #define ID_WRITE_PASTEASHYPERLINK       32770
 #define ID_BUTTON2                      32772
 #define ID_BUTTON_CYCLE_START           32772
@@ -92,6 +93,6 @@
 #define _APS_NEXT_RESOURCE_VALUE        312
 #define _APS_NEXT_COMMAND_VALUE         32800
 #define _APS_NEXT_CONTROL_VALUE         1000
-#define _APS_NEXT_SYMED_VALUE           314
+#define _APS_NEXT_SYMED_VALUE           315
 #endif
 #endif
