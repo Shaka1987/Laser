@@ -71,11 +71,7 @@ protected:
 	void SetOutPutWindowIcons(BOOL bHiColorIcons);
 	void AddElementToStatusBar(UINT ID, UINT tipID, BOOL bExtennd);
 	BOOL CreateStatusBar();
-// 	int FindFocusedOutlookWnd(CMFCOutlookBarTabCtrl** ppOutlookWnd);
-// 
-// 	CMFCOutlookBarTabCtrl* FindOutlookParent(CWnd* pWnd);
-// 	CMFCOutlookBarTabCtrl* m_pCurrOutlookWnd;
-// 	CMFCOutlookBarPane*    m_pCurrOutlookPage;
+
 };
 
 
