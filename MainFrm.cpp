@@ -34,6 +34,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_UPDATE_COMMAND_UI(ID_FILE_PRINT_PREVIEW, &CMainFrame::OnUpdateFilePrintPreview)
 	ON_WM_SETTINGCHANGE()
 	ON_MESSAGE(ID_MESSAGE_UPDATE, &CMainFrame::OnCmdUpdate)
+	ON_COMMAND(ID_VIEW_PARAMETERWND, &CMainFrame::OnViewParameterwnd)
+	ON_UPDATE_COMMAND_UI(ID_VIEW_PARAMETERWND, &CMainFrame::OnUpdateViewParameterwnd)
 END_MESSAGE_MAP()
 
 // CMainFrame construction/destruction
@@ -126,15 +128,24 @@ BOOL CMainFrame::CreateOutPutWnd()
 
 BOOL CMainFrame::CreateParamerWnd()
 {
-	if (!m_wndParameter.Create(_T("参数"), this, CRect(0, 0, 100, 100), TRUE, ID_VIEW_PARAMETERWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI, AFX_CBRS_REGULAR_TABS, AFX_CBRS_CLOSE| AFX_CBRS_AUTOHIDE))
+	if (!m_wndParameter.Create(_T("参数"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_PARAMETERWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI, AFX_CBRS_REGULAR_TABS, AFX_CBRS_FLOAT| AFX_CBRS_CLOSE| AFX_CBRS_AUTOHIDE))
 	{
 		return FALSE; // failed to create
 	}
-	m_wndParameter.SetResizeMode(FALSE);
 	return TRUE;
 }
 
-BOOL CMainFrame::CreateDockingWindows()
+BOOL CMainFrame::CreatePLCWnd()
+{
+	if (!m_wndPLC.Create(_T("PLC 梯形图"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_PLCWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI, AFX_CBRS_REGULAR_TABS, AFX_CBRS_FLOAT|AFX_CBRS_CLOSE | AFX_CBRS_AUTOHIDE))
+	{
+		return FALSE;
+	}
+	return TRUE;
+}
+
+
+BOOL CMainFrame::CreateDockingWindows()	 
 {
 	if (!CreateOutPutWnd())
 	{
@@ -146,13 +157,23 @@ BOOL CMainFrame::CreateDockingWindows()
 		TRACE0("Failed to create Parameter window\n");
 		return FALSE;
 	}
+	if (!CreatePLCWnd())
+	{
+		TRACE0("Failed to create PLC window\n");
+		return FALSE;
+	}
 
 
 	m_wndOutput.EnableDocking(CBRS_ALIGN_ANY);
-	m_wndParameter.EnableDocking(CBRS_ORIENT_VERT);
+	m_wndParameter.EnableDocking(CBRS_ALIGN_ANY/*CBRS_ORIENT_VERT*/);
+	m_wndPLC.EnableDocking(CBRS_ALIGN_ANY/*CBRS_ORIENT_VERT*/);
 
 	DockPane(&m_wndOutput);
 	DockPane(&m_wndParameter);
+	DockPane(&m_wndPLC);
+
+	CDockablePane *pTabbedBar = NULL;
+	m_wndParameter.AttachToTabWnd(&m_wndPLC, DM_SHOW, TRUE, &pTabbedBar);
 
 	return TRUE;
 }
@@ -273,4 +294,17 @@ LRESULT CMainFrame::OnCmdUpdate(WPARAM wparam, LPARAM lparam)
 		break;
 	}
 	return 0;
+}
+
+
+void CMainFrame::OnViewParameterwnd()
+{
+	m_wndParameter.ShowWindow(m_wndParameter.IsVisible() ? SW_HIDE : SW_SHOW);
+	RecalcLayout(FALSE);
+}
+
+
+void CMainFrame::OnUpdateViewParameterwnd(CCmdUI *pCmdUI)
+{
+	pCmdUI->SetCheck(m_wndParameter.IsVisible());
 }

@@ -15,6 +15,7 @@
 #pragma once
 #include "OutputWnd.h"
 #include "ParameterWnd.h"
+#include "PLCWnd.h"
 #include "Resource.h"
 
 #define ID_MESSAGE_UPDATE (WM_USER+100)
@@ -53,6 +54,7 @@ protected:  // control bar embedded members
 	CMFCRibbonStatusBar  m_wndStatusBar;
 	COutputWnd m_wndOutput;
 	CParameterWnd m_wndParameter;
+	CPLCWnd m_wndPLC;
 
 // Generated message map functions
 protected:
@@ -67,11 +69,15 @@ protected:
 
 	BOOL CreateOutPutWnd();
 	BOOL CreateParamerWnd();
+	BOOL CreatePLCWnd();
 	BOOL CreateDockingWindows();
 	void SetOutPutWindowIcons(BOOL bHiColorIcons);
 	void AddElementToStatusBar(UINT ID, UINT tipID, BOOL bExtennd);
 	BOOL CreateStatusBar();
 
+public:
+	afx_msg void OnViewParameterwnd();
+	afx_msg void OnUpdateViewParameterwnd(CCmdUI *pCmdUI);
 };
 
 
