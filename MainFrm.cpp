@@ -68,15 +68,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	CDockingManager::SetDockingMode(DT_SMART);
 	// enable Visual Studio 2005 style docking window auto-hide behavior
 	EnableAutoHidePanes(CBRS_ALIGN_ANY);
-
-	// Navigation pane will be created at left, so temporary disable docking at the left side:
-	EnableDocking(CBRS_ALIGN_TOP | CBRS_ALIGN_BOTTOM | CBRS_ALIGN_RIGHT);
-
-
-	// Outlook bar is created and docking on the left side should be allowed.
-	EnableDocking(CBRS_ALIGN_LEFT);
-	EnableAutoHidePanes(CBRS_ALIGN_RIGHT);
-
+	EnableLoadDockState(FALSE);
 	// create docking windows
 	if (!CreateDockingWindows())
 	{
@@ -84,6 +76,8 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;
 	}
 
+
+	EnableDocking(CBRS_ALIGN_ANY);
 
 
 	// set the visual manager used to draw all user interface elements
@@ -128,7 +122,7 @@ BOOL CMainFrame::CreateOutPutWnd()
 
 BOOL CMainFrame::CreateParamerWnd()
 {
-	if (!m_wndParameter.Create(_T("参数"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_PARAMETERWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI, AFX_CBRS_REGULAR_TABS, AFX_CBRS_FLOAT| AFX_CBRS_CLOSE| AFX_CBRS_AUTOHIDE))
+	if (!m_wndParameter.Create(_T("参数"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_PARAMETERWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI/*, AFX_CBRS_REGULAR_TABS,  AFX_CBRS_CLOSE| AFX_CBRS_AUTOHIDE*/))
 	{
 		return FALSE; // failed to create
 	}
@@ -137,7 +131,7 @@ BOOL CMainFrame::CreateParamerWnd()
 
 BOOL CMainFrame::CreatePLCWnd()
 {
-	if (!m_wndPLC.Create(_T("PLC 梯形图"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_PLCWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI, AFX_CBRS_REGULAR_TABS, AFX_CBRS_FLOAT|AFX_CBRS_CLOSE | AFX_CBRS_AUTOHIDE))
+	if (!m_wndPLC.Create(_T("PLC 梯形图"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_PLCWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
 	{
 		return FALSE;
 	}
@@ -163,17 +157,15 @@ BOOL CMainFrame::CreateDockingWindows()
 		return FALSE;
 	}
 
-
 	m_wndOutput.EnableDocking(CBRS_ALIGN_ANY);
-	m_wndParameter.EnableDocking(CBRS_ALIGN_ANY/*CBRS_ORIENT_VERT*/);
-	m_wndPLC.EnableDocking(CBRS_ALIGN_ANY/*CBRS_ORIENT_VERT*/);
+	m_wndParameter.EnableDocking(CBRS_ALIGN_ANY);
+	m_wndPLC.EnableDocking(CBRS_ALIGN_ANY);
 
 	DockPane(&m_wndOutput);
 	DockPane(&m_wndParameter);
 	DockPane(&m_wndPLC);
 
-	CDockablePane *pTabbedBar = NULL;
-	m_wndParameter.AttachToTabWnd(&m_wndPLC, DM_SHOW, TRUE, &pTabbedBar);
+	m_wndParameter.DockToWindow(&m_wndPLC, CBRS_TOP);
 
 	return TRUE;
 }
