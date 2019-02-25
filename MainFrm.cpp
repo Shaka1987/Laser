@@ -138,6 +138,15 @@ BOOL CMainFrame::CreatePLCWnd()
 	return TRUE;
 }
 
+BOOL CMainFrame::CreateOperateWnd()
+{
+	if (!m_wndOperate.Create(_T("²Ù×÷Ãæ°å"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_OPERATEWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI))
+	{
+		return FALSE;
+	}
+	return TRUE;
+}
+
 
 BOOL CMainFrame::CreateDockingWindows()	 
 {
@@ -156,14 +165,21 @@ BOOL CMainFrame::CreateDockingWindows()
 		TRACE0("Failed to create PLC window\n");
 		return FALSE;
 	}
+	if (!CreateOperateWnd())
+	{
+		TRACE0("Failed to create Operate window\n");
+		return FALSE;
+	}
 
 	m_wndOutput.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndParameter.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndPLC.EnableDocking(CBRS_ALIGN_ANY);
+	m_wndOperate.EnableDocking(CBRS_ALIGN_ANY);
 
 	DockPane(&m_wndOutput);
 	DockPane(&m_wndParameter);
 	DockPane(&m_wndPLC);
+	DockPane(&m_wndOperate);
 
 	m_wndParameter.DockToWindow(&m_wndPLC, CBRS_TOP);
 

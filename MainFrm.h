@@ -16,6 +16,7 @@
 #include "OutputWnd.h"
 #include "ParameterWnd.h"
 #include "PLCWnd.h"
+#include "OperateWnd.h"
 #include "Resource.h"
 
 #define ID_MESSAGE_UPDATE (WM_USER+100)
@@ -55,6 +56,7 @@ protected:  // control bar embedded members
 	COutputWnd m_wndOutput;
 	CParameterWnd m_wndParameter;
 	CPLCWnd m_wndPLC;
+	COperateWnd m_wndOperate;
 
 // Generated message map functions
 protected:
@@ -70,6 +72,7 @@ protected:
 	BOOL CreateOutPutWnd();
 	BOOL CreateParamerWnd();
 	BOOL CreatePLCWnd();
+	BOOL CreateOperateWnd();
 	BOOL CreateDockingWindows();
 	void SetOutPutWindowIcons(BOOL bHiColorIcons);
 	void AddElementToStatusBar(UINT ID, UINT tipID, BOOL bExtennd);

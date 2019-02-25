@@ -10,6 +10,7 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="ParameterWnd.cpp" />
     <ClCompile Include="PLCWnd.cpp" />
+    <ClCompile Include="OperateWnd.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calendarbar.h" />
@@ -23,6 +24,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="ParameterWnd.h" />
     <ClInclude Include="PLCWnd.h" />
+    <ClInclude Include="OperateWnd.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\buttons.bmp">
