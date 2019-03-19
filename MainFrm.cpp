@@ -140,7 +140,7 @@ BOOL CMainFrame::CreatePLCWnd()
 
 BOOL CMainFrame::CreateOperateWnd()
 {
-	if (!m_wndOperate.Create(_T("操作面板"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_OPERATEWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI))
+	if (!m_wndOperate.Create(_T("操作面板"), this, TRUE, MAKEINTRESOURCE(IDD_OPERATE), WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI, ID_VIEW_OPERATEWND))
 	{
 		return FALSE;
 	}
@@ -180,7 +180,7 @@ BOOL CMainFrame::CreateDockingWindows()
 	DockPane(&m_wndParameter);
 	DockPane(&m_wndPLC);
 	DockPane(&m_wndOperate);
-
+	ShowPane(&m_wndOperate,TRUE, FALSE, TRUE);
 	m_wndParameter.DockToWindow(&m_wndPLC, CBRS_TOP);
 
 	return TRUE;

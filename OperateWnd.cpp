@@ -4,13 +4,15 @@
 #include "stdafx.h"
 #include "laserMachine.h"
 #include "OperateWnd.h"
+#include "afxdialogex.h"
 
 
-// COperateWnd
+// COperateWnd dialog
 
-IMPLEMENT_DYNAMIC(COperateWnd, CDockablePane)
+IMPLEMENT_DYNAMIC(COperateWnd, CPaneDialog)
 
-COperateWnd::COperateWnd()
+COperateWnd::COperateWnd(CWnd* pParent /*=nullptr*/)
+	/*: CPaneDialog(IDD_OPERATE, pParent)*/
 {
 
 }
@@ -19,12 +21,14 @@ COperateWnd::~COperateWnd()
 {
 }
 
+void COperateWnd::DoDataExchange(CDataExchange* pDX)
+{
+	CPaneDialog::DoDataExchange(pDX);
+}
 
-BEGIN_MESSAGE_MAP(COperateWnd, CDockablePane)
+
+BEGIN_MESSAGE_MAP(COperateWnd, CPaneDialog)
 END_MESSAGE_MAP()
 
 
-
 // COperateWnd message handlers
-
-
