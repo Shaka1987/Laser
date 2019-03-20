@@ -122,7 +122,7 @@ BOOL CMainFrame::CreateOutPutWnd()
 
 BOOL CMainFrame::CreateParamerWnd()
 {
-	if (!m_wndParameter.Create(_T("参数"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_PARAMETERWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI/*, AFX_CBRS_REGULAR_TABS,  AFX_CBRS_CLOSE| AFX_CBRS_AUTOHIDE*/))
+	if (!m_wndParameter.Create(_T("参数"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_PARAMETERWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
 	{
 		return FALSE; // failed to create
 	}
@@ -140,7 +140,7 @@ BOOL CMainFrame::CreatePLCWnd()
 
 BOOL CMainFrame::CreateOperateWnd()
 {
-	if (!m_wndOperate.Create(_T("操作面板"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_OPERATEWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI))
+	if (!m_wndOperate.Create(_T("操作面板"), this, TRUE, MAKEINTRESOURCE(IDD_OPERATE), WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI, ID_VIEW_OPERATEWND, AFX_CBRS_REGULAR_TABS,  AFX_CBRS_CLOSE| AFX_CBRS_AUTOHIDE))
 	{
 		return FALSE;
 	}
@@ -180,7 +180,7 @@ BOOL CMainFrame::CreateDockingWindows()
 	DockPane(&m_wndParameter);
 	DockPane(&m_wndPLC);
 	DockPane(&m_wndOperate);
-
+	ShowPane(&m_wndOperate,TRUE, FALSE, TRUE);
 	m_wndParameter.DockToWindow(&m_wndPLC, CBRS_TOP);
 
 	return TRUE;
