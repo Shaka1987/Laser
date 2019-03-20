@@ -38,3 +38,4 @@
 /.vs/laserMachine/v15
 /.vs/VSWorkspaceState.json
 /laserMachine.vcxproj.filters
+*.aps

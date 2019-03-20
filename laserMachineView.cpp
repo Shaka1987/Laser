@@ -65,16 +65,39 @@ BOOL ClaserMachineView::PreCreateWindow(CREATESTRUCT& cs)
 
 // ClaserMachineView drawing
 
-void ClaserMachineView::OnDraw(CDC* /*pDC*/)
+void ClaserMachineView::OnDraw(CDC *pDC)
 {
 	ClaserMachineDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
+	CDC MemDC;
+	CRect rect;
+	CBitmap MemBitmap;
 
-	// TODO: add draw code for native data here
+	GetWindowRect(&rect);
+	MemBitmap.CreateCompatibleBitmap(pDC, rect.Width(), rect.Height());
+	MemDC.CreateCompatibleDC(NULL);
+	MemDC.SelectObject(&MemBitmap);
+	MemDC.FillSolidRect(rect.left, rect.top, rect.Width(), rect.Height(), RGB(0, 0, 0));
+	MemDC.SetTextColor(RGB(0xff, 0xff, 0xff));
+	DrawGrapic(&MemDC);
+	
+	pDC->BitBlt(0, 0, rect.Width(), rect.Height(), &MemDC, 0, 0, SRCCOPY);
+
+	MemBitmap.DeleteObject();
+	MemDC.DeleteDC();
 }
+void ClaserMachineView::DrawGrapic(CDC *pDC)
+{
+	CPen pen, *pOldPen;
+	pen.CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+	pOldPen = pDC->SelectObject(&pen);
+	pDC->MoveTo(200, 100);
+	pDC->LineTo(100, 100);
+	pDC->SelectObject(pOldPen);
 
+}
 
 // ClaserMachineView printing
 
