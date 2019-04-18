@@ -12,9 +12,9 @@
 // laserMachineDoc.h : interface of the ClaserMachineDoc class
 //
 
-
 #pragma once
-
+#include "NcProgElement.h"
+typedef CTypedPtrArray<CPtrArray, CNcProgElement *> CProgArray;
 
 class ClaserMachineDoc : public CDocument
 {
@@ -58,4 +58,6 @@ protected:
 public:
 	afx_msg void OnEditPaste();
 	afx_msg void OnFileOpen();
+private:
+	CProgArray m_progArray;
 };

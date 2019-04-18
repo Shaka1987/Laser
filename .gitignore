@@ -39,3 +39,4 @@
 /.vs/VSWorkspaceState.json
 /laserMachine.vcxproj.filters
 *.aps
+/Release
