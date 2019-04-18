@@ -114,7 +114,7 @@ void ClaserMachineDoc::InitializeSearchContent()
 
 void ClaserMachineDoc::SetSearchContent(const CString& value)
 {
-	if (value.IsEmpty())
+	if (value.IsEmpty())1
 	{
 		RemoveChunk(PKEY_Search_Contents.fmtid, PKEY_Search_Contents.pid);
 	}
@@ -158,6 +158,7 @@ void ClaserMachineDoc::OnEditPaste()
 
 void ClaserMachineDoc::OnFileOpen()
 {
-	CMainFrame *pWndFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
-	pWndFrame->OpenProgramFile(_T("C:\\NCProgram\\bird.NC"));
+	CStdioFile file;
+	file.Open(_T("NC PROGRAM\\bird.NC"), CFile::modeRead);
+	file.Close();
 }
