@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'Ubuntu-16.04'
+  vmImage: 'vs2017-win2016'
 
 steps:
 - script: echo Hello, world!
@@ -17,6 +17,9 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-- task: VSBuild@1
+- task: MSBuild@1
+  displayName: 'Build solution'
   inputs:
-    solution: '**\*.sln'
+    platform: 'Win32'
+    configuration: 'release'
+    solution: 'LaserMachine.sln'
