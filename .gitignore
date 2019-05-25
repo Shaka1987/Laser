@@ -41,3 +41,4 @@
 *.aps
 /Release
 /.vs/laserMachine/v16
+/BUnitTest/Debug
