@@ -11,7 +11,9 @@
     <ClCompile Include="ParameterWnd.cpp" />
     <ClCompile Include="PLCWnd.cpp" />
     <ClCompile Include="OperateWnd.cpp" />
-    <ClCompile Include="NcProgElement.cpp" />
+    <ClCompile Include="GraphPoint.cpp" />
+    <ClCompile Include="LaserProg.cpp" />
+    <ClCompile Include="FactoryLaserProg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calendarbar.h" />
@@ -26,7 +28,9 @@
     <ClInclude Include="ParameterWnd.h" />
     <ClInclude Include="PLCWnd.h" />
     <ClInclude Include="OperateWnd.h" />
-    <ClInclude Include="NcProgElement.h" />
+    <ClInclude Include="GraphPoint.h" />
+    <ClInclude Include="LaserProg.h" />
+    <ClInclude Include="FactoryLaserProg.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\buttons.bmp">

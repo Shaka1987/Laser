@@ -20,6 +20,8 @@
 #endif
 
 #include "laserMachineDoc.h"
+#include "LaserProg.h"
+#include "FactoryLaserProg.h"
 
 #include <propkey.h>
 #include "MainFrm.h"
@@ -158,7 +160,20 @@ void ClaserMachineDoc::OnEditPaste()
 
 void ClaserMachineDoc::OnFileOpen()
 {
-	CStdioFile file;
-	file.Open(_T("NC PROGRAM\\bird.NC"), CFile::modeRead);
-	file.Close();
+	CString strFilter(_T("All Files(*.*)|*.*||"));
+	CFileDialog dlg(TRUE, NULL, NULL, OFN_EXPLORER/*|OFN_HIDEREADONLY*/ | OFN_ENABLESIZING | OFN_FILEMUSTEXIST | OFN_NOCHANGEDIR, strFilter);
+	if (dlg.DoModal() == IDOK)
+	{
+		m_CurrentProg =  CFactoryLaserProg::Create(dlg.GetPathName());
+	}
+	//CStdioFile file;
+	//CString strNc;
+	//file.Open(_T("NC PROGRAM\\bird.NC"), CFile::modeRead);
+	//while (file.ReadString(strNc))
+	//{
+	//	CLaserProg* pPrgElement = new CLaserProg;
+	//	pPrgElement->SetNCString(strNc);
+	//	m_progArray.Add(pPrgElement);
+	//}
+	//file.Close();
 }

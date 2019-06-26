@@ -13,8 +13,8 @@
 //
 
 #pragma once
-#include "NcProgElement.h"
-typedef CTypedPtrArray<CPtrArray, CNcProgElement *> CProgArray;
+#include "LaserProg.h"
+#include "boost/smart_ptr.hpp"
 
 class ClaserMachineDoc : public CDocument
 {
@@ -59,5 +59,5 @@ public:
 	afx_msg void OnEditPaste();
 	afx_msg void OnFileOpen();
 private:
-	CProgArray m_progArray;
+	boost::shared_ptr<CLaserProg> m_CurrentProg;
 };
