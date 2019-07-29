@@ -13,5 +13,6 @@ CLaserProg::~CLaserProg()
 
 BOOL CLaserProg::Convert()
 {
+	TRACE(_T("Base class CLaserProg"));
 	return 0;
 }

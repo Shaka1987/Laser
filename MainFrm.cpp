@@ -232,7 +232,7 @@ void CMainFrame::UpdateMousePosition(CPoint point)
 	strMousePosition.Format(_T("%d:%d"),point.x, point.y);
 	pPane->SetText(strMousePosition);
 	pPane->Redraw();
-	OutputDebugString(strMousePosition);
+	//OutputDebugString(strMousePosition);
 }
 
 // CMainFrame diagnostics

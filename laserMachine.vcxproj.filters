@@ -14,6 +14,8 @@
     <ClCompile Include="GraphPoint.cpp" />
     <ClCompile Include="LaserProg.cpp" />
     <ClCompile Include="FactoryLaserProg.cpp" />
+    <ClCompile Include="NCProg.cpp" />
+    <ClCompile Include="CCAMProg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calendarbar.h" />
@@ -31,6 +33,8 @@
     <ClInclude Include="GraphPoint.h" />
     <ClInclude Include="LaserProg.h" />
     <ClInclude Include="FactoryLaserProg.h" />
+    <ClInclude Include="NCProg.h" />
+    <ClInclude Include="CCAMProg.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\buttons.bmp">

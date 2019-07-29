@@ -165,6 +165,7 @@ void ClaserMachineDoc::OnFileOpen()
 	if (dlg.DoModal() == IDOK)
 	{
 		m_CurrentProg =  CFactoryLaserProg::Create(dlg.GetPathName());
+		m_CurrentProg->Convert();
 	}
 	//CStdioFile file;
 	//CString strNc;
