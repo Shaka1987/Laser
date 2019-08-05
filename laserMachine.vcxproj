@@ -185,6 +185,7 @@
   <ItemGroup>
     <ClInclude Include="calendarbar.h" />
     <ClInclude Include="CCAMProg.h" />
+    <ClInclude Include="DrawBoard.h" />
     <ClInclude Include="FactoryLaserProg.h" />
     <ClInclude Include="GraphPoint.h" />
     <ClInclude Include="laserMachine.h" />
@@ -204,6 +205,7 @@
   <ItemGroup>
     <ClCompile Include="calendarbar.cpp" />
     <ClCompile Include="CCAMProg.cpp" />
+    <ClCompile Include="DrawBoard.cpp" />
     <ClCompile Include="FactoryLaserProg.cpp" />
     <ClCompile Include="GraphPoint.cpp" />
     <ClCompile Include="laserMachine.cpp" />

@@ -8,6 +8,7 @@ private:
 	
 public:
 	CGraphPoint();
+	CGraphPoint(double x, double y);
 	~CGraphPoint();
 	void SetX(double x);
 	void SetY(double y);

@@ -41,6 +41,7 @@ BEGIN_MESSAGE_MAP(ClaserMachineView, CView)
 	ON_WM_RBUTTONUP()
 	ON_COMMAND(ID_BUTTON_XPLUS, &ClaserMachineView::OnButtonXplus)
 	ON_WM_MOUSEMOVE()
+	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 // ClaserMachineView construction/destruction
@@ -81,22 +82,12 @@ void ClaserMachineView::OnDraw(CDC *pDC)
 	MemDC.SelectObject(&MemBitmap);
 	MemDC.FillSolidRect(rect.left, rect.top, rect.Width(), rect.Height(), RGB(0, 0, 0));
 	MemDC.SetTextColor(RGB(0xff, 0xff, 0xff));
-	DrawGrapic(&MemDC);
+	m_drawBoard.Draw(&MemDC);
 	
 	pDC->BitBlt(0, 0, rect.Width(), rect.Height(), &MemDC, 0, 0, SRCCOPY);
 
 	MemBitmap.DeleteObject();
 	MemDC.DeleteDC();
-}
-void ClaserMachineView::DrawGrapic(CDC *pDC)
-{
-	CPen pen, *pOldPen;
-	pen.CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-	pOldPen = pDC->SelectObject(&pen);
-	pDC->MoveTo(200, 100);
-	pDC->LineTo(100, 100);
-	pDC->SelectObject(pOldPen);
-
 }
 
 // ClaserMachineView printing
@@ -174,4 +165,15 @@ void ClaserMachineView::OnMouseMove(UINT nFlags, CPoint point)
 	CMainFrame *pWndFrame = (CMainFrame *)AfxGetApp()->m_pMainWnd;
 	pWndFrame->UpdateMousePosition(point);
 	CView::OnMouseMove(nFlags, point);
+}
+
+
+void ClaserMachineView::OnSize(UINT nType, int cx, int cy)
+{
+	CView::OnSize(nType, cx, cy);
+	m_drawBoard.UpdateSize(cx, cy);
+	CString strInfo;
+	strInfo.Format(_T("size of view[%d] -> %d : %d \n"),nType, cx, cy);
+	TRACE(strInfo);
+	// TODO: Add your message handler code here
 }

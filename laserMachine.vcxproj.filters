@@ -16,6 +16,7 @@
     <ClCompile Include="FactoryLaserProg.cpp" />
     <ClCompile Include="NCProg.cpp" />
     <ClCompile Include="CCAMProg.cpp" />
+    <ClCompile Include="DrawBoard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calendarbar.h" />
@@ -35,6 +36,7 @@
     <ClInclude Include="FactoryLaserProg.h" />
     <ClInclude Include="NCProg.h" />
     <ClInclude Include="CCAMProg.h" />
+    <ClInclude Include="DrawBoard.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\buttons.bmp">

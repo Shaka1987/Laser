@@ -13,7 +13,7 @@
 //
 
 #pragma once
-
+#include "DrawBoard.h"
 
 class ClaserMachineView : public CView
 {
@@ -31,7 +31,6 @@ public:
 // Overrides
 public:
 	virtual void OnDraw(CDC* pDC);  // overridden to draw this view
-	void DrawGrapic(CDC *pDC);
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 protected:
 	virtual BOOL OnPreparePrinting(CPrintInfo* pInfo);
@@ -57,6 +56,10 @@ protected:
 public:
 	afx_msg void OnButtonXplus();
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+private:
+	CDrawBoard m_drawBoard;
+public:
+	afx_msg void OnSize(UINT nType, int cx, int cy);
 };
 
 #ifndef _DEBUG  // debug version in laserMachineView.cpp
