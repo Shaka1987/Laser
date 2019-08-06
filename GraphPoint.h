@@ -1,7 +1,8 @@
 #pragma once
 class CGraphPoint
 {
-private:
+//private:
+public:
 	double m_x;
 	double m_y;
 	double m_z;

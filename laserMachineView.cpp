@@ -22,6 +22,7 @@
 #include "laserMachineDoc.h"
 #include "laserMachineView.h"
 #include "MainFrm.h"
+#include <boost/smart_ptr.hpp>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -156,7 +157,9 @@ ClaserMachineDoc* ClaserMachineView::GetDocument() const // non-debug version is
 
 void ClaserMachineView::OnButtonXplus()
 {
-	MessageBox(_T("X+"));
+	m_drawBoard.AddPoint(boost::make_shared<CGraphPoint>(0.0, 0.0));
+
+	m_drawBoard.AddPoint(boost::make_shared<CGraphPoint>(10.0, 20.0));
 }
 
 
