@@ -157,9 +157,9 @@ ClaserMachineDoc* ClaserMachineView::GetDocument() const // non-debug version is
 
 void ClaserMachineView::OnButtonXplus()
 {
-	m_drawBoard.AddPoint(boost::make_shared<CGraphPoint>(0.0, 0.0));
+	m_drawBoard.AddPoint(boost::make_shared<CGraphPoint>(0.0, 0.0, true));
 
-	m_drawBoard.AddPoint(boost::make_shared<CGraphPoint>(10.0, 20.0));
+	m_drawBoard.AddPoint(boost::make_shared<CGraphPoint>(100.0, 100.0));
 }
 
 

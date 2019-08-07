@@ -5,9 +5,10 @@ CGraphPoint::CGraphPoint()
 {
 }
 
-CGraphPoint::CGraphPoint(double x, double y)
-	:m_x(x)
-	,m_y(y)
+CGraphPoint::CGraphPoint(double x, double y, bool bStart/* = false */)
+	: m_x(x)
+	, m_y(y)
+	,m_bStart(bStart)
 {
 	
 }

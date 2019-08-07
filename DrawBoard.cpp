@@ -20,16 +20,12 @@ void CDrawBoard::Draw(CDC* pDC)
 	pOldPen = pDC->SelectObject(&pen);
 
 	
-	
-	for (point_list::iterator ite = m_ptList.begin();ite != m_ptList.end(); ++ite)
+	for (auto pt : m_ptList)
 	{
-		if (ite == m_ptList.begin())
-		{
-			pDC->MoveTo(m_ptBase.x + ((*ite)->m_x + m_ptOffset.m_x) * m_scale, m_ptBase.y - ((*ite)->m_x + m_ptOffset.m_x) * m_scale);
-		}
-		
-		pDC->LineTo(m_ptBase.x + ((*ite)->m_x + m_ptOffset.m_x) * m_scale, m_ptBase.y - ((*ite)->m_x + m_ptOffset.m_x) * m_scale);
-
+		if (pt->IsStart())
+			pDC->MoveTo(m_ptBase.x + (pt->GetX() + m_ptOffset.m_x) * m_scale, m_ptBase.y - (pt->GetY() + m_ptOffset.m_y) * m_scale);
+		else
+			pDC->LineTo(m_ptBase.x + (pt->GetX() + m_ptOffset.m_x) * m_scale, m_ptBase.y - (pt->GetY() + m_ptOffset.m_y) * m_scale);
 	}
 	pDC->SelectObject(pOldPen);
 }
