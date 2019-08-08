@@ -166,6 +166,7 @@ void ClaserMachineDoc::OnFileOpen()
 	{
 		m_CurrentProg =  CFactoryLaserProg::Create(dlg.GetPathName());
 		m_CurrentProg->Convert();
+		UpdateAllViews(NULL);
 	}
 	//CStdioFile file;
 	//CString strNc;

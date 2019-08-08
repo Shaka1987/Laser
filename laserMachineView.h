@@ -56,10 +56,9 @@ protected:
 public:
 	afx_msg void OnButtonXplus();
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
-private:
-	CDrawBoard m_drawBoard;
-public:
 	afx_msg void OnSize(UINT nType, int cx, int cy);
+private:
+	CDrawBoard m_drawboard;
 };
 
 #ifndef _DEBUG  // debug version in laserMachineView.cpp

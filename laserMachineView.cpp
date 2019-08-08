@@ -48,6 +48,7 @@ END_MESSAGE_MAP()
 // ClaserMachineView construction/destruction
 
 ClaserMachineView::ClaserMachineView() noexcept
+	:m_drawboard(this)
 {
 	// TODO: add construction code here
 
@@ -83,7 +84,7 @@ void ClaserMachineView::OnDraw(CDC *pDC)
 	MemDC.SelectObject(&MemBitmap);
 	MemDC.FillSolidRect(rect.left, rect.top, rect.Width(), rect.Height(), RGB(0, 0, 0));
 	MemDC.SetTextColor(RGB(0xff, 0xff, 0xff));
-	m_drawBoard.Draw(&MemDC);
+	m_drawboard.Draw(&MemDC);
 	
 	pDC->BitBlt(0, 0, rect.Width(), rect.Height(), &MemDC, 0, 0, SRCCOPY);
 
@@ -157,9 +158,6 @@ ClaserMachineDoc* ClaserMachineView::GetDocument() const // non-debug version is
 
 void ClaserMachineView::OnButtonXplus()
 {
-	m_drawBoard.AddPoint(boost::make_shared<CGraphPoint>(0.0, 0.0, true));
-
-	m_drawBoard.AddPoint(boost::make_shared<CGraphPoint>(100.0, 100.0));
 }
 
 
@@ -174,7 +172,7 @@ void ClaserMachineView::OnMouseMove(UINT nFlags, CPoint point)
 void ClaserMachineView::OnSize(UINT nType, int cx, int cy)
 {
 	CView::OnSize(nType, cx, cy);
-	m_drawBoard.UpdateSize(cx, cy);
+	m_drawboard.UpdateSize(cx, cy);
 	CString strInfo;
 	strInfo.Format(_T("size of view[%d] -> %d : %d \n"),nType, cx, cy);
 	TRACE(strInfo);

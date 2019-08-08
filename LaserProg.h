@@ -1,18 +1,24 @@
 #pragma once
 #include <afx.h>
-#include <vector>
+#include <list>
+#include <boost/smart_ptr.hpp>
 #include "GraphPoint.h"
+
 using namespace std;
 class CLaserProg
 {
 private:
 	CString m_strNC;
 
+	using sptPoint = boost::shared_ptr<CGraphPoint>;
+	using point_list = std::list<sptPoint>;
 protected:
-	vector<CGraphPoint> m_vGrphic;
+	point_list m_ptList;
 public:
 	CLaserProg();
 	~CLaserProg();
-	virtual BOOL Convert();
+	void Init(CString fileName);
+	virtual BOOL AddToBoard();
+	inline point_list* GetList() { return &m_ptList; };
 };
 

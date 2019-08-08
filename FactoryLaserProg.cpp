@@ -5,14 +5,19 @@
 
 boost::shared_ptr<CLaserProg> CFactoryLaserProg::Create(CString strName)
 {
+	boost::shared_ptr<CLaserProg> sptProg;
 	if (strName.Find(_T(".CAM") )== strName.GetLength() - 4)
 	{
-		return boost::shared_ptr<CLaserProg>(new CCAMProg());
+		sptProg = boost::make_shared<CCAMProg>();
 	}
-
-	if (strName.Find(_T(".NC")) == strName.GetLength() - 3)
+	else if (strName.Find(_T(".NC")) == strName.GetLength() - 3)
 	{
-		return boost::shared_ptr<CLaserProg>(new CNCProg());
+		sptProg = boost::make_shared<CNCProg>();
 	}
-	return boost::shared_ptr<CLaserProg>(new CLaserProg());
+	else
+	{
+		sptProg = boost::make_shared<CLaserProg>();
+	}
+	sptProg->Init(strName);
+	return sptProg;
 }

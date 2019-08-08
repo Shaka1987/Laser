@@ -60,4 +60,6 @@ public:
 	afx_msg void OnFileOpen();
 private:
 	boost::shared_ptr<CLaserProg> m_CurrentProg;
+public:
+	inline boost::shared_ptr<CLaserProg> GetCurrentProg() { return m_CurrentProg; };
 };
