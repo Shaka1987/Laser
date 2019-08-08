@@ -18,7 +18,7 @@ public:
 	CLaserProg();
 	~CLaserProg();
 	void Init(CString fileName);
-	virtual BOOL AddToBoard();
+	virtual BOOL Convert();
 	inline point_list* GetList() { return &m_ptList; };
 };
 
