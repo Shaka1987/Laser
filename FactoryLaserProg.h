@@ -7,7 +7,7 @@ class CFactoryLaserProg
 public:
 	CFactoryLaserProg() {};
 	~CFactoryLaserProg() {};
-	static boost::shared_ptr<CLaserProg> Create(CString strName);
+	static boost::shared_ptr<CLaserProg> Create(tstring strName);
 	
 };
 

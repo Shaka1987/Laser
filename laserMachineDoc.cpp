@@ -164,7 +164,7 @@ void ClaserMachineDoc::OnFileOpen()
 	CFileDialog dlg(TRUE, NULL, NULL, OFN_EXPLORER/*|OFN_HIDEREADONLY*/ | OFN_ENABLESIZING | OFN_FILEMUSTEXIST | OFN_NOCHANGEDIR, strFilter);
 	if (dlg.DoModal() == IDOK)
 	{
-		m_CurrentProg =  CFactoryLaserProg::Create(dlg.GetPathName());
+		m_CurrentProg =  CFactoryLaserProg::Create(dlg.GetPathName().GetBuffer(0));
 		m_CurrentProg->Convert();
 		UpdateAllViews(NULL);
 	}

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "LaserProg.h"
-
+#include <fstream>
+using namespace std;
 
 CLaserProg::CLaserProg()
 {
@@ -11,9 +12,22 @@ CLaserProg::~CLaserProg()
 {
 }
 
-void CLaserProg::Init(CString fileName)
+void CLaserProg::Init(tstring fileName)
 {
+	m_strList.clear();
+	ifstream i(fileName.c_str());
+	string str;
+	while (getline(i, str))
+	{
+		m_strList.push_back(boost::make_shared<string>(str));
+	}
+	i.close();
 
+}
+
+void CLaserProg::ResetPoints()
+{
+	m_ptList.clear();
 }
 
 BOOL CLaserProg::Convert()

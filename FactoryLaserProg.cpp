@@ -3,14 +3,14 @@
 #include "CCAMProg.h"
 #include "NCProg.h"
 
-boost::shared_ptr<CLaserProg> CFactoryLaserProg::Create(CString strName)
+boost::shared_ptr<CLaserProg> CFactoryLaserProg::Create(tstring strName)
 {
 	boost::shared_ptr<CLaserProg> sptProg;
-	if (strName.Find(_T(".CAM") )== strName.GetLength() - 4)
+	if (strName.find(_T(".CAM"))== strName.length() - 4)
 	{
 		sptProg = boost::make_shared<CCAMProg>();
 	}
-	else if (strName.Find(_T(".NC")) == strName.GetLength() - 3)
+	else if (strName.find(_T(".NC")) == strName.length() - 3)
 	{
 		sptProg = boost::make_shared<CNCProg>();
 	}

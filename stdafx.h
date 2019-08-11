@@ -57,6 +57,7 @@
 
 
 #ifdef _UNICODE
+#define tstring wstring
 #if defined _M_IX86
 #pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='x86' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #elif defined _M_X64
@@ -64,6 +65,9 @@
 #else
 #pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 #endif
+#else
+
+#define tstring string
 #endif
 
 #define WM_MY_MESSAGE (WM_USER+100) 
