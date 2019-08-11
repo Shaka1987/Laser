@@ -27,7 +27,7 @@ void CDrawBoard::Draw(CDC* pDC)
 	auto pProg = ((ClaserMachineDoc*)m_pView->GetDocument())->GetCurrentProg();
 	if (pProg)
 	{
-		auto pList = pProg->GetList();
+		auto pList = pProg->GetPointList();
 		for (auto pt : *pList)
 		{
 			if (pt->IsStart())

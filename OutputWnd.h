@@ -13,7 +13,7 @@
 
 /////////////////////////////////////////////////////////////////////////////
 // COutputList window
-
+#include "LaserProg.h"
 class COutputList : public CListBox
 {
 // Construction5
@@ -40,7 +40,7 @@ public:
 	COutputWnd() noexcept;
 
 	void UpdateFonts();
-	void LoadProgram(CString fileProgram);
+	void UpdateProgram(boost::shared_ptr<CLaserProg> pProg);
 
 // Attributes
 protected:

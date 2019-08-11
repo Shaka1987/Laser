@@ -166,8 +166,10 @@ void ClaserMachineDoc::OnFileOpen()
 	{
 		m_CurrentProg =  CFactoryLaserProg::Create(dlg.GetPathName().GetBuffer(0));
 		m_CurrentProg->Convert();
+		((CMainFrame*)AfxGetApp()->m_pMainWnd)->UpdateProgram();
 		UpdateAllViews(NULL);
 	}
+
 	//CStdioFile file;
 	//CString strNc;
 	//file.Open(_T("NC PROGRAM\\bird.NC"), CFile::modeRead);

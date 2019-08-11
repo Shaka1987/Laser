@@ -14,6 +14,7 @@
 
 #include "stdafx.h"
 #include "laserMachine.h"
+#include "laserMachineDoc.h"
 
 #include "MainFrm.h"
 
@@ -87,9 +88,9 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	return 0;
 }
 
-void CMainFrame::OpenProgramFile(CString strFileName)
+void CMainFrame::UpdateProgram()
 {
-	m_wndOutput.LoadProgram(strFileName);
+	m_wndOutput.UpdateProgram(((ClaserMachineDoc*)GetActiveDocument())->GetCurrentProg());
 }
 
 BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)

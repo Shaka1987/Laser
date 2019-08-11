@@ -12,10 +12,10 @@ CLaserProg::~CLaserProg()
 {
 }
 
-void CLaserProg::Init(tstring fileName)
+void CLaserProg::Init(tstring_view fileName)
 {
 	m_strList.clear();
-	ifstream i(fileName.c_str());
+	ifstream i(fileName.data());
 	string str;
 	while (getline(i, str))
 	{

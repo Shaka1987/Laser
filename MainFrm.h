@@ -35,7 +35,7 @@ public:
 public:
 
 	void UpdateMousePosition(CPoint point);
-	void OpenProgramFile(CString strFileName);
+	void UpdateProgram();
 // Overrides
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);

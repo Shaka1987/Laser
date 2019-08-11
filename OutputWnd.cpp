@@ -120,18 +120,16 @@ void COutputWnd::UpdateFonts()
 	m_wndLog.SetFont(&afxGlobalData.fontRegular);
 }
 
-void COutputWnd::LoadProgram(CString fileProgram)
+void COutputWnd::UpdateProgram(boost::shared_ptr<CLaserProg> pProg)
 {
-	CStdioFile file;
-	CString strCodeLine;
-
-	file.Open(fileProgram, CFile::modeRead);
-	while (file.ReadString(strCodeLine))
+	if (pProg)
 	{
-		m_wndProgram.AddString(strCodeLine);
-		OutputDebugString(strCodeLine + _T("\n"));
+		auto prog_list = pProg->GetProgramList();
+		for (auto str: *prog_list)
+		{
+			m_wndProgram.AddString(LPCTSTR(str->data()));
+		}
 	}
-	file.Close();
 }
 
 /////////////////////////////////////////////////////////////////////////////

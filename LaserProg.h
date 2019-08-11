@@ -3,6 +3,7 @@
 #include <list>
 #include <boost/smart_ptr.hpp>
 #include "GraphPoint.h"
+#include <string_view>
 
 using namespace std;
 class CLaserProg
@@ -20,9 +21,10 @@ protected:
 public:
 	CLaserProg();
 	~CLaserProg();
-	void Init(tstring fileName);
+	void Init(tstring_view fileName);
 	void ResetPoints();
 	virtual BOOL Convert();
-	inline point_list* GetList() { return &m_ptList; };
+	inline point_list* GetPointList() { return &m_ptList; };
+	inline string_list* GetProgramList() { return &m_strList; };
 };
 
