@@ -14,6 +14,7 @@
 #include "OutputWnd.h"
 #include "Resource.h"
 #include "MainFrm.h"
+#include "AdditionalFunction.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -127,7 +128,14 @@ void COutputWnd::UpdateProgram(boost::shared_ptr<CLaserProg> pProg)
 		auto prog_list = pProg->GetProgramList();
 		for (auto str: *prog_list)
 		{
+
+#ifdef _UNICODE
+			wstring strw = s2ws(*str);
+			m_wndProgram.AddString(LPCTSTR(strw.data()));
+#else
 			m_wndProgram.AddString(LPCTSTR(str->data()));
+#endif
+
 		}
 	}
 }

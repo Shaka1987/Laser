@@ -2,6 +2,10 @@
 #include "GraphPoint.h"
 
 CGraphPoint::CGraphPoint()
+	:m_x(0.0)
+	,m_y(0.0)
+	,m_z(0.0)
+	,m_bStart(false)
 {
 }
 
