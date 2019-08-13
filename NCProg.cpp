@@ -9,63 +9,88 @@ BOOL CNCProg::Convert()
 	//m_ptList.push_back(boost::make_shared<CGraphPoint>(0.0, 0.0, true));
 	//m_ptList.push_back(boost::make_shared<CGraphPoint>(100.0, 100.0));
 
-	auto current_point = boost::make_shared<CGdiObject>();
-	for (auto str : m_strList)
+	auto current_point = boost::make_shared<CGraphPoint>();
+	UCHAR groupGFunction[64] = { 0 };
+	for (sptString str : m_strList)
 	{
-		double value = 0.0;
-		char type = 0;
-		for (auto c : *str)
-		{
-			if (!isgraph(c))
-				continue;
-			if (c = ';')//the content after ; will not be handled
-			{
-				//save status 
-				break;
-			}
-
-			if (isalpha(c))
-			{
-				if (type)
-				{
-					//SetValue()
-					type = 0;
-				}
-				type = toupper(c);
-			}
-			else if (c == '-')
-			{
-
-			}
-			else if (isdigit(c))
-			{
-
-			}
-		}
+		m_ptList.push_back(CoverntStr2Point(str, current_point, groupGFunction));
 	}
 	TRACE(_T("class CNCProg"));
 	return 0;
 }
 
-//setvalue(char type, double value,)
-//{
-//
-//
-//	switch (type)
-//	{
-//	case 'X':
-//		break;
-//	case 'Y':
-//		break;
-//	case 'Z':
-//		break;
-//	case 'G':
-//		break;
-//	case 'R':
-//		break;
-//	case 'N':
-//		break;
-//	default:
-//		break;
-//	}
-//}
+sptPoint CNCProg::CoverntStr2Point(sptString str, sptPoint current_point, UCHAR groupG[])
+{
+	sptPoint point = boost::make_shared<CGraphPoint>();
+	int value = 0;
+	char type = 0;
+	bool bNeg = false;
+	short dotPos = 0;
+
+	groupG[0] = 1;
+	
+
+	for (auto c : *str)
+	{
+		if (!isgraph(c))
+			continue;
+
+		if (isalpha(c))
+		{
+			double fValue = (double)value / (double)dotPos;
+			switch (type)
+			{
+			case 'X':
+				break;
+			case 'Y':
+				break;
+			case 'Z':
+				break;
+			case 'G':
+				switch (auto val = value / dotPos)
+				{
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+					groupG[G_TraceMode] = val;
+				case 92:
+				}
+				break;
+			case 'R':
+				break;
+			case 'N':
+				break;
+			default:
+				break;
+			}			
+			value = 0;
+			bNeg = false;
+			dotPos = 0;
+			type = toupper(c);
+		}
+		else if (isdigit(c))
+		{
+			value = value * 10 + (c - '0');
+			if (dotPos != 0) dotPos*=10;
+		}
+		else
+		{
+			switch (c)
+			{
+			case ';'://the content after ; will not be handled
+				//save status 
+				return point;
+			case '-':
+				bNeg = true;
+				break;
+			case '.':
+				dotPos = 1;
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	return point;
+}

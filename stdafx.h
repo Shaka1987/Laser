@@ -51,7 +51,7 @@
 #include <afxcontrolbars.h>
 
 
-
+#define I8 char
 
 
 

@@ -31,9 +31,9 @@ void CDrawBoard::Draw(CDC* pDC)
 		for (auto pt : *pList)
 		{
 			if (pt->IsStart())
-				pDC->MoveTo(m_ptBase.x + (pt->GetX() + m_ptOffset.m_x) * m_scale, m_ptBase.y - (pt->GetY() + m_ptOffset.m_y) * m_scale);
+				pDC->MoveTo(m_ptBase.x + (pt->GetX() + m_ptOffset.GetX()) * m_scale, m_ptBase.y - (pt->GetY() + m_ptOffset.GetY()) * m_scale);
 			else
-				pDC->LineTo(m_ptBase.x + (pt->GetX() + m_ptOffset.m_x) * m_scale, m_ptBase.y - (pt->GetY() + m_ptOffset.m_y) * m_scale);
+				pDC->LineTo(m_ptBase.x + (pt->GetX() + m_ptOffset.GetX()) * m_scale, m_ptBase.y - (pt->GetY() + m_ptOffset.GetY()) * m_scale);
 		}
 	}
 	
