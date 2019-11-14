@@ -18,6 +18,8 @@
     <ClCompile Include="CCAMProg.cpp" />
     <ClCompile Include="DrawBoard.cpp" />
     <ClCompile Include="AdditionalFunction.cpp" />
+    <ClCompile Include="ModBusConfigDlg.cpp" />
+    <ClCompile Include="CModBusMaster.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calendarbar.h" />
@@ -39,6 +41,8 @@
     <ClInclude Include="DrawBoard.h" />
     <ClInclude Include="FactoryLaserProg.h" />
     <ClInclude Include="AdditionalFunction.h" />
+    <ClInclude Include="ModBusConfigDlg.h" />
+    <ClInclude Include="CModBusMaster.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\buttons.bmp">

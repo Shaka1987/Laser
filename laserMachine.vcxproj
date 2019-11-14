@@ -187,6 +187,7 @@
     <ClInclude Include="AdditionalFunction.h" />
     <ClInclude Include="calendarbar.h" />
     <ClInclude Include="CCAMProg.h" />
+    <ClInclude Include="CModBusMaster.h" />
     <ClInclude Include="DrawBoard.h" />
     <ClInclude Include="FactoryLaserProg.h" />
     <ClInclude Include="GraphPoint.h" />
@@ -195,6 +196,7 @@
     <ClInclude Include="laserMachineView.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="LaserProg.h" />
+    <ClInclude Include="ModBusConfigDlg.h" />
     <ClInclude Include="NCProg.h" />
     <ClInclude Include="OperateWnd.h" />
     <ClInclude Include="OutputWnd.h" />
@@ -208,6 +210,7 @@
     <ClCompile Include="AdditionalFunction.cpp" />
     <ClCompile Include="calendarbar.cpp" />
     <ClCompile Include="CCAMProg.cpp" />
+    <ClCompile Include="CModBusMaster.cpp" />
     <ClCompile Include="DrawBoard.cpp" />
     <ClCompile Include="FactoryLaserProg.cpp" />
     <ClCompile Include="GraphPoint.cpp" />
@@ -216,6 +219,7 @@
     <ClCompile Include="laserMachineView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="LaserProg.cpp" />
+    <ClCompile Include="ModBusConfigDlg.cpp" />
     <ClCompile Include="NCProg.cpp" />
     <ClCompile Include="OperateWnd.cpp" />
     <ClCompile Include="OutputWnd.cpp" />

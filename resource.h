@@ -64,8 +64,12 @@
 #define IDD_OPERATE                     312
 #define ID_VIEW_PARAMETERWND            314
 #define ID_VIEW_PLCWND                  315
+#define IDD_MODBUS_CONFIG               315
 #define ID_VIEW_OPERATEWND              316
 #define IDC_EDIT3                       1009
+#define IDC_MODBUS_CYCLE                1009
+#define IDC_MODBUS_SLAVE_IP             1011
+#define IDC_MODBUS_PORT                 1012
 #define ID_WRITE_PASTEASHYPERLINK       32770
 #define ID_BUTTON2                      32772
 #define ID_BUTTON_CYCLE_START           32772
@@ -94,9 +98,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        315
+#define _APS_NEXT_RESOURCE_VALUE        317
 #define _APS_NEXT_COMMAND_VALUE         32804
-#define _APS_NEXT_CONTROL_VALUE         1010
+#define _APS_NEXT_CONTROL_VALUE         1013
 #define _APS_NEXT_SYMED_VALUE           317
 #endif
 #endif

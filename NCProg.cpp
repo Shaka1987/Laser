@@ -55,6 +55,7 @@ sptPoint CNCProg::CoverntStr2Point(sptString str, sptPoint current_point, UCHAR 
 				case 3:
 					groupG[G_TraceMode] = val;
 				case 92:
+					break;
 				}
 				break;
 			case 'R':

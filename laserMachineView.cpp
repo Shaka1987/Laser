@@ -23,6 +23,7 @@
 #include "laserMachineView.h"
 #include "MainFrm.h"
 #include <boost/smart_ptr.hpp>
+#include "CModBusMaster.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -158,6 +159,9 @@ ClaserMachineDoc* ClaserMachineView::GetDocument() const // non-debug version is
 
 void ClaserMachineView::OnButtonXplus()
 {
+	//just for test
+	CModBusMaster master;
+	master.Connect();
 }
 
 
