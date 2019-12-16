@@ -12,6 +12,7 @@ private:
 
 public:
 	void SetEndPoint(ip::address& address, WORD& port);
-	void Connect();
+	void TestTCP();
+	void TestUDP();
 };
 

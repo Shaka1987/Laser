@@ -161,7 +161,7 @@ void ClaserMachineView::OnButtonXplus()
 {
 	//just for test
 	CModBusMaster master;
-	master.Connect();
+	master.TestUDP();
 }
 
 
