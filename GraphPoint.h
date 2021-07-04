@@ -13,6 +13,8 @@ public:
 	~CGraphPoint();
 	inline double GetX() { return m_x; };
 	inline double GetY() { return m_y; };
+	inline void SetX(double x) { m_x = x; };
+	inline void SetY(double y) { m_y = y; };
 	inline bool IsStart() {	return m_bStart;};
 	inline bool IsValidable() { return m_bValid; };
 };

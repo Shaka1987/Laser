@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "NCProg.h"
-
+void CNCProg::InitGFunction(UCHAR groupGFunction[])
+{
+	groupGFunction[G_TraceMode] = 0;					//G0
+	groupGFunction[G_Increase] = 0;						//G91
+	groupGFunction[G_Position] = 0;						//not G92
+}
 BOOL CNCProg::Convert()
 {
 	ResetPoints();
@@ -27,7 +32,6 @@ sptPoint CNCProg::CoverntStr2Point(sptString str, sptPoint current_point, UCHAR 
 	bool bNeg = false;
 	short dotPos = 0;
 
-	groupG[0] = 1;
 	
 
 	for (auto c : *str)
@@ -41,6 +45,16 @@ sptPoint CNCProg::CoverntStr2Point(sptString str, sptPoint current_point, UCHAR 
 			switch (type)
 			{
 			case 'X':
+				if (groupG[G_Increase] == 0 || groupG[G_Position] == 1)
+				{
+					point->SetX(fValue);
+					current_point->SetX(fValue);
+				}
+				//else
+				//{
+				//	//point->SetX(fValue +)
+				//	return;
+				//}
 				break;
 			case 'Y':
 				break;
@@ -54,7 +68,18 @@ sptPoint CNCProg::CoverntStr2Point(sptString str, sptPoint current_point, UCHAR 
 				case 2:
 				case 3:
 					groupG[G_TraceMode] = val;
+					break;
 				case 92:
+					groupG[G_Position] = 1;
+					break;
+				case 90:
+					groupG[G_Increase] = 0;
+					break;
+				case 91:
+					groupG[G_Increase] = 1;
+					break;
+				default:
+					break;
 				}
 				break;
 			case 'R':
