@@ -20,7 +20,7 @@
 
 #include "laserMachineDoc.h"
 #include "laserMachineView.h"
-
+#include "modbus.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -35,6 +35,7 @@ BEGIN_MESSAGE_MAP(ClaserMachineApp, CWinAppEx)
 	ON_COMMAND(ID_FILE_OPEN, &CWinAppEx::OnFileOpen)
 	// Standard print setup command
 	ON_COMMAND(ID_FILE_PRINT_SETUP, &CWinAppEx::OnFilePrintSetup)
+	ON_COMMAND(ID_BTN_CONNECT, &ClaserMachineApp::OnBtnConnect)
 END_MESSAGE_MAP()
 
 
@@ -229,3 +230,40 @@ void ClaserMachineApp::SaveCustomState()
 
 
 
+
+
+void ClaserMachineApp::OnBtnConnect()
+{
+	uint32_t old_response_to_sec;
+	uint32_t old_response_to_usec;
+
+	uint16_t tab_w_registers[4] = {0};
+	uint16_t tab_r_registers[8] = {0};
+	modbus_t* ctx = modbus_new_rtu("COM3", 9600, 'O', 8, 1);
+	modbus_set_slave(ctx, 10);
+
+	//modbus_set_debug(ctx, TRUE);
+	//modbus_set_error_recovery(ctx, MODBUS_ERROR_RECOVERY_LINK | 	MODBUS_ERROR_RECOVERY_PROTOCOL);
+
+
+	modbus_get_response_timeout(ctx, &old_response_to_sec, &old_response_to_usec);
+	if (modbus_connect(ctx) == -1) {
+		fprintf(stderr, "Connection failed: %s\n", modbus_strerror(errno));
+		modbus_free(ctx);
+		return ;
+	}
+
+
+
+	memset(tab_w_registers, 0, 4 * 2);
+	tab_w_registers[1] = 2;
+	//tab_w_registers[2] = 300;
+	//tab_w_registers[3] = 0;
+
+
+	int rc = modbus_write_registers(ctx, 0x00,4, tab_w_registers);
+
+	memset(tab_r_registers, 0, 8 * 2);
+	rc = modbus_read_registers(ctx, 0x00, 8, tab_r_registers);
+
+}
