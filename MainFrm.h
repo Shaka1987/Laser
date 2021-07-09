@@ -35,6 +35,7 @@ public:
 public:
 
 	void UpdateMousePosition(CPoint point);
+	void SwitchOperatePane(BOOL bShow);
 	void UpdateProgram();
 // Overrides
 public:
@@ -81,6 +82,8 @@ protected:
 public:
 	afx_msg void OnViewParameterwnd();
 	afx_msg void OnUpdateViewParameterwnd(CCmdUI *pCmdUI);
+	afx_msg void OnButtonMauto();
+	afx_msg void OnButtonMjog();
 };
 
 

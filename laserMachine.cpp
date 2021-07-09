@@ -95,7 +95,7 @@ BOOL ClaserMachineApp::InitInstance()
 		AfxMessageBox(IDP_OLE_INIT_FAILED);
 		return FALSE;
 	}
-
+	AfxInitRichEdit();
 	AfxEnableControlContainer();
 
 	EnableTaskbarInteraction(FALSE);

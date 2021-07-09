@@ -37,6 +37,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_MESSAGE(ID_MESSAGE_UPDATE, &CMainFrame::OnCmdUpdate)
 	ON_COMMAND(ID_VIEW_PARAMETERWND, &CMainFrame::OnViewParameterwnd)
 	ON_UPDATE_COMMAND_UI(ID_VIEW_PARAMETERWND, &CMainFrame::OnUpdateViewParameterwnd)
+	ON_COMMAND(ID_BUTTON_MAUTO, &CMainFrame::OnButtonMauto)
+	ON_COMMAND(ID_BUTTON_MJOG, &CMainFrame::OnButtonMjog)
 END_MESSAGE_MAP()
 
 // CMainFrame construction/destruction
@@ -141,6 +143,9 @@ BOOL CMainFrame::CreatePLCWnd()
 
 BOOL CMainFrame::CreateOperateWnd()
 {
+	LPWSTR str = MAKEINTRESOURCE(IDD_OPERATE);
+	DWORD error = GetLastError();
+//	if (!m_wndOperate.Create(_T("操作面板"), this, TRUE, MAKEINTRESOURCE(IDD_OPERATE), WS_CHILD | WS_VISIBLE | CBRS_RIGHT | CBRS_FLOAT_MULTI, ID_VIEW_OPERATEWND, AFX_CBRS_REGULAR_TABS, AFX_CBRS_CLOSE | AFX_CBRS_AUTOHIDE))
 	if (!m_wndOperate.Create(_T("操作面板"), this, TRUE, MAKEINTRESOURCE(IDD_OPERATE), WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI, ID_VIEW_OPERATEWND, AFX_CBRS_REGULAR_TABS,  AFX_CBRS_CLOSE| AFX_CBRS_AUTOHIDE))
 	{
 		return FALSE;
@@ -176,6 +181,8 @@ BOOL CMainFrame::CreateDockingWindows()
 	m_wndParameter.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndPLC.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndOperate.EnableDocking(CBRS_ALIGN_ANY);
+
+	EnableDocking(CBRS_ALIGN_ANY);
 
 	DockPane(&m_wndOutput);
 	DockPane(&m_wndParameter);
@@ -234,6 +241,16 @@ void CMainFrame::UpdateMousePosition(CPoint point)
 	pPane->SetText(strMousePosition);
 	pPane->Redraw();
 	//OutputDebugString(strMousePosition);
+}
+
+void CMainFrame::SwitchOperatePane(BOOL bShow)
+{
+	if (m_wndOperate.IsVisible() != bShow)
+	{
+		ShowPane(&m_wndOperate, bShow, FALSE, TRUE);
+		RecalcLayout(FALSE);
+	}
+
 }
 
 // CMainFrame diagnostics
@@ -316,4 +333,17 @@ void CMainFrame::OnViewParameterwnd()
 void CMainFrame::OnUpdateViewParameterwnd(CCmdUI *pCmdUI)
 {
 	pCmdUI->SetCheck(m_wndParameter.IsVisible());
+}
+
+
+void CMainFrame::OnButtonMauto()
+{
+	m_wndOperate.SwitchToAutoMode();
+}
+
+
+void CMainFrame::OnButtonMjog()
+{
+	//SwitchOperatePane(TRUE);
+	m_wndOperate.SwtichToJogMode();
 }

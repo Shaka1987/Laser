@@ -66,37 +66,56 @@
 #define ID_VIEW_PLCWND                  315
 #define ID_VIEW_OPERATEWND              316
 #define IDC_EDIT3                       1009
+#define IDC_BTN_CYCLESTART              1012
+#define IDC_BTN_CYCLEINTERUPT           1013
+#define IDC_BTN_CYCLERESET              1014
+#define IDC_BTN_ROLLBACK                1015
+#define IDC_CHECK_STEPRUN               1017
+#define IDC_RICHEDIT21                  1018
+#define IDC_RICHEDIT_MDI                1018
 #define ID_WRITE_PASTEASHYPERLINK       32770
 #define ID_BUTTON2                      32772
 #define ID_BUTTON_CYCLE_START           32772
+#define ID_BUTTON_MAUTO                 32772
 #define ID_BUTTON3                      32773
 #define ID_BUTTON_CYCLE_STOP            32773
+#define ID_BUTTON_MJOG                  32773
 #define ID_BUTTON_XPLUS                 32776
 #define ID_BUTTON6                      32777
+#define ID_BUTTON_MMDI                  32777
 #define ID_BUTTON_YPLUS                 32778
 #define ID_BUTTON_ZPLUS                 32779
 #define ID_BUTTON_XMINUS                32780
 #define ID_BUTTON_YMINUS                32781
+#define ID_BUTTON_APLUS                 32782
 #define ID_BUTTON_ZMINUS                32783
 #define ID_CHECK2                       32784
 #define ID_CHECK_INC_CUT                32784
 #define ID_COMBO2                       32785
+#define ID_BUTTON_BPLUS                 32785
 #define ID_COMBO_INCR_VALUE             32786
+#define ID_BUTTON_AMINUS                32786
 #define ID_CHECK_INC                    32787
+#define ID_BUTTON_BMINUS                32788
 #define ID_EDIT_INC_VALUE               32789
 #define ID_CHECK_RAPID                  32790
 #define ID_EDIT_RAPID_VALUE             32791
 #define ID_BUTTON_CYCLE_RESET           32795
 #define ID_SLIDER_FEEDRATE_OVERRIDE     32796
 #define ID_EDIT_FEED                    32799
+#define ID_BUTTON4                      32804
+#define ID_BUTTON_MINC                  32805
+#define ID_BUTTON_MREFER                32806
+#define ID_BUTTON_MWHEEL                32807
+#define ID_BTN_CONNECT                  32808
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        315
-#define _APS_NEXT_COMMAND_VALUE         32804
-#define _APS_NEXT_CONTROL_VALUE         1010
+#define _APS_NEXT_COMMAND_VALUE         32809
+#define _APS_NEXT_CONTROL_VALUE         1019
 #define _APS_NEXT_SYMED_VALUE           317
 #endif
 #endif
