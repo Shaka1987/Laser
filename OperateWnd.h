@@ -36,7 +36,7 @@ public:
 	void SwitchToAutoMode();
 	void SwtichToJogMode();
 	CMFCButton m_btnStart;
-	afx_msg void OnUpdateBtnCyclestart(CCmdUI* pCmdUI);
+	afx_msg void OnSwitchOperateMode(CCmdUI* pCmdUI);
 };
 
 

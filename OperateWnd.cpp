@@ -30,7 +30,7 @@ BEGIN_MESSAGE_MAP(COperateWnd, CPaneDialog)
 	ON_WM_CTLCOLOR()
 	ON_WM_PAINT()
 	ON_WM_ERASEBKGND()
-	ON_UPDATE_COMMAND_UI(IDC_BTN_CYCLESTART, &COperateWnd::OnUpdateBtnCyclestart)
+	ON_UPDATE_COMMAND_UI_RANGE(IDC_OPERATE_START, IDC_OPERATE_END, &COperateWnd::OnSwitchOperateMode)
 END_MESSAGE_MAP()
 
 
@@ -98,7 +98,11 @@ void COperateWnd::SwtichToJogMode()
 }
 
 
-void COperateWnd::OnUpdateBtnCyclestart(CCmdUI* pCmdUI)
+void COperateWnd::OnSwitchOperateMode(CCmdUI* pCmdUI)
 {
-	pCmdUI->Enable(m_emode == MODE_TYPE::MODE_AUTO || m_emode == MODE_TYPE::MODE_MDI || m_emode == MODE_TYPE::MODE_RETURN);
+	if (pCmdUI->m_nID == IDC_BTN_CYCLESTART || pCmdUI->m_nID == IDC_BTN_CYCLEINTERUPT || pCmdUI->m_nID == IDC_BTN_CYCLERESET || pCmdUI->m_nID == IDC_BTN_ROLLBACK)
+	{
+		pCmdUI->Enable(m_emode == MODE_TYPE::MODE_AUTO || m_emode == MODE_TYPE::MODE_MDI || m_emode == MODE_TYPE::MODE_RETURN);
+
+	}
 }
