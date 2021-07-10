@@ -16,7 +16,12 @@ COperateWnd::COperateWnd(CWnd* pParent /*=nullptr*/)
 	:m_emode(MODE_TYPE::MODE_JOG)
 	/*: CPaneDialog(IDD_OPERATE, pParent)*/
 {
-	
+	m_mapMode[ID_BUTTON_MAUTO] = MODE_TYPE::MODE_AUTO;
+	m_mapMode[ID_BUTTON_MJOG] = MODE_TYPE::MODE_JOG;
+	m_mapMode[ID_BUTTON_MMDI] = MODE_TYPE::MODE_MDI;
+	m_mapMode[ID_BUTTON_MINC] = MODE_TYPE::MODE_INC;
+	m_mapMode[ID_BUTTON_MREFER] = MODE_TYPE::MODE_REFER;
+	m_mapMode[ID_BUTTON_MWHEEL] = MODE_TYPE::MODE_WHEEL;
 }
 
 COperateWnd::~COperateWnd()
@@ -26,7 +31,6 @@ COperateWnd::~COperateWnd()
 void COperateWnd::DoDataExchange(CDataExchange* pDX)
 {
 	CPaneDialog::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_BTN_CYCLESTART, m_btnStart);
 }
 
 
@@ -69,16 +73,6 @@ BOOL COperateWnd::OnEraseBkgnd(CDC* pDC)
 	//return CPaneDialog::OnEraseBkgnd(pDC);
 }
 
-void COperateWnd::SwitchToAutoMode()
-{
-	m_emode = MODE_TYPE::MODE_AUTO;
-}
-void COperateWnd::SwtichToJogMode()
-{
-	m_emode = MODE_TYPE::MODE_JOG;
-}
-
-
 void COperateWnd::OnSwitchOperateMode(CCmdUI* pCmdUI)
 {
 	std::vector<UINT> autoVector = { IDC_BTN_CYCLESTART, IDC_BTN_CYCLEINTERUPT, IDC_BTN_CYCLERESET, IDC_BTN_ROLLBACK, IDC_CHECK_STEPRUN};
@@ -101,4 +95,9 @@ void COperateWnd::OnSwitchOperateMode(CCmdUI* pCmdUI)
 		break;
 	}
 	
+}
+
+void COperateWnd::OnSwitchMode(UINT nID)
+{
+	m_emode = m_mapMode[nID];
 }

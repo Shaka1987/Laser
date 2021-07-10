@@ -68,6 +68,16 @@
 #define IDC_EDIT3                       1009
 #define IDC_RICHEDIT21                  1018
 
+
+#define ID_MODE_START	                32500
+#define ID_BUTTON_MAUTO                 32501
+#define ID_BUTTON_MJOG                  32502
+#define ID_BUTTON_MMDI                  32503
+#define ID_BUTTON_MINC                  32504
+#define ID_BUTTON_MREFER                32505
+#define ID_BUTTON_MWHEEL                32506
+#define ID_MODE_END		                32507
+
 #define IDC_OPERATE_START				32600
 #define IDC_BTN_CYCLESTART              32601
 #define IDC_BTN_CYCLEINTERUPT           32602
@@ -95,19 +105,13 @@
 
 #define ID_WRITE_PASTEASHYPERLINK       32770
 #define ID_BUTTON2                      32772
-#define ID_BUTTON_MAUTO                 32772
 #define ID_BUTTON3                      32773
-#define ID_BUTTON_MJOG                  32773
 #define ID_BUTTON6                      32777
-#define ID_BUTTON_MMDI                  32777
 #define ID_CHECK2                       32784
 #define ID_COMBO2                       32785
 #define ID_SLIDER_FEEDRATE_OVERRIDE     32796
 #define ID_EDIT_FEED                    32799
 #define ID_BUTTON4                      32804
-#define ID_BUTTON_MINC                  32805
-#define ID_BUTTON_MREFER                32806
-#define ID_BUTTON_MWHEEL                32807
 #define ID_BTN_CONNECT                  32808
 
 // Next default values for new objects
