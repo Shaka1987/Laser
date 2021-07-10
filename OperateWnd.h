@@ -1,9 +1,8 @@
 #pragma once
 
-#include <boost/foreach.hpp>
-#include <list>
 
 // COperateWnd
+
 
 class COperateWnd : public CPaneDialog
 {

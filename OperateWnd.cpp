@@ -4,12 +4,16 @@
 #include "stdafx.h"
 #include "laserMachine.h"
 #include "OperateWnd.h"
+#include <vector>
+#include <algorithm>
 
+using namespace std;
 // COperateWnd dialog
 
 IMPLEMENT_DYNAMIC(COperateWnd, CPaneDialog)
 
 COperateWnd::COperateWnd(CWnd* pParent /*=nullptr*/)
+	:m_emode(MODE_TYPE::MODE_JOG)
 	/*: CPaneDialog(IDD_OPERATE, pParent)*/
 {
 	
@@ -67,42 +71,34 @@ BOOL COperateWnd::OnEraseBkgnd(CDC* pDC)
 
 void COperateWnd::SwitchToAutoMode()
 {
-	//std::list<UINT> vDisableIDs = { ID_BUTTON_APLUS, ID_BUTTON_AMINUS, ID_BUTTON_BPLUS, ID_BUTTON_BMINUS,
-	//					 ID_BUTTON_XPLUS, ID_BUTTON_XMINUS, ID_BUTTON_YPLUS, ID_BUTTON_YMINUS,
-	//					 ID_BUTTON_ZPLUS, ID_BUTTON_ZMINUS
-	//};
-	//UINT aEnableIDs[] = { IDC_BTN_CYCLESTART, IDC_BTN_CYCLEINTERUPT,IDC_BTN_CYCLERESET, IDC_BTN_ROLLBACK,
-	//					IDC_CHECK_STEPRUN
-	//};
-	//BOOST_FOREACH(UINT id, vDisableIDs)
-	//{
-	//	GetDlgItem(id)->EnableWindow(false);
-	//}
-	//BOOST_FOREACH(UINT id, aEnableIDs)
-	//{
-	//	GetDlgItem(id)->EnableWindow(true);
-	//}
-	/*GetDlgItem(ID_BUTTON_XPLUS)->EnableWindow(false);
-
-	m_btnStart.EnableWindow(true);*/
 	m_emode = MODE_TYPE::MODE_AUTO;
-	//Invalidate();
 }
 void COperateWnd::SwtichToJogMode()
 {
-	//GetDlgItem(ID_BUTTON_XPLUS)->EnableWindow(false);
-
-	//m_btnStart.EnableWindow(false);
 	m_emode = MODE_TYPE::MODE_JOG;
-	//Invalidate();
 }
 
 
 void COperateWnd::OnSwitchOperateMode(CCmdUI* pCmdUI)
 {
-	if (pCmdUI->m_nID == IDC_BTN_CYCLESTART || pCmdUI->m_nID == IDC_BTN_CYCLEINTERUPT || pCmdUI->m_nID == IDC_BTN_CYCLERESET || pCmdUI->m_nID == IDC_BTN_ROLLBACK)
+	std::vector<UINT> autoVector = { IDC_BTN_CYCLESTART, IDC_BTN_CYCLEINTERUPT, IDC_BTN_CYCLERESET, IDC_BTN_ROLLBACK, IDC_CHECK_STEPRUN};
+	std::vector<UINT> jogVector = { ID_BUTTON_XPLUS, ID_BUTTON_XMINUS, ID_BUTTON_YPLUS, ID_BUTTON_YMINUS,ID_BUTTON_ZPLUS, ID_BUTTON_ZMINUS,
+									ID_BUTTON_APLUS, ID_BUTTON_AMINUS, ID_BUTTON_BPLUS, ID_BUTTON_BMINUS,ID_CHECK_RAPID, ID_EDIT_RAPID_VALUE};
+	std::vector<UINT> mdiVector = { IDC_BTN_CYCLESTART, IDC_BTN_CYCLEINTERUPT, IDC_BTN_CYCLERESET, IDC_RICHEDIT_MDI };
+	
+	switch (m_emode)
 	{
-		pCmdUI->Enable(m_emode == MODE_TYPE::MODE_AUTO || m_emode == MODE_TYPE::MODE_MDI || m_emode == MODE_TYPE::MODE_RETURN);
-
+	case MODE_TYPE::MODE_AUTO:
+		pCmdUI->Enable(std::find(autoVector.begin(), autoVector.end(), pCmdUI->m_nID) != autoVector.end());
+		break;
+	case MODE_TYPE::MODE_JOG:
+		pCmdUI->Enable(std::find(jogVector.begin(), jogVector.end(), pCmdUI->m_nID) != jogVector.end());
+		break;
+	case MODE_TYPE::MODE_MDI:
+		pCmdUI->Enable(std::find(mdiVector.begin(), mdiVector.end(), pCmdUI->m_nID) != mdiVector.end());
+		break;
+	default:
+		break;
 	}
+	
 }

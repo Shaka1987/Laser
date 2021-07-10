@@ -66,7 +66,6 @@
 #define ID_VIEW_PLCWND                  315
 #define ID_VIEW_OPERATEWND              316
 #define IDC_EDIT3                       1009
-#define IDC_CHECK_STEPRUN               1017
 #define IDC_RICHEDIT21                  1018
 
 #define IDC_OPERATE_START				32600
@@ -91,7 +90,8 @@
 #define ID_CHECK_INC                   	32619
 #define ID_CHECK_RAPID                 	32620
 #define IDC_RICHEDIT_MDI                32621
-#define IDC_OPERATE_END                 32621
+#define IDC_CHECK_STEPRUN               32622
+#define IDC_OPERATE_END                 32622
 
 #define ID_WRITE_PASTEASHYPERLINK       32770
 #define ID_BUTTON2                      32772
