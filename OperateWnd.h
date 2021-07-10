@@ -31,12 +31,12 @@ private:
 	MODE_TYPE m_emode;
 	std::map<UINT, MODE_TYPE> m_mapMode;
 	std::map<MODE_TYPE, std::vector<UINT>> m_mapModeCtl;
-	std::vector<UINT> autoVector;
-	std::vector<UINT> jogVector;
-	std::vector<UINT> mdiVector;
-	std::vector<UINT> incVector;
-	std::vector<UINT> refVector;
-	std::vector<UINT> wheelVector;
+	std::vector<UINT> m_autoVector;
+	std::vector<UINT> m_jogVector;
+	std::vector<UINT> m_mdiVector;
+	std::vector<UINT> m_incVector;
+	std::vector<UINT> m_refVector;
+	std::vector<UINT> m_wheelVector;
 public:
 	afx_msg void OnPaint();
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
