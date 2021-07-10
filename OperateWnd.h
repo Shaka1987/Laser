@@ -5,6 +5,7 @@
 
 #include <map>
 
+#include <vector>
 class COperateWnd : public CPaneDialog
 {
 	DECLARE_DYNAMIC(COperateWnd)
@@ -29,6 +30,13 @@ public:
 private:
 	MODE_TYPE m_emode;
 	std::map<UINT, MODE_TYPE> m_mapMode;
+	std::map<MODE_TYPE, std::vector<UINT>> m_mapModeCtl;
+	std::vector<UINT> autoVector;
+	std::vector<UINT> jogVector;
+	std::vector<UINT> mdiVector;
+	std::vector<UINT> incVector;
+	std::vector<UINT> refVector;
+	std::vector<UINT> wheelVector;
 public:
 	afx_msg void OnPaint();
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);

@@ -37,8 +37,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_MESSAGE(ID_MESSAGE_UPDATE, &CMainFrame::OnCmdUpdate)
 	ON_COMMAND(ID_VIEW_PARAMETERWND, &CMainFrame::OnViewParameterwnd)
 	ON_UPDATE_COMMAND_UI(ID_VIEW_PARAMETERWND, &CMainFrame::OnUpdateViewParameterwnd)
-	ON_COMMAND(ID_BUTTON_MAUTO, &CMainFrame::OnButtonMauto)
-	ON_COMMAND(ID_BUTTON_MJOG, &CMainFrame::OnButtonMjog)
+	ON_COMMAND_RANGE(ID_MODE_START, ID_MODE_END, &CMainFrame::OnSwitchMode)
 END_MESSAGE_MAP()
 
 // CMainFrame construction/destruction
@@ -335,15 +334,7 @@ void CMainFrame::OnUpdateViewParameterwnd(CCmdUI *pCmdUI)
 	pCmdUI->SetCheck(m_wndParameter.IsVisible());
 }
 
-
-void CMainFrame::OnButtonMauto()
+void CMainFrame::OnSwitchMode(UINT nID)
 {
-	m_wndOperate.SwitchToAutoMode();
-}
-
-
-void CMainFrame::OnButtonMjog()
-{
-	//SwitchOperatePane(TRUE);
-	m_wndOperate.SwtichToJogMode();
+	m_wndOperate.OnSwitchMode(nID);
 }

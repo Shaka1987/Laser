@@ -104,14 +104,8 @@
 #define IDC_OPERATE_END                 32622
 
 #define ID_WRITE_PASTEASHYPERLINK       32770
-#define ID_BUTTON2                      32772
-#define ID_BUTTON3                      32773
-#define ID_BUTTON6                      32777
-#define ID_CHECK2                       32784
-#define ID_COMBO2                       32785
 #define ID_SLIDER_FEEDRATE_OVERRIDE     32796
 #define ID_EDIT_FEED                    32799
-#define ID_BUTTON4                      32804
 #define ID_BTN_CONNECT                  32808
 
 // Next default values for new objects

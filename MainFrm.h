@@ -82,8 +82,7 @@ protected:
 public:
 	afx_msg void OnViewParameterwnd();
 	afx_msg void OnUpdateViewParameterwnd(CCmdUI *pCmdUI);
-	afx_msg void OnButtonMauto();
-	afx_msg void OnButtonMjog();
+	afx_msg void OnSwitchMode(UINT nID);
 };
 
 
