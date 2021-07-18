@@ -71,8 +71,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 	BOOL CreateOutPutWnd();
-	BOOL CreateParamerWnd();
-	BOOL CreatePLCWnd();
+	BOOL CreateParamerWnd(const CRect& rect);
+	BOOL CreatePLCWnd(const CRect& rect);
 	BOOL CreateOperateWnd();
 	BOOL CreateDockingWindows();
 	void SetOutPutWindowIcons(BOOL bHiColorIcons);

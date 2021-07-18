@@ -122,18 +122,18 @@ BOOL CMainFrame::CreateOutPutWnd()
 	return TRUE;
 }
 
-BOOL CMainFrame::CreateParamerWnd()
+BOOL CMainFrame::CreateParamerWnd(const CRect &rect)
 {
-	if (!m_wndParameter.Create(_T("参数"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_PARAMETERWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
+	if (!m_wndParameter.Create(_T("参数"), this, rect, TRUE, ID_VIEW_PARAMETERWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
 	{
 		return FALSE; // failed to create
 	}
 	return TRUE;
 }
 
-BOOL CMainFrame::CreatePLCWnd()
+BOOL CMainFrame::CreatePLCWnd(const CRect& rect)
 {
-	if (!m_wndPLC.Create(_T("PLC 梯形图"), this, CRect(0, 0, 150, 100), TRUE, ID_VIEW_PLCWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
+	if (!m_wndPLC.Create(_T("PLC 梯形图"), this, rect, TRUE, ID_VIEW_PLCWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
 	{
 		return FALSE;
 	}
@@ -155,17 +155,18 @@ BOOL CMainFrame::CreateOperateWnd()
 
 BOOL CMainFrame::CreateDockingWindows()	 
 {
+	CRect rectLeft(0, 0, 600, 100);
 	if (!CreateOutPutWnd())
 	{
 		TRACE0("Failed to create Output window\n");
 		return FALSE;
 	}
-	if (!CreateParamerWnd())
+	if (!CreateParamerWnd(rectLeft))
 	{
 		TRACE0("Failed to create Parameter window\n");
 		return FALSE;
 	}
-	if (!CreatePLCWnd())
+	if (!CreatePLCWnd(rectLeft))
 	{
 		TRACE0("Failed to create PLC window\n");
 		return FALSE;
