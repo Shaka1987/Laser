@@ -7,6 +7,8 @@ class CFactoryCommunication
 {
 	CFactoryCommunication();
 	~CFactoryCommunication();
+
+public:
 	ICommunication* Create(COMMUNICATION_TYPE type);
 };
 

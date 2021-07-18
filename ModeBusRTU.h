@@ -3,8 +3,10 @@
 class ModeBusRTU :
 	public ICommunication
 {
+
+public:
 	ModeBusRTU();
-	~ ModeBusRTU();
+	~ModeBusRTU();
 	DWORD Connect();
 };
 

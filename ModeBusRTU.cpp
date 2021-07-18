@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "ModeBusRTU.h"
 
+ModeBusRTU::ModeBusRTU()
+{
+}
+
 ModeBusRTU::~ModeBusRTU()
 {
 }
