@@ -209,6 +209,7 @@
     <ClInclude Include="OperateWnd.h" />
     <ClInclude Include="OutputWnd.h" />
     <ClInclude Include="ParameterWnd.h" />
+    <ClInclude Include="ParaModule.h" />
     <ClInclude Include="PLCWnd.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
