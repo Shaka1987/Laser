@@ -162,6 +162,9 @@
     <None Include="res\ribbon.mfcribbon-ms">
       <Filter>Res</Filter>
     </None>
+    <None Include="Resources\Parameter Data\SystemParameter.json">
+      <Filter>Resources</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Res">
@@ -175,6 +178,9 @@
     </Filter>
     <Filter Include="Simulation">
       <UniqueIdentifier>{feda1d7d-0647-42fc-8ece-5ee53826a6f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{8f8f932c-4f57-44be-91f7-7d7f65453457}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

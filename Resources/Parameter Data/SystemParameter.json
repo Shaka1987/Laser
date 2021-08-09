@@ -1,0 +1,41 @@
+{
+  [
+    {
+      "type": "bin",
+      "param": [
+        {
+          "title": "编程方式",
+          "description": "DIA 0/1: 半径编程/直径"
+        },
+        {
+          "title": "轴类型",
+          "description": "ROT 0/1: 直线轴/旋转轴功能有效"
+        },
+        {
+          "title": "循环方式",
+          "description": "RRL 0/1: 相对坐标不循环/以一周移动量循环"
+        },
+        {
+          "title": "旋转轴绝对指令旋转方式",
+          "description": "RABS 0/1: 旋转轴绝对指令不就近/就近旋转"
+        },
+        {
+          "title": "旋转轴绝对指令移动方向",
+          "description": "RABG 0/1: 旋转轴绝对指令移动方向按相对值/按指令符号"
+        },
+        {
+          "title": "旋转轴绝对指令移动量",
+          "description": "RABM 0/1: 旋转轴绝对指令移动量不进行/进行一周取模"
+        },
+        {
+          "title": "",
+          "description": ""
+        },
+        {
+          "title": "坐标轴是否显示",
+          "description": "HID 0/1: 坐标轴显示/不显示"
+        }
+      ]
+    }
+  ]
+}
