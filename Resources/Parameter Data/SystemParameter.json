@@ -1,41 +1,7583 @@
-{
-  [
-    {
-      "type": "bin",
-      "param": [
-        {
-          "title": "编程方式",
-          "description": "DIA 0/1: 半径编程/直径"
-        },
-        {
-          "title": "轴类型",
-          "description": "ROT 0/1: 直线轴/旋转轴功能有效"
-        },
-        {
-          "title": "循环方式",
-          "description": "RRL 0/1: 相对坐标不循环/以一周移动量循环"
-        },
-        {
-          "title": "旋转轴绝对指令旋转方式",
-          "description": "RABS 0/1: 旋转轴绝对指令不就近/就近旋转"
-        },
-        {
-          "title": "旋转轴绝对指令移动方向",
-          "description": "RABG 0/1: 旋转轴绝对指令移动方向按相对值/按指令符号"
-        },
-        {
-          "title": "旋转轴绝对指令移动量",
-          "description": "RABM 0/1: 旋转轴绝对指令移动量不进行/进行一周取模"
-        },
-        {
-          "title": "",
-          "description": ""
-        },
-        {
-          "title": "坐标轴是否显示",
-          "description": "HID 0/1: 坐标轴显示/不显示"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "index": "0001",
+    "type": "bin",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴相关设置",
+        "description": "各轴相关设置"
+      },
+      {
+        "title": "DIA 0/1:半径/直径编程",
+        "description": "DIA 0/1:半径/直径编程"
+      },
+      {
+        "title": "ROT 0/1:直线轴/旋转轴功能有效",
+        "description": "ROT 0/1:直线轴/旋转轴功能有效"
+      },
+      {
+        "title": "RRL 0/1:相对坐标不循环/以一周移动量循环",
+        "description": "RRL 0/1:相对坐标不循环/以一周移动量循环"
+      },
+      {
+        "title": "RABS 0/1:旋转轴绝对指令不就近/就近旋转",
+        "description": "RABS 0/1:旋转轴绝对指令不就近/就近旋转"
+      },
+      {
+        "title": "RABG 0/1:旋转轴绝对指令移动方向按相对值/按指令符号",
+        "description": "RABG 0/1:旋转轴绝对指令移动方向按相对值/按指令符号"
+      },
+      {
+        "title": "RABM 0/1:旋转轴绝对指令移动量不进行/进行一周取模",
+        "description": "RABM 0/1:旋转轴绝对指令移动量不进行/进行一周取模"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "HID 0/1:坐标轴显示/不显示",
+        "description": "HID 0/1:坐标轴显示/不显示"
+      }
+    ]
+  },
+  {
+    "index": "0002",
+    "type": "bin",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "伺服/电机控制相关设置",
+        "description": "伺服/电机控制相关设置"
+      },
+      {
+        "title": "SVAC 0/1:伺服报警为常开/常闭",
+        "description": "SVAC 0/1:伺服报警为常开/常闭"
+      },
+      {
+        "title": "SSS 0/1:不/开放S型后速度平滑功能",
+        "description": "SSS 0/1:不/开放S型后速度平滑功能"
+      },
+      {
+        "title": "MD 0/1:电机移动方向正/负",
+        "description": "MD 0/1:电机移动方向正/负"
+      },
+      {
+        "title": "JD 0/1:手动移动方向正/负(内置PLC时有效)",
+        "description": "JD 0/1:手动移动方向正/负(内置PLC时有效)"
+      },
+      {
+        "title": "SVPT 0/1:伺服为方向+脉冲/AB脉冲",
+        "description": "SVPT 0/1:伺服为方向+脉冲/AB脉冲"
+      },
+      {
+        "title": "GREX 0/1:指令电子齿轮比不/使用扩展模式",
+        "description": "GREX 0/1:指令电子齿轮比不/使用扩展模式"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "0003",
+    "type": "bin",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "伺服/电机反馈相关设置",
+        "description": "伺服/电机反馈相关设置"
+      },
+      {
+        "title": "MFD 0/1:电机反馈方向正/负",
+        "description": "MFD 0/1:电机反馈方向正/负"
+      },
+      {
+        "title": "FGE 0/1:不/使用反馈齿轮比",
+        "description": "FGE 0/1:不/使用反馈齿轮比"
+      },
+      {
+        "title": "FIPC 位置到位检测时,检测反馈位置/指令位置",
+        "description": "FIPC 位置到位检测时,检测反馈位置/指令位置"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "0012",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴轴名称(1~3:XYZ,4~6:ABC,101:X1,165:XA)",
+        "description": "各轴轴名称(1~3:XYZ,4~6:ABC,101:X1,165:XA)"
+      }
+    ]
+  },
+  {
+    "index": "0013",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴小数点位数",
+        "description": "各轴小数点位数"
+      }
+    ]
+  },
+  {
+    "index": "0014",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴轴地址编号(物理编号)",
+        "description": "各轴轴地址编号(物理编号)"
+      }
+    ]
+  },
+  {
+    "index": "0016",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴在基本坐标系下的坐标轴",
+        "description": "各轴在基本坐标系下的坐标轴"
+      }
+    ]
+  },
+  {
+    "index": "0020",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴指令电子齿轮比倍乘系数(从动轮侧齿数)",
+        "description": "各轴指令电子齿轮比倍乘系数(从动轮侧齿数)"
+      }
+    ]
+  },
+  {
+    "index": "0021",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴指令电子齿轮比分频系数(电机侧齿数)",
+        "description": "各轴指令电子齿轮比分频系数(电机侧齿数)"
+      }
+    ]
+  },
+  {
+    "index": "0022",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴电机一圈指令脉冲数",
+        "description": "各轴电机一圈指令脉冲数"
+      }
+    ]
+  },
+  {
+    "index": "0023",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴作为直线轴时,丝杆导程",
+        "description": "各轴作为直线轴时,丝杆导程"
+      }
+    ]
+  },
+  {
+    "index": "0024",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴作为旋转轴时,一周移动量",
+        "description": "各轴作为旋转轴时,一周移动量"
+      }
+    ]
+  },
+  {
+    "index": "0025",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴电机转速上限(rpm)",
+        "description": "各轴电机转速上限(rpm)"
+      }
+    ]
+  },
+  {
+    "index": "0030",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴反馈输入倍乘系数(编码器侧齿数)",
+        "description": "各轴反馈输入倍乘系数(编码器侧齿数)"
+      }
+    ]
+  },
+  {
+    "index": "0031",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴反馈输入分频系数(从动轴侧齿数)",
+        "description": "各轴反馈输入分频系数(从动轴侧齿数)"
+      }
+    ]
+  },
+  {
+    "index": "0032",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴电机一圈反馈脉冲数",
+        "description": "各轴电机一圈反馈脉冲数"
+      }
+    ]
+  },
+  {
+    "index": "0034",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴脉冲编码器反馈口(非总线轴有效)",
+        "description": "各轴脉冲编码器反馈口(非总线轴有效)"
+      }
+    ]
+  },
+  {
+    "index": "0050",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴伺服位置环增益(KP)(1/s)",
+        "description": "各轴伺服位置环增益(KP)(1/s)"
+      }
+    ]
+  },
+  {
+    "index": "0060",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴伺服报警输入口",
+        "description": "各轴伺服报警输入口"
+      }
+    ]
+  },
+  {
+    "index": "0061",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴伺服使能输出口",
+        "description": "各轴伺服使能输出口"
+      }
+    ]
+  },
+  {
+    "index": "0062",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴使能打开或关闭指令的P编号",
+        "description": "各轴使能打开或关闭指令的P编号"
+      }
+    ]
+  },
+  {
+    "index": "0063",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴电机开抱闸输出口",
+        "description": "各轴电机开抱闸输出口"
+      }
+    ]
+  },
+  {
+    "index": "0064",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴伺服使能时,坐标建立延时(ms)",
+        "description": "各轴伺服使能时,坐标建立延时(ms)"
+      }
+    ]
+  },
+  {
+    "index": "0065",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴伺服使能到开抱闸延时(ms)",
+        "description": "各轴伺服使能到开抱闸延时(ms)"
+      }
+    ]
+  },
+  {
+    "index": "0070",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴G00到位检测距离",
+        "description": "各轴G00到位检测距离"
+      }
+    ]
+  },
+  {
+    "index": "0071",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴切削到位检测距离",
+        "description": "各轴切削到位检测距离"
+      }
+    ]
+  },
+  {
+    "index": "0073",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴切削时的负载上限",
+        "description": "各轴切削时的负载上限"
+      }
+    ]
+  },
+  {
+    "index": "0074",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴到达负载上限最大时间(ms)",
+        "description": "各轴到达负载上限最大时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "0110",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "G00快速速度(mm/min)",
+        "description": "G00快速速度(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "0111",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "G00快速F0档速度(mm/min)",
+        "description": "G00快速F0档速度(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "0112",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "G00快速加减速时间常数(ms)",
+        "description": "G00快速加减速时间常数(ms)"
+      }
+    ]
+  },
+  {
+    "index": "0113",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "G00快速加减速时的低速FL(mm/min)",
+        "description": "G00快速加减速时的低速FL(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "0114",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "G00快速加加速时间(ms)",
+        "description": "G00快速加加速时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "0120",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "切削速度上限(mm/min)",
+        "description": "切削速度上限(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "0121",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "切削加减速时间常数(ms)",
+        "description": "切削加减速时间常数(ms)"
+      }
+    ]
+  },
+  {
+    "index": "0122",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴切削加减速时间常数(ms)",
+        "description": "各轴切削加减速时间常数(ms)"
+      }
+    ]
+  },
+  {
+    "index": "0123",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "自动切削倍率输入上限",
+        "description": "自动切削倍率输入上限"
+      }
+    ]
+  },
+  {
+    "index": "0125",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "空运行速度(mm/min)",
+        "description": "空运行速度(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "0130",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "手动速度(mm/min)",
+        "description": "手动速度(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "0131",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "手动快速速度(mm/min)",
+        "description": "手动快速速度(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "0132",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "手动进给加减速时间常数(ms)",
+        "description": "手动进给加减速时间常数(ms)"
+      }
+    ]
+  },
+  {
+    "index": "0133",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "手动加减速时的低速FL(mm/min)",
+        "description": "手动加减速时的低速FL(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "0140",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "旋转轴速度增减速系数",
+        "description": "旋转轴速度增减速系数"
+      }
+    ]
+  },
+  {
+    "index": "0141",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "S型后速度平滑系数",
+        "description": "S型后速度平滑系数"
+      }
+    ]
+  },
+  {
+    "index": "0200",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "螺距/间隙补偿系统设置",
+        "description": "螺距/间隙补偿系统设置"
+      },
+      {
+        "title": "UPIM 0/1:螺距补偿导入单位为um/mm",
+        "description": "UPIM 0/1:螺距补偿导入单位为um/mm"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "0201",
+    "type": "bin",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "反向间隙补偿/螺距补偿各轴设置",
+        "description": "反向间隙补偿/螺距补偿各轴设置"
+      },
+      {
+        "title": "GAP 0/1:反向间隙补偿关闭/打开",
+        "description": "GAP 0/1:反向间隙补偿关闭/打开"
+      },
+      {
+        "title": "PEC 0/1:螺距补偿关闭/打开",
+        "description": "PEC 0/1:螺距补偿关闭/打开"
+      },
+      {
+        "title": "PCER 0/1:螺距误差补偿上电有效/回零后有效",
+        "description": "PCER 0/1:螺距误差补偿上电有效/回零后有效"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "0210",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "反向间隙补偿量(mm)",
+        "description": "反向间隙补偿量(mm)"
+      }
+    ]
+  },
+  {
+    "index": "0211",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "反向间隙速度上限",
+        "description": "反向间隙速度上限"
+      }
+    ]
+  },
+  {
+    "index": "0212",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "反向间隙加减速时间常数(ms)",
+        "description": "反向间隙加减速时间常数(ms)"
+      }
+    ]
+  },
+  {
+    "index": "0213",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "反向间隙加速时的起始速度FL",
+        "description": "反向间隙加速时的起始速度FL"
+      }
+    ]
+  },
+  {
+    "index": "0220",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "参考点的螺距补偿点号",
+        "description": "参考点的螺距补偿点号"
+      }
+    ]
+  },
+  {
+    "index": "0221",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "最小位置的螺距补偿点号",
+        "description": "最小位置的螺距补偿点号"
+      }
+    ]
+  },
+  {
+    "index": "0222",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "最大位置的螺距补偿点号",
+        "description": "最大位置的螺距补偿点号"
+      }
+    ]
+  },
+  {
+    "index": "0223",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "螺距补偿补偿倍率百分比",
+        "description": "螺距补偿补偿倍率百分比"
+      }
+    ]
+  },
+  {
+    "index": "0224",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "螺距补偿补偿点间隔距离",
+        "description": "螺距补偿补偿点间隔距离"
+      }
+    ]
+  },
+  {
+    "index": "0225",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "螺距补偿速度上限",
+        "description": "螺距补偿速度上限"
+      }
+    ]
+  },
+  {
+    "index": "0226",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "螺距补偿加减速时间常数(ms)",
+        "description": "螺距补偿加减速时间常数(ms)"
+      }
+    ]
+  },
+  {
+    "index": "0227",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "螺距补偿起始速度FL",
+        "description": "螺距补偿起始速度FL"
+      }
+    ]
+  },
+  {
+    "index": "0300",
+    "type": "bin",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "回零相关设置",
+        "description": "回零相关设置"
+      },
+      {
+        "title": "MZ1 0/1:手动回零1键回零/需连续按键",
+        "description": "MZ1 0/1:手动回零1键回零/需连续按键"
+      },
+      {
+        "title": "NWZ 0/1:回零后,使用G54~G59工件坐标系/不使用(使用坐标系相关参数)",
+        "description": "NWZ 0/1:回零后,使用G54~G59工件坐标系/不使用(使用坐标系相关参数)"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "0302",
+    "type": "bin",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴回零相关设置",
+        "description": "各轴回零相关设置"
+      },
+      {
+        "title": "ZEN 0/1:回零功能无效/有效",
+        "description": "ZEN 0/1:回零功能无效/有效"
+      },
+      {
+        "title": "ANZ 0/1:首次自动运行不需要/需要回零",
+        "description": "ANZ 0/1:首次自动运行不需要/需要回零"
+      },
+      {
+        "title": "ZDR 0/1:正向/负向回零",
+        "description": "ZDR 0/1:正向/负向回零"
+      },
+      {
+        "title": "ZSC 0/1:回零减速开关为常开/常闭",
+        "description": "ZSC 0/1:回零减速开关为常开/常闭"
+      },
+      {
+        "title": "ZSR 0/1:回零后相对坐标不清零/清零",
+        "description": "ZSR 0/1:回零后相对坐标不清零/清零"
+      },
+      {
+        "title": "ZSA 0/1:回零后绝对坐标系清零/建立",
+        "description": "ZSA 0/1:回零后绝对坐标系清零/建立"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "0310",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴回零方式(0:A,1:B,2:C,3:D)",
+        "description": "各轴回零方式(0:A,1:B,2:C,3:D)"
+      }
+    ]
+  },
+  {
+    "index": "0311",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴回零快速速度(mm/min)",
+        "description": "各轴回零快速速度(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "0312",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴回零加减速时间常数(ms)",
+        "description": "各轴回零加减速时间常数(ms)"
+      }
+    ]
+  },
+  {
+    "index": "0313",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴回零加减速时的低速FL(mm/min)",
+        "description": "各轴回零加减速时的低速FL(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "0314",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴回零减速开关输入口",
+        "description": "各轴回零减速开关输入口"
+      }
+    ]
+  },
+  {
+    "index": "0320",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴减速开关到零点最小距离",
+        "description": "各轴减速开关到零点最小距离"
+      }
+    ]
+  },
+  {
+    "index": "0321",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴减速开关到零点最大距离",
+        "description": "各轴减速开关到零点最大距离"
+      }
+    ]
+  },
+  {
+    "index": "0400",
+    "type": "bin",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "坐标系相关设置",
+        "description": "坐标系相关设置"
+      },
+      {
+        "title": "PZSW 0/1:上电时,用掉电前坐标系/G54坐标系建立工件坐标",
+        "description": "PZSW 0/1:上电时,用掉电前坐标系/G54坐标系建立工件坐标"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "GOFS 0/1:使用/不能使用G92或G50偏置",
+        "description": "GOFS 0/1:使用/不能使用G92或G50偏置"
+      },
+      {
+        "title": "RLC 0/1:复位不清除/清除G52",
+        "description": "RLC 0/1:复位不清除/清除G52"
+      },
+      {
+        "title": "FLC 0/1:M30或M02时不清除/清除G52",
+        "description": "FLC 0/1:M30或M02时不清除/清除G52"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "0410",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴回零后自动设定的绝对坐标值",
+        "description": "各轴回零后自动设定的绝对坐标值"
+      }
+    ]
+  },
+  {
+    "index": "0411",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "第二参考点机床坐标",
+        "description": "第二参考点机床坐标"
+      }
+    ]
+  },
+  {
+    "index": "0412",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "第三参考点机床坐标",
+        "description": "第三参考点机床坐标"
+      }
+    ]
+  },
+  {
+    "index": "0413",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "第四参考点机床坐标",
+        "description": "第四参考点机床坐标"
+      }
+    ]
+  },
+  {
+    "index": "0501",
+    "type": "bin",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴限位设置",
+        "description": "各轴限位设置"
+      },
+      {
+        "title": "SLM1 0/1:第1软件限位功能无效/有效",
+        "description": "SLM1 0/1:第1软件限位功能无效/有效"
+      },
+      {
+        "title": "HLM 0/1:关闭/打开硬件限位功能",
+        "description": "HLM 0/1:关闭/打开硬件限位功能"
+      },
+      {
+        "title": "SLMZ 0/1:回零时,软限位无效/有效",
+        "description": "SLMZ 0/1:回零时,软限位无效/有效"
+      },
+      {
+        "title": "HLMZ 0/1:回零时,硬限位无效/有效",
+        "description": "HLMZ 0/1:回零时,硬限位无效/有效"
+      },
+      {
+        "title": "SLWC 0/1:用机床/工件坐标进行软限位",
+        "description": "SLWC 0/1:用机床/工件坐标进行软限位"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "PHLC 0/1:正向硬件限位为常开/常闭",
+        "description": "PHLC 0/1:正向硬件限位为常开/常闭"
+      },
+      {
+        "title": "NHLC 0/1:负向硬件限位为常开/常闭",
+        "description": "NHLC 0/1:负向硬件限位为常开/常闭"
+      }
+    ]
+  },
+  {
+    "index": "0502",
+    "type": "bin",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴软限位开关设置",
+        "description": "各轴软限位开关设置"
+      },
+      {
+        "title": "SLM2 0/1:第2软件限位功能无效/有效",
+        "description": "SLM2 0/1:第2软件限位功能无效/有效"
+      },
+      {
+        "title": "SLM3 0/1:第3软件限位功能无效/有效",
+        "description": "SLM3 0/1:第3软件限位功能无效/有效"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "0503",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "软限位控制相关设置",
+        "description": "软限位控制相关设置"
+      },
+      {
+        "title": "PSLM 0/1:移动前软限位检查关闭/开放",
+        "description": "PSLM 0/1:移动前软限位检查关闭/开放"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "0510",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "正向软限位坐标1",
+        "description": "正向软限位坐标1"
+      }
+    ]
+  },
+  {
+    "index": "0511",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "负向软限位坐标1",
+        "description": "负向软限位坐标1"
+      }
+    ]
+  },
+  {
+    "index": "0512",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "正向软限位坐标2",
+        "description": "正向软限位坐标2"
+      }
+    ]
+  },
+  {
+    "index": "0513",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "负向软限位坐标2",
+        "description": "负向软限位坐标2"
+      }
+    ]
+  },
+  {
+    "index": "0514",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "正向软限位坐标3",
+        "description": "正向软限位坐标3"
+      }
+    ]
+  },
+  {
+    "index": "0515",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "负向软限位坐标3",
+        "description": "负向软限位坐标3"
+      }
+    ]
+  },
+  {
+    "index": "0520",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "正向硬限位输入口",
+        "description": "正向硬限位输入口"
+      }
+    ]
+  },
+  {
+    "index": "0521",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "负向硬限位输入口",
+        "description": "负向硬限位输入口"
+      }
+    ]
+  },
+  {
+    "index": "0600",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "手轮设置",
+        "description": "手轮设置"
+      },
+      {
+        "title": "HDLD 0/1:手轮方向为正向/负向",
+        "description": "HDLD 0/1:手轮方向为正向/负向"
+      },
+      {
+        "title": "HDLX 0/1:手轮为普通手轮/手持单元",
+        "description": "HDLX 0/1:手轮为普通手轮/手持单元"
+      },
+      {
+        "title": "HDLR 0/1:关闭/打开手轮回退",
+        "description": "HDLR 0/1:关闭/打开手轮回退"
+      },
+      {
+        "title": "HDLI 0/1:手轮进给时,超过最大速度的脉冲不忽略/忽略",
+        "description": "HDLI 0/1:手轮进给时,超过最大速度的脉冲不忽略/忽略"
+      },
+      {
+        "title": "HDLDI 0/1:手轮选择轴移动时,手轮反向给定脉冲不忽略/忽略",
+        "description": "HDLDI 0/1:手轮选择轴移动时,手轮反向给定脉冲不忽略/忽略"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "0610",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴手轮速度上限",
+        "description": "各轴手轮速度上限"
+      }
+    ]
+  },
+  {
+    "index": "0611",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴手轮加减速时的低速FL(mm/min)",
+        "description": "各轴手轮加减速时的低速FL(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "0612",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴手轮加减速时间常数",
+        "description": "各轴手轮加减速时间常数"
+      }
+    ]
+  },
+  {
+    "index": "0615",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴手轮移动基本单位倍率",
+        "description": "各轴手轮移动基本单位倍率"
+      }
+    ]
+  },
+  {
+    "index": "0616",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "手轮倍率输入上限",
+        "description": "手轮倍率输入上限"
+      }
+    ]
+  },
+  {
+    "index": "0617",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "手轮试运行快速移动倍率上限",
+        "description": "手轮试运行快速移动倍率上限"
+      }
+    ]
+  },
+  {
+    "index": "0620",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴手轮选择输入口",
+        "description": "各轴手轮选择输入口"
+      }
+    ]
+  },
+  {
+    "index": "0621",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "手轮倍率*1输入口",
+        "description": "手轮倍率*1输入口"
+      }
+    ]
+  },
+  {
+    "index": "0622",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "手轮倍率*10输入口",
+        "description": "手轮倍率*10输入口"
+      }
+    ]
+  },
+  {
+    "index": "0623",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "手轮倍率*100输入口",
+        "description": "手轮倍率*100输入口"
+      }
+    ]
+  },
+  {
+    "index": "0624",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "手轮倍率*1000输入口",
+        "description": "手轮倍率*1000输入口"
+      }
+    ]
+  },
+  {
+    "index": "0625",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "手轮模式选择输入口",
+        "description": "手轮模式选择输入口"
+      }
+    ]
+  },
+  {
+    "index": "0626",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "手轮中断模式使能输入口",
+        "description": "手轮中断模式使能输入口"
+      }
+    ]
+  },
+  {
+    "index": "0630",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴手轮中断速度上限",
+        "description": "各轴手轮中断速度上限"
+      }
+    ]
+  },
+  {
+    "index": "0631",
+    "type": "sys",
+    "lines": "XYZA",
+    "param": [
+      {
+        "title": "各轴手轮中断加减速时间常数",
+        "description": "各轴手轮中断加减速时间常数"
+      }
+    ]
+  },
+  {
+    "index": "1000",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴相关通道设置",
+        "description": "主轴相关通道设置"
+      },
+      {
+        "title": "保留",
+        "description": "保留"
+      },
+      {
+        "title": "SCSU 0/1:USER1键用作其他/用作主轴1速度位置切换",
+        "description": "SCSU 0/1:USER1键用作其他/用作主轴1速度位置切换"
+      },
+      {
+        "title": "SISO 0/1:主轴点动键用作主轴1点动/准停",
+        "description": "SISO 0/1:主轴点动键用作主轴1点动/准停"
+      },
+      {
+        "title": "SPNE 0/1:通道内多主轴功能无效/有效",
+        "description": "SPNE 0/1:通道内多主轴功能无效/有效"
+      },
+      {
+        "title": "CTSA 0/1:切削加工时,不检测/检测主轴转速到达",
+        "description": "CTSA 0/1:切削加工时,不检测/检测主轴转速到达"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1001",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "各主轴相关设置",
+        "description": "各主轴相关设置"
+      },
+      {
+        "title": "SSRV 0/1:速度脉冲方向(或总线),正向/反向",
+        "description": "SSRV 0/1:速度脉冲方向(或总线),正向/反向"
+      },
+      {
+        "title": "保留",
+        "description": "保留"
+      },
+      {
+        "title": "SSTR 0/1:星三角启动功能关闭/打开",
+        "description": "SSTR 0/1:星三角启动功能关闭/打开"
+      },
+      {
+        "title": "SSTCE 0/1:主轴启动时,不/检测实际转速已到达",
+        "description": "SSTCE 0/1:主轴启动时,不/检测实际转速已到达"
+      },
+      {
+        "title": "SSPCE 0/1:主轴停止时,不/检测实际转速到达停止转速",
+        "description": "SSPCE 0/1:主轴停止时,不/检测实际转速到达停止转速"
+      },
+      {
+        "title": "SSAH 0/1:主轴停止时,模拟量输出不保持/保持",
+        "description": "SSAH 0/1:主轴停止时,模拟量输出不保持/保持"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1002",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴互锁相关设置",
+        "description": "主轴互锁相关设置"
+      },
+      {
+        "title": "SPQP 0/1:主轴启动时,不检测/检测\"CHUNK_CN\"夹紧",
+        "description": "SPQP 0/1:主轴启动时,不检测/检测\"CHUNK_CN\"夹紧"
+      },
+      {
+        "title": "SPTS 0/1:主轴启动时,不检测/检测尾座进",
+        "description": "SPTS 0/1:主轴启动时,不检测/检测尾座进"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1003",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "各主轴/伺服反馈和输入相关设置",
+        "description": "各主轴/伺服反馈和输入相关设置"
+      },
+      {
+        "title": "SEFD 0/1:主轴编码器反馈方向正/负",
+        "description": "SEFD 0/1:主轴编码器反馈方向正/负"
+      },
+      {
+        "title": "SALC 0/1:主轴报警为常开/常闭",
+        "description": "SALC 0/1:主轴报警为常开/常闭"
+      },
+      {
+        "title": "SPCC 0/1:主轴位置模式完成为常开/常闭",
+        "description": "SPCC 0/1:主轴位置模式完成为常开/常闭"
+      },
+      {
+        "title": "SPSC 0/1:主轴速度模式完成为常开/常闭",
+        "description": "SPSC 0/1:主轴速度模式完成为常开/常闭"
+      },
+      {
+        "title": "SORL 0/1:主轴准停完成为常开/常闭",
+        "description": "SORL 0/1:主轴准停完成为常开/常闭"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "SCEZ 0/1:总线式主轴,不检测/检测零信号(需伺服支持)",
+        "description": "SCEZ 0/1:总线式主轴,不检测/检测零信号(需伺服支持)"
+      }
+    ]
+  },
+  {
+    "index": "1004",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "各主轴速度/位置相关设置",
+        "description": "各主轴速度/位置相关设置"
+      },
+      {
+        "title": "SCPO 0/1:主轴上电时处于速度/位置模式",
+        "description": "SCPO 0/1:主轴上电时处于速度/位置模式"
+      },
+      {
+        "title": "SCCP 0/1:主轴位置模式完成后不/设置坐标",
+        "description": "SCCP 0/1:主轴位置模式完成后不/设置坐标"
+      },
+      {
+        "title": "SPAZ 0/1:主轴位置方式下旋转停止时,不/停止在坐标0位置",
+        "description": "SPAZ 0/1:主轴位置方式下旋转停止时,不/停止在坐标0位置"
+      },
+      {
+        "title": "SCOP 0/1:主轴第一次位置模式时,不/执行主轴准停",
+        "description": "SCOP 0/1:主轴第一次位置模式时,不/执行主轴准停"
+      },
+      {
+        "title": "SCOR 0/1:主轴每次位置模式时,不/执行主轴准停",
+        "description": "SCOR 0/1:主轴每次位置模式时,不/执行主轴准停"
+      },
+      {
+        "title": "CSRS 0/1:主轴位置模式复位时,不/切换到速度模式",
+        "description": "CSRS 0/1:主轴位置模式复位时,不/切换到速度模式"
+      },
+      {
+        "title": "CSPFR 0/1:主轴位置模式时,不/阻止主轴正反转指令",
+        "description": "CSPFR 0/1:主轴位置模式时,不/阻止主轴正反转指令"
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1005",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "各主轴准停相关设置",
+        "description": "各主轴准停相关设置"
+      },
+      {
+        "title": "SORC 0/1:主轴准停完成后不/设置坐标",
+        "description": "SORC 0/1:主轴准停完成后不/设置坐标"
+      },
+      {
+        "title": "SORRS 0/1:主轴准停复位时,不/关闭准停输出",
+        "description": "SORRS 0/1:主轴准停复位时,不/关闭准停输出"
+      },
+      {
+        "title": "SORWS 0/1:主轴准停时,不等待/先等待主轴停止完成",
+        "description": "SORWS 0/1:主轴准停时,不等待/先等待主轴停止完成"
+      },
+      {
+        "title": "SORWE 0/1:主轴准停时,不等待/先等待主轴编码器停止",
+        "description": "SORWE 0/1:主轴准停时,不等待/先等待主轴编码器停止"
+      },
+      {
+        "title": "SORP 0/1:主轴准停输出为电平/脉冲信号",
+        "description": "SORP 0/1:主轴准停输出为电平/脉冲信号"
+      },
+      {
+        "title": "SORQS 0/1:主轴准停时,正常停主轴/快速模式",
+        "description": "SORQS 0/1:主轴准停时,正常停主轴/快速模式"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1011",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "各主轴类型(0:速度(DA或脉冲),1:定速换挡,2:位置,3:CS伺服主轴)",
+        "description": "各主轴类型(0:速度(DA或脉冲),1:定速换挡,2:位置,3:CS伺服主轴)"
+      }
+    ]
+  },
+  {
+    "index": "1012",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴速度控制时的输出地址编号(DA或脉冲信号的物理编号)",
+        "description": "主轴速度控制时的输出地址编号(DA或脉冲信号的物理编号)"
+      }
+    ]
+  },
+  {
+    "index": "1013",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴位置控制时的轴号(通道内)",
+        "description": "主轴位置控制时的轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "1014",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴编码器输入地址编号(物理编号)",
+        "description": "主轴编码器输入地址编号(物理编号)"
+      }
+    ]
+  },
+  {
+    "index": "1015",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "编码器线数",
+        "description": "编码器线数"
+      }
+    ]
+  },
+  {
+    "index": "1020",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "编码器电子齿轮比,编码器侧齿数",
+        "description": "编码器电子齿轮比,编码器侧齿数"
+      }
+    ]
+  },
+  {
+    "index": "1021",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "编码器电子齿轮比,主轴侧齿数",
+        "description": "编码器电子齿轮比,主轴侧齿数"
+      }
+    ]
+  },
+  {
+    "index": "1025",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴第1档的最高转速(rpm)",
+        "description": "主轴第1档的最高转速(rpm)"
+      }
+    ]
+  },
+  {
+    "index": "1026",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴第2档的最高转速(rpm)",
+        "description": "主轴第2档的最高转速(rpm)"
+      }
+    ]
+  },
+  {
+    "index": "1027",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴第3档的最高转速(rpm)",
+        "description": "主轴第3档的最高转速(rpm)"
+      }
+    ]
+  },
+  {
+    "index": "1028",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴第4档的最高转速(rpm)",
+        "description": "主轴第4档的最高转速(rpm)"
+      }
+    ]
+  },
+  {
+    "index": "1030",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴正转输出口",
+        "description": "主轴正转输出口"
+      }
+    ]
+  },
+  {
+    "index": "1031",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴反转输出口",
+        "description": "主轴反转输出口"
+      }
+    ]
+  },
+  {
+    "index": "1032",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴停止输出口",
+        "description": "主轴停止输出口"
+      }
+    ]
+  },
+  {
+    "index": "1033",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴停止时制动输出口",
+        "description": "主轴停止时制动输出口"
+      }
+    ]
+  },
+  {
+    "index": "1034",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴启动延时时间(ms)",
+        "description": "主轴启动延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1035",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴换向延时时间(ms)",
+        "description": "主轴换向延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1036",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴停止延时时间(ms)",
+        "description": "主轴停止延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1037",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴停止时制动延时时间(ms)",
+        "description": "主轴停止时制动延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1038",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴正转输出时间(ms)",
+        "description": "主轴正转输出时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1039",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴反转输出时间(ms)",
+        "description": "主轴反转输出时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1040",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴停止输出时间(ms)",
+        "description": "主轴停止输出时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1041",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴制动输出时间(ms)",
+        "description": "主轴制动输出时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1045",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "外接主轴正转输入口",
+        "description": "外接主轴正转输入口"
+      }
+    ]
+  },
+  {
+    "index": "1046",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "外接主轴反转输入口",
+        "description": "外接主轴反转输入口"
+      }
+    ]
+  },
+  {
+    "index": "1047",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "外接主轴停止输入口",
+        "description": "外接主轴停止输入口"
+      }
+    ]
+  },
+  {
+    "index": "1050",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "外接主轴正向点动输入口",
+        "description": "外接主轴正向点动输入口"
+      }
+    ]
+  },
+  {
+    "index": "1051",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "外接主轴反向点动输入口",
+        "description": "外接主轴反向点动输入口"
+      }
+    ]
+  },
+  {
+    "index": "1052",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴点动转速(rpm)",
+        "description": "主轴点动转速(rpm)"
+      }
+    ]
+  },
+  {
+    "index": "1055",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "G96时的主轴最低转速",
+        "description": "G96时的主轴最低转速"
+      }
+    ]
+  },
+  {
+    "index": "1056",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "视为主轴停止的实际转速上限",
+        "description": "视为主轴停止的实际转速上限"
+      }
+    ]
+  },
+  {
+    "index": "1057",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴转速到达检测窗口范围(百分比)",
+        "description": "主轴转速到达检测窗口范围(百分比)"
+      }
+    ]
+  },
+  {
+    "index": "1058",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴启动时,等待主轴转速到达时间上限(=0:忽略)",
+        "description": "主轴启动时,等待主轴转速到达时间上限(=0:忽略)"
+      }
+    ]
+  },
+  {
+    "index": "1059",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "切削加工时,等待主轴转速到达时间上限(=0:忽略)",
+        "description": "切削加工时,等待主轴转速到达时间上限(=0:忽略)"
+      }
+    ]
+  },
+  {
+    "index": "1070",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴位置模式输出口(M18)",
+        "description": "主轴位置模式输出口(M18)"
+      }
+    ]
+  },
+  {
+    "index": "1071",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴位置模式到位输入口",
+        "description": "主轴位置模式到位输入口"
+      }
+    ]
+  },
+  {
+    "index": "1072",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴位置模式到位信号等待时间上限(ms)",
+        "description": "主轴位置模式到位信号等待时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1073",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴位置模式到位延时时间(ms)",
+        "description": "主轴位置模式到位延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1074",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴位置模式时加减速时间常数(ms)",
+        "description": "主轴位置模式时加减速时间常数(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1075",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴速度模式输出口(M17)",
+        "description": "主轴速度模式输出口(M17)"
+      }
+    ]
+  },
+  {
+    "index": "1076",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴速度模式到位输入口",
+        "description": "主轴速度模式到位输入口"
+      }
+    ]
+  },
+  {
+    "index": "1077",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴速度模式到位信号等待时间上限(ms)",
+        "description": "主轴速度模式到位信号等待时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1078",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴速度模式到位延时时间(ms)",
+        "description": "主轴速度模式到位延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1080",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴准停输出口(M19)",
+        "description": "主轴准停输出口(M19)"
+      }
+    ]
+  },
+  {
+    "index": "1081",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴准停完成输入口",
+        "description": "主轴准停完成输入口"
+      }
+    ]
+  },
+  {
+    "index": "1082",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴准停完成信号等待时间上限(ms)",
+        "description": "主轴准停完成信号等待时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1083",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴准停完成延时时间(ms)",
+        "description": "主轴准停完成延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1084",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴准停完成后的坐标值",
+        "description": "主轴准停完成后的坐标值"
+      }
+    ]
+  },
+  {
+    "index": "1090",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴使能输出模式(0:上电使能,1:速度模式使能,2:速度及位置使能)",
+        "description": "主轴使能输出模式(0:上电使能,1:速度模式使能,2:速度及位置使能)"
+      }
+    ]
+  },
+  {
+    "index": "1091",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴使能输出口",
+        "description": "主轴使能输出口"
+      }
+    ]
+  },
+  {
+    "index": "1095",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴报警输入口",
+        "description": "主轴报警输入口"
+      }
+    ]
+  },
+  {
+    "index": "1100",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "各主轴锁住相关设置",
+        "description": "各主轴锁住相关设置"
+      },
+      {
+        "title": "SLKPO 0/1:主轴上电时处于松开/锁紧状态",
+        "description": "SLKPO 0/1:主轴上电时处于松开/锁紧状态"
+      },
+      {
+        "title": "RSTSL 0/1:复位时,主轴不松开/松开",
+        "description": "RSTSL 0/1:复位时,主轴不松开/松开"
+      },
+      {
+        "title": "M30SL 0/1:M30时,主轴不松开/松开",
+        "description": "M30SL 0/1:M30时,主轴不松开/松开"
+      },
+      {
+        "title": "SURA 0/1:主轴定位时,不/自动松开锁紧",
+        "description": "SURA 0/1:主轴定位时,不/自动松开锁紧"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1110",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴锁紧夹紧输出口(M12)",
+        "description": "主轴锁紧夹紧输出口(M12)"
+      }
+    ]
+  },
+  {
+    "index": "1111",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴锁紧松开输出口(M13)",
+        "description": "主轴锁紧松开输出口(M13)"
+      }
+    ]
+  },
+  {
+    "index": "1112",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "外接主轴锁紧输入口",
+        "description": "外接主轴锁紧输入口"
+      }
+    ]
+  },
+  {
+    "index": "1113",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "外接主轴锁紧松开输入口",
+        "description": "外接主轴锁紧松开输入口"
+      }
+    ]
+  },
+  {
+    "index": "1114",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴锁紧夹紧到位输输入口",
+        "description": "主轴锁紧夹紧到位输输入口"
+      }
+    ]
+  },
+  {
+    "index": "1115",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴锁紧松开到位输输入口",
+        "description": "主轴锁紧松开到位输输入口"
+      }
+    ]
+  },
+  {
+    "index": "1120",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴锁紧前等待主轴停止时间上限(ms)",
+        "description": "主轴锁紧前等待主轴停止时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1121",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴锁紧允许的实际转速上限",
+        "description": "主轴锁紧允许的实际转速上限"
+      }
+    ]
+  },
+  {
+    "index": "1122",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴锁紧前延时时间(ms)",
+        "description": "主轴锁紧前延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1123",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴锁紧到位等待时间上限(ms)",
+        "description": "主轴锁紧到位等待时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1124",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴锁紧后延时时间(ms)",
+        "description": "主轴锁紧后延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1125",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴锁紧松开到位等待时间上限(ms)",
+        "description": "主轴锁紧松开到位等待时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1126",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴锁紧松开延时时间(ms)",
+        "description": "主轴锁紧松开延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1132",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"夹紧到位延时时间(ms)",
+        "description": "HUNK_CN\"夹紧到位延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1150",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴档位数",
+        "description": "主轴档位数"
+      }
+    ]
+  },
+  {
+    "index": "1151",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "S01输出口",
+        "description": "S01输出口"
+      }
+    ]
+  },
+  {
+    "index": "1152",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "S02输出口",
+        "description": "S02输出口"
+      }
+    ]
+  },
+  {
+    "index": "1153",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "S03输出口",
+        "description": "S03输出口"
+      }
+    ]
+  },
+  {
+    "index": "1154",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "S04输出口",
+        "description": "S04输出口"
+      }
+    ]
+  },
+  {
+    "index": "1155",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "档位间切换延时时间(ms)",
+        "description": "档位间切换延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1156",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "换挡完成延时时间(ms)",
+        "description": "换挡完成延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1160",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "星型启动输出口",
+        "description": "星型启动输出口"
+      }
+    ]
+  },
+  {
+    "index": "1161",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "三角型启动输出口",
+        "description": "三角型启动输出口"
+      }
+    ]
+  },
+  {
+    "index": "1162",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "星型启动保持时间(ms)",
+        "description": "星型启动保持时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1163",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "星三角型间切换时间(ms)",
+        "description": "星三角型间切换时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1200",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴同步第1组相关设置",
+        "description": "主轴同步第1组相关设置"
+      },
+      {
+        "title": "SSYNP 0/1:主动轴位置方式时,从动轴通过主动轴编码器反馈/位置输出进行控制",
+        "description": "SSYNP 0/1:主动轴位置方式时,从动轴通过主动轴编码器反馈/位置输出进行控制"
+      },
+      {
+        "title": "SSES 0/1:编码器反馈方式主轴同步时,从动轴不/进行切削速度平滑",
+        "description": "SSES 0/1:编码器反馈方式主轴同步时,从动轴不/进行切削速度平滑"
+      },
+      {
+        "title": "SSYNR 0/1:不指定R时,从当前位置/0位置同步",
+        "description": "SSYNR 0/1:不指定R时,从当前位置/0位置同步"
+      },
+      {
+        "title": "SSYSD 0/1:从动轴正向/负向运动",
+        "description": "SSYSD 0/1:从动轴正向/负向运动"
+      },
+      {
+        "title": "SSYPI 0/1:从动轴使用P调节/使用PI调节",
+        "description": "SSYPI 0/1:从动轴使用P调节/使用PI调节"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1201",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴同步第2组相关设置",
+        "description": "主轴同步第2组相关设置"
+      },
+      {
+        "title": "SSYNP 0/1:主动轴位置方式时,从动轴通过主动轴编码器反馈/位置输出进行控制",
+        "description": "SSYNP 0/1:主动轴位置方式时,从动轴通过主动轴编码器反馈/位置输出进行控制"
+      },
+      {
+        "title": "SSES 0/1:编码器反馈方式主轴同步时,从动轴不/进行切削速度平滑",
+        "description": "SSES 0/1:编码器反馈方式主轴同步时,从动轴不/进行切削速度平滑"
+      },
+      {
+        "title": "保留",
+        "description": "保留"
+      },
+      {
+        "title": "SSYSD 0/1:从动轴正向/负向运动",
+        "description": "SSYSD 0/1:从动轴正向/负向运动"
+      },
+      {
+        "title": "SSYPI 0/1:从动轴使用P调节/使用PI调节",
+        "description": "SSYPI 0/1:从动轴使用P调节/使用PI调节"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1202",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴同步第3组相关设置",
+        "description": "主轴同步第3组相关设置"
+      },
+      {
+        "title": "SSYNP 0/1:主动轴位置方式时,从动轴通过主动轴编码器反馈/位置输出进行控制",
+        "description": "SSYNP 0/1:主动轴位置方式时,从动轴通过主动轴编码器反馈/位置输出进行控制"
+      },
+      {
+        "title": "SSES 0/1:编码器反馈方式主轴同步时,从动轴不/进行切削速度平滑",
+        "description": "SSES 0/1:编码器反馈方式主轴同步时,从动轴不/进行切削速度平滑"
+      },
+      {
+        "title": "保留",
+        "description": "保留"
+      },
+      {
+        "title": "SSYSD 0/1:从动轴正向/负向运动",
+        "description": "SSYSD 0/1:从动轴正向/负向运动"
+      },
+      {
+        "title": "SSYPI 0/1:从动轴使用P调节/使用PI调节",
+        "description": "SSYPI 0/1:从动轴使用P调节/使用PI调节"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1210",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴同步方式时,从动轴最高转速(rpm)",
+        "description": "主轴同步方式时,从动轴最高转速(rpm)"
+      }
+    ]
+  },
+  {
+    "index": "1211",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴同步方式时,从动轴时间常数",
+        "description": "主轴同步方式时,从动轴时间常数"
+      }
+    ]
+  },
+  {
+    "index": "1212",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴同步方式时,从动轴速度平滑系数(0~100),0:不滤波",
+        "description": "主轴同步方式时,从动轴速度平滑系数(0~100),0:不滤波"
+      }
+    ]
+  },
+  {
+    "index": "1214",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "主轴同步方式时,各主轴负载限制(0~300,0:不限制)",
+        "description": "主轴同步方式时,各主轴负载限制(0~300,0:不限制)"
+      }
+    ]
+  },
+  {
+    "index": "1220",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴同步第1组,主动主轴号",
+        "description": "主轴同步第1组,主动主轴号"
+      }
+    ]
+  },
+  {
+    "index": "1221",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴同步第1组,从动主轴号",
+        "description": "主轴同步第1组,从动主轴号"
+      }
+    ]
+  },
+  {
+    "index": "1222",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴同步第2组,主动主轴号",
+        "description": "主轴同步第2组,主动主轴号"
+      }
+    ]
+  },
+  {
+    "index": "1223",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴同步第2组,从动主轴号",
+        "description": "主轴同步第2组,从动主轴号"
+      }
+    ]
+  },
+  {
+    "index": "1224",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴同步第3组,主动主轴号",
+        "description": "主轴同步第3组,主动主轴号"
+      }
+    ]
+  },
+  {
+    "index": "1225",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴同步第3组,从动主轴号",
+        "description": "主轴同步第3组,从动主轴号"
+      }
+    ]
+  },
+  {
+    "index": "1300",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"相关设置",
+        "description": "HUNK_CN\"相关设置"
+      },
+      {
+        "title": "CLPP 0/1:夹紧输出为电平/脉冲",
+        "description": "CLPP 0/1:夹紧输出为电平/脉冲"
+      },
+      {
+        "title": "UCLP 0/1:松开输出为电平/脉冲",
+        "description": "UCLP 0/1:松开输出为电平/脉冲"
+      },
+      {
+        "title": "QPCFC 0/1:夹紧到位为常开/常闭信号",
+        "description": "QPCFC 0/1:夹紧到位为常开/常闭信号"
+      },
+      {
+        "title": "QPUFC 0/1:松开到位为常开/常闭信号",
+        "description": "QPUFC 0/1:松开到位为常开/常闭信号"
+      },
+      {
+        "title": "QPD 0/1:\"CHUNK_CN\"内夹/外夹",
+        "description": "QPD 0/1:\"CHUNK_CN\"内夹/外夹"
+      },
+      {
+        "title": "XQPH 0/1:外接夹紧松开为脉冲/保持信号",
+        "description": "XQPH 0/1:外接夹紧松开为脉冲/保持信号"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1301",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"互锁相关设置",
+        "description": "HUNK_CN\"互锁相关设置"
+      },
+      {
+        "title": "QPSL 0/1:主轴转动时(通过输出状态判断),不可/可以执行自动松开",
+        "description": "QPSL 0/1:主轴转动时(通过输出状态判断),不可/可以执行自动松开"
+      },
+      {
+        "title": "MQPSL 0/1:主轴转动时(通过输出状态判断),不可/可以执行手动松开",
+        "description": "MQPSL 0/1:主轴转动时(通过输出状态判断),不可/可以执行手动松开"
+      },
+      {
+        "title": "MQPOP 0/1:自动运行时不响应/响应手动夹紧松开",
+        "description": "MQPOP 0/1:自动运行时不响应/响应手动夹紧松开"
+      },
+      {
+        "title": "UQEU 0/1:松开指令时,不/等待主轴转速低于允许转速",
+        "description": "UQEU 0/1:松开指令时,不/等待主轴转速低于允许转速"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "QPST 0/1:松开状态时,可/不可循环启动运行",
+        "description": "QPST 0/1:松开状态时,可/不可循环启动运行"
+      },
+      {
+        "title": "UQEC 0/1:松开状态时,不/检测主轴转速超过允许上限",
+        "description": "UQEC 0/1:松开状态时,不/检测主轴转速超过允许上限"
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1302",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"上电相关设置",
+        "description": "HUNK_CN\"上电相关设置"
+      },
+      {
+        "title": "QPRS 0/1:上电时,卡盘不/恢复断电前的状态",
+        "description": "QPRS 0/1:上电时,卡盘不/恢复断电前的状态"
+      },
+      {
+        "title": "QPON 0/1:上电时,卡盘不/输出夹紧",
+        "description": "QPON 0/1:上电时,卡盘不/输出夹紧"
+      },
+      {
+        "title": "QPOF 0/1:上电时,卡盘不/输出松开",
+        "description": "QPOF 0/1:上电时,卡盘不/输出松开"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1310",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"夹紧输出口",
+        "description": "HUNK_CN\"夹紧输出口"
+      }
+    ]
+  },
+  {
+    "index": "1311",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"松开输出口",
+        "description": "HUNK_CN\"松开输出口"
+      }
+    ]
+  },
+  {
+    "index": "1320",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "外接\"CHUNK_CN\"夹紧输入口",
+        "description": "外接\"CHUNK_CN\"夹紧输入口"
+      }
+    ]
+  },
+  {
+    "index": "1321",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "外接\"CHUNK_CN\"松开输入口",
+        "description": "外接\"CHUNK_CN\"松开输入口"
+      }
+    ]
+  },
+  {
+    "index": "1322",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"夹紧到位输入口",
+        "description": "HUNK_CN\"夹紧到位输入口"
+      }
+    ]
+  },
+  {
+    "index": "1323",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"松开到位输入口",
+        "description": "HUNK_CN\"松开到位输入口"
+      }
+    ]
+  },
+  {
+    "index": "1330",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"夹紧到位信号等待时间上限(ms)",
+        "description": "HUNK_CN\"夹紧到位信号等待时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1331",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"松开到位信号等待时间上限(ms)",
+        "description": "HUNK_CN\"松开到位信号等待时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1333",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"松开到位延时时间(ms)",
+        "description": "HUNK_CN\"松开到位延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1340",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"松开允许实际转速上限",
+        "description": "HUNK_CN\"松开允许实际转速上限"
+      }
+    ]
+  },
+  {
+    "index": "1341",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "HUNK_CN\"松开时,等待主轴低于允许转速的时间上限",
+        "description": "HUNK_CN\"松开时,等待主轴低于允许转速的时间上限"
+      }
+    ]
+  },
+  {
+    "index": "1400",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "尾座相关设置",
+        "description": "尾座相关设置"
+      },
+      {
+        "title": "M78P 0/1:尾座进输出为电平/脉冲",
+        "description": "M78P 0/1:尾座进输出为电平/脉冲"
+      },
+      {
+        "title": "M79P 0/1:尾座退输出为电平/脉冲",
+        "description": "M79P 0/1:尾座退输出为电平/脉冲"
+      },
+      {
+        "title": "TSFFC 0/1:尾座进到位为常开/常闭信号",
+        "description": "TSFFC 0/1:尾座进到位为常开/常闭信号"
+      },
+      {
+        "title": "TSBFC 0/1:尾座退到位为常开/常闭信号",
+        "description": "TSBFC 0/1:尾座退到位为常开/常闭信号"
+      },
+      {
+        "title": "TSRST 0/1:复位时,尾座不退回/退回",
+        "description": "TSRST 0/1:复位时,尾座不退回/退回"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1401",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "尾座互锁相关设置",
+        "description": "尾座互锁相关设置"
+      },
+      {
+        "title": "TSSL 0/1:主轴启动时不可/可以执行尾座退",
+        "description": "TSSL 0/1:主轴启动时不可/可以执行尾座退"
+      },
+      {
+        "title": "MTSOP 0/1:自动运行时不响应/响应手动尾座",
+        "description": "MTSOP 0/1:自动运行时不响应/响应手动尾座"
+      },
+      {
+        "title": "MTSSL 0/1:主轴启动时不可/可以执行手动尾座退",
+        "description": "MTSSL 0/1:主轴启动时不可/可以执行手动尾座退"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1402",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "尾座上电相关设置",
+        "description": "尾座上电相关设置"
+      },
+      {
+        "title": "TSRS 0/1:上电时,尾座不/恢复断电前的状态",
+        "description": "TSRS 0/1:上电时,尾座不/恢复断电前的状态"
+      },
+      {
+        "title": "TSON 0/1:上电时,不/输出尾座进",
+        "description": "TSON 0/1:上电时,不/输出尾座进"
+      },
+      {
+        "title": "TSOF 0/1:上电时,不/输出尾座退",
+        "description": "TSOF 0/1:上电时,不/输出尾座退"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1410",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "尾座进输出口",
+        "description": "尾座进输出口"
+      }
+    ]
+  },
+  {
+    "index": "1411",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "尾座退输出口",
+        "description": "尾座退输出口"
+      }
+    ]
+  },
+  {
+    "index": "1420",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "外接尾座进输入口",
+        "description": "外接尾座进输入口"
+      }
+    ]
+  },
+  {
+    "index": "1421",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "外接尾座退输入口",
+        "description": "外接尾座退输入口"
+      }
+    ]
+  },
+  {
+    "index": "1422",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "尾座进到位输入口",
+        "description": "尾座进到位输入口"
+      }
+    ]
+  },
+  {
+    "index": "1423",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "座进退到位输入口",
+        "description": "座进退到位输入口"
+      }
+    ]
+  },
+  {
+    "index": "1430",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "尾座进到位信号等待时间上限(ms)",
+        "description": "尾座进到位信号等待时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1431",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "尾座退到位信号等待时间上限(ms)",
+        "description": "尾座退到位信号等待时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1432",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "尾座进到位延时时间(ms)",
+        "description": "尾座进到位延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1433",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "尾座退到位延时时间(ms)",
+        "description": "尾座退到位延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1500",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "刀架相关设置",
+        "description": "刀架相关设置"
+      },
+      {
+        "title": "TCHK 0/1:换刀完成后,不检测/检测刀号",
+        "description": "TCHK 0/1:换刀完成后,不检测/检测刀号"
+      },
+      {
+        "title": "TE00 0/1:不允许/允许0号刀",
+        "description": "TE00 0/1:不允许/允许0号刀"
+      },
+      {
+        "title": "TBC 0/1:换刀后,相对坐标相对于换刀前/换刀后",
+        "description": "TBC 0/1:换刀后,相对坐标相对于换刀前/换刀后"
+      },
+      {
+        "title": "TCC 0/1:目标刀号和当前刀相同时,不执行/仍然执行换刀",
+        "description": "TCC 0/1:目标刀号和当前刀相同时,不执行/仍然执行换刀"
+      },
+      {
+        "title": "TECK 0/1:刀号错误实时监测,关闭/打开",
+        "description": "TECK 0/1:刀号错误实时监测,关闭/打开"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1501",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "刀架输入设置1",
+        "description": "刀架输入设置1"
+      },
+      {
+        "title": "T08C 0/1:T08为常开/常闭信号",
+        "description": "T08C 0/1:T08为常开/常闭信号"
+      },
+      {
+        "title": "T07C 0/1:T07为常开/常闭信号",
+        "description": "T07C 0/1:T07为常开/常闭信号"
+      },
+      {
+        "title": "T06C 0/1:T06为常开/常闭信号",
+        "description": "T06C 0/1:T06为常开/常闭信号"
+      },
+      {
+        "title": "T05C 0/1:T05为常开/常闭信号",
+        "description": "T05C 0/1:T05为常开/常闭信号"
+      },
+      {
+        "title": "T04C 0/1:T04为常开/常闭信号",
+        "description": "T04C 0/1:T04为常开/常闭信号"
+      },
+      {
+        "title": "T03C 0/1:T03为常开/常闭信号",
+        "description": "T03C 0/1:T03为常开/常闭信号"
+      },
+      {
+        "title": "T02C 0/1:T02为常开/常闭信号",
+        "description": "T02C 0/1:T02为常开/常闭信号"
+      },
+      {
+        "title": "T01C 0/1:T01为常开/常闭信号",
+        "description": "T01C 0/1:T01为常开/常闭信号"
+      }
+    ]
+  },
+  {
+    "index": "1502",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "刀架输入设置2",
+        "description": "刀架输入设置2"
+      },
+      {
+        "title": "TCPE 0/1:不检测/检测TCP信号",
+        "description": "TCPE 0/1:不检测/检测TCP信号"
+      },
+      {
+        "title": "TCPC 0/1:TCP为常开/常闭信号",
+        "description": "TCPC 0/1:TCP为常开/常闭信号"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "T12C 0/1:T12为常开/常闭信号",
+        "description": "T12C 0/1:T12为常开/常闭信号"
+      },
+      {
+        "title": "T11C 0/1:T11为常开/常闭信号",
+        "description": "T11C 0/1:T11为常开/常闭信号"
+      },
+      {
+        "title": "T10C 0/1:T10为常开/常闭信号",
+        "description": "T10C 0/1:T10为常开/常闭信号"
+      },
+      {
+        "title": "T09C 0/1:T09为常开/常闭信号",
+        "description": "T09C 0/1:T09为常开/常闭信号"
+      }
+    ]
+  },
+  {
+    "index": "1510",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "刀架类型(0:排刀,1:电动刀架)",
+        "description": "刀架类型(0:排刀,1:电动刀架)"
+      }
+    ]
+  },
+  {
+    "index": "1511",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "刀具数量",
+        "description": "刀具数量"
+      }
+    ]
+  },
+  {
+    "index": "1520",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "T01输入口",
+        "description": "T01输入口"
+      }
+    ]
+  },
+  {
+    "index": "1521",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "T02输入口",
+        "description": "T02输入口"
+      }
+    ]
+  },
+  {
+    "index": "1522",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "T03输入口",
+        "description": "T03输入口"
+      }
+    ]
+  },
+  {
+    "index": "1523",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "T04输入口",
+        "description": "T04输入口"
+      }
+    ]
+  },
+  {
+    "index": "1524",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "T05输入口",
+        "description": "T05输入口"
+      }
+    ]
+  },
+  {
+    "index": "1525",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "T06输入口",
+        "description": "T06输入口"
+      }
+    ]
+  },
+  {
+    "index": "1526",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "T07输入口",
+        "description": "T07输入口"
+      }
+    ]
+  },
+  {
+    "index": "1527",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "T08输入口",
+        "description": "T08输入口"
+      }
+    ]
+  },
+  {
+    "index": "1528",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "T09输入口",
+        "description": "T09输入口"
+      }
+    ]
+  },
+  {
+    "index": "1529",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "T10输入口",
+        "description": "T10输入口"
+      }
+    ]
+  },
+  {
+    "index": "1530",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "T11输入口",
+        "description": "T11输入口"
+      }
+    ]
+  },
+  {
+    "index": "1531",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "T12输入口",
+        "description": "T12输入口"
+      }
+    ]
+  },
+  {
+    "index": "1532",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "TCP输入口",
+        "description": "TCP输入口"
+      }
+    ]
+  },
+  {
+    "index": "1540",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "刀架正转输出口",
+        "description": "刀架正转输出口"
+      }
+    ]
+  },
+  {
+    "index": "1541",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "刀架反转输出口",
+        "description": "刀架反转输出口"
+      }
+    ]
+  },
+  {
+    "index": "1542",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "刀架锁紧输出口",
+        "description": "刀架锁紧输出口"
+      }
+    ]
+  },
+  {
+    "index": "1543",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "刀架松开输出口",
+        "description": "刀架松开输出口"
+      }
+    ]
+  },
+  {
+    "index": "1550",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "换刀时间上限(ms)",
+        "description": "换刀时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1551",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "换刀时正反转间的延时(ms)",
+        "description": "换刀时正反转间的延时(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1552",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "换刀时反转到收到TCP时间上限(ms)",
+        "description": "换刀时反转到收到TCP时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1553",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "刀位到达(TCP)后反转保持时间(ms)",
+        "description": "刀位到达(TCP)后反转保持时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1800",
+    "type": "bin",
+    "lines": "123",
+    "param": [
+      {
+        "title": "润滑相关设置",
+        "description": "润滑相关设置"
+      },
+      {
+        "title": "LUBC 0/1:润滑报警为常开/常闭",
+        "description": "LUBC 0/1:润滑报警为常开/常闭"
+      },
+      {
+        "title": "LASP 0/1:润滑报警时不停/停加工",
+        "description": "LASP 0/1:润滑报警时不停/停加工"
+      },
+      {
+        "title": "LBPO 0/1:开机润滑关闭/打开",
+        "description": "LBPO 0/1:开机润滑关闭/打开"
+      },
+      {
+        "title": "MLBOP 0/1:自动运行时,不响应/响应手动润滑",
+        "description": "MLBOP 0/1:自动运行时,不响应/响应手动润滑"
+      },
+      {
+        "title": "LAST 0/1:润滑报警不停加工时,可/不可启动加工",
+        "description": "LAST 0/1:润滑报警不停加工时,可/不可启动加工"
+      },
+      {
+        "title": "LUBRST 0/1:复位时,不关闭/关闭润滑",
+        "description": "LUBRST 0/1:复位时,不关闭/关闭润滑"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "1810",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "润滑报警输入口",
+        "description": "润滑报警输入口"
+      }
+    ]
+  },
+  {
+    "index": "1811",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "润滑输出口",
+        "description": "润滑输出口"
+      }
+    ]
+  },
+  {
+    "index": "1820",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "M32延时时间(ms)",
+        "description": "M32延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1821",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "M33延时时间(ms)",
+        "description": "M33延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1822",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "润滑输出时间(ms)",
+        "description": "润滑输出时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "1823",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "自动润滑间隔时间(ms)",
+        "description": "自动润滑间隔时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "2000",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "显示相关设置",
+        "description": "显示相关设置"
+      },
+      {
+        "title": "MDIA 0/1:单行MDI时,不/更新多行MDI",
+        "description": "MDIA 0/1:单行MDI时,不/更新多行MDI"
+      },
+      {
+        "title": "MDIC 0/1:执行后不清除/清除多行MDI",
+        "description": "MDIC 0/1:执行后不清除/清除多行MDI"
+      },
+      {
+        "title": "MDIR 0/1:Mdi界面,复位不清除/清除多行MDI",
+        "description": "MDIR 0/1:Mdi界面,复位不清除/清除多行MDI"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "ALMS 0/1:报警时不切换/切换到报警界面",
+        "description": "ALMS 0/1:报警时不切换/切换到报警界面"
+      },
+      {
+        "title": "EDTS 0/1:模式切换至EDIT时,不切换/切换到EDIT界面",
+        "description": "EDTS 0/1:模式切换至EDIT时,不切换/切换到EDIT界面"
+      },
+      {
+        "title": "MDIS 0/1:位置界面模式切换至MDI时,不/切换到MDI界面",
+        "description": "MDIS 0/1:位置界面模式切换至MDI时,不/切换到MDI界面"
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2001",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "上电时显示相关设置",
+        "description": "上电时显示相关设置"
+      },
+      {
+        "title": "WCPO 0/1:上电计数不清零/清零",
+        "description": "WCPO 0/1:上电计数不清零/清零"
+      },
+      {
+        "title": "TCPO 0/1:上电运行时间不清零/清零",
+        "description": "TCPO 0/1:上电运行时间不清零/清零"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2002",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "运行控制相关设置",
+        "description": "运行控制相关设置"
+      },
+      {
+        "title": "RCPA 0/1:关闭/打开计件数到达检测",
+        "description": "RCPA 0/1:关闭/打开计件数到达检测"
+      },
+      {
+        "title": "CSCT 0/1:计件后不/停止循环时间计时",
+        "description": "CSCT 0/1:计件后不/停止循环时间计时"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2003",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "操作开关/允许设置",
+        "description": "操作开关/允许设置"
+      },
+      {
+        "title": "PARSW 0/1:参数开关无效/有效",
+        "description": "PARSW 0/1:参数开关无效/有效"
+      },
+      {
+        "title": "PRGSW 0/1:程序开关无效/有效",
+        "description": "PRGSW 0/1:程序开关无效/有效"
+      },
+      {
+        "title": "MVOPE 0/1:加工中不/可以修改宏变量",
+        "description": "MVOPE 0/1:加工中不/可以修改宏变量"
+      },
+      {
+        "title": "QMDI 0/1:位置界面快捷MDI功能打开/关闭",
+        "description": "QMDI 0/1:位置界面快捷MDI功能打开/关闭"
+      },
+      {
+        "title": "PRTSC 0/1:按\\\"输出\\\"键截屏,关闭/打开",
+        "description": "PRTSC 0/1:按\\\"输出\\\"键截屏,关闭/打开"
+      },
+      {
+        "title": "RTPOS 0/1:返回顶层按钮时,同时返回位置界面:关闭/打开",
+        "description": "RTPOS 0/1:返回顶层按钮时,同时返回位置界面:关闭/打开"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2004",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "操作密码设置",
+        "description": "操作密码设置"
+      },
+      {
+        "title": "PARPS 0/1:参数密码无效/有效",
+        "description": "PARPS 0/1:参数密码无效/有效"
+      },
+      {
+        "title": "PRGPS 0/1:程序密码无效/有效",
+        "description": "PRGPS 0/1:程序密码无效/有效"
+      },
+      {
+        "title": "CMCPS 0/1:清机床坐标不/需要密码",
+        "description": "CMCPS 0/1:清机床坐标不/需要密码"
+      },
+      {
+        "title": "POPS 0/1:开机密码无效/有效",
+        "description": "POPS 0/1:开机密码无效/有效"
+      },
+      {
+        "title": "O9KPS 0/1:O9xxx程序编辑密码无效/有效",
+        "description": "O9KPS 0/1:O9xxx程序编辑密码无效/有效"
+      },
+      {
+        "title": "O8KPS 0/1:O8xxx程序编辑密码无效/有效",
+        "description": "O8KPS 0/1:O8xxx程序编辑密码无效/有效"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2005",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "程序编辑相关设置",
+        "description": "程序编辑相关设置"
+      },
+      {
+        "title": "SEQ 0/1:关闭/打开编辑时自动插入行号",
+        "description": "SEQ 0/1:关闭/打开编辑时自动插入行号"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2006",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "程序显示相关设置",
+        "description": "程序显示相关设置"
+      },
+      {
+        "title": "SO9K 0/1:显示/不显示O9xxx程序内容",
+        "description": "SO9K 0/1:显示/不显示O9xxx程序内容"
+      },
+      {
+        "title": "SO8K 0/1:显示/不显示O8xxx程序内容",
+        "description": "SO8K 0/1:显示/不显示O8xxx程序内容"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2007",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "手动运行相关设置",
+        "description": "手动运行相关设置"
+      },
+      {
+        "title": "MIR 0/1:手动干预返回功能,无效/有效",
+        "description": "MIR 0/1:手动干预返回功能,无效/有效"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2011",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "语言选择(0:中文(Chinese), 1:英文(English))",
+        "description": "语言选择(0:中文(Chinese), 1:英文(English))"
+      }
+    ]
+  },
+  {
+    "index": "2020",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "编辑递增序号",
+        "description": "编辑递增序号"
+      }
+    ]
+  },
+  {
+    "index": "2031",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "开机画面显示延时(ms)",
+        "description": "开机画面显示延时(ms)"
+      }
+    ]
+  },
+  {
+    "index": "2032",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "位置界面显示当前通道主轴的个数",
+        "description": "位置界面显示当前通道主轴的个数"
+      }
+    ]
+  },
+  {
+    "index": "2035",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "系统中轴个数",
+        "description": "系统中轴个数"
+      }
+    ]
+  },
+  {
+    "index": "2036",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "系统中主轴个数",
+        "description": "系统中主轴个数"
+      }
+    ]
+  },
+  {
+    "index": "2100",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "MII总线相关设置",
+        "description": "MII总线相关设置"
+      },
+      {
+        "title": "MIIE 0/1:MII总线字节数17/32",
+        "description": "MIIE 0/1:MII总线字节数17/32"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2101",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "MII通讯重试次数",
+        "description": "MII通讯重试次数"
+      }
+    ]
+  },
+  {
+    "index": "2115",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "ModBus总线相关设置",
+        "description": "ModBus总线相关设置"
+      },
+      {
+        "title": "MBBL 0/1:32位数据采用大端/小端",
+        "description": "MBBL 0/1:32位数据采用大端/小端"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2116",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "Modbus从站站地址",
+        "description": "Modbus从站站地址"
+      }
+    ]
+  },
+  {
+    "index": "2117",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "串口通讯波特率(4800,9600,19200,38400,57600,115200,128000)",
+        "description": "串口通讯波特率(4800,9600,19200,38400,57600,115200,128000)"
+      }
+    ]
+  },
+  {
+    "index": "2200",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "程序相关设置",
+        "description": "程序相关设置"
+      },
+      {
+        "title": "GSB 0/1:车床系统选择G代码体系A/B",
+        "description": "GSB 0/1:车床系统选择G代码体系A/B"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2201",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "程序模态上电相关设置",
+        "description": "程序模态上电相关设置"
+      },
+      {
+        "title": "MG01 0/1:上电时为G00/G01模式",
+        "description": "MG01 0/1:上电时为G00/G01模式"
+      },
+      {
+        "title": "MG61 0/1:上电时为G64/G61模式",
+        "description": "MG61 0/1:上电时为G64/G61模式"
+      },
+      {
+        "title": "MFPR 0/1:上电时处于每分进给/每转进给模式",
+        "description": "MFPR 0/1:上电时处于每分进给/每转进给模式"
+      },
+      {
+        "title": "MG17 0/1:上电时为G18/G17模式",
+        "description": "MG17 0/1:上电时为G18/G17模式"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2202",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "程序模态复位相关设置",
+        "description": "程序模态复位相关设置"
+      },
+      {
+        "title": "RG01 0/1:复位时,不/复位G00G01模态至上电状态",
+        "description": "RG01 0/1:复位时,不/复位G00G01模态至上电状态"
+      },
+      {
+        "title": "RG61 0/1:复位时,不/复位G64G61模态至上电状态",
+        "description": "RG61 0/1:复位时,不/复位G64G61模态至上电状态"
+      },
+      {
+        "title": "RFPR 0/1:复位时,不/复位每分进给或每转进给模式至上电状态",
+        "description": "RFPR 0/1:复位时,不/复位每分进给或每转进给模式至上电状态"
+      },
+      {
+        "title": "RG17 0/1:复位时,不/复位G17G18G19模态至上电状态",
+        "description": "RG17 0/1:复位时,不/复位G17G18G19模态至上电状态"
+      },
+      {
+        "title": "RG90 0/1:复位时,不/复位G90G91模态至上电状态",
+        "description": "RG90 0/1:复位时,不/复位G90G91模态至上电状态"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2203",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "程序控制相关设置",
+        "description": "程序控制相关设置"
+      },
+      {
+        "title": "AOCK 0/1:圆弧中心点检测关闭/打开",
+        "description": "AOCK 0/1:圆弧中心点检测关闭/打开"
+      },
+      {
+        "title": "G00L 0/1:G00运动方式为各轴以最高速度运动/线性同动",
+        "description": "G00L 0/1:G00运动方式为各轴以最高速度运动/线性同动"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2205",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "程序预读控制相关设置",
+        "description": "程序预读控制相关设置"
+      },
+      {
+        "title": "TNB 0/1:执行换刀指令不/抑制程序缓冲",
+        "description": "TNB 0/1:执行换刀指令不/抑制程序缓冲"
+      },
+      {
+        "title": "M91NB 0/1:M91指令不/抑制程序缓冲",
+        "description": "M91NB 0/1:M91指令不/抑制程序缓冲"
+      },
+      {
+        "title": "G10NB 0/1:G10指令不/抑制程序缓冲",
+        "description": "G10NB 0/1:G10指令不/抑制程序缓冲"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2206",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "M功能相关设置",
+        "description": "M功能相关设置"
+      },
+      {
+        "title": "M30CP 0/1:执行M30时不计数/计数",
+        "description": "M30CP 0/1:执行M30时不计数/计数"
+      },
+      {
+        "title": "M99CP 0/1:执行主程序中的M99时不计数/计数",
+        "description": "M99CP 0/1:执行主程序中的M99时不计数/计数"
+      },
+      {
+        "title": "M30CC 0/1:执行M30时不清除/清除计数",
+        "description": "M30CC 0/1:执行M30时不清除/清除计数"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2209",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "上电时程序相关设置",
+        "description": "上电时程序相关设置"
+      },
+      {
+        "title": "PNPO 0/1:上电时,打开当前程序/指定程序",
+        "description": "PNPO 0/1:上电时,打开当前程序/指定程序"
+      },
+      {
+        "title": "MHPO 0/1:上电时,恢复断电时的程序位置/返回主程序头",
+        "description": "MHPO 0/1:上电时,恢复断电时的程序位置/返回主程序头"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2210",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "圆弧中心检查时最大半径误差",
+        "description": "圆弧中心检查时最大半径误差"
+      }
+    ]
+  },
+  {
+    "index": "2220",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "上电打开程序号",
+        "description": "上电打开程序号"
+      }
+    ]
+  },
+  {
+    "index": "2221",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "上电时各主轴默认设定转速",
+        "description": "上电时各主轴默认设定转速"
+      }
+    ]
+  },
+  {
+    "index": "2222",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "上电时默认设定进给速度(mm/min)",
+        "description": "上电时默认设定进给速度(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "2223",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "上电时默认设定进给速度(mm/rev)",
+        "description": "上电时默认设定进给速度(mm/rev)"
+      }
+    ]
+  },
+  {
+    "index": "2310",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G00间过渡启动速度比",
+        "description": "G00间过渡启动速度比"
+      }
+    ]
+  },
+  {
+    "index": "2500",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "刀具补偿相关设置",
+        "description": "刀具补偿相关设置"
+      },
+      {
+        "title": "CCC 0/1:刀具半径补偿时,外边拐角的连接方式为直线/圆弧",
+        "description": "CCC 0/1:刀具半径补偿时,外边拐角的连接方式为直线/圆弧"
+      },
+      {
+        "title": "CSBK 0/1:刀具半径补偿内部创建的程序段不单段停止/单段停止",
+        "description": "CSBK 0/1:刀具半径补偿内部创建的程序段不单段停止/单段停止"
+      },
+      {
+        "title": "CCSN 0/1:刀具半径补偿为缩短型补偿时,不/判断下一段过短",
+        "description": "CCSN 0/1:刀具半径补偿为缩短型补偿时,不/判断下一段过短"
+      },
+      {
+        "title": "保留",
+        "description": "保留"
+      },
+      {
+        "title": "TOEO 0/1:加工中修改刀补时,下一个T指令/下一段后,新刀补值有效",
+        "description": "TOEO 0/1:加工中修改刀补时,下一个T指令/下一段后,新刀补值有效"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2501",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "刀具补偿输入安全相关设置",
+        "description": "刀具补偿输入安全相关设置"
+      },
+      {
+        "title": "TOIE 0/1:刀具偏置界面,增量输入方式快捷键(UVW)关闭/打开",
+        "description": "TOIE 0/1:刀具偏置界面,增量输入方式快捷键(UVW)关闭/打开"
+      },
+      {
+        "title": "TWAE 0/1:刀具磨损界面,绝对输入方式快捷键(XYZ)关闭/打开",
+        "description": "TWAE 0/1:刀具磨损界面,绝对输入方式快捷键(XYZ)关闭/打开"
+      },
+      {
+        "title": "TWAI 0/1:刀具磨损界面,快捷键(XYZ)用作增量输入关闭/打开",
+        "description": "TWAI 0/1:刀具磨损界面,快捷键(XYZ)用作增量输入关闭/打开"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2510",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "刀具磨损补偿量最大值",
+        "description": "刀具磨损补偿量最大值"
+      }
+    ]
+  },
+  {
+    "index": "2511",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "刀具磨损补偿量增量输入的最大值",
+        "description": "刀具磨损补偿量增量输入的最大值"
+      }
+    ]
+  },
+  {
+    "index": "2600",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "刀具寿命相关设置",
+        "description": "刀具寿命相关设置"
+      },
+      {
+        "title": "TLEN 0/1:刀具寿命管理功能无效/有效",
+        "description": "TLEN 0/1:刀具寿命管理功能无效/有效"
+      },
+      {
+        "title": "TLM6 0/1:通过T/M06指令管理具寿命",
+        "description": "TLM6 0/1:通过T/M06指令管理具寿命"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2700",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "输入信号设置",
+        "description": "输入信号设置"
+      },
+      {
+        "title": "ESPC 0/1:急停(ESP)为常开/常闭",
+        "description": "ESPC 0/1:急停(ESP)为常开/常闭"
+      },
+      {
+        "title": "ESP2C 0/1:急停(ESP2)为常开/常闭",
+        "description": "ESP2C 0/1:急停(ESP2)为常开/常闭"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "2710",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "输入信号宽度(ms)",
+        "description": "输入信号宽度(ms)"
+      }
+    ]
+  },
+  {
+    "index": "2711",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "急停输入口",
+        "description": "急停输入口"
+      }
+    ]
+  },
+  {
+    "index": "2712",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "急停2输入口",
+        "description": "急停2输入口"
+      }
+    ]
+  },
+  {
+    "index": "2720",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "总线IO站地址",
+        "description": "总线IO站地址"
+      }
+    ]
+  },
+  {
+    "index": "2721",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "总线IO站输入口的X起始地址",
+        "description": "总线IO站输入口的X起始地址"
+      }
+    ]
+  },
+  {
+    "index": "2722",
+    "type": "sys",
+    "lines": "12",
+    "param": [
+      {
+        "title": "总线IO站输出口的Y起始地址",
+        "description": "总线IO站输出口的Y起始地址"
+      }
+    ]
+  },
+  {
+    "index": "2723",
+    "type": "sys",
+    "lines": "12",
+    "param": [
+      {
+        "title": "总线IO站输入信号宽度(ms)",
+        "description": "总线IO站输入信号宽度(ms)"
+      }
+    ]
+  },
+  {
+    "index": "2725",
+    "type": "sys",
+    "lines": "12",
+    "param": [
+      {
+        "title": "总线IO站AD的X起始地址",
+        "description": "总线IO站AD的X起始地址"
+      }
+    ]
+  },
+  {
+    "index": "3000",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "PLC相关设置",
+        "description": "PLC相关设置"
+      },
+      {
+        "title": "PLCEN 0/1:关闭/打开开放式PLC",
+        "description": "PLCEN 0/1:关闭/打开开放式PLC"
+      },
+      {
+        "title": "EFPLS 0/1:开放式PLC时,关闭/打开内置PLC",
+        "description": "EFPLS 0/1:开放式PLC时,关闭/打开内置PLC"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "3001",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "互锁信号相关设置",
+        "description": "互锁信号相关设置"
+      },
+      {
+        "title": "ITX 0/1:关闭/打开各轴互锁功能",
+        "description": "ITX 0/1:关闭/打开各轴互锁功能"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "3300",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "内置PLC功能设置相关1",
+        "description": "内置PLC功能设置相关1"
+      },
+      {
+        "title": "FXOV 0/1:外接进给倍率关闭/打开",
+        "description": "FXOV 0/1:外接进给倍率关闭/打开"
+      },
+      {
+        "title": "MLEN 0/1:机床锁功能关闭/打开",
+        "description": "MLEN 0/1:机床锁功能关闭/打开"
+      },
+      {
+        "title": "SXOV 0/1:外接主轴倍率关闭/打开",
+        "description": "SXOV 0/1:外接主轴倍率关闭/打开"
+      },
+      {
+        "title": "保留",
+        "description": "保留"
+      },
+      {
+        "title": "JKU 0/1:各轴手动移动键自定义,关闭/打开",
+        "description": "JKU 0/1:各轴手动移动键自定义,关闭/打开"
+      },
+      {
+        "title": "RTM 0/1:手动快速键不保持/保持",
+        "description": "RTM 0/1:手动快速键不保持/保持"
+      },
+      {
+        "title": "EHDC 0/1:外接进给保持为常开/常闭",
+        "description": "EHDC 0/1:外接进给保持为常开/常闭"
+      },
+      {
+        "title": "SPSSP 0/1:进给保持时,不/停主轴",
+        "description": "SPSSP 0/1:进给保持时,不/停主轴"
+      }
+    ]
+  },
+  {
+    "index": "3301",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "内置PLC功能设置相关2",
+        "description": "内置PLC功能设置相关2"
+      },
+      {
+        "title": "CFM8 0/1:内置PLC时,M08M09功能有效/关闭",
+        "description": "CFM8 0/1:内置PLC时,M08M09功能有效/关闭"
+      },
+      {
+        "title": "CFM32 0/1:内置PLC时,M32M33功能有效/关闭",
+        "description": "CFM32 0/1:内置PLC时,M32M33功能有效/关闭"
+      },
+      {
+        "title": "CFM78 0/1:内置PLC时,M78M79功能有效/关闭",
+        "description": "CFM78 0/1:内置PLC时,M78M79功能有效/关闭"
+      },
+      {
+        "title": "CFM10 0/1:内置PLC时,M10M11功能有效/关闭",
+        "description": "CFM10 0/1:内置PLC时,M10M11功能有效/关闭"
+      },
+      {
+        "title": "CFSP 0/1:内置PLC时,主轴PLC功能有效/关闭",
+        "description": "CFSP 0/1:内置PLC时,主轴PLC功能有效/关闭"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "3302",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "内置PLC三位开关相关设置",
+        "description": "内置PLC三位开关相关设置"
+      },
+      {
+        "title": "TSW 0/1:外接三位开关无效/有效",
+        "description": "TSW 0/1:外接三位开关无效/有效"
+      },
+      {
+        "title": "TSWDS 0/1:三位开关运行允许时,直接启动加工无效/有效",
+        "description": "TSWDS 0/1:三位开关运行允许时,直接启动加工无效/有效"
+      },
+      {
+        "title": "TSWRC 0/1:三位开关运行允许为常开/常闭",
+        "description": "TSWRC 0/1:三位开关运行允许为常开/常闭"
+      },
+      {
+        "title": "TSWSC 0/1:三位开关主轴停为常开/常闭",
+        "description": "TSWSC 0/1:三位开关主轴停为常开/常闭"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "3303",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "内置PLC安全门相关设置",
+        "description": "内置PLC安全门相关设置"
+      },
+      {
+        "title": "SFDR 0/1:防护门无效/有效",
+        "description": "SFDR 0/1:防护门无效/有效"
+      },
+      {
+        "title": "SFDSP 0/1:防护门报警时不停/停加工",
+        "description": "SFDSP 0/1:防护门报警时不停/停加工"
+      },
+      {
+        "title": "SFDC 0/1:防护门到位信号为常开/常闭",
+        "description": "SFDC 0/1:防护门到位信号为常开/常闭"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "3310",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "内置PLC M功能复位相关设置",
+        "description": "内置PLC M功能复位相关设置"
+      },
+      {
+        "title": "M30M5 0/1:M30时不输出/输出M05",
+        "description": "M30M5 0/1:M30时不输出/输出M05"
+      },
+      {
+        "title": "M30M9 0/1:M30时不输出/输出M09",
+        "description": "M30M9 0/1:M30时不输出/输出M09"
+      },
+      {
+        "title": "RSTM5 0/1:复位时不输出/输出M05",
+        "description": "RSTM5 0/1:复位时不输出/输出M05"
+      },
+      {
+        "title": "RSTM9 0/1:复位时不输出/输出M09",
+        "description": "RSTM9 0/1:复位时不输出/输出M09"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "3311",
+    "type": "bin",
+    "lines": "123456",
+    "param": [
+      {
+        "title": "内置PLC复位时关闭输出口",
+        "description": "内置PLC复位时关闭输出口"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "3312",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "内置PLC上电初始化相关设置",
+        "description": "内置PLC上电初始化相关设置"
+      },
+      {
+        "title": "WKLPO 0/1:上电时,关闭/打开工作灯",
+        "description": "WKLPO 0/1:上电时,关闭/打开工作灯"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "3313",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "内置PLC输出设置",
+        "description": "内置PLC输出设置"
+      },
+      {
+        "title": "M08P 0/1:M08输出为电平/脉冲",
+        "description": "M08P 0/1:M08输出为电平/脉冲"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "3315",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "User键快捷宏调用相关设置",
+        "description": "User键快捷宏调用相关设置"
+      },
+      {
+        "title": "MCUK1 0/1:USER1不/执行快捷宏指令调用(+0)",
+        "description": "MCUK1 0/1:USER1不/执行快捷宏指令调用(+0)"
+      },
+      {
+        "title": "MCUK2 0/1:USER2不/执行快捷宏指令调用(+1)",
+        "description": "MCUK2 0/1:USER2不/执行快捷宏指令调用(+1)"
+      },
+      {
+        "title": "MCUK3 0/1:USER3不/执行快捷宏指令调用(+2)",
+        "description": "MCUK3 0/1:USER3不/执行快捷宏指令调用(+2)"
+      },
+      {
+        "title": "MCUK4 0/1:USER4不/执行快捷宏指令调用(+3)",
+        "description": "MCUK4 0/1:USER4不/执行快捷宏指令调用(+3)"
+      },
+      {
+        "title": "MCUK5 0/1:USER5不/执行快捷宏指令调用(+4)",
+        "description": "MCUK5 0/1:USER5不/执行快捷宏指令调用(+4)"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "3320",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "工作灯键复用相关设置",
+        "description": "工作灯键复用相关设置"
+      },
+      {
+        "title": "WLSC 0/1:工作灯用作主轴1锁紧,无效/有效",
+        "description": "WLSC 0/1:工作灯用作主轴1锁紧,无效/有效"
+      },
+      {
+        "title": "WLOS 0/1:工作灯用作选择停,无效/有效",
+        "description": "WLOS 0/1:工作灯用作选择停,无效/有效"
+      },
+      {
+        "title": "WLS2 0/1:工作灯用作第2主轴启停,无效/有效",
+        "description": "WLS2 0/1:工作灯用作第2主轴启停,无效/有效"
+      },
+      {
+        "title": "WLS2C 0/1:工作灯用作主轴2锁紧,无效/有效",
+        "description": "WLS2C 0/1:工作灯用作主轴2锁紧,无效/有效"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "WLEN 0/1:工作灯功能无效/有效",
+        "description": "WLEN 0/1:工作灯功能无效/有效"
+      }
+    ]
+  },
+  {
+    "index": "3330",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "外接启动输入口",
+        "description": "外接启动输入口"
+      }
+    ]
+  },
+  {
+    "index": "3331",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "外接保持输入口",
+        "description": "外接保持输入口"
+      }
+    ]
+  },
+  {
+    "index": "3332",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "启动信号最小时间",
+        "description": "启动信号最小时间"
+      }
+    ]
+  },
+  {
+    "index": "3333",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "启动信号时间上限",
+        "description": "启动信号时间上限"
+      }
+    ]
+  },
+  {
+    "index": "3335",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "三位开关主轴停输入口",
+        "description": "三位开关主轴停输入口"
+      }
+    ]
+  },
+  {
+    "index": "3336",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "各轴手动移动键自定义(0:无,1~3:XYZ,4~6:ABC)",
+        "description": "各轴手动移动键自定义(0:无,1~3:XYZ,4~6:ABC)"
+      }
+    ]
+  },
+  {
+    "index": "3340",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "M08输出口",
+        "description": "M08输出口"
+      }
+    ]
+  },
+  {
+    "index": "3341",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "M08延时时间(ms)",
+        "description": "M08延时时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "3350",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "防护门输入口",
+        "description": "防护门输入口"
+      }
+    ]
+  },
+  {
+    "index": "3351",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "工作灯输出口",
+        "description": "工作灯输出口"
+      }
+    ]
+  },
+  {
+    "index": "3355",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "三色灯运行指示灯输出口",
+        "description": "三色灯运行指示灯输出口"
+      }
+    ]
+  },
+  {
+    "index": "3356",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "三色灯报警指示灯输出口",
+        "description": "三色灯报警指示灯输出口"
+      }
+    ]
+  },
+  {
+    "index": "3357",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "三色灯停止指示灯输出口",
+        "description": "三色灯停止指示灯输出口"
+      }
+    ]
+  },
+  {
+    "index": "3360",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "进给倍率开关*1输入口",
+        "description": "进给倍率开关*1输入口"
+      }
+    ]
+  },
+  {
+    "index": "3361",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "进给倍率开关*2输入口",
+        "description": "进给倍率开关*2输入口"
+      }
+    ]
+  },
+  {
+    "index": "3362",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "进给倍率开关*4输入口",
+        "description": "进给倍率开关*4输入口"
+      }
+    ]
+  },
+  {
+    "index": "3363",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "进给倍率开关*8输入口",
+        "description": "进给倍率开关*8输入口"
+      }
+    ]
+  },
+  {
+    "index": "3465",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴倍率开关*1输入口",
+        "description": "主轴倍率开关*1输入口"
+      }
+    ]
+  },
+  {
+    "index": "3467",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴倍率开关*2输入口",
+        "description": "主轴倍率开关*2输入口"
+      }
+    ]
+  },
+  {
+    "index": "3468",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴倍率开关*4输入口",
+        "description": "主轴倍率开关*4输入口"
+      }
+    ]
+  },
+  {
+    "index": "3469",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴倍率开关*8输入口",
+        "description": "主轴倍率开关*8输入口"
+      }
+    ]
+  },
+  {
+    "index": "3470",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "液压启动相关设置",
+        "description": "液压启动相关设置"
+      },
+      {
+        "title": "STKHP 0/1:循环启动时,不检测/检测液压启动",
+        "description": "STKHP 0/1:循环启动时,不检测/检测液压启动"
+      },
+      {
+        "title": "SPKHP 0/1:主轴启动时,不检测/检测液压启动",
+        "description": "SPKHP 0/1:主轴启动时,不检测/检测液压启动"
+      },
+      {
+        "title": "HPPO 0/1:上电时,不/启动液压",
+        "description": "HPPO 0/1:上电时,不/启动液压"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "U1HP 0/1:User1键用作液压控制,关闭/打开",
+        "description": "U1HP 0/1:User1键用作液压控制,关闭/打开"
+      }
+    ]
+  },
+  {
+    "index": "3471",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "液压启动输出口",
+        "description": "液压启动输出口"
+      }
+    ]
+  },
+  {
+    "index": "3472",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "外接液压启动输入口",
+        "description": "外接液压启动输入口"
+      }
+    ]
+  },
+  {
+    "index": "3473",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "液压启动完成输输入口",
+        "description": "液压启动完成输输入口"
+      }
+    ]
+  },
+  {
+    "index": "3474",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "液压启动完成信号等待时间上限(ms)",
+        "description": "液压启动完成信号等待时间上限(ms)"
+      }
+    ]
+  },
+  {
+    "index": "3480",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "排屑相关设置",
+        "description": "排屑相关设置"
+      },
+      {
+        "title": "CHPRST 0/1:复位时,不关闭/关闭排屑器",
+        "description": "CHPRST 0/1:复位时,不关闭/关闭排屑器"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "U1CHP 0/1:User1键用排屑器控制,关闭/打开",
+        "description": "U1CHP 0/1:User1键用排屑器控制,关闭/打开"
+      }
+    ]
+  },
+  {
+    "index": "3481",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "排屑器正转输出口",
+        "description": "排屑器正转输出口"
+      }
+    ]
+  },
+  {
+    "index": "3482",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "排屑器反转输出口",
+        "description": "排屑器反转输出口"
+      }
+    ]
+  },
+  {
+    "index": "3483",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "外接排屑器正转输入口",
+        "description": "外接排屑器正转输入口"
+      }
+    ]
+  },
+  {
+    "index": "3484",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "外接排屑器反转输入口",
+        "description": "外接排屑器反转输入口"
+      }
+    ]
+  },
+  {
+    "index": "3485",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "外接排屑器停止输入口",
+        "description": "外接排屑器停止输入口"
+      }
+    ]
+  },
+  {
+    "index": "3486",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "排屑器输出时间(ms)",
+        "description": "排屑器输出时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "3487",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "排屑器自动正转间隔时间(ms)",
+        "description": "排屑器自动正转间隔时间(ms)"
+      }
+    ]
+  },
+  {
+    "index": "5000",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "Thread settings",
+        "description": "Thread settings"
+      }
+    ]
+  },
+  {
+    "index": "5010",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "螺纹加工速度上限(=0:不检查)",
+        "description": "螺纹加工速度上限(=0:不检查)"
+      }
+    ]
+  },
+  {
+    "index": "5011",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "螺纹加工时速度平滑系数(0~100),0:不滤波",
+        "description": "螺纹加工时速度平滑系数(0~100),0:不滤波"
+      }
+    ]
+  },
+  {
+    "index": "5012",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "螺纹加工各轴加减速时间常数(ms)",
+        "description": "螺纹加工各轴加减速时间常数(ms)"
+      }
+    ]
+  },
+  {
+    "index": "5015",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "螺纹退尾加减速的低速FL",
+        "description": "螺纹退尾加减速的低速FL"
+      }
+    ]
+  },
+  {
+    "index": "5016",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "螺纹退尾长度系数(单位:0.1导程)",
+        "description": "螺纹退尾长度系数(单位:0.1导程)"
+      }
+    ]
+  },
+  {
+    "index": "5017",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "螺纹退尾角度",
+        "description": "螺纹退尾角度"
+      }
+    ]
+  },
+  {
+    "index": "5025",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "螺纹加工主轴转速下限(rpm)(=0:不检查)",
+        "description": "螺纹加工主轴转速下限(rpm)(=0:不检查)"
+      }
+    ]
+  },
+  {
+    "index": "5026",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "螺纹加工时,主轴转速到达窗口范围(百分比)(=0:不检查)",
+        "description": "螺纹加工时,主轴转速到达窗口范围(百分比)(=0:不检查)"
+      }
+    ]
+  },
+  {
+    "index": "5027",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "螺纹加工等待时间上限(=0:忽略)",
+        "description": "螺纹加工等待时间上限(=0:忽略)"
+      }
+    ]
+  },
+  {
+    "index": "5030",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G76螺纹循环的最小切削量",
+        "description": "G76螺纹循环的最小切削量"
+      }
+    ]
+  },
+  {
+    "index": "5031",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G76螺纹循环的精切量",
+        "description": "G76螺纹循环的精切量"
+      }
+    ]
+  },
+  {
+    "index": "5032",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G76螺纹循环的精削重复次数Pm",
+        "description": "G76螺纹循环的精削重复次数Pm"
+      }
+    ]
+  },
+  {
+    "index": "5033",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G76螺纹循环的退尾长度系数Pr(单位:0.1导程)",
+        "description": "G76螺纹循环的退尾长度系数Pr(单位:0.1导程)"
+      }
+    ]
+  },
+  {
+    "index": "5034",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G76螺纹循环的刀尖角度Pa",
+        "description": "G76螺纹循环的刀尖角度Pa"
+      }
+    ]
+  },
+  {
+    "index": "5035",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G76螺纹循环的切削方式选择(0:单边,1:交错)",
+        "description": "G76螺纹循环的切削方式选择(0:单边,1:交错)"
+      }
+    ]
+  },
+  {
+    "index": "5036",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G76螺纹循环的起点类型选择(0:标准,1:牙尖和G92螺纹一致)",
+        "description": "G76螺纹循环的起点类型选择(0:标准,1:牙尖和G92螺纹一致)"
+      }
+    ]
+  },
+  {
+    "index": "5037",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G76螺纹循环时,进刀倾斜补偿角度",
+        "description": "G76螺纹循环时,进刀倾斜补偿角度"
+      }
+    ]
+  },
+  {
+    "index": "5100",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "固定循环相关设置",
+        "description": "固定循环相关设置"
+      },
+      {
+        "title": "HSDC 0/1:G83和G87为深孔钻削循环/高速深孔",
+        "description": "HSDC 0/1:G83和G87为深孔钻削循环/高速深孔"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "5200",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "刚性攻丝相关设置",
+        "description": "刚性攻丝相关设置"
+      },
+      {
+        "title": "HSTC 0/1:攻丝循环为深孔/高速攻丝循环",
+        "description": "HSTC 0/1:攻丝循环为深孔/高速攻丝循环"
+      },
+      {
+        "title": "TPSA 0/1:编码器变频攻丝时,等待主轴转速到达",
+        "description": "TPSA 0/1:编码器变频攻丝时,等待主轴转速到达"
+      },
+      {
+        "title": "RTPA 0/1:刚性攻丝时,不等待/等待位置到达",
+        "description": "RTPA 0/1:刚性攻丝时,不等待/等待位置到达"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "5235",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "攻丝时,各轴系统加速度回路增益",
+        "description": "攻丝时,各轴系统加速度回路增益"
+      }
+    ]
+  },
+  {
+    "index": "5237",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "攻丝反向时,各轴补偿距离(>0:进给方向)",
+        "description": "攻丝反向时,各轴补偿距离(>0:进给方向)"
+      }
+    ]
+  },
+  {
+    "index": "5240",
+    "type": "sys",
+    "lines": "123",
+    "param": [
+      {
+        "title": "攻丝时,主轴加减速时间常数",
+        "description": "攻丝时,主轴加减速时间常数"
+      }
+    ]
+  },
+  {
+    "index": "5241",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "攻丝时,各轴加减速时间常数(ms)",
+        "description": "攻丝时,各轴加减速时间常数(ms)"
+      }
+    ]
+  },
+  {
+    "index": "5246",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "各轴攻丝到位检测距离",
+        "description": "各轴攻丝到位检测距离"
+      }
+    ]
+  },
+  {
+    "index": "5300",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "多边形加工相关设置",
+        "description": "多边形加工相关设置"
+      },
+      {
+        "title": "PLPC 0/1:主轴位置方式时:从动轴控制通过主轴编码器反馈/主轴坐标位置",
+        "description": "PLPC 0/1:主轴位置方式时:从动轴控制通过主轴编码器反馈/主轴坐标位置"
+      },
+      {
+        "title": "PLFS 0/1:工件轴位置控制方式:位置同步输出/刀具跟随方式",
+        "description": "PLFS 0/1:工件轴位置控制方式:位置同步输出/刀具跟随方式"
+      },
+      {
+        "title": "PLSD 0/1:从动轴正向/负向运动",
+        "description": "PLSD 0/1:从动轴正向/负向运动"
+      },
+      {
+        "title": "PLES 0/1:编码器反馈方式时,刀具轴不/进行切削速度平滑",
+        "description": "PLES 0/1:编码器反馈方式时,刀具轴不/进行切削速度平滑"
+      },
+      {
+        "title": "PLRS 0/1:急停或复位时,从动轴同步主轴停止/按加减速停止",
+        "description": "PLRS 0/1:急停或复位时,从动轴同步主轴停止/按加减速停止"
+      },
+      {
+        "title": "PLTM 0/1:位置控制方式时:工件轴/刀具轴为主动轴",
+        "description": "PLTM 0/1:位置控制方式时:工件轴/刀具轴为主动轴"
+      },
+      {
+        "title": "保留",
+        "description": "保留"
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "5310",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "P对应的主轴号(通道内)",
+        "description": "P对应的主轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5311",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "Q对应的从动轴号(通道内)",
+        "description": "Q对应的从动轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5312",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "从动轴轴旋转转速上限(rpm)",
+        "description": "从动轴轴旋转转速上限(rpm)"
+      }
+    ]
+  },
+  {
+    "index": "5313",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "从动轴加减速时间常数",
+        "description": "从动轴加减速时间常数"
+      }
+    ]
+  },
+  {
+    "index": "5314",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "从动轴速度平滑系数(0~100),0:不滤波",
+        "description": "从动轴速度平滑系数(0~100),0:不滤波"
+      }
+    ]
+  },
+  {
+    "index": "5315",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "主轴转速到达检测窗口范围(百分比)",
+        "description": "主轴转速到达检测窗口范围(百分比)"
+      }
+    ]
+  },
+  {
+    "index": "5315",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "等待主轴转速到达时间上限(=0:忽略)",
+        "description": "等待主轴转速到达时间上限(=0:忽略)"
+      }
+    ]
+  },
+  {
+    "index": "5400",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "退回相关设置",
+        "description": "退回相关设置"
+      },
+      {
+        "title": "RSRT 0/1:复位或急停时,不执行/执行退出动作",
+        "description": "RSRT 0/1:复位或急停时,不执行/执行退出动作"
+      },
+      {
+        "title": "RTRS 0/1:复位执行退回时,先复位PLC/后复位PLC",
+        "description": "RTRS 0/1:复位执行退回时,先复位PLC/后复位PLC"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "5410",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "各轴退回速度(mm/min)",
+        "description": "各轴退回速度(mm/min)"
+      }
+    ]
+  },
+  {
+    "index": "5411",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "各轴退回距离(mm)",
+        "description": "各轴退回距离(mm)"
+      }
+    ]
+  },
+  {
+    "index": "5412",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "各轴退回时间常数(ms)",
+        "description": "各轴退回时间常数(ms)"
+      }
+    ]
+  },
+  {
+    "index": "5420",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "轴速度控制相关设置",
+        "description": "轴速度控制相关设置"
+      },
+      {
+        "title": "ASK 0/1:M26M27参数使用P或Q/K+P",
+        "description": "ASK 0/1:M26M27参数使用P或Q/K+P"
+      },
+      {
+        "title": "M27Z 0/1:M27自由停/停在0位置",
+        "description": "M27Z 0/1:M27自由停/停在0位置"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "5430",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "M26M27功能P参数对应的轴号(通道内)",
+        "description": "M26M27功能P参数对应的轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5431",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "M26M27功能Q参数对应的轴号(通道内)",
+        "description": "M26M27功能Q参数对应的轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5432",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "各轴速度控制时K编号",
+        "description": "各轴速度控制时K编号"
+      }
+    ]
+  },
+  {
+    "index": "5435",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "轴速度控制加减速时间常数",
+        "description": "轴速度控制加减速时间常数"
+      }
+    ]
+  },
+  {
+    "index": "5510",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G31跳过功能默认输入口",
+        "description": "G31跳过功能默认输入口"
+      }
+    ]
+  },
+  {
+    "index": "5511",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G31跳过功能负载值",
+        "description": "G31跳过功能负载值"
+      }
+    ]
+  },
+  {
+    "index": "5515",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G160跳过功能负载值",
+        "description": "G160跳过功能负载值"
+      }
+    ]
+  },
+  {
+    "index": "5516",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G160跳过功能跟随误差(0:不检查)",
+        "description": "G160跳过功能跟随误差(0:不检查)"
+      }
+    ]
+  },
+  {
+    "index": "5520",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "扭矩控制相关设置",
+        "description": "扭矩控制相关设置"
+      },
+      {
+        "title": "RSTQ 0/1:复位或急停时,不/退出扭矩控制模式",
+        "description": "RSTQ 0/1:复位或急停时,不/退出扭矩控制模式"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "5521",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "扭矩控制时,默认速度",
+        "description": "扭矩控制时,默认速度"
+      }
+    ]
+  },
+  {
+    "index": "5522",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "电机最大转矩对应的伺服负载值",
+        "description": "电机最大转矩对应的伺服负载值"
+      }
+    ]
+  },
+  {
+    "index": "5530",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "极坐标插补直线轴轴号(通道内)",
+        "description": "极坐标插补直线轴轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5531",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "极坐标插补的旋转轴轴号(通道内)",
+        "description": "极坐标插补的旋转轴轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5532",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "极坐标插补的假想轴方向的偏移量",
+        "description": "极坐标插补的假想轴方向的偏移量"
+      }
+    ]
+  },
+  {
+    "index": "5600",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "进给轴同步控制相关设置",
+        "description": "进给轴同步控制相关设置"
+      },
+      {
+        "title": "ASE 0/1:轴同步功能无效/有效",
+        "description": "ASE 0/1:轴同步功能无效/有效"
+      },
+      {
+        "title": "ASMC 0/1:轴同步时,不/通过机床坐标检测最大误差值",
+        "description": "ASMC 0/1:轴同步时,不/通过机床坐标检测最大误差值"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "5610",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "进给轴同步控制中的主控轴的轴号(系统内)",
+        "description": "进给轴同步控制中的主控轴的轴号(系统内)"
+      }
+    ]
+  },
+  {
+    "index": "5611",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "进给轴同步控制时,机床坐标检测的最大误差值",
+        "description": "进给轴同步控制时,机床坐标检测的最大误差值"
+      }
+    ]
+  },
+  {
+    "index": "5660",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "各轴轴交换指令的编号",
+        "description": "各轴轴交换指令的编号"
+      }
+    ]
+  },
+  {
+    "index": "5910",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "执行第1位置开关功能的轴号(通道内)",
+        "description": "执行第1位置开关功能的轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5911",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "执行第2位置开关功能的轴号(通道内)",
+        "description": "执行第2位置开关功能的轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5912",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "执行第3位置开关功能的轴号(通道内)",
+        "description": "执行第3位置开关功能的轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5913",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "执行第4位置开关功能的轴号(通道内)",
+        "description": "执行第4位置开关功能的轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5914",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "执行第5位置开关功能的轴号(通道内)",
+        "description": "执行第5位置开关功能的轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5915",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "执行第6位置开关功能的轴号(通道内)",
+        "description": "执行第6位置开关功能的轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5916",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "执行第7位置开关功能的轴号(通道内)",
+        "description": "执行第7位置开关功能的轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5917",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "执行第8位置开关功能的轴号(通道内)",
+        "description": "执行第8位置开关功能的轴号(通道内)"
+      }
+    ]
+  },
+  {
+    "index": "5930",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第1位置开关范围的最大值",
+        "description": "第1位置开关范围的最大值"
+      }
+    ]
+  },
+  {
+    "index": "5931",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第2位置开关范围的最大值",
+        "description": "第2位置开关范围的最大值"
+      }
+    ]
+  },
+  {
+    "index": "5932",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第3位置开关范围的最大值",
+        "description": "第3位置开关范围的最大值"
+      }
+    ]
+  },
+  {
+    "index": "5933",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第4位置开关范围的最大值",
+        "description": "第4位置开关范围的最大值"
+      }
+    ]
+  },
+  {
+    "index": "5934",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第5位置开关范围的最大值",
+        "description": "第5位置开关范围的最大值"
+      }
+    ]
+  },
+  {
+    "index": "5935",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第6位置开关范围的最大值",
+        "description": "第6位置开关范围的最大值"
+      }
+    ]
+  },
+  {
+    "index": "5936",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第7位置开关范围的最大值",
+        "description": "第7位置开关范围的最大值"
+      }
+    ]
+  },
+  {
+    "index": "5937",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第8位置开关范围的最大值",
+        "description": "第8位置开关范围的最大值"
+      }
+    ]
+  },
+  {
+    "index": "5950",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第1位置开关范围的最小值",
+        "description": "第1位置开关范围的最小值"
+      }
+    ]
+  },
+  {
+    "index": "5951",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第2位置开关范围的最小值",
+        "description": "第2位置开关范围的最小值"
+      }
+    ]
+  },
+  {
+    "index": "5952",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第3位置开关范围的最小值",
+        "description": "第3位置开关范围的最小值"
+      }
+    ]
+  },
+  {
+    "index": "5953",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第4位置开关范围的最小值",
+        "description": "第4位置开关范围的最小值"
+      }
+    ]
+  },
+  {
+    "index": "5954",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第5位置开关范围的最小值",
+        "description": "第5位置开关范围的最小值"
+      }
+    ]
+  },
+  {
+    "index": "5955",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第6位置开关范围的最小值",
+        "description": "第6位置开关范围的最小值"
+      }
+    ]
+  },
+  {
+    "index": "5956",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第7位置开关范围的最小值",
+        "description": "第7位置开关范围的最小值"
+      }
+    ]
+  },
+  {
+    "index": "5957",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "第8位置开关范围的最小值",
+        "description": "第8位置开关范围的最小值"
+      }
+    ]
+  },
+  {
+    "index": "9000",
+    "type": "bin",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序相关设置",
+        "description": "宏程序相关设置"
+      },
+      {
+        "title": "TCS 0/1:换刀调用子程序功能关闭/开放",
+        "description": "TCS 0/1:换刀调用子程序功能关闭/开放"
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      },
+      {
+        "title": "",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "index": "9010",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "换刀调用的子程序号",
+        "description": "换刀调用的子程序号"
+      }
+    ]
+  },
+  {
+    "index": "9020",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G代码宏程序调用个数",
+        "description": "G代码宏程序调用个数"
+      }
+    ]
+  },
+  {
+    "index": "9021",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "G代码子程序调用的开头程序号",
+        "description": "G代码子程序调用的开头程序号"
+      }
+    ]
+  },
+  {
+    "index": "9022",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的G代码号0",
+        "description": "宏程序调用的G代码号0"
+      }
+    ]
+  },
+  {
+    "index": "9023",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的G代码号1",
+        "description": "宏程序调用的G代码号1"
+      }
+    ]
+  },
+  {
+    "index": "9024",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的G代码号2",
+        "description": "宏程序调用的G代码号2"
+      }
+    ]
+  },
+  {
+    "index": "9025",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的G代码号3",
+        "description": "宏程序调用的G代码号3"
+      }
+    ]
+  },
+  {
+    "index": "9026",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的G代码号4",
+        "description": "宏程序调用的G代码号4"
+      }
+    ]
+  },
+  {
+    "index": "9027",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的G代码号5",
+        "description": "宏程序调用的G代码号5"
+      }
+    ]
+  },
+  {
+    "index": "9028",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的G代码号6",
+        "description": "宏程序调用的G代码号6"
+      }
+    ]
+  },
+  {
+    "index": "9029",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的G代码号7",
+        "description": "宏程序调用的G代码号7"
+      }
+    ]
+  },
+  {
+    "index": "9030",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的G代码号8",
+        "description": "宏程序调用的G代码号8"
+      }
+    ]
+  },
+  {
+    "index": "9031",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的G代码号9",
+        "description": "宏程序调用的G代码号9"
+      }
+    ]
+  },
+  {
+    "index": "9040",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "M代码子程序调用个数",
+        "description": "M代码子程序调用个数"
+      }
+    ]
+  },
+  {
+    "index": "9041",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "M代码子程序调用的开头程序号",
+        "description": "M代码子程序调用的开头程序号"
+      }
+    ]
+  },
+  {
+    "index": "9042",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "子程序调用的M代码号0",
+        "description": "子程序调用的M代码号0"
+      }
+    ]
+  },
+  {
+    "index": "9043",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "子程序调用的M代码号1",
+        "description": "子程序调用的M代码号1"
+      }
+    ]
+  },
+  {
+    "index": "9044",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "子程序调用的M代码号2",
+        "description": "子程序调用的M代码号2"
+      }
+    ]
+  },
+  {
+    "index": "9045",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "子程序调用的M代码号3",
+        "description": "子程序调用的M代码号3"
+      }
+    ]
+  },
+  {
+    "index": "9046",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "子程序调用的M代码号4",
+        "description": "子程序调用的M代码号4"
+      }
+    ]
+  },
+  {
+    "index": "9047",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "子程序调用的M代码号5",
+        "description": "子程序调用的M代码号5"
+      }
+    ]
+  },
+  {
+    "index": "9048",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "子程序调用的M代码号6",
+        "description": "子程序调用的M代码号6"
+      }
+    ]
+  },
+  {
+    "index": "9049",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "子程序调用的M代码号7",
+        "description": "子程序调用的M代码号7"
+      }
+    ]
+  },
+  {
+    "index": "9050",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "子程序调用的M代码号8",
+        "description": "子程序调用的M代码号8"
+      }
+    ]
+  },
+  {
+    "index": "9051",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "子程序调用的M代码号9",
+        "description": "子程序调用的M代码号9"
+      }
+    ]
+  },
+  {
+    "index": "9060",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "M代码宏程序调用个数",
+        "description": "M代码宏程序调用个数"
+      }
+    ]
+  },
+  {
+    "index": "9061",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "M代码宏程序调用的开头程序号",
+        "description": "M代码宏程序调用的开头程序号"
+      }
+    ]
+  },
+  {
+    "index": "9062",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的M代码号0",
+        "description": "宏程序调用的M代码号0"
+      }
+    ]
+  },
+  {
+    "index": "9063",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的M代码号1",
+        "description": "宏程序调用的M代码号1"
+      }
+    ]
+  },
+  {
+    "index": "9064",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的M代码号2",
+        "description": "宏程序调用的M代码号2"
+      }
+    ]
+  },
+  {
+    "index": "9065",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的M代码号3",
+        "description": "宏程序调用的M代码号3"
+      }
+    ]
+  },
+  {
+    "index": "9066",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的M代码号4",
+        "description": "宏程序调用的M代码号4"
+      }
+    ]
+  },
+  {
+    "index": "9067",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的M代码号5",
+        "description": "宏程序调用的M代码号5"
+      }
+    ]
+  },
+  {
+    "index": "9068",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的M代码号6",
+        "description": "宏程序调用的M代码号6"
+      }
+    ]
+  },
+  {
+    "index": "9069",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的M代码号7",
+        "description": "宏程序调用的M代码号7"
+      }
+    ]
+  },
+  {
+    "index": "9070",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的M代码号8",
+        "description": "宏程序调用的M代码号8"
+      }
+    ]
+  },
+  {
+    "index": "9071",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "宏程序调用的M代码号9",
+        "description": "宏程序调用的M代码号9"
+      }
+    ]
+  },
+  {
+    "index": "9080",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "快捷宏指令调用的程序个数",
+        "description": "快捷宏指令调用的程序个数"
+      }
+    ]
+  },
+  {
+    "index": "9085",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "外接快捷宏调用入口0",
+        "description": "外接快捷宏调用入口0"
+      }
+    ]
+  },
+  {
+    "index": "9086",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "外接快捷宏调用入口1",
+        "description": "外接快捷宏调用入口1"
+      }
+    ]
+  },
+  {
+    "index": "9087",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "外接快捷宏调用入口2",
+        "description": "外接快捷宏调用入口2"
+      }
+    ]
+  },
+  {
+    "index": "9088",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "外接快捷宏调用入口3",
+        "description": "外接快捷宏调用入口3"
+      }
+    ]
+  },
+  {
+    "index": "9089",
+    "type": "sys",
+    "lines": "1",
+    "param": [
+      {
+        "title": "外接快捷宏调用入口4",
+        "description": "外接快捷宏调用入口4"
+      }
+    ]
+  }
+]

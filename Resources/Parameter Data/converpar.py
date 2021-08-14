@@ -1,13 +1,14 @@
 
 
 from os import stat
-
+import json
 
 inputFile = open("StrTbl.c","r")
-outputFile = open("parameter.cpp","w")
 state = 0
 old_state = -1
 parCount = 0
+paraJson =  {}
+outPut = []
 
 def ifdefCheck(txt):
     if -1 != txt.find("#if"):
@@ -27,39 +28,52 @@ def endifCheck(txt):
 
 
 def nameCheck(txt):
-    global parCount, state
+    global parCount, state, outPut,paraJson
 
     parCount = parCount-1
     posS = txt.find("(")
     posE = txt.rfind(")")
-    text = txt[posS + 1:posE]
+    text = txt[posS + 2:posE-1]
     if parCount % 2 == 1:
-        outputFile.write(text) #CN
-        if(parCount > 0):
-            outputFile.write(';')
+        txtJson = {
+            "title": text,
+            "description": text
+        }
+        paraJson["param"].append(txtJson)
     # else:
-    #     outputFile.write(text) #EN
-    #     if(parCount > 0):
-    #         outputFile.write(';')
+    #     txtJson = {
+    #         "title": text,
+    #         "description": text
+    #     }
+    #     paraJson["param"].append(txtJson)
     if(parCount <= 0):
         state = 0
-        outputFile.write('\n')
+        outPut.append(paraJson)
 
 def normalCheck(txt):
     if -1 != txt.find("//"):
         txts = txt.split("//")
-        if txts[0] == '' and txts[1].isdigit():
-            outputFile.write(txts[1] + ";")
-            global state
-            state = 1
+        if txts[0] == '' and -1 != txt.find(";"):
+            strs = txts[1].split(';')
+            if strs[0].isdigit():
+                assert strs[1] != ""
+                global paraJson 
+                paraJson = {
+                    "index" : strs[0],
+                    "type" : "sys",
+                    "lines" : strs[1],
+                    "param" : []
+                }
+                global state
+                state = 1
 
 def typeCheck(txt):
-    global parCount, state
+    global parCount, state, paraJson
     if -1 == txt.find("[9]"):
-        outputFile.write("SYS;")
+        paraJson["type"] = "sys"
         parCount = 1*2
     else :#位参数        
-        outputFile.write("BIN;")
+        paraJson["type"] = "bin"
         parCount = 9*2
     state = 2
 
@@ -83,6 +97,9 @@ def CheckLine(num, txt):
 while 1:
     lines = inputFile.readlines(10000)
     if not lines:
+        outputFile = open("SystemParameter.json","w")
+        outPut.sort(key = lambda x:x["index"])
+        outputFile.write(json.dumps(outPut,ensure_ascii=False))
         inputFile.close()
         outputFile.close()
         break

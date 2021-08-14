@@ -3066,7 +3066,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
     // 轴参数##AX
     //-------------------------------------------------------------------------
-//0001
+//0001;XYZA
 	//LG_STR nszParAxisSet[9][LG_NUM] =
     {CN("各轴相关设置") //300+
     EN("Axis unit settings")},
@@ -3086,7 +3086,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("HID 0/1:坐标轴显示/不显示")
     EN("HID 0/1:Axis show/hide")},
-//0002
+//0002;XYZA
 	//LG_STR nszParServoSet[9][LG_NUM] =
 	{CN("伺服/电机控制相关设置")
 	EN("Servo/Motor settings")},
@@ -3106,7 +3106,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-///0003
+//0003;XYZA
 	//LG_STR nszParFbServoSet[9][LG_NUM] =
 	{CN("伺服/电机反馈相关设置")
 	EN("Servo/Motor feedback settings")},
@@ -3127,27 +3127,27 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	{CN("")
 	EN("")},
 
-//0012
+//0012;XYZA
 	//LG_STR nszParAxisName[LG_NUM] =
 	{CN("各轴轴名称(1~3:XYZ,4~6:ABC,101:X1,165:XA)")
 	EN("Axis name(1~3:XYZ,4~6:ABC)")},
-//0013
+//0013;XYZA
      //LG_STR nszParAxisFixPt[LG_NUM] =
     {CN("各轴小数点位数")
      EN("Axis float point number")},
-//0014
+//0014;XYZA
     //LG_STR nszParAxisPhyNo[LG_NUM] =
 	{CN("各轴轴地址编号(物理编号)")
     EN("Axis physical address no.")},
-//0034
+//0034;XYZA
     //LG_STR nszParAxisPulseEncFbPort[LG_NUM] =
 	{CN("各轴脉冲编码器反馈口(非总线轴有效)")
     EN("Axis pulse encoder feedback port(Not bus axis)")},
-//0022
+//0022;XYZA
     //LG_STR nszParAxisMotorCmdPulseRes[LG_NUM] =
 	{CN("各轴电机一圈指令脉冲数")
     EN("Axis motor command pulse of a circle")},
-//0032
+//0032;XYZA
     //LG_STR nszParAxisEncCircleRes[LG_NUM] =
 	{CN("各轴电机一圈反馈脉冲数")
     EN("Axis motor feedback pulse of a circle")},
@@ -3159,7 +3159,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParAxisRotFbRes[LG_NUM] =
 	{CN("各轴(旋转轴时)反馈位置循环分辨率")
     EN("Rotation axis feedback resolution")},
-//0016
+//0016;XYZA
     //LG_STR nszParBasicAxisType[LG_NUM] =
 	{CN("各轴在基本坐标系下的坐标轴")
     EN("Setting of each axis in the basic coordinate")},
@@ -3168,43 +3168,43 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	//LG_STR nszParMaxJogF[LG_NUM] =
 	{CN("手动最大速度")
 	EN("Max. Jog Feed")},
-//0110
+//0110;XYZA
 	//LG_STR aszrRapidF[LG_NUM] =
 	{CN("G00快速速度(mm/min)")
 	EN("G00 rapid feed(mm/min)")},
-//0111
+//0111;XYZA
 	//LG_STR aszrRapidF0[LG_NUM] =
 	{CN("G00快速F0档速度(mm/min)")
 	EN("G00 rapid feed F0(mm/min)")},
-//0113
+//0113;XYZA
 	//LG_STR nszParRapidFL[LG_NUM] =
 	{CN("G00快速加减速时的低速FL(mm/min)")
 	EN("G00 rapid acc./dec low feed FL(mm/min)")},
-//0122
+//0122;XYZA
 	//LG_STR nszParAxisCutTimeCnst[LG_NUM] =
 	{CN("各轴切削加减速时间常数(ms)")
 	EN("Axis cut time const(ms)")},
-//0132
+//0132;XYZA
     //LG_STR nszParJogTimeCnst[LG_NUM] =
     {CN("手动进给加减速时间常数(ms)")
      EN("Acc./dec. time constant In Jog(ms)")},
-//0125
+//0125;XYZA
 	//LG_STR nszrDryRunF[LG_NUM] =
 	{CN("空运行速度(mm/min)")
 	EN("Dry run feed(mm/min)")},
-//0120
+//0120;XYZA
 	//LG_STR aszrCutF[LG_NUM] =
 	{CN("切削速度上限(mm/min)")
 	EN("Cut max feed(mm/min)")},
-//0131
+//0131;XYZA
 	//LG_STR aszrRapidJogF[LG_NUM] =
 	{CN("手动快速速度(mm/min)")
 	EN("Jog rapid feed(mm/min)")},
-//0130
+//0130;XYZA
 	//LG_STR aszrJogF[LG_NUM] =
 	{CN("手动速度(mm/min)")
 	EN("Jog Feed(mm/min)")},
-//0133
+//0133;XYZA
 	//LG_STR aszrJogFL[LG_NUM] =
 	{CN("手动加减速时的低速FL(mm/min)")
 	EN("Jog Acc./dec low feed FL(mm/min)")},
@@ -3212,7 +3212,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	//LG_STR nszParCutFL[LG_NUM] =
 	{CN("切削加减速时的低速FL(mm/min)")
 	EN("Cut Acc./dec low feed FL(mm/min)")},
-//0123
+//0123;XYZA
     //LG_STR nszParFeedOvMax[LG_NUM] =
     {CN("自动切削倍率输入上限")
      EN("Feed override max")},
@@ -3220,75 +3220,75 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	//LG_STR aszrAxisCutF[LG_NUM] =
 	{CN("各轴最大切削速度(mm/min)")
 	EN("Cut feed of axis(mm/min)")},
-//0112
+//0112;XYZA
 	//LG_STR aszwRapidTimeCnst[LG_NUM] =
 	{CN("G00快速加减速时间常数(ms)")
 	EN("G00 rapid time const(ms)")},
-//0114
+//0114;XYZA
 	//LG_STR aszwRapidJerkTime[LG_NUM] =
 	{CN("G00快速加加速时间(ms)")
 	EN("G00 rapid jerk time(ms)")},
-//0121
+//0121;XYZA
 	//LG_STR aszwCutTimeCnst[LG_NUM] =
 	{CN("切削加减速时间常数(ms)")
 	EN("Cut feed time const(ms)")},
-//0140
+//0140;XYZA
     //LG_STR nszParRotAxisSpeedRatio[LG_NUM] =
     {CN("旋转轴速度增减速系数")
      EN("Rotation axis speed ratio")},
-//0141
+//0141;XYZA
     //LG_STR nszParSCurvePostSpeedSmoothRatio[LG_NUM] =
     {CN("S型后速度平滑系数")
      EN("S-Curve post-speed-smooth ratio")},
-//0020
+//0020;XYZA
 	//LG_STR nszParAxisCMR[LG_NUM] =
 	{CN("各轴指令电子齿轮比倍乘系数(从动轮侧齿数)")
 	EN("Axis CMR(slave gear)")},
-//0021
+//0021;XYZA
 	//LG_STR nszParAxisCMD[LG_NUM] =
 	{CN("各轴指令电子齿轮比分频系数(电机侧齿数)")
 	EN("Axis CMD(motor gear))")},
-//0030
+//0030;XYZA
 	//LG_STR nszParAxisMulFb[LG_NUM] =
 	{CN("各轴反馈输入倍乘系数(编码器侧齿数)")
 	EN("Axis feedback multiplier(encoder gear)")},
-//0031
+//0031;XYZA
 	//LG_STR nszParAxisDivFb[LG_NUM] =
 	{CN("各轴反馈输入分频系数(从动轴侧齿数)")
 	EN("Axis feedback divisor(slave gear)")},
-//0060
+//0060;XYZA
     //LG_STR nszParDAlmDI[LG_NUM] =
     {CN("各轴伺服报警输入口")
     EN("Servo alarm input port")},
-//0061
+//0061;XYZA
     //LG_STR nszParDEnableDO[LG_NUM] =
     {CN("各轴伺服使能输出口")
     EN("Servo Enable output port")},
-//0062
+//0062;XYZA
     //LG_STR nszParDEnableP[LG_NUM] =
 	{CN("各轴使能打开或关闭指令的P编号")
 	EN("Servo Enable or disable command P No.")},
-//0063
+//0063;XYZA
     //LG_STR nszParMBrakeDO[LG_NUM] =
     {CN("各轴电机开抱闸输出口")
     EN("Axis brake-off output port")},
-//0064
+//0064;XYZA
     //LG_STR nszParCoorSetupDlyTime[LG_NUM] =
     {CN("各轴伺服使能时,坐标建立延时(ms)")
     EN("Axis coordinate setup delay when servo-on from enable")},
-//0065
+//0065;XYZA
     //LG_STR nszParMBrakeDlyTime[LG_NUM] =
     {CN("各轴伺服使能到开抱闸延时(ms)")
     EN("Axis brake-off delay from enable")},
-//0050
+//0050;XYZA
     //LG_STR nszParAxisPosLoopGain[LG_NUM] =
     {CN("各轴伺服位置环增益(KP)(1/s)")
     EN("Axis servo position loop gain(KP)(1/s)")},
-//0070
+//0070;XYZA
     //LG_STR nszParRpdInPosDist[LG_NUM] =
     {CN("各轴G00到位检测距离")
     EN("Axis G00 in-position-dist")},
-//0071
+//0071;XYZA
     //LG_STR nszParCutInPosDist[LG_NUM] =
     {CN("各轴切削到位检测距离")
     EN("Axis cut in-position-dist")},
@@ -3296,11 +3296,11 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParMaxLoad[LG_NUM] =
     {CN("各轴最大负载上限")
     EN("Axis max load limit")},
-//0073
+//0073;XYZA
     //LG_STR nszParCutLoadMax[LG_NUM] =
     {CN("各轴切削时的负载上限")
     EN("Axis cut load max")},
-//0074
+//0074;XYZA
     //LG_STR nszParLoadMaxTime[LG_NUM] =
     {CN("各轴到达负载上限最大时间(ms)")
     EN("Axis cut load max time(ms)")},
@@ -3308,7 +3308,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
     // 螺距/间隙补偿##COMPS
     //-------------------------------------------------------------------------
-//0200
+//0200;1
     //LG_STR nszParCompNcSet[9][LG_NUM] =
     {CN("螺距/间隙补偿系统设置")
     EN("Pitch error/Gap compensation Nc settings")},
@@ -3328,7 +3328,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//0201
+//0201;XYZA
     //LG_STR nszParCompAxisSet[9][LG_NUM] =
     {CN("反向间隙补偿/螺距补偿各轴设置")
      EN("Pitch error/Gap compensation axis settings")},
@@ -3348,51 +3348,51 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//0210
+//0210;XYZA
     //LG_STR nszParGapCompVal[LG_NUM] =
     {CN("反向间隙补偿量(mm)")
      EN("Gap compensation value(mm)")},
-//0211
+//0211;XYZA
     //LG_STR nszParGapCompMaxF[LG_NUM] =
     {CN("反向间隙速度上限")
      EN("Gap compensation max feed")},
-//0213
+//0213;XYZA
     //LG_STR nszParGapCompFL[LG_NUM] =
     {CN("反向间隙加速时的起始速度FL")
      EN("Gap compensation start feed")},
-//0212
+//0212;XYZA
     //LG_STR nszParGapCompTCnst[LG_NUM] =
     {CN("反向间隙加减速时间常数(ms)")
      EN("Gap compensation time constant(ms)")},
-//0220
+//0220;XYZA
     //LG_STR nszParPitchCompNoRef[LG_NUM] =
     {CN("参考点的螺距补偿点号")
      EN("Ref-position pitch compensation number")},
-//0221
+//0221;XYZA
     //LG_STR nszParPitchCompNoSmallest[LG_NUM] =
     {CN("最小位置的螺距补偿点号")
      EN("Smallest pitch compensation position number")},
-//0222
+//0222;XYZA
     //LG_STR nszParPitchCompNoLargest[LG_NUM] =
     {CN("最大位置的螺距补偿点号")
      EN("Largest pitch compensation position number")},
-//0224
+//0224;XYZA
     //LG_STR nszParPitchCompInterval[LG_NUM] =
     {CN("螺距补偿补偿点间隔距离")
      EN("Interval between pitch error compensation positions")},
-//0223
+//0223;XYZA
     //LG_STR nszParPitchCompRatio[LG_NUM] =
     {CN("螺距补偿补偿倍率百分比")
      EN("Pitch Compensation ratio percent")},
-//0225
+//0225;XYZA
     //LG_STR nszParPitchCompMaxF[LG_NUM] =
     {CN("螺距补偿速度上限")
      EN("Pitch compensation max feed")},
-//0227
+//0227;XYZA
     //LG_STR nszParPitchCompFL[LG_NUM] =
     {CN("螺距补偿起始速度FL")
      EN("Pitch compensation start feed")},
-//0226
+//0226;XYZA
     //LG_STR nszParPitchCompTCnst[LG_NUM] =
     {CN("螺距补偿加减速时间常数(ms)")
      EN("Pitch compensation time constant(ms)")},
@@ -3400,7 +3400,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
     // 回零##REF ##HOME
     //-------------------------------------------------------------------------
-//0300
+//0300;XYZA
 	//LG_STR nszParChnRefSet[9][LG_NUM] =
     {CN("回零相关设置")
     EN("Zero return settings")},
@@ -3420,7 +3420,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//0400
+//0400;XYZA
 	//LG_STR nszParCoorSysSet[9][LG_NUM] =
 	{CN("坐标系相关设置")
 	EN("coor. settings")},
@@ -3440,7 +3440,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//0302
+//0302;XYZA
 	//LG_STR nszParAxisRefSet[9][LG_NUM] =
     {CN("各轴回零相关设置")
     EN("Axis zero return settings")},
@@ -3460,19 +3460,19 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//0310
+//0310;XYZA
 	//LG_STR nszParRefType[LG_NUM] =
 	{CN("各轴回零方式(0:A,1:B,2:C,3:D)")
 	EN("Home type(0:A,1:B,2:C,3:D)")},
-//0311
+//0311;XYZA
 	//LG_STR nszParRefF[LG_NUM] =
 	{CN("各轴回零快速速度(mm/min)")
 	EN("Home rapid feed(mm/min)")},
-//0313
+//0313;XYZA
 	//LG_STR nszParRefFL[LG_NUM] =
 	{CN("各轴回零加减速时的低速FL(mm/min)")
 	EN("Home low feed(mm/min)")},
-//0312
+//0312;XYZA
 	//LG_STR nszParRefTimeCnst[LG_NUM] =
 	{CN("各轴回零加减速时间常数(ms)")
 	EN("Axis Home time const(ms)")},
@@ -3480,43 +3480,43 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	//LG_STR nszParRefPosCoor[LG_NUM] =
 	{CN("参考点机床机床坐标")
 	EN("value of the ref. machine position")},
-//0411
+//0411;XYZA
 	//LG_STR nszParRefPosCoor2[LG_NUM] =
 	{CN("第二参考点机床坐标")
 	EN("value of the 2 ref. machine position")},
-//0412
+//0412;XYZA
 	//LG_STR nszParRefPosCoor3[LG_NUM] =
 	{CN("第三参考点机床坐标")
 	EN("value of the 3 ref. machine position")},
-//0413
+//0413;XYZA
 	//LG_STR nszParRefPosCoor4[LG_NUM] =
 	{CN("第四参考点机床坐标")
 	EN("value of the 4 ref. machine position")},
-//0410
+//0410;XYZA
 	//LG_STR nszParRefPosAbs[LG_NUM] =
 	{CN("各轴回零后自动设定的绝对坐标值")
 	EN("ref. postion Absolute Coor.")},
-//0023
+//0023;XYZA
 	//LG_STR nszParAxisLeadLen[LG_NUM] =
 	{CN("各轴作为直线轴时,丝杆导程")
 	EN("Axis screw lead when linear axis")},
-//0024
+//0024;XYZA
 	//LG_STR nszParAxisRotAmount[LG_NUM] =
 	{CN("各轴作为旋转轴时,一周移动量")
 	EN("Move amount of one rotation when rotation axis")},
-//0025
+//0025;XYZA
 	//LG_STR nszParAxisSpeedMax[LG_NUM] =
 	{CN("各轴电机转速上限(rpm)")
 	EN("Axis motor rotate speed max(rpm)")},
-//0314
+//0314;XYZA
     //LG_STR nszParDecDI[LG_NUM] =
     {CN("各轴回零减速开关输入口")
     EN("Home Dec. input port")},
-//0320
+//0320;XYZA
     //LG_STR nszParDecToPcMin[LG_NUM] =
     {CN("各轴减速开关到零点最小距离")
     EN("Distance from DEC to PC min.")},
-//0321
+//0321;XYZA
     //LG_STR nszParDecToPcMax[LG_NUM] =
     {CN("各轴减速开关到零点最大距离")
     EN("Distance from DEC to PC max.")},
@@ -3543,7 +3543,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//0501
+//0501;XYZA
 	//LG_STR nszParAxisLimSet[9][LG_NUM] =
 	{CN("各轴限位设置")
 	EN("Axes position limit setting")},
@@ -3563,7 +3563,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("PHLC 0/1:Positive hard limit open/close type")},
 	{CN("NHLC 0/1:负向硬件限位为常开/常闭")
 	EN("PHLC 0/1:Negtive hard limit open/close type")},
-//0502
+//0502;XYZA
 	//LG_STR nszParAxisLimSwSet[9][LG_NUM] =
 	{CN("各轴软限位开关设置")
 	EN("Axes position limit switch setting")},
@@ -3583,7 +3583,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//0503
+//0503;1
 	//LG_STR nszParAxisLimCtrlSet[9][LG_NUM] =
 	{CN("软限位控制相关设置")
 	EN("position limit control setting")},
@@ -3603,35 +3603,35 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//0510
+//0510;XYZA
 	//LG_STR nszParPosSoftLim1[LG_NUM] =
 	{CN("正向软限位坐标1")
 	EN("Positive soft limit positon 1")},
-//0511
+//0511;XYZA
 	//LG_STR nszParNegSoftLim1[LG_NUM] =
 	{CN("负向软限位坐标1")
 	EN("Negtive soft limit positon 1")},
-//0512
+//0512;XYZA
     //LG_STR nszParPosSoftLim2[LG_NUM] =
 	{CN("正向软限位坐标2")
 	EN("Positive soft limit positon 2")},
-//0513
+//0513;XYZA
 	//LG_STR nszParNegSoftLim2[LG_NUM] =
 	{CN("负向软限位坐标2")
 	EN("Negtive soft limit positon 2")},
-//0514
+//0514;XYZA
     //LG_STR nszParPosSoftLim3[LG_NUM] =
 	{CN("正向软限位坐标3")
 	EN("Positive soft limit positon 3")},
-//0515
+//0515;XYZA
 	//LG_STR nszParNegSoftLim3[LG_NUM] =
 	{CN("负向软限位坐标3")
 	EN("Negtive soft limit positon 3")},
-//0520
+//0520;XYZA
     //LG_STR nszParPHardLimDI[LG_NUM] =
     {CN("正向硬限位输入口")
     EN("Positive position limit input port")},
-//0521
+//0521;XYZA
     //LG_STR nszParNHardLimDI[LG_NUM] =
     {CN("负向硬限位输入口")
     EN("Negtive position limit input port")},
@@ -3659,7 +3659,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
      // 主轴参数##SP ##400
     //-------------------------------------------------------------------------
-//1000
+//1000;123
     //LG_STR nszParSpdlsSet[9][LG_NUM] =
     {CN("主轴相关通道设置")
      EN("Spindles settings")},
@@ -3679,7 +3679,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//1001
+//1001;123
     //LG_STR nszParEachSpdlSet[9][LG_NUM] =
     {CN("各主轴相关设置")
      EN("Spindle settings")},
@@ -3699,7 +3699,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//1002
+//1002;123
 	//LG_STR nszParSpdlInterlockSet[9][LG_NUM] =
 	{CN("主轴互锁相关设置")
 	EN("Spindle lock settings")},
@@ -3719,7 +3719,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//1003
+//1003;123
     //LG_STR nszParSpdlFbSet[9][LG_NUM] =
     {CN("各主轴/伺服反馈和输入相关设置")
      EN("Spindle feedback settings")},
@@ -3739,7 +3739,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("SCEZ 0/1:总线式主轴,不检测/检测零信号(需伺服支持)")
     EN("SCEZ 0/1:Bus spindle,NO/Check zero signal(Need servo support)")},
-//1004
+//1004;123
     //LG_STR nszParSpdlCsSet[9][LG_NUM] =
     {CN("各主轴速度/位置相关设置")
      EN("Spindle C/S settings")},
@@ -3759,7 +3759,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("CSPFR 0/1:Can/Can't execute rotate command when CS position mode")},
 	{CN("")
 	EN("")},
-//1005
+//1005;1
     //LG_STR nszParSpdlORSet[9][LG_NUM] =
     {CN("各主轴准停相关设置")
      EN("Spindle orientation settings")},
@@ -3779,7 +3779,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//1100
+//1100;123
     //LG_STR nszParSpdlLockSet[9][LG_NUM] =
     {CN("各主轴锁住相关设置")
      EN("Spindle Lock settings")},
@@ -3803,31 +3803,31 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	//LG_STR nszParSpdlChn[LG_NUM] =
 	{CN("各主轴所属通道号")
 	EN("Channel of spindle")},
-//1011
+//1011;123
     //LG_STR nszParSpdlType[LG_NUM] =
     {CN("各主轴类型(0:速度(DA或脉冲),1:定速换挡,2:位置,3:CS伺服主轴)")
     EN("Spindle type(0:Speed(DA OR pulse),1:Gear shift,2:Position,3:CS Spindle)")},
-//1012
+//1012;123
 	//LG_STR nszParSpdlDAPhyNo[LG_NUM] =
 	{CN("主轴速度控制时的输出地址编号(DA或脉冲信号的物理编号)")
 	EN("Phy No. of spindle in speed mode(DA OR pulse)")},
-//1013
+//1013;123
 	//LG_STR nszParSpdlCsAxisNo[LG_NUM] =
 	{CN("主轴位置控制时的轴号(通道内)")
 	EN("Axis No. of spindle in position mode")},
-//1014
+//1014;123
     //LG_STR nszParSpdlEncoderPhyNo[LG_NUM] =
     {CN("主轴编码器输入地址编号(物理编号)")
      EN("physical addr of spindle encoder")},
-//1015
+//1015;123
     //LG_STR nszParEncRes[LG_NUM] =
     {CN("编码器线数")
      EN("Resolution of spindle encoder")},
-//1020
+//1020;123
     //LG_STR nszParEncMul[LG_NUM] =
     {CN("编码器电子齿轮比,编码器侧齿数")
      EN("spindle encoder ratio,encoder gear num.")},
-//1021
+//1021;123
     //LG_STR nszParEncDiv[LG_NUM] =
     {CN("编码器电子齿轮比,主轴侧齿数")
      EN("spindle encoder ratio,spdindle gear num")},
@@ -3835,251 +3835,251 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParSpdlADOfs[LG_NUM] =
     {CN("主轴模拟输出的电压的补偿量")
      EN("Offset value for spindle analog")},
-//1025
+//1025;123
     //LG_STR nszParMaxSpdlSpeed1[LG_NUM] =
     {CN("主轴第1档的最高转速(rpm)")
     EN("Maximum spindle speed for gear 1(rpm)")},
-//1026
+//1026;123
     //LG_STR nszParMaxSpdlSpeed2[LG_NUM] =
     {CN("主轴第2档的最高转速(rpm)")
     EN("Maximum spindle speed for gear 2(rpm)")},
-//1027
+//1027;123
     //LG_STR nszParMaxSpdlSpeed3[LG_NUM] =
     {CN("主轴第3档的最高转速(rpm)")
     EN("Maximum spindle speed for gear 3(rpm)")},
-//1028
+//1028;123
     //LG_STR nszParMaxSpdlSpeed4[LG_NUM] =
     {CN("主轴第4档的最高转速(rpm)")
     EN("Maximum spindle speed for gear 3(rpm)")},
-//1055
+//1055;123
     //LG_STR nszParG96MinSpdlSpeed[LG_NUM] =
     {CN("G96时的主轴最低转速")
     EN("Min. spdl speed in G96 mode")},
-//1074
+//1074;123
     //LG_STR nszSpdlPulseModeTimeCnst[LG_NUM] =
     {CN("主轴位置模式时加减速时间常数(ms)")
     EN("Spdl position mode time const(ms)")},
-//1150
+//1150;123
     //LG_STR nszParSpdlGearNum[LG_NUM] =
     {CN("主轴档位数")
     EN("spindle gear num")},
-//1091
+//1091;123
 	//LG_STR nszParDOSpdlEN[LG_NUM] =
 	{CN("主轴使能输出口")
 	EN("Spindle EN DO")},
-//1090
+//1090;123
 	//LG_STR nszParDOSpdlENMode[LG_NUM] =
 	{CN("主轴使能输出模式(0:上电使能,1:速度模式使能,2:速度及位置使能)")
     EN("Spindle EN mode(0:Power-on,1:Speed,2:Speed and Postion)")},
-//1030
+//1030;123
 	//LG_STR nszParDOSpdlFR[LG_NUM] =
 	{CN("主轴正转输出口")
 	EN("Spindle forward DO")},
-//1031
+//1031;123
 	//LG_STR nszParDOSpdlRV[LG_NUM] =
 	{CN("主轴反转输出口")
 	EN("Spindle reverse DO")},
-//1032
+//1032;123
 	//LG_STR nszParDOSpdlSP[LG_NUM] =
 	{CN("主轴停止输出口")
 	EN("Spindle stop DO")},
-//1033
+//1033;123
 	//LG_STR nszParDOSpdlBRK[LG_NUM] =
 	{CN("主轴停止时制动输出口")
 	EN("Spindle brake DO when stopping")},
-//1050
+//1050;123
 	//LG_STR nszParDISpdlDotFwd[LG_NUM] =
 	{CN("外接主轴正向点动输入口")
 	EN("Spindle forward Inc.Move DI")},
-//1051
+//1051;123
 	//LG_STR nszParDISpdlDotRev[LG_NUM] =
 	{CN("外接主轴反向点动输入口")
 	EN("Spindle reverse Inc.Move DI")},
-//1045
+//1045;123
 	//LG_STR nszParDISpdlFwd[LG_NUM] =
 	{CN("外接主轴正转输入口")
 	EN("Spindle forward DI")},
-//1046
+//1046;123
 	//LG_STR nszParDISpdlRev[LG_NUM] =
 	{CN("外接主轴反转输入口")
 	EN("Spindle reverse DI")},
-//1047
+//1047;123
 	//LG_STR nszParDISpdlStp[LG_NUM] =
 	{CN("外接主轴停止输入口")
 	EN("Spindle stop DI")},
-//1052
+//1052;123
 	//LG_STR nszParSpdlDotSpeed[LG_NUM] =
 	{CN("主轴点动转速(rpm)")
 	EN("Spindle Inc.Move speed(rpm)")},
-//1110
+//1110;123
 	//LG_STR nszParDOSpdlLock[LG_NUM] =
 	{CN("主轴锁紧夹紧输出口(M12)")
 	EN("Spindle lock DO(M12)")},
-//1114
+//1114;123
 	//LG_STR nszParDISpdlLockFin[LG_NUM] =
 	{CN("主轴锁紧夹紧到位输输入口")
 	EN("Spindle lock finish DI")},
-//1111
+//1111;123
 	//LG_STR nszParDOSpdlUnlock[LG_NUM] =
 	{CN("主轴锁紧松开输出口(M13)")
 	EN("Spindle unlock DO(M13)")},
-//1115
+//1115;123
 	//LG_STR nszParDISpdlUnlockFin[LG_NUM] =
 	{CN("主轴锁紧松开到位输输入口")
 	EN("Spindle unlock finish DI")},
-//1112
+//1112;123
 	//LG_STR nszParDIExSpdlLock[LG_NUM] =
 	{CN("外接主轴锁紧输入口")
 	EN("Extern spindle lock DI")},
-//1113
+//1113;123
 	//LG_STR nszParDIExSpdlUnlock[LG_NUM] =
 	{CN("外接主轴锁紧松开输入口")
 	EN("Extern spindle unlock DI")},
-//1123
+//1123;123
 	//LG_STR nszParTimeSpdlLockFinWait[LG_NUM] =
 	{CN("主轴锁紧到位等待时间上限(ms)")
 	EN("Spindle lock fin max-wait-time(ms)")},
-//1122
+//1122;123
 	//LG_STR nszParDlyTimeBeforeSpdlLock[LG_NUM] =
 	{CN("主轴锁紧前延时时间(ms)")
 	EN("Delay time before spindle lock(ms)")},
-//1124
+//1124;123
 	//LG_STR nszParDlyTimeAfterSpdlLock[LG_NUM] =
 	{CN("主轴锁紧后延时时间(ms)")
 	EN("Delay time after spindle lock(ms)")},
-//1125
+//1125;123
 	//LG_STR nszParTimeSpdlUnlockFinWait[LG_NUM] =
 	{CN("主轴锁紧松开到位等待时间上限(ms)")
 	EN("Spindle unlock fin max-wait-time(ms)")},
-//1126
+//1126;123
 	//LG_STR nszParTimeSpdlUnlockDly[LG_NUM] =
 	{CN("主轴锁紧松开延时时间(ms)")
 	EN("Spindle unlock delay time(ms)")},
-//1120
+//1120;123
 	//LG_STR nszParTimeSpdlWaitStopMaxTime[LG_NUM] =
 	{CN("主轴锁紧前等待主轴停止时间上限(ms)")
 	EN("Spindle lock wait stop max time(ms)")},
-//1121
+//1121;123
     //LG_STR nszParSpdlLockActSpeed[LG_NUM] =
     {CN("主轴锁紧允许的实际转速上限")
     EN("Low spdl actual speed as when spindle lock")},
-//1034
+//1034;123
 	//LG_STR nszParTimeSpdlST[LG_NUM] =
 	{CN("主轴启动延时时间(ms)")
 	EN("Spindle start delay time(ms)")},
-//1035
+//1035;123
 	//LG_STR nszParTimeSpdlRVD[LG_NUM] =
 	{CN("主轴换向延时时间(ms)")
 	EN("Spindle change dir. delay time(ms)")},
-//1036
+//1036;123
 	//LG_STR nszParTimeSpdlSP[LG_NUM] =
 	{CN("主轴停止延时时间(ms)")
 	EN("Spindle stop delay time(ms)")},
-//1037
+//1037;123
 	//LG_STR nszParTimeSpdlBRK[LG_NUM] =
 	{CN("主轴停止时制动延时时间(ms)")
 	EN("Spindle brake delay time for stop(ms)")},
-//1038
+//1038;123
 	//LG_STR nszParTimeSpdlFRO[LG_NUM] =
 	{CN("主轴正转输出时间(ms)")
 	EN("Spindle forward time(ms)")},
-//1039
+//1039;123
 	//LG_STR nszParTimeSpdlRVO[LG_NUM] =
 	{CN("主轴反转输出时间(ms)")
 	EN("Spindle reverse time(ms)")},
-//1040
+//1040;123
 	//LG_STR nszParTimeSpdlSPO[LG_NUM] =
 	{CN("主轴停止输出时间(ms)")
 	EN("Spindle stop time(ms)")},
-//1041
+//1041;123
 	//LG_STR nszParTimeSpdlBRKO[LG_NUM] =
 	{CN("主轴制动输出时间(ms)")
 	EN("Spindle brake time(ms)")},
-//1151
+//1151;1
 	//LG_STR nszParDOS01[LG_NUM] =
 	{CN("S01输出口")
 	EN("S01 DO")},
-//1152
+//1152;1
 	//LG_STR nszParDOS02[LG_NUM] =
 	{CN("S02输出口")
 	EN("S02 DO")},
-//1153
+//1153;1
 	//LG_STR nszParDOS03[LG_NUM] =
 	{CN("S03输出口")
 	EN("S03 DO")},
-//1154
+//1154;1
 	//LG_STR nszParDOS04[LG_NUM] =
 	{CN("S04输出口")
 	EN("S04 DO")},
-//1155
+//1155;1
 	//LG_STR nszParTimeGearChgIntv[LG_NUM] =
 	{CN("档位间切换延时时间(ms)")
 	EN("Gear change Interval time(ms)")},
-//1156
+//1156;1
 	//LG_STR nszParTimeGearChgFin[LG_NUM] =
 	{CN("换挡完成延时时间(ms)")
 	EN("Gear change fin time(ms)")},
-//1160
+//1160;123
 	//LG_STR nszParDOStarTypeStart[LG_NUM] =
 	{CN("星型启动输出口")
 	EN("Star-type start DO")},
-//1161
+//1161;123
 	//LG_STR nszParDOTriangleTypeStart[LG_NUM] =
 	{CN("三角型启动输出口")
 	EN("Triangle-type start DO")},
-//1162
+//1162;123
 	//LG_STR nszParTimeStarTypeStart[LG_NUM] =
 	{CN("星型启动保持时间(ms)")
 	EN("Star-type hold time(ms)")},
-//1163
+//1163;123
 	//LG_STR nszParTimeStarTriangleIntv[LG_NUM] =
 	{CN("星三角型间切换时间(ms)")
 	EN("Star Triangle interval time(ms)")},
-//1070
+//1070;123
 	//LG_STR nszParDOSpdlPosMode[LG_NUM] =
 	{CN("主轴位置模式输出口(M18)")
 	EN("Spindle postion mode DO")},
-//1075
+//1075;123
 	//LG_STR nszParDOSpdlSpeedMode[LG_NUM] =
 	{CN("主轴速度模式输出口(M17)")
 	EN("Spindle speed mode DO")},
-//1071
+//1071;123
 	//LG_STR nszParDISpdlPosModeFin[LG_NUM] =
 	{CN("主轴位置模式到位输入口")
 	EN("Spindle postion mode FIN DI")},
-//1076
+//1076;123
 	//LG_STR nszParDISpdlSpeedModeFin[LG_NUM] =
 	{CN("主轴速度模式到位输入口")
 	EN("Spindle speed mode FIN DI")},
-//1072
+//1072;123
 	//LG_STR nszParTimeSpdlPosFinWait[LG_NUM] =
 	{CN("主轴位置模式到位信号等待时间上限(ms)")
 	EN("Spindle position mode FIN wait time max(ms)")},
-//1077
+//1077;123
 	//LG_STR nszParTimeSpdlSpeedFinWait[LG_NUM] =
 	{CN("主轴速度模式到位信号等待时间上限(ms)")
 	EN("Spindle speed mode FIN wait time max(ms)")},
-//1073
+//1073;123
 	//LG_STR nszParTimeSpdlPosFinDly[LG_NUM] =
 	{CN("主轴位置模式到位延时时间(ms)")
 	EN("Spindle position mode FIN delay(ms)")},
-//1078
+//1078;123
 	//LG_STR nszParTimeSpdlSpeedFinDly[LG_NUM] =
 	{CN("主轴速度模式到位延时时间(ms)")
 	EN("Spindle speed mode FIN delay(ms)")},
-//1080
+//1080;123
 	//LG_STR nszParDOSpdlOrientation[LG_NUM] =
 	{CN("主轴准停输出口(M19)")
 	EN("Spindle orientation DO(M19)")},
-//1081
+//1081;123
 	//LG_STR nszParDISpdlOrientationFin[LG_NUM] =
 	{CN("主轴准停完成输入口")
 	EN("Spindle orientation FIN DI")},
-//1082
+//1082;123
 	//LG_STR nszParTimeSpdlOrientationFinWait[LG_NUM] =
 	{CN("主轴准停完成信号等待时间上限(ms)")
 	EN("Spindle orientation FIN wait time max(ms)")},
-//1083
+//1083;123
 	//LG_STR nszParTimeSpdlOrientationFinDly[LG_NUM] =
 	{CN("主轴准停完成延时时间(ms)")
 	EN("Spindle orientation FIN delay time(ms)")},
@@ -4087,35 +4087,35 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	//LG_STR nszParTimeSpdlOrientationOut[LG_NUM] =
 	{CN("主轴准停输出时间(ms)")
 	EN("Spindle forward output time(ms)")},
-//1084
+//1084;123
 	//LG_STR nszParSpdlOrientationFinCoor[LG_NUM] =
 	{CN("主轴准停完成后的坐标值")
 	EN("Coor. of spindle orientation FIN")},
-//1095
+//1095;123
 	//LG_STR nszParDISpdlAlm[LG_NUM] =
 	{CN("主轴报警输入口")
 	EN("Spindle Alarm DI")},
-//3465
+//3465;1
 	//LG_STR nszParDISpdlOvA[LG_NUM] =
 	{CN("主轴倍率开关*1输入口")
 	EN("Spindle override DI *1")},
-//3467
+//3467;1
 	//LG_STR nszParDISpdlOvB[LG_NUM] =
 	{CN("主轴倍率开关*2输入口")
 	EN("Spindle override DI *2")},
-//3468
+//3468;1
 	//LG_STR nszParDISpdlOvE[LG_NUM] =
 	{CN("主轴倍率开关*4输入口")
 	EN("Spindle override DI *4")},
-//3469
+//3469;1
 	//LG_STR nszParDISpdlOvF[LG_NUM] =
 	{CN("主轴倍率开关*8输入口")
 	EN("Spindle override DI *8")},
-//3336
+//3336;1
 	//LG_STR nszParJogKeyDef[LG_NUM] =
 	{CN("各轴手动移动键自定义(0:无,1~3:XYZ,4~6:ABC)")
 	EN("Axis jog key set(0:undef,1~3:XYZ,4~6:ABC)")},
-//3470
+//3470;1
     //LG_STR nszParHPSTSet[9][LG_NUM] =
     {CN("液压启动相关设置")
     EN("hydraulic pressure start settings")},
@@ -4135,23 +4135,23 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("U1HP 0/1:User1键用作液压控制,关闭/打开")
 	EN("U1HP 0/1:User1 control hydraulic pressure, disable/enable")},
-//3471
+//3471;1
 	//LG_STR nszParDOHPST[LG_NUM] =
 	{CN("液压启动输出口")
 	EN("hydraulic pressure start DO")},
-//3472
+//3472;1
 	//LG_STR nszParDIHPST[LG_NUM] =
 	{CN("外接液压启动输入口")
 	EN("external hydraulic pressure start DI")},
-//3473
+//3473;1
 	//LG_STR nszParDiHPSTFin[LG_NUM] =
 	{CN("液压启动完成输输入口")
 	EN("hydraulic pressure start fin Di")},
-//3474
+//3474;1
 	//LG_STR nszParFinWaitTimeHPST[LG_NUM] =
 	{CN("液压启动完成信号等待时间上限(ms)")
 	EN("hydraulic pressure start FIN wait time max(ms)")},
-//1200
+//1200;1
     //LG_STR nszParSpdlSyncSet[9][LG_NUM] =
     {CN("主轴同步第1组相关设置")
      EN("Spindle synchronization group 1 settings")},
@@ -4171,7 +4171,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//1201
+//1201;1
     //LG_STR nszParSpdlSync2Set[9][LG_NUM] =
     {CN("主轴同步第2组相关设置")
      EN("Spindle synchronization group 2 settings")},
@@ -4191,7 +4191,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//1202
+//1202;1
     //LG_STR nszParSpdlSync3Set[9][LG_NUM] =
     {CN("主轴同步第3组相关设置")
      EN("Spindle synchronization group 3 settings")},
@@ -4211,51 +4211,51 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//1210
+//1210;123
 	//LG_STR nszParSpdlSyncSlvSpeedMax[LG_NUM] =
 	{CN("主轴同步方式时,从动轴最高转速(rpm)")
 	EN("Spindle sync slave spindle speed max.(rpm)")},
-//1211
+//1211;123
 	//LG_STR nszParSpdlSyncSlvTimeCnst[LG_NUM] =
 	{CN("主轴同步方式时,从动轴时间常数")
 	EN("Spindle sync. slave spindle time const")},
-//1212
+//1212;123
     //LG_STR nszParSpdlSyncSlvFilterRatio[LG_NUM] =
      {CN("主轴同步方式时,从动轴速度平滑系数(0~100),0:不滤波")
      EN("Spindle sync, slave axis feed filter ratio (0~100),0:close")},
 
-//1214
+//1214;123
     //LG_STR nszParSpdlSyncLoadLimit[LG_NUM] =
     {CN("主轴同步方式时,各主轴负载限制(0~300,0:不限制)")
     EN("Load limit when spindle sync.(0~300,0:No limit)")},
-//1220
+//1220;1
 	//LG_STR nszParSpdlSyncMaster1[LG_NUM] =
 	{CN("主轴同步第1组,主动主轴号")
 	EN("Spindle sync. group 1,master spindle No.")},
-//1221
+//1221;1
 	//LG_STR nszParSpdlSyncSlave1[LG_NUM] =
 	{CN("主轴同步第1组,从动主轴号")
 	EN("Spindle sync. group 1,slave spindle No.")},
-//1222
+//1222;1
 	//LG_STR nszParSpdlSyncMaster2[LG_NUM] =
 	{CN("主轴同步第2组,主动主轴号")
 	EN("Spindle sync. group 2,master spindle No.")},
-//1223
+//1223;1
 	//LG_STR nszParSpdlSyncSlave2[LG_NUM] =
 	{CN("主轴同步第2组,从动主轴号")
 	EN("Spindle sync. group 2,slave spindle No.")},
-//1224
+//1224;1
 	//LG_STR nszParSpdlSyncMaster3[LG_NUM] =
 	{CN("主轴同步第3组,主动主轴号")
 	EN("Spindle sync. group 3,master spindle No.")},
-//1225
+//1225;1
 	//LG_STR nszParSpdlSyncSlave3[LG_NUM] =
 	{CN("主轴同步第3组,从动主轴号")
 	EN("Spindle sync. group 3,slave spindle No.")},
     //-------------------------------------------------------------------------
     // 卡盘参数##QP
     //-------------------------------------------------------------------------
-//1300
+//1300;123
 	//LG_STR nszParQPSet[9][LG_NUM] =
 	{CN(CHUNK_CN"相关设置")
 	EN("Chuck settings")},
@@ -4275,7 +4275,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
     EN("")},
-//1301
+//1301;123
 	//LG_STR nszParQPLockSet[9][LG_NUM] =
 	{CN(CHUNK_CN"互锁相关设置")
 	EN("Chuck lock settings")},
@@ -4295,7 +4295,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("UQEC 0/1:not/check spindle speed over allowed speed when unclamp state")},
 	{CN("")
     EN("")},
-//1302
+//1302;123
 	//LG_STR nszParQPPowerOnSet[9][LG_NUM] =
 	{CN(CHUNK_CN"上电相关设置")
 	EN("Chuck power-on settings")},
@@ -4315,55 +4315,55 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
 	{CN("")
     EN("")},
-//1310
+//1310;123
 	//LG_STR nszParDOSpdlClp[LG_NUM] =
 	{CN(CHUNK_CN"夹紧输出口")
 	EN("Spindle clamp DO")},
-//1311
+//1311;123
 	//LG_STR nszParDOSpdlUnclp[LG_NUM] =
 	{CN(CHUNK_CN"松开输出口")
 	EN("Spindle unclamp DO")},
-//1320
+//1320;123
 	//LG_STR nszParDIExSpdlClp[LG_NUM] =
 	{CN("外接"CHUNK_CN"夹紧输入口")
 	EN("Extern M10/M11 DI")},
-//1321
+//1321;123
 	//LG_STR nszParDIExSpdlUclp[LG_NUM] =
 	{CN("外接"CHUNK_CN"松开输入口")
 	EN("Extern M11 DI")},
-//1322
+//1322;123
 	//LG_STR nszParDISpdlClpFin[LG_NUM] =
 	{CN(CHUNK_CN"夹紧到位输入口")
 	EN("Spindle clamp FIN DI")},
-//1323
+//1323;123
 	//LG_STR nszParDISpdlUnclpFin[LG_NUM] =
 	{CN(CHUNK_CN"松开到位输入口")
 	EN("Spindle unclamp FIN DI")},
-//1330
+//1330;123
 	//LG_STR nszParTimeM10FinWait[LG_NUM] =
 	{CN(CHUNK_CN"夹紧到位信号等待时间上限(ms)")
 	EN("Clamp FIN wait max time(ms)")},
-//1331
+//1331;123
 	//LG_STR nszParTimeM11FinWait[LG_NUM] =
 	{CN(CHUNK_CN"松开到位信号等待时间上限(ms)")
 	EN("Unclamp FIN wait max time(ms)")},
-//1132
+//1132;123
 	//LG_STR nszParTimeM10FinDly[LG_NUM] =
 	{CN(CHUNK_CN"夹紧到位延时时间(ms)")
 	EN("Clamp FIN delay time(ms)")},
-//1333
+//1333;123
 	//LG_STR nszParTimeM11FinDly[LG_NUM] =
 	{CN(CHUNK_CN"松开到位延时时间(ms)")
 	EN("Unclamp delay time(ms)")},
-//1340
+//1340;123
     //LG_STR nszParM11SpdlSpeedMax[LG_NUM] =
     {CN(CHUNK_CN"松开允许实际转速上限")
     EN("Actual speed max for Unclamp")},
-//1341
+//1341;123
     //LG_STR nszParM11SpdlArriveWaitTime[LG_NUM] =
     {CN(CHUNK_CN"松开时,等待主轴低于允许转速的时间上限")
     EN("Max wait time of spindle speed arrive when spindle Unclamp.")},
-//1056
+//1056;123
     //LG_STR nszParSpdlStopActSpeed[LG_NUM] =
     {CN("视为主轴停止的实际转速上限")
     EN("Low spdl actual speed as stop")},
@@ -4371,22 +4371,22 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParSpdlSpeedArriveRatio[LG_NUM] =
     {CN("视为主轴转速已到达的实际转速比例")
     EN("Spdl actual speed ratio as speed arrive when start")},
-//1057
+//1057;123
     //LG_STR nszParSpdlSpeedArriveRange[LG_NUM] =
     {CN("主轴转速到达检测窗口范围(百分比)")
     EN("Spindle speed arrive check range(percent)")},
-//1058
+//1058;1
     //LG_STR nszParSpdlArriveWaitTimeStart[LG_NUM] =
     {CN("主轴启动时,等待主轴转速到达时间上限(=0:忽略)")
     EN("Max time of spindle speed arrive when spindle start.(=0:ignore)")},
-//1059
+//1059;1
     //LG_STR nszParSpdlArriveWaitTimeCut[LG_NUM] =
     {CN("切削加工时,等待主轴转速到达时间上限(=0:忽略)")
     EN("Max time of spindle speed arrive when cut.(=0:ignore)")},
     //-------------------------------------------------------------------------
     // 尾座参数##TS ##TAIL
     //-------------------------------------------------------------------------
-//1400
+//1400;123
 	//LG_STR nszParTailstockSet[9][LG_NUM] =
 	{CN("尾座相关设置")
 	EN("Tailstock settings")},
@@ -4406,7 +4406,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//1401
+//1401;123
 	//LG_STR nszParTailstockLockSet[9][LG_NUM] =
 	{CN("尾座互锁相关设置")
 	EN("Tailstock settings")},
@@ -4426,7 +4426,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//1402
+//1402;123
 	//LG_STR nszParTSPowerOnSet[9][LG_NUM] =
 	{CN("尾座上电相关设置")
 	EN("Chuck power-on settings")},
@@ -4446,43 +4446,43 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
 	{CN("")
     EN("")},
-//1410
+//1410;123
 	//LG_STR nszParDOTSF[LG_NUM] =
 	{CN("尾座进输出口")
 	EN("Tailstock forward DO")},
-//1411
+//1411;123
 	//LG_STR nszParDOTSB[LG_NUM] =
 	{CN("尾座退输出口")
 	EN("Tailstock backward DO")},
-//1420
+//1420;123
 	//LG_STR nszParDIExTailstockFR[LG_NUM] =
 	{CN("外接尾座进输入口")
 	EN("Extern Tailstock forward DI")},
-//1421
+//1421;123
 	//LG_STR nszParDIExTailstockBW[LG_NUM] =
 	{CN("外接尾座退输入口")
 	EN("Extern Tailstock backward DI")},
-//1422
+//1422;123
 	//LG_STR nszParDITailstockFRFin[LG_NUM] =
 	{CN("尾座进到位输入口")
 	EN("Tailstock forward FIN DI")},
-//1423
+//1423;123
 	//LG_STR nszParDITailstockBWFin[LG_NUM] =
 	{CN("座进退到位输入口")
 	EN("Tailstock backward FIN DI")},
-//1430
+//1430;123
 	//LG_STR nszParTimeM78FinWait[LG_NUM] =
 	{CN("尾座进到位信号等待时间上限(ms)")
 	EN("Tailstock forward FIN wait max time(ms)")},
-//1431
+//1431;123
 	//LG_STR nszParTimeM79FinWait[LG_NUM] =
 	{CN("尾座退到位信号等待时间上限(ms)")
 	EN("Tailstock backward FIN wait max time(ms)")},
-//1432
+//1432;123
 	//LG_STR nszParTimeM78FinDly[LG_NUM] =
 	{CN("尾座进到位延时时间(ms)")
 	EN("ailstock forward finish delay time(ms)")},
-//1433
+//1433;123
 	//LG_STR nszParTimeM79FinDly[LG_NUM] =
 	{CN("尾座退到位延时时间(ms)")
 	EN("Tailstock backward finish delay time(ms)")},
@@ -4490,7 +4490,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
     // 刀架参数 ##TOOL
     //-------------------------------------------------------------------------
-//1500
+//1500;123
 	//LG_STR nszParTSet[9][LG_NUM] =
 	{CN("刀架相关设置")
 	EN("Tool settings")},
@@ -4510,7 +4510,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//1501
+//1501;123
 	//LG_STR nszParTDI1[9][LG_NUM] =
 	{CN("刀架输入设置1")
 	EN("Tool DI settings 1")},
@@ -4530,7 +4530,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("T02C 0/1:T02 is normal open/close")},
 	{CN("T01C 0/1:T01为常开/常闭信号")
     EN("T01C 0/1:T01 is normal open/close")},
-//1502
+//1502;123
 	//LG_STR nszParTDI2[9][LG_NUM] =
 	{CN("刀架输入设置2")
 	EN("Tool DI settings 2")},
@@ -4550,95 +4550,95 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("T10C 0/1:T10 is normal open/close")},
 	{CN("T09C 0/1:T09为常开/常闭信号")
     EN("T09C 0/1:T09 is normal open/close")},
-//1510
+//1510;123
 	//LG_STR nszParPlcTType[LG_NUM] =
 	{CN("刀架类型(0:排刀,1:电动刀架)")
 	EN("Tool turret type")},
-//1511
+//1511;123
 	//LG_STR nszParPlcTNum[LG_NUM] =
 	{CN("刀具数量")
 	EN("Tool number")},
-//1520
+//1520;123
 	//LG_STR nszParT01DI[LG_NUM] =
 	{CN("T01输入口")
 	EN("T01 DI")},
-//1521
+//1521;123
 	//LG_STR nszParT02DI[LG_NUM] =
 	{CN("T02输入口")
 	EN("T02 DI")},
-//1522
+//1522;123
 	//LG_STR nszParT03DI[LG_NUM] =
 	{CN("T03输入口")
 	EN("T03 DI")},
-//1523
+//1523;123
 	//LG_STR nszParT04DI[LG_NUM] =
 	{CN("T04输入口")
 	EN("T04 DI")},
-//1524
+//1524;123
 	//LG_STR nszParT05DI[LG_NUM] =
 	{CN("T05输入口")
 	EN("T05 DI")},
-//1525
+//1525;123
 	//LG_STR nszParT06DI[LG_NUM] =
 	{CN("T06输入口")
 	EN("T06 DI")},
-//1526
+//1526;123
 	//LG_STR nszParT07DI[LG_NUM] =
 	{CN("T07输入口")
 	EN("T07 DI")},
-//1527
+//1527;123
 	//LG_STR nszParT08DI[LG_NUM] =
 	{CN("T08输入口")
 	EN("T08 DI")},
-//1528
+//1528;123
 	//LG_STR nszParT09DI[LG_NUM] =
 	{CN("T09输入口")
 	EN("T09 DI")},
-//1529
+//1529;123
 	//LG_STR nszParT10DI[LG_NUM] =
 	{CN("T10输入口")
 	EN("T10 DI")},
-//1530
+//1530;123
 	//LG_STR nszParT11DI[LG_NUM] =
 	{CN("T11输入口")
 	EN("T11 DI")},
-//1531
+//1531;123
 	//LG_STR nszParT12DI[LG_NUM] =
 	{CN("T12输入口")
 	EN("T12 DI")},
-//1532
+//1532;123
 	//LG_STR nszParTCPDI[LG_NUM] =
 	{CN("TCP输入口")
 	EN("TCP DI")},
-//1540
+//1540;123
 	//LG_STR nszParDOTFR[LG_NUM] =
 	{CN("刀架正转输出口")
 	EN("Tool turret CW DO")},
-//1541
+//1541;123
 	//LG_STR nszParDOTRV[LG_NUM] =
 	{CN("刀架反转输出口")
 	EN("Tool turret CCW DO")},
-//1542
+//1542;123
 	//LG_STR nszParDOTCLP[LG_NUM] =
 	{CN("刀架锁紧输出口")
 	EN("Tool turret clamp DO")},
-//1543
+//1543;123
 	//LG_STR nszParDOTUCLP[LG_NUM] =
 	{CN("刀架松开输出口")
 	EN("Tool turret unclamp DO")},
-//1550
+//1550;123
 	//LG_STR nszParTimeMaxT[LG_NUM] =
 	{CN("换刀时间上限(ms)")
 	EN("Max. time for tool change(ms)")},
-//1551
+//1551;123
 	//LG_STR nszParTimeTRVD[LG_NUM] =
 	{CN("换刀时正反转间的延时(ms)")
 	EN("Delay time for Tool backward(ms)")},
-//1552
+//1552;123
 	//LG_STR nszParTimeMaxTRVF[LG_NUM] =
 	{CN("换刀时反转到收到TCP时间上限(ms)")
 	EN("Max. time for Tool backward to TCP(ms)")},
-//1553
+//1553;123
 	//LG_STR nszParTimeDlyTRVF[LG_NUM] =
 	{CN("刀位到达(TCP)后反转保持时间(ms)")
 	EN("Delay time for TCP to stop backward(ms)")},
@@ -4646,7 +4646,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
     // 润滑 ##LUB
     //-------------------------------------------------------------------------
-//1800
+//1800;123
 	//LG_STR nszParLutSet[9][LG_NUM] =
 	{CN("润滑相关设置")
 	EN("Lubricate settings")},
@@ -4666,27 +4666,27 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//1810
+//1810;123
 	//LG_STR nszParDILubAlm[LG_NUM] =
 	{CN("润滑报警输入口")
 	EN("Lubricate alarm DI")},
-//1811
+//1811;123
 	//LG_STR nszParDOLub[LG_NUM] =
 	{CN("润滑输出口")
 	EN("Lubricate DO")},
-//1820
+//1820;123
 	//LG_STR nszParTimeM32Dly[LG_NUM] =
 	{CN("M32延时时间(ms)")
 	EN("M32 delay time(ms)")},
-//1821
+//1821;123
 	//LG_STR nszParTimeM33Dly[LG_NUM] =
 	{CN("M33延时时间(ms)")
 	EN("M33 delay time(ms)")},
-//1822
+//1822;123
 	//LG_STR nszParTimeLubO[LG_NUM] =
 	{CN("润滑输出时间(ms)")
 	EN("Lubricate time(ms)")},
-//1823
+//1823;123
 	//LG_STR nszParTimeAutoLubIntervel[LG_NUM] =
 	{CN("自动润滑间隔时间(ms)")
 	EN("Auto. lubricate interval time(ms)")},
@@ -4694,7 +4694,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
     // 排屑器 ##CHIP
     //-------------------------------------------------------------------------
-//3480
+//3480;1
 	//LG_STR nszParChipSet[9][LG_NUM] =
 	{CN("排屑相关设置")
 	EN("chip conveyer settings")},
@@ -4714,31 +4714,31 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("U1CHP 0/1:User1键用排屑器控制,关闭/打开")
 	EN("U1CHP 0/1:User1 control chip conveyer, disable/enable")},
-//3481
+//3481;1
 	//LG_STR nszParDOChipCW[LG_NUM] =
 	{CN("排屑器正转输出口")
 	EN("Chip conveyer forward DO")},
-//3482
+//3482;1
 	//LG_STR nszParDOChipCCW[LG_NUM] =
 	{CN("排屑器反转输出口")
 	EN("Chip conveyer reverse DO")},
-//3483
+//3483;1
 	//LG_STR nszParDIChipCW[LG_NUM] =
 	{CN("外接排屑器正转输入口")
 	EN("Chip conveyer forward DI")},
-//3484
+//3484;1
 	//LG_STR nszParDIChipCCW[LG_NUM] =
 	{CN("外接排屑器反转输入口")
 	EN("Chip conveyer reverse DI")},
-//3485
+//3485;1
 	//LG_STR nszParDIChipStop[LG_NUM] =
 	{CN("外接排屑器停止输入口")
 	EN("Chip conveyer stop DI")},
-//3486
+//3486;1
 	//LG_STR nszParTimeChipO[LG_NUM] =
 	{CN("排屑器输出时间(ms)")
 	EN("Chip conveyer out time(ms)")},
-//3487
+//3487;1
 	//LG_STR nszParTimeAutoChipCWIntervel[LG_NUM] =
 	{CN("排屑器自动正转间隔时间(ms)")
 	EN("Chip conveyer Auto-CW interval time(ms)")},
@@ -4746,7 +4746,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
     // 手轮##HD ##hand 600
     //-------------------------------------------------------------------------
-//0600
+//0600;1
 	//LG_STR nszParHndlSet[9][LG_NUM] =
 	{CN("手轮设置")
 	EN("Handle wheel settings")},
@@ -4766,70 +4766,70 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//0610
+//0610;XYZA
 	//LG_STR nszParHndlF[LG_NUM] =
 	{CN("各轴手轮速度上限")
 	EN("handle max. Feed ")},
-//0611
+//0611;XYZA
 	//LG_STR nszParHndlFL[LG_NUM] =
 	{CN("各轴手轮加减速时的低速FL(mm/min)")
 	EN("handle Acc./dec low feed FL(mm/min)")},
-//0612
+//0612;XYZA
     //LG_STR nszParHndlTimeCnst[LG_NUM] =
     {CN("各轴手轮加减速时间常数")
      EN("Handle Acc./dec. time constant")},
-//0615
+//0615;XYZA
     //LG_STR nszParHndlUnitMul[LG_NUM] =
     {CN("各轴手轮移动基本单位倍率")
      EN("Handle unit multiplying factor")},
-//0616
+//0616;1
     //LG_STR nszParHndlOvMax[LG_NUM] =
     {CN("手轮倍率输入上限")
      EN("Handle override max")},
-//0617
+//0617;1
     //LG_STR nszParHndlRunRpdOvMax[LG_NUM] =
     {CN("手轮试运行快速移动倍率上限")
      EN("Handle test run rapid override max")},
-//0620
+//0620;XYZA
 	//LG_STR nszParDIHndlAxisSelect[LG_NUM] =
 	{CN("各轴手轮选择输入口")
 	EN("Handle axis select DI")},
-//0621
+//0621;1
 	//LG_STR nszParDIHndlX1[LG_NUM] =
 	{CN("手轮倍率*1输入口")
 	EN("Handle feed amount *1 DI")},
-//0622
+//0622;1
 	//LG_STR nszParDIHndlX10[LG_NUM] =
 	{CN("手轮倍率*10输入口")
 	EN("Handle feed amount *10 DI")},
-//0623
+//0623;1
 	//LG_STR nszParDIHndlX100[LG_NUM] =
 	{CN("手轮倍率*100输入口")
 	EN("Handle feed amount *100 DI")},
-//0624
+//0624;1
 	//LG_STR nszParDIHndlX1000[LG_NUM] =
 	{CN("手轮倍率*1000输入口")
 	EN("Handle feed amount *1000 DI")},
-//0625
+//0625;1
 	//LG_STR nszParDIHndlMode[LG_NUM] =
 	{CN("手轮模式选择输入口")
 	EN("Handle mode select DI")},
-//0630
+//0630;XYZA
 	//LG_STR nszParHndlIntrF[LG_NUM] =
 	{CN("各轴手轮中断速度上限")
 	EN("handle-Intr max. Feed ")},
-//0631
+//0631;XYZA
     //LG_STR nszParHndlIntrTimeCnst[LG_NUM] =
     {CN("各轴手轮中断加减速时间常数")
      EN("Handle-Intr Acc./dec. time constant")},
-//0626
+//0626;1
 	//LG_STR nszParDIHndlIntrModeEnable[LG_NUM] =
 	{CN("手轮中断模式使能输入口")
 	EN("Handle-Intr mode enable DI")},
     //-------------------------------------------------------------------------
     // 显示/操作 ##DISP ##1000
     //-------------------------------------------------------------------------
-//2000
+//2000;1
 	//LG_STR nszParDispSet[9][LG_NUM] =
 	{CN("显示相关设置")
 	EN("Display settings")},
@@ -4849,7 +4849,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("MDIS 0/1:No/Change to MDI screen when change to MDI mode in POS screen")},
 	{CN("")
 	EN("")},
-//2001
+//2001;1
     //LG_STR nszParPowerOnDispSet[9][LG_NUM] =
     {CN("上电时显示相关设置")
     EN("Power-On display settings")},
@@ -4869,7 +4869,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
     {CN("")
     EN("")},
-//2005
+//2005;1
     //LG_STR nszParEditSet[9][LG_NUM] =
     {CN("程序编辑相关设置")
     EN("Function settings")},
@@ -4889,7 +4889,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
     {CN("")
     EN("")},
-//2002
+//2002;1
     //LG_STR nszParRunCtrlSet[9][LG_NUM] =
     {CN("运行控制相关设置")
     EN("Run control settings")},
@@ -4911,7 +4911,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
 
     //GROUP:参数
-//2003
+//2003;1
     //LG_STR nszParOperSwitchSet[9][LG_NUM] =
     {CN("操作开关/允许设置")//0+
     EN("Operation switch/enable settings")},
@@ -4931,7 +4931,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
     {CN("")
     EN("")},
-//2004
+//2004;1
     //LG_STR nszParOperPwdSet[9][LG_NUM] =
     {CN("操作密码设置")//0+
     EN("Operation password settings")},
@@ -4951,7 +4951,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
     {CN("")
     EN("")},
-//2006
+//2006;1
     //LG_STR nszParPrgShow[9][LG_NUM] =
     {CN("程序显示相关设置")
     EN("Function settings")},
@@ -4971,7 +4971,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
     {CN("")
     EN("")},
-//2007
+//2007;1
     //LG_STR nszParManualMoveSet[9][LG_NUM] =
     {CN("手动运行相关设置")
     EN("manual move settings")},
@@ -4991,7 +4991,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
     {CN("")
     EN("")},
-//2100
+//2100;1
     //LG_STR nszParMIISet[9][LG_NUM] =
     {CN("MII总线相关设置")
     EN("MII bus settings")},
@@ -5011,11 +5011,11 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
     {CN("")
     EN("")},
-//2101
+//2101;1
 	//LG_STR nszParMIIRetry[LG_NUM] =
 	{CN("MII通讯重试次数") //200+
 	EN("MII retry count")},
-//2115
+//2115;1
     //LG_STR nszParModBusSet[9][LG_NUM] =
     {CN("ModBus总线相关设置")
     EN("ModBus settings")},
@@ -5035,11 +5035,11 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
     {CN("")
     EN("")},
-//2116
+//2116;1
 	//LG_STR nszModbusSlvAddr[LG_NUM] =
 	{CN("Modbus从站站地址") //200+
 	EN("Modbus slave address")},
-//2117
+//2117;1
 	//LG_STR nszUartBaudRate[LG_NUM] =
 	{CN("串口通讯波特率(4800,9600,19200,38400,57600,115200,128000)") //200+
 	EN("Serrial port baud rate(4800,9600,19200,38400,57600,115200,128000)")},
@@ -5047,7 +5047,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	//LG_STR nszParChnType[LG_NUM] =
 	{CN("通道类型(0:车床, 1:铣床)") //200+
 	EN("Channel type")},
-//2011
+//2011;1
 	//LG_STR nszParLanguageType[LG_NUM] =
 	{CN("语言选择(0:中文(Chinese), 1:英文(English))")
 	EN("Language(0:Chinese(中文), 1:English(英文))")},
@@ -5055,27 +5055,27 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	//LG_STR nszParAxisChn[LG_NUM] =
 	{CN("轴所属通道号")
 	EN("Channel of axis")},
-//2020
+//2020;1
 	//LG_STR nszParSeqNo[LG_NUM] =
 	{CN("编辑递增序号")
 	EN("Increment in sequence numbers when edit")},
-//2220
+//2220;1
 	//LG_STR nszParPrgPowerOn[LG_NUM] =
 	{CN("上电打开程序号")
 	EN("Prog. No when power-on")},
-//2031
+//2031;1
 	//LG_STR nszParPowerOnScreenDly[LG_NUM] =
 	{CN("开机画面显示延时(ms)")
 	EN("Power-on screen display delay")},
-//2032
+//2032;1
 	//LG_STR nszParShowSpdlNum[LG_NUM] =
 	{CN("位置界面显示当前通道主轴的个数")
 	EN("Spindle Num of current channel display on POS screen")},
-//2035
+//2035;1
 	//LG_STR nszParSysAxisNum[LG_NUM] =
 	{CN("系统中轴个数")
 	EN("Axis num of system")},
-//2036
+//2036;1
 	//LG_STR nszParSysSpdlNum[LG_NUM] =
 	{CN("系统中主轴个数")
 	EN("Spindle num of system")},
@@ -5083,7 +5083,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
     // 程序 ##PROG ##PRG ##1100
     //-------------------------------------------------------------------------
-//2200
+//2200;1
 	//LG_STR nszParProgSet[9][LG_NUM] =
 	{CN("程序相关设置")
 	EN("Program settings")},
@@ -5103,7 +5103,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//2201
+//2201;1
 	//LG_STR nszParProgModalSet[9][LG_NUM] =
 	{CN("程序模态上电相关设置")
 	EN("Program modal settings")},
@@ -5123,7 +5123,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//2202
+//2202;1
 	//LG_STR nszParProgModalRstSet[9][LG_NUM] =
 	{CN("程序模态复位相关设置")
 	EN("Program modal RESET settings")},
@@ -5143,7 +5143,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//2203
+//2203;1
 	//LG_STR nszParProgCtrlSet[9][LG_NUM] =
 	{CN("程序控制相关设置")
 	EN("Program control settings")},
@@ -5163,7 +5163,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//2205
+//2205;1
 	//LG_STR nszParProgBufSet[9][LG_NUM] =
 	{CN("程序预读控制相关设置")
 	EN("Program buffer control settings")},
@@ -5183,7 +5183,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//2206
+//2206;1
 	//LG_STR nszParMCmdSet[9][LG_NUM] =
 	{CN("M功能相关设置")
 	EN("M function settings")},
@@ -5203,7 +5203,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//2209
+//2209;1
     //LG_STR nszParProgPowerOnSet[9][LG_NUM] =
     {CN("上电时程序相关设置")
     EN("Power-On display settings")},
@@ -5223,23 +5223,23 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
     {CN("")
     EN("")},
-//2210
+//2210;1
 	//LG_STR nszParMaxArcRErrSet[LG_NUM] =
 	{CN("圆弧中心检查时最大半径误差")
 	EN("Max radius error when arc origin check")},
-//2221
+//2221;1
 	//LG_STR nszParSpdlSpeedPowerOn[LG_NUM] =
 	{CN("上电时各主轴默认设定转速")
 	EN("Spindles setting speed when power-on")},
-//2222
+//2222;1
 	//LG_STR nszParChnFPMPowerOn[LG_NUM] =
 	{CN("上电时默认设定进给速度(mm/min)")
 	EN("Feedrate setting when power-on(mm/min)")},
-//2223
+//2223;1
 	//LG_STR nszParChnFPRPowerOn[LG_NUM] =
 	{CN("上电时默认设定进给速度(mm/rev)")
 	EN("Feedrate setting when power-on(mm/rev)")},
-//2310
+//2310;1
 	//LG_STR nszParG00OverlapRatio[LG_NUM] =
 	{CN("G00间过渡启动速度比")
 	EN("G00 reduction ratio for overlapping blocks")},
@@ -5251,7 +5251,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
     // ##TCOMP ##TOFS ##2500
     //-------------------------------------------------------------------------
-//2500
+//2500;1
 	//LG_STR nszParToolCompensationSet[9][LG_NUM] =
 	{CN("刀具补偿相关设置")
 	EN("Tool compensation setting")},
@@ -5271,7 +5271,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//2501
+//2501;1
 	//LG_STR nszParToolCompensationInputSafeSet[9][LG_NUM] =
 	{CN("刀具补偿输入安全相关设置")
 	EN("Tool compensation input safety setting")},
@@ -5291,18 +5291,18 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//2510
+//2510;1
 	//LG_STR nszParToolwearMax[LG_NUM] =
 	{CN("刀具磨损补偿量最大值")
 	EN("Maximum value of tool wear compensation")},
-//2511
+//2511;1
 	//LG_STR nszParToolwearIncMax[LG_NUM] =
 	{CN("刀具磨损补偿量增量输入的最大值")
 	EN("Maximum value of incremental input for tool wear compensation")},
     //-------------------------------------------------------------------------
     // ##TLIFE ##2600
     //-------------------------------------------------------------------------
-//2600
+//2600;1
 	//LG_STR nszParToolLifeSet[9][LG_NUM] =
 	{CN("刀具寿命相关设置")
 	EN("Tool life setting")},
@@ -5326,7 +5326,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
     // ##IO ##2700
     //-------------------------------------------------------------------------
-//2700
+//2700;1
 	//LG_STR nszParDIDOSet[9][LG_NUM] =
 	{CN("输入信号设置")
 	EN("DI setting")},
@@ -5346,35 +5346,35 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//2710
+//2710;1
 	//LG_STR nszParDIWidth[LG_NUM] =
 	{CN("输入信号宽度(ms)")
 	EN("DI signal width(ms)")},
-//2711
+//2711;1
 	//LG_STR nszParDIEsp[LG_NUM] =
 	{CN("急停输入口")
 	EN("ESP DI")},
-//2712
+//2712;1
 	//LG_STR nszParDIEsp2[LG_NUM] =
 	{CN("急停2输入口")
 	EN("ESP2 DI")},
-//2720
+//2720;1
 	//LG_STR nszParBusIOStationAddr[LG_NUM] =
 	{CN("总线IO站地址")
 	EN("Bus IO station address")},
-//2723
+//2723;12
 	//LG_STR nszParBusIOStationDIWidth[LG_NUM] =
 	{CN("总线IO站输入信号宽度(ms)")
 	EN("Bus IO station DI signal width(ms)")},
-//2721
+//2721;1
 	//LG_STR nszParBusIOXStartDI[LG_NUM] =
 	{CN("总线IO站输入口的X起始地址")
 	EN("Bus DI station X start for input port")},
-//2722
+//2722;12
 	//LG_STR nszParBusIOYStartDO[LG_NUM] =
 	{CN("总线IO站输出口的Y起始地址")
 	EN("Bus DI station Y start for output port")},
-//2725
+//2725;12
 	//LG_STR nszParBusIOXStartAD[LG_NUM] =
 	{CN("总线IO站AD的X起始地址")
 	EN("Bus DI station X start for AD")},
@@ -5383,7 +5383,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     // ##PLC 3000
     //-------------------------------------------------------------------------
     //PLC/开放PLC设置 3200+
-//3000
+//3000;1
 	//LG_STR nszParPlcSet[9][LG_NUM] =
 	{CN("PLC相关设置")
 	EN("PLC settings")},
@@ -5403,7 +5403,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//3001
+//3001;1
 	//LG_STR nszParInterlockSet[9][LG_NUM] =
 	{CN("互锁信号相关设置")
 	EN("Interlock signal settings")},
@@ -5424,7 +5424,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	{CN("")
 	EN("")},
     //内嵌PLC设置
-//3300
+//3300;1
 	//LG_STR nszParFixPlcSet1[9][LG_NUM] =
 	{CN("内置PLC功能设置相关1")
 	EN("Fixed PLC settings 1")},
@@ -5444,7 +5444,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("EHDC 0/1:External feed-hold sigal is normal open/close")},
 	{CN("SPSSP 0/1:进给保持时,不/停主轴")
 	EN("SPSSP 0/1:NO/STOP spindle when feed hold")},
-//3301
+//3301;1
 	//LG_STR nszParFixPlcSet2[9][LG_NUM] =
 	{CN("内置PLC功能设置相关2")
 	EN("Fixed PLC settings 2")},
@@ -5464,7 +5464,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
 	{CN("")
     EN("")},
-//3302
+//3302;1
 	//LG_STR nszParFixPlc3SwitchSet[9][LG_NUM] =
 	{CN("内置PLC三位开关相关设置")
 	EN("Fixed PLC tri-switch settings")},
@@ -5484,7 +5484,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//3303
+//3303;1
 	//LG_STR nszParFixPlcSafeDoorSet[9][LG_NUM] =
 	{CN("内置PLC安全门相关设置")
 	EN("Fixed PLC Safe-Door settings")},
@@ -5504,7 +5504,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//3313
+//3313;1
 	//LG_STR nszParFixPlcOutput[9][LG_NUM] =
 	{CN("内置PLC输出设置")
 	EN("Fixed PLC output settings")},
@@ -5524,7 +5524,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//3310
+//3310;1
 	//LG_STR nszParFixPlcMRSTSet[9][LG_NUM] =
 	{CN("内置PLC M功能复位相关设置")
 	EN("Fixed PLC M settings")},
@@ -5544,7 +5544,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//3311
+//3311;123456
 	//LG_STR nszParFixPlcRstDo[9][LG_NUM] =
 	{CN("内置PLC复位时关闭输出口")
 	EN("Fixed PLC RST DO close")},
@@ -5564,7 +5564,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//3312
+//3312;1
 	//LG_STR nszParFixPlcPowerOnSet[9][LG_NUM] =
 	{CN("内置PLC上电初始化相关设置")
 	EN("Fixed PLC M settings")},
@@ -5584,7 +5584,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//3315
+//3315;1
 	//LG_STR nszParFixPlcUserKey[9][LG_NUM] =
 	{CN("User键快捷宏调用相关设置")
 	EN("User key settings")},
@@ -5604,7 +5604,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//3320
+//3320;1
 	//LG_STR nszParFixPlcWorkLampKey[9][LG_NUM] =
 	{CN("工作灯键复用相关设置")
 	EN("Worklamp key mux settings")},
@@ -5665,27 +5665,27 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//3332
+//3332;1
 	//LG_STR nszParSTMinTime[LG_NUM] =
 	{CN("启动信号最小时间")
 	EN("ST signal min time")},
-//3333
+//3333;1
 	//LG_STR nszParSTMaxTime[LG_NUM] =
 	{CN("启动信号时间上限")
 	EN("ST signal max time")},
-//3330
+//3330;1
 	//LG_STR nszParDIExternStart[LG_NUM] =
 	{CN("外接启动输入口")
 	EN("External start DI")},
-//3331
+//3331;1
 	//LG_STR nszParDIExternHold[LG_NUM] =
 	{CN("外接保持输入口")
 	EN("External hold DI")},
-//3340
+//3340;1
 	//LG_STR nszParDOCool[LG_NUM] =
 	{CN("M08输出口")
 	EN("M08 DO")},
-//3341
+//3341;1
 	//LG_STR nszParTimeM08[LG_NUM] =
 	{CN("M08延时时间(ms)")
 	EN("M08 delay time(ms)")},
@@ -5693,43 +5693,43 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	//LG_STR nszParDITriSwichLeft[LG_NUM] =
 	{CN("三位开关运行允许输入口")
 	EN("Tri-swich run enable DI")},
-//3335
+//3335;1
 	//LG_STR nszParDITriSwichRight[LG_NUM] =
 	{CN("三位开关主轴停输入口")
 	EN("Tri-swich spindle stop DI")},
-//3350
+//3350;1
 	//LG_STR nszParDISafeDoor[LG_NUM] =
 	{CN("防护门输入口")
 	EN("Safe door DI")},
-//3351
+//3351;1
 	//LG_STR nszParDOWorkLamp[LG_NUM] =
 	{CN("工作灯输出口")
 	EN("Work lamp DO")},
-//3355
+//3355;1
 	//LG_STR nszParDORunLamp[LG_NUM] =
 	{CN("三色灯运行指示灯输出口")
 	EN("Run lamp DO")},
-//3356
+//3356;1
 	//LG_STR nszParDOAlmLamp[LG_NUM] =
 	{CN("三色灯报警指示灯输出口")
 	EN("Alarm lamp DO")},
-//3357
+//3357;1
 	//LG_STR nszParDOHoldLamp[LG_NUM] =
 	{CN("三色灯停止指示灯输出口")
 	EN("Stop lamp DO")},
-//3360
+//3360;1
 	//LG_STR nszParDIFeedOvA[LG_NUM] =
 	{CN("进给倍率开关*1输入口")
 	EN("Feedrate override DI *1")},
-//3361
+//3361;1
 	//LG_STR nszParDIFeedOvB[LG_NUM] =
 	{CN("进给倍率开关*2输入口")
 	EN("Feedrate override DI *2")},
-//3362
+//3362;1
 	//LG_STR nszParDIFeedOvE[LG_NUM] =
 	{CN("进给倍率开关*4输入口")
 	EN("Feedrate override DI *4")},
-//3363
+//3363;1
 	//LG_STR nszParDIFeedOvF[LG_NUM] =
 	{CN("进给倍率开关*8输入口")
 	EN("Feedrate override DI *8")},
@@ -5757,7 +5757,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	{CN("")
 	EN("")},
 
-//9000
+//9000;1
 	//LG_STR nszParMacroSet[9][LG_NUM] =
 	{CN("宏程序相关设置")
 	EN("Program settings")},
@@ -5781,182 +5781,182 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParM06ProgNumber[LG_NUM] =
     {CN("M06调用的子程序号")
      EN("M06 subprogram number")},
-//9010
+//9010;1
     //LG_STR nszParTProgNumber[LG_NUM] =
     {CN("换刀调用的子程序号")
      EN("Tool subprogram number")},
-//9020
+//9020;1
     //LG_STR nszParGMCallNum[LG_NUM] =
     {CN("G代码宏程序调用个数")
      EN("G code macro-call num")},
-//9021
+//9021;1
      //LG_STR nszParGMCallPrgFirst[LG_NUM] =
     {CN("G代码子程序调用的开头程序号")
      EN("First program for G code macro call")},
-//9022
+//9022;1
      //LG_STR nszParGMCallGCode0[LG_NUM] =
     {CN("宏程序调用的G代码号0")
      EN("G code used for macro-call 0")},
-//9023
+//9023;1
      //LG_STR nszParGMCallGCode1[LG_NUM] =
     {CN("宏程序调用的G代码号1")
      EN("G code used for macro-call 1")},
-//9024
+//9024;1
      //LG_STR nszParGMCallGCode2[LG_NUM] =
     {CN("宏程序调用的G代码号2")
      EN("G code used for macro-call 2")},
-//9025
+//9025;1
      //LG_STR nszParGMCallGCode3[LG_NUM] =
     {CN("宏程序调用的G代码号3")
      EN("G code used for macro-call 3")},
-//9026
+//9026;1
      //LG_STR nszParGMCallGCode4[LG_NUM] =
     {CN("宏程序调用的G代码号4")
      EN("G code used for macro-call 4")},
-//9027
+//9027;1
      //LG_STR nszParGMCallGCode5[LG_NUM] =
     {CN("宏程序调用的G代码号5")
      EN("G code used for macro-call 5")},
-//9028
+//9028;1
      //LG_STR nszParGMCallGCode6[LG_NUM] =
     {CN("宏程序调用的G代码号6")
      EN("G code used for macro-call 6")},
-//9029
+//9029;1
      //LG_STR nszParGMCallGCode7[LG_NUM] =
     {CN("宏程序调用的G代码号7")
      EN("G code used for macro-call 7")},
-//9030
+//9030;1
      //LG_STR nszParGMCallGCode8[LG_NUM] =
     {CN("宏程序调用的G代码号8")
      EN("G code used for macro-call 8")},
-//9031
+//9031;1
      //LG_STR nszParGMCallGCode9[LG_NUM] =
     {CN("宏程序调用的G代码号9")
      EN("G code used for macro-call 9")},
-//9040
+//9040;1
     //LG_STR nszParMSCallNum[LG_NUM] =
     {CN("M代码子程序调用个数")
      EN("M code sub-call num")},
-//9041
+//9041;1
      //LG_STR nszParMSCallPrgFirst[LG_NUM] =
     {CN("M代码子程序调用的开头程序号")
      EN("First program for M code sub call")},
-//9042
+//9042;1
      //LG_STR nszParMSCallMCode0[LG_NUM] =
     {CN("子程序调用的M代码号0")
      EN("M code used for sub-call 0")},
-//9043
+//9043;1
      //LG_STR nszParMSCallMCode1[LG_NUM] =
     {CN("子程序调用的M代码号1")
      EN("M code used for sub-call 1")},
-//9044
+//9044;1
      //LG_STR nszParMSCallMCode2[LG_NUM] =
     {CN("子程序调用的M代码号2")
      EN("M code used for sub-call 2")},
-//9045
+//9045;1
      //LG_STR nszParMSCallMCode3[LG_NUM] =
     {CN("子程序调用的M代码号3")
      EN("M code used for sub-call 3")},
-//9046
+//9046;1
      //LG_STR nszParMSCallMCode4[LG_NUM] =
     {CN("子程序调用的M代码号4")
      EN("M code used for sub-call 4")},
-//9047
+//9047;1
      //LG_STR nszParMSCallMCode5[LG_NUM] =
     {CN("子程序调用的M代码号5")
      EN("M code used for sub-call 5")},
-//9048
+//9048;1
      //LG_STR nszParMSCallMCode6[LG_NUM] =
     {CN("子程序调用的M代码号6")
      EN("M code used for sub-call 6")},
-//9049
+//9049;1
      //LG_STR nszParMSCallMCode7[LG_NUM] =
     {CN("子程序调用的M代码号7")
      EN("M code used for sub-call 7")},
-//9050
+//9050;1
      //LG_STR nszParMSCallMCode8[LG_NUM] =
     {CN("子程序调用的M代码号8")
      EN("M code used for sub-call 8")},
-//9051
+//9051;1
      //LG_STR nszParMSCallMCode9[LG_NUM] =
     {CN("子程序调用的M代码号9")
      EN("M code used for sub-call 9")},
-//9060
+//9060;1
     //LG_STR nszParMMCallNum[LG_NUM] =
     {CN("M代码宏程序调用个数")
      EN("M code macro-call num")},
-//9061
+//9061;1
      //LG_STR nszParMMCallPrgFirst[LG_NUM] =
     {CN("M代码宏程序调用的开头程序号")
      EN("First program for M code macro call")},
-//9062
+//9062;1
      //LG_STR nszParMMCallMCode0[LG_NUM] =
     {CN("宏程序调用的M代码号0")
      EN("M code used for macro-call 0")},
-//9063
+//9063;1
      //LG_STR nszParMMCallMCode1[LG_NUM] =
     {CN("宏程序调用的M代码号1")
      EN("M code used for macro-call 1")},
-//9064
+//9064;1
      //LG_STR nszParMMCallMCode2[LG_NUM] =
     {CN("宏程序调用的M代码号2")
      EN("M code used for macro-call 2")},
-//9065
+//9065;1
      //LG_STR nszParMMCallMCode3[LG_NUM] =
     {CN("宏程序调用的M代码号3")
      EN("M code used for macro-call 3")},
-//9066
+//9066;1
      //LG_STR nszParMMCallMCode4[LG_NUM] =
     {CN("宏程序调用的M代码号4")
      EN("M code used for macro-call 4")},
-//9067
+//9067;1
      //LG_STR nszParMMCallMCode5[LG_NUM] =
     {CN("宏程序调用的M代码号5")
      EN("M code used for macro-call 5")},
-//9068
+//9068;1
      //LG_STR nszParMMCallMCode6[LG_NUM] =
     {CN("宏程序调用的M代码号6")
      EN("M code used for macro-call 6")},
-//9069
+//9069;1
      //LG_STR nszParMMCallMCode7[LG_NUM] =
     {CN("宏程序调用的M代码号7")
      EN("M code used for macro-call 7")},
-//9070
+//9070;1
      //LG_STR nszParMMCallMCode8[LG_NUM] =
     {CN("宏程序调用的M代码号8")
      EN("M code used for macro-call 8")},
-//9071
+//9071;1
      //LG_STR nszParMMCallMCode9[LG_NUM] =
     {CN("宏程序调用的M代码号9")
      EN("M code used for macro-call 9")},
-//9080
+//9080;1
      //LG_STR nszParQMCNum[LG_NUM] =
     {CN("快捷宏指令调用的程序个数")
      EN("One-touch macro call num")},
-//9085
+//9085;1
      //LG_STR nszParEMCInput0[LG_NUM] =
     {CN("外接快捷宏调用入口0")
      EN("Ext macro call input 0")},
-//9086
+//9086;1
      //LG_STR nszParEMCInput1[LG_NUM] =
     {CN("外接快捷宏调用入口1")
      EN("Ext macro call input 1")},
-//9087
+//9087;1
      //LG_STR nszParEMCInput2[LG_NUM] =
     {CN("外接快捷宏调用入口2")
      EN("Ext macro call input 2")},
-//9088
+//9088;1
      //LG_STR nszParEMCInput3[LG_NUM] =
     {CN("外接快捷宏调用入口3")
      EN("Ext macro call input 3")},
-//9089
+//9089;1
      //LG_STR nszParEMCInput4[LG_NUM] =
     {CN("外接快捷宏调用入口4")
      EN("Ext macro call input 4")},
 
      // ##THREAD
     //LG_STR nszParThreadSetting[9]][LG_NUM] =
-//5000
+//5000;1
     {CN("螺纹相关设置")
     EN("Thread settings")},
     {CN("THTT 0/1:螺纹退尾长度,按照时间常数(5012)/退尾长度系数(5016)")
@@ -5975,11 +5975,11 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("THHM 0/1:Disable/Enable high speed mode when thread cycle")},
 	{CN("THHC 0/1:螺纹循环时(G76),不/关闭螺纹起点高度检查")
 	EN("THHC 0/1:No/Close start point height check when thread cycle(G76)")},
-//5012
+//5012;1
     //LG_STR nszParThreadTimeCnst[LG_NUM] =
     {CN("螺纹加工各轴加减速时间常数(ms)")
      EN("time constant of thread(ms)")},
-//5011
+//5011;1
     //LG_STR nszParThreadFeedFilterRatio[LG_NUM] =
     {CN("螺纹加工时速度平滑系数(0~100),0:不滤波")
     EN("Feed filter ratio when thread(0~100),0:close")},
@@ -5987,19 +5987,19 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParThreadTailTimeCnst[LG_NUM] =
     {CN("螺纹加工退尾加减速时间常数(ms)")
     EN("time constant of thread tail(ms)")},
-//5010
+//5010;1
     //LG_STR nszParThreadMaxF[LG_NUM] =
     {CN("螺纹加工速度上限(=0:不检查)")
     EN("Max Feed of thread(=0:No check)")},
-//5015
+//5015;1
     //LG_STR nszParThreadTailFL[LG_NUM] =
     {CN("螺纹退尾加减速的低速FL")
     EN("Feed(FL) of thread tail")},
-//5016
+//5016;1
     //LG_STR nszParThreadTailK[LG_NUM] =
     {CN("螺纹退尾长度系数(单位:0.1导程)")
     EN("Thread tail length ratio(Unit:0.1 lead)")},
-//5017
+//5017;1
     //LG_STR nszParThreadTailAng[LG_NUM] =
     {CN("螺纹退尾角度")
     EN("Thread tail angle")},
@@ -6011,52 +6011,52 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParThreadScrewInFL[LG_NUM] =
     {CN("螺纹旋进加减速时的低速FL")
     EN("Feed(FL) of thread head cut")},
-//5025
+//5025;1
     //LG_STR nszParThreadSpdlLow[LG_NUM] =
     {CN("螺纹加工主轴转速下限(rpm)(=0:不检查)")
     EN("Thread cut spindle lowest speed(rpm)(=0:No check)")},
-//5026
+//5026;1
     //LG_STR nszParThreadSpdlSpeedArriveRange[LG_NUM] =
     {CN("螺纹加工时,主轴转速到达窗口范围(百分比)(=0:不检查)")
     EN("Thread cut spindle speed arrive range(percent)(=0:No check)")},
-//5027
+//5027;1
     //LG_STR nszParThreadSpdlWaitTime[LG_NUM] =
     {CN("螺纹加工等待时间上限(=0:忽略)")
     EN("Thread cut wait time max.(=0:ignore)")},
-//5030
+//5030;1
     //LG_STR nszParG76Qdmin[LG_NUM] =
     {CN("G76螺纹循环的最小切削量")
     EN("G76 Qd min")},
-//5031
+//5031;1
     //LG_STR nszParG76Rd[LG_NUM] =
     {CN("G76螺纹循环的精切量")
     EN("G76 Rd")},
-//5032
+//5032;1
     //LG_STR nszParG76Pm[LG_NUM] =
     {CN("G76螺纹循环的精削重复次数Pm")
     EN("G76 Pm")},
-//5033
+//5033;1
     //LG_STR nszParG76Pr[LG_NUM] =
     {CN("G76螺纹循环的退尾长度系数Pr(单位:0.1导程)")
     EN("G76 thread tail length ratio Pr(Unit:0.1 lead)")},
-//5034
+//5034;1
     //LG_STR nszParG76Pa[LG_NUM] =
     {CN("G76螺纹循环的刀尖角度Pa")
     EN("G76 Pa")},
-//5037
+//5037;1
     //LG_STR nszParG76CutInCompz[LG_NUM] =
     {CN("G76螺纹循环时,进刀倾斜补偿角度")
     EN("Cut-in angle of inclination when G76")},
-//5035
+//5035;1
     //LG_STR nszParG76CutType[LG_NUM] =
     {CN("G76螺纹循环的切削方式选择(0:单边,1:交错)")
     EN("G76 cutting type select")},
-//5036
+//5036;1
     //LG_STR nszParG76StartType[LG_NUM] =
     {CN("G76螺纹循环的起点类型选择(0:标准,1:牙尖和G92螺纹一致)")
     EN("G76 start point select")},
 
-//5100
+//5100;1
     //LG_STR nszParCannedCycleSetting[9]][LG_NUM] =
     {CN("固定循环相关设置")
      EN("Canned cycle settings")},
@@ -6076,7 +6076,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
- //5120
+ //5120;1
     //LG_STR nszParMulCannedCycleSetting[9]][LG_NUM] =
     {CN("复合循环相关设置")
      EN("multiple canned cycles settings")},
@@ -6097,39 +6097,39 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	{CN("")
 	EN("")},
 
- //5110
+ //5110;1
     //LG_STR nszParDrillCycRetVal[LG_NUM] =
     {CN("高速深孔循环的返回量r")
     EN("Return value of peck drilling cycle")},
- //5111
+ //5111;1
     //LG_STR nszParDrillCycClearanceVal[LG_NUM] =
     {CN("深孔循环的进刀空程量c")
     EN("Clearance value in a peck drilling cycle")},
- //5130
+ //5130;1
     //LG_STR nszParMulCycCutVal[LG_NUM] =
     {CN("G71和G72复合循环的切削量")
     EN("Depth of cut in multiple canned cycles G71 and G72")},
- //5131
+ //5131;1
     //LG_STR nszParMulCycRetVal[LG_NUM] =
     {CN("G71和G72复合循环的返回量")
     EN("Escape in multiple canned cycles G71 and G72")},
- //5132
+ //5132;1
     //LG_STR nszParMulCycClearanceVal[LG_NUM] =
     {CN("G71和G72复合循环的进刀空程量")
     EN("Clearance in multiple canned cycles G71 and G72")},
- //5133
+ //5133;1
     //LG_STR nszParMulCycG73Retract1[LG_NUM] =
     {CN("复合形固定循环G73的回退距离(平面第1轴)")
      EN("Retraction distance in the multiple canned cycle G73(plane 1st axis)")},
- //5134
+ //5134;1
     //LG_STR nszParMulCycG73Retract2[LG_NUM] =
     {CN("复合形固定循环G73的回退距离(平面第2轴)")
     EN("Retraction distance in the multiple canned cycle G73(plane 2rd axis)")},
- //5135
+ //5135;1
     //LG_STR nszParMulCycG73DivNum[LG_NUM] =
     {CN("复合形固定循环G73的分割次数")
     EN("Number of divisions in the multiple canned cycle G73")},
- //5136
+ //5136;1
     //LG_STR nszParMulCycG7475Retract[LG_NUM] =
     {CN("复合形固定循环G74和G75的返回量")
     EN("Return in multiple canned cycles G74 and G75")},
@@ -6138,7 +6138,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     {CN("精堂循环时,定向后回退方向")
     EN("Retraction direction after orientation in a fine boring cycle")},
 
-//5200
+//5200;1
     //LG_STR nszParRigidTapSetting[9]][LG_NUM] =
     {CN("刚性攻丝相关设置")
      EN("Rigid tapping settings")},
@@ -6158,7 +6158,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
- //5201
+ //5201;123
     //LG_STR nszParRigidTapSpSetting[9]][LG_NUM] =
     {CN("刚性攻丝相关主轴设置")
      EN("Rigid tapping settings")},
@@ -6178,11 +6178,11 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
- //5211
+ //5211;1
     //LG_STR nszParRTapCycRetVal[LG_NUM] =
     {CN("高速深孔攻丝循环的返回量r")
     EN("Return value of peck tapping cycle")},
- //5210
+ //5210;1
     //LG_STR nszParTapMaxF[LG_NUM] =
     {CN("攻丝时最大导程(单位:mm, =0:不限制)")
     EN("Max tap lead(unit:mm, =0:No limit)")},
@@ -6190,31 +6190,31 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParRTapCycClearanceVal[LG_NUM] =
     {CN("高速深孔攻丝循环的进刀空程量")
     EN("Clearance value of peck tapping cycle")},
- //5225
+ //5225;1
     //LG_STR nszParTapSpdlSpeedArriveRange[LG_NUM] =
     {CN("攻丝时,等待主轴转速到达窗口范围(百分比)")
     EN("Spindle speed arrive range when tapping(percent)")},
- //5226
+ //5226;1
     //LG_STR nszParTapSpdlWaitTime[LG_NUM] =
     {CN("攻丝时,等待时间上限")
     EN("Tapping spdindle wait time max.")},
- //5230
+ //5230;123
     //LG_STR nszParTapRefSpdlSpeed[LG_NUM] =
     {CN("变频攻丝时,主轴参考转速(rpm)")
     EN("Spdl referrence speed when tap(rpm)")},
- //5231
+ //5231;123
     //LG_STR nszParTapRefSpdlSpeedStopTime[LG_NUM] =
     {CN("变频攻丝时,主轴参考转速的停止时间(ms)")
     EN("Spdl referrence speed stop time when tap(ms)")},
- //5232
+ //5232;1
     //LG_STR nszParTapAxisFeedCompRatio[LG_NUM] =
     {CN("攻丝时,进给轴位置补偿系数")
     EN("Position loop comp. ratio when tap")},
- //5233
+ //5233;1
     //LG_STR nszParTapAxisPosLoopGain[LG_NUM] =
     {CN("攻丝时,各轴伺服位置环增益(KP)(1/s)")
     EN("Axis servo position loop gain(KP) when tap(1/s)")},
- //5234
+ //5234;1
     //LG_STR nszParTapAxisVelLoopGain[LG_NUM] =
     {CN("攻丝时,各轴系统速度回路增益")
     EN("Axis NC vel. loop gain when tap")},
@@ -6226,7 +6226,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParTapAxisVelPosLoopGain[LG_NUM] =
     {CN("攻丝时,各轴系统正向速度回路增益")
     EN("Axis NC vel-Pos loop gain when tap")},
-//5235
+//5235;1
     //LG_STR nszParTapAxisAccLoopGain[LG_NUM] =
     {CN("攻丝时,各轴系统加速度回路增益")
     EN("Axis NC acc. loop gain when tap")},
@@ -6234,15 +6234,15 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParTapAxisDecLoopGain[LG_NUM] =
     {CN("攻丝时,各轴系统减速度回路增益")
     EN("Axis NC dec. loop gain when tap")},
-//5240
+//5240;123
     //LG_STR nszParTapSpdlTimeCnst[LG_NUM] =
     {CN("攻丝时,主轴加减速时间常数")
     EN("Spindle Acc./dec. time constant when tap")},
-//5241
+//5241;1
     //LG_STR nszParTapAxisTimeCnst[LG_NUM] =
     {CN("攻丝时,各轴加减速时间常数(ms)")
      EN("time constant of tap(ms)")},
-//5237
+//5237;1
     //LG_STR nszParTapAxisBackCompDist[LG_NUM] =
      {CN("攻丝反向时,各轴补偿距离(>0:进给方向)")
      EN("Axis compensate distance when tap back(>0:Feed dir.)")},
@@ -6250,7 +6250,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParTapBackCompFeed[LG_NUM] =
     {CN("攻丝反向时,补偿速度(mm/min)")
      EN("Compensate feed when tap back(mm/min)")},
-//5246
+//5246;1
     //LG_STR nszParTapInPosDist[LG_NUM] =
     {CN("各轴攻丝到位检测距离")
     EN("Axis tapping in-position-dist")},
@@ -6259,7 +6259,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     {CN("各轴攻丝时的负载上限")
     EN("Axis Tap load max")},
 
-//5300
+//5300;1
     //LG_STR nszParPolygonCutSetting[9][LG_NUM] =
     {CN("多边形加工相关设置")
     EN("Polygon cut setting")},
@@ -6287,31 +6287,31 @@ const CHAR *const aszStrTable[][LG_NUM] =
 //	EN("PLFE 0/1:Disable/Enable tool axis follow error compensation when encoder control mode")},
 	{CN("")
 	EN("")},
-//5310
+//5310;1
     //LG_STR nszParPolygonCutP[LG_NUM] =
 	{CN("P对应的主轴号(通道内)")
 	EN("Master spindle spindle no.(P)")},
-//5311
+//5311;1
     //LG_STR nszParPolygonCutQ[LG_NUM] =
 	{CN("Q对应的从动轴号(通道内)")
 	EN("Slave axis No.(Q)")},
-//5312
+//5312;1
     //LG_STR nszParPolygonCutToolSpeedMax[LG_NUM] =
 	{CN("从动轴轴旋转转速上限(rpm)")
 	EN("Slave axis rotation speed max.")},
-//5313
+//5313;1
     //LG_STR nszParPolygonCutToolTimeCnst[LG_NUM] =
     {CN("从动轴加减速时间常数")
      EN("Slave axis Acc./dec. time constant")},
-//5314
+//5314;1
     //LG_STR nszParPolygonFeedFilterRatio[LG_NUM] =
      {CN("从动轴速度平滑系数(0~100),0:不滤波")
      EN("Slave axis feed filter ratio (0~100),0:close")},
-//5315
+//5315;1
     //LG_STR nszParPolySpdlSpeedArriveRange[LG_NUM] =
     {CN("主轴转速到达检测窗口范围(百分比)")
     EN("Spindle speed arrive check range(percent)")},
-//5315
+//5315;1
     //LG_STR nszParPolySpdlArriveWaitTime[LG_NUM] =
     {CN("等待主轴转速到达时间上限(=0:忽略)")
     EN("Max time of spindle speed arrive.(=0:ignore)")},
@@ -6417,7 +6417,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParECamSpdlArriveWaitTime[LG_NUM] =
     {CN("电子凸轮加工时,等待主轴转速到达时间上限(=0:忽略)")
     EN("Max time of spindle speed arrive when ECAM.(=0:ignore)")},
-//5400
+//5400;1
     //LG_STR nszParAxisRetractSetting[9][LG_NUM] =
     {CN("退回相关设置")
     EN("Retraction settings")},
@@ -6437,20 +6437,20 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//5410
+//5410;1
 	//LG_STR aszrAxisRetractF[LG_NUM] =
 	{CN("各轴退回速度(mm/min)")
 	EN("Axis retract feed(mm/min)")},
-//5411
+//5411;1
 	//LG_STR aszrAxisRetractDist[LG_NUM] =
 	{CN("各轴退回距离(mm)")
 	EN("Axis retrace distance(mm)")},
-//5412
+//5412;1
 	//LG_STR nszParAxisRetractTimeCnst[LG_NUM] =
 	{CN("各轴退回时间常数(ms)")
 	EN("Axis retract time const(ms)")},
 
-//5420
+//5420;1
     //LG_STR nszParAxisSpeedSetting[9][LG_NUM] =
     {CN("轴速度控制相关设置")
     EN("Axis speed setting")},
@@ -6470,40 +6470,40 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//5430
+//5430;1
     //LG_STR nszParAxisSpeedP[LG_NUM] =
 	{CN("M26M27功能P参数对应的轴号(通道内)")
 	EN("Axis no. of M26M27 function P")},
-//5431
+//5431;1
     //LG_STR nszParAxisSpeedQ[LG_NUM] =
 	{CN("M26M27功能Q参数对应的轴号(通道内)")
 	EN("Axis no. of M26M27 function Q")},
-//5432
+//5432;1
     //LG_STR nszParAxisSpeedK[LG_NUM] =
 	{CN("各轴速度控制时K编号")
 	EN("Axis feed control K No.")},
-//5435
+//5435;1
     //LG_STR nszParAxisSpeedCtrlTimeCnst[LG_NUM] =
     {CN("轴速度控制加减速时间常数")
      EN("Axis SpeedCtrl Acc./dec. time constant")},
 
-//5510
+//5510;1
     //LG_STR nszParSkipDefDI[LG_NUM] =
 	{CN("G31跳过功能默认输入口")
 	EN("G31 Skip function defualt DI")},
-//5511
+//5511;1
     //LG_STR nszParSkipLoad[LG_NUM] =
 	{CN("G31跳过功能负载值")
 	EN("G31 Skip function Load value")},
-//5515
+//5515;1
     //LG_STR nszParG160SkipLoad[LG_NUM] =
 	{CN("G160跳过功能负载值")
 	EN("G160 Skip function Load value")},
-//5516
+//5516;1
     //LG_STR nszParG160SkipFerr[LG_NUM] =
 	{CN("G160跳过功能跟随误差(0:不检查)")
 	EN("G160 Skip function Follow error value")},
-//5520
+//5520;1
     //LG_STR nszParAxisTrqCtrlSetting[9][LG_NUM] =
     {CN("扭矩控制相关设置")
     EN("Torque-contrl settings")},
@@ -6523,25 +6523,25 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//5521
+//5521;1
     //LG_STR nszParTrqCtrlFeed[LG_NUM] =
 	{CN("扭矩控制时,默认速度")
 	EN("Torque contrl speed")},
-//5522
+//5522;1
     //LG_STR nszParMaxTrqLoadValue[LG_NUM] =
 	{CN("电机最大转矩对应的伺服负载值")
 	EN("Load value when motor max torque output")},
 
     //极坐标插补
-//5530
+//5530;1
     //LG_STR nszParPolarIPLinearAx[LG_NUM] =
 	{CN("极坐标插补直线轴轴号(通道内)")
 	EN("Linear axis for polar interpolation")},
-//5531
+//5531;1
     //LG_STR nszParPolarIPRotateAx[LG_NUM] =
 	{CN("极坐标插补的旋转轴轴号(通道内)")
 	EN("rotation axis for polar interpolation")},
-//5532
+//5532;1
     //LG_STR nszParPolarIPRotateAxErr[LG_NUM] =
 	{CN("极坐标插补的假想轴方向的偏移量")
 	EN("Hypothetical axis error for polar interpolation")},
@@ -6560,7 +6560,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("Rotation feed of the normal direction controlled axis")},
 
     //进给轴同步 
-//5600
+//5600;1
     //LG_STR nszParAxisSyncSetting[9][LG_NUM] =
     {CN("进给轴同步控制相关设置")
     EN("Axis synchronous control setting")},
@@ -6580,113 +6580,113 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//5610
+//5610;1
     //LG_STR nszParAxisSyncMasterAxis[LG_NUM] =
 	{CN("进给轴同步控制中的主控轴的轴号(系统内)")
 	EN("Axis number of master axis in axis synchronous control(Nc-axis)")},
-//5611
+//5611;1
     //LG_STR nszParAxisSyncMachCoorCheck[LG_NUM] =
 	{CN("进给轴同步控制时,机床坐标检测的最大误差值")
 	EN("Max-error when synchronization error check based on mach-coor")},
-//5660
+//5660;1
     //LG_STR nszParAxisXchgNo[LG_NUM] =
 	{CN("各轴轴交换指令的编号")
 	EN("Axis exchange command No.")},
 
     //位置开关控制轴 
-//5910
+//5910;1
     //LG_STR nszParPosSwAx1[LG_NUM] =
 	{CN("执行第1位置开关功能的轴号(通道内)")
 	EN("The 1st position switch function performed axis")},
-//5911
+//5911;1
     //LG_STR nszParPosSwAx2[LG_NUM] =
 	{CN("执行第2位置开关功能的轴号(通道内)")
 	EN("The 2st position switch function performed axis")},
-//5912
+//5912;1
     //LG_STR nszParPosSwAx3[LG_NUM] =
 	{CN("执行第3位置开关功能的轴号(通道内)")
 	EN("The 3st position switch function performed axis")},
-//5913
+//5913;1
     //LG_STR nszParPosSwAx4[LG_NUM] =
 	{CN("执行第4位置开关功能的轴号(通道内)")
 	EN("The 4st position switch function performed axis")},
-//5914
+//5914;1
     //LG_STR nszParPosSwAx5[LG_NUM] =
 	{CN("执行第5位置开关功能的轴号(通道内)")
 	EN("The 5st position switch function performed axis")},
-//5915
+//5915;1
     //LG_STR nszParPosSwAx6[LG_NUM] =
 	{CN("执行第6位置开关功能的轴号(通道内)")
 	EN("The 6st position switch function performed axis")},
-//5916
+//5916;1
     //LG_STR nszParPosSwAx7[LG_NUM] =
 	{CN("执行第7位置开关功能的轴号(通道内)")
 	EN("The 7st position switch function performed axis")},
-//5917
+//5917;1
     //LG_STR nszParPosSwAx8[LG_NUM] =
 	{CN("执行第8位置开关功能的轴号(通道内)")
 	EN("The 8st position switch function performed axis")},
-//5930
+//5930;1
     //LG_STR nszParPosSwPosMax1[LG_NUM] =
 	{CN("第1位置开关范围的最大值")
 	EN("Maximum value of the range of the 1st position switch")},
-//5931
+//5931;1
     //LG_STR nszParPosSwPosMax2[LG_NUM] =
 	{CN("第2位置开关范围的最大值")
 	EN("Maximum value of the range of the 2st position switch")},
-//5932
+//5932;1
     //LG_STR nszParPosSwPosMax3[LG_NUM] =
 	{CN("第3位置开关范围的最大值")
 	EN("Maximum value of the range of the 3st position switch")},
-//5933
+//5933;1
     //LG_STR nszParPosSwPosMax4[LG_NUM] =
 	{CN("第4位置开关范围的最大值")
 	EN("Maximum value of the range of the 4st position switch")},
-//5934
+//5934;1
     //LG_STR nszParPosSwPosMax5[LG_NUM] =
 	{CN("第5位置开关范围的最大值")
 	EN("Maximum value of the range of the 5st position switch")},
-//5935
+//5935;1
     //LG_STR nszParPosSwPosMax6[LG_NUM] =
 	{CN("第6位置开关范围的最大值")
 	EN("Maximum value of the range of the 6st position switch")},
-//5936
+//5936;1
     //LG_STR nszParPosSwPosMax7[LG_NUM] =
 	{CN("第7位置开关范围的最大值")
 	EN("Maximum value of the range of the 7st position switch")},
-//5937
+//5937;1
     //LG_STR nszParPosSwPosMax8[LG_NUM] =
 	{CN("第8位置开关范围的最大值")
 	EN("Maximum value of the range of the 8st position switch")},
-//5950
+//5950;1
     //LG_STR nszParPosSwPosMin1[LG_NUM] =
 	{CN("第1位置开关范围的最小值")
 	EN("Minimum value of the range of the 1st position switch")},
-//5951
+//5951;1
     //LG_STR nszParPosSwPosMin2[LG_NUM] =
 	{CN("第2位置开关范围的最小值")
 	EN("Minimum value of the range of the 2st position switch")},
-//5952
+//5952;1
     //LG_STR nszParPosSwPosMin3[LG_NUM] =
 	{CN("第3位置开关范围的最小值")
 	EN("Minimum value of the range of the 3st position switch")},
-//5953
+//5953;1
     //LG_STR nszParPosSwPosMin4[LG_NUM] =
 	{CN("第4位置开关范围的最小值")
 	EN("Minimum value of the range of the 4st position switch")},
-//5954
+//5954;1
     //LG_STR nszParPosSwPosMin5[LG_NUM] =
 	{CN("第5位置开关范围的最小值")
 	EN("Minimum value of the range of the 5st position switch")},
-//5955
+//5955;1
     //LG_STR nszParPosSwPosMin6[LG_NUM] =
 	{CN("第6位置开关范围的最小值")
 	EN("Minimum value of the range of the 6st position switch")},
-//5956
+//5956;1
     //LG_STR nszParPosSwPosMin7[LG_NUM] =
 	{CN("第7位置开关范围的最小值")
 	EN("Minimum value of the range of the 7st position switch")},
-//5957
+//5957;1
     //LG_STR nszParPosSwPosMin8[LG_NUM] =
 	{CN("第8位置开关范围的最小值")
 	EN("Minimum value of the range of the 8st position switch")},
