@@ -50,6 +50,7 @@
 #include <afxcontrolbars.h>
 #include <afxcontrolbars.h>
 
+#include "modbus.h"
 
 #define I8 char
 

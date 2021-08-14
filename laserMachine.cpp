@@ -20,7 +20,6 @@
 
 #include "laserMachineDoc.h"
 #include "laserMachineView.h"
-#include "modbus.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -152,6 +151,26 @@ BOOL ClaserMachineApp::InitInstance()
 	// The one and only window has been initialized, so show and update it
 	m_pMainWnd->ShowWindow(SW_SHOW);
 	m_pMainWnd->UpdateWindow();
+
+	//Init communicate. Temporary code
+
+	uint32_t old_response_to_sec;
+	uint32_t old_response_to_usec;
+
+	m_ctx = modbus_new_rtu("COM4", 9600, 'O', 8, 1);
+	modbus_set_slave(m_ctx, 10);
+
+	//modbus_set_debug(ctx, TRUE);
+	//modbus_set_error_recovery(ctx, MODBUS_ERROR_RECOVERY_LINK | 	MODBUS_ERROR_RECOVERY_PROTOCOL);
+
+
+	modbus_get_response_timeout(m_ctx, &old_response_to_sec, &old_response_to_usec);
+	if (modbus_connect(m_ctx) == -1) {
+		fprintf(stderr, "Connection failed: %s\n", modbus_strerror(errno));
+		AfxMessageBox(_T("Connection failed"));
+		modbus_free(m_ctx);
+	}
+
 	return TRUE;
 }
 
@@ -234,36 +253,24 @@ void ClaserMachineApp::SaveCustomState()
 
 void ClaserMachineApp::OnBtnConnect()
 {
-	uint32_t old_response_to_sec;
-	uint32_t old_response_to_usec;
 
 	uint16_t tab_w_registers[4] = {0};
-	uint16_t tab_r_registers[8] = {0};
-	modbus_t* ctx = modbus_new_rtu("COM3", 9600, 'O', 8, 1);
-	modbus_set_slave(ctx, 10);
-
-	//modbus_set_debug(ctx, TRUE);
-	//modbus_set_error_recovery(ctx, MODBUS_ERROR_RECOVERY_LINK | 	MODBUS_ERROR_RECOVERY_PROTOCOL);
-
-
-	modbus_get_response_timeout(ctx, &old_response_to_sec, &old_response_to_usec);
-	if (modbus_connect(ctx) == -1) {
-		fprintf(stderr, "Connection failed: %s\n", modbus_strerror(errno));
-		modbus_free(ctx);
-		return ;
-	}
+	uint16_t tab_r_registers[16] = {0};
+	uint32_t *pData = (uint32_t*)tab_r_registers;
 
 
 
 	memset(tab_w_registers, 0, 4 * 2);
-	tab_w_registers[1] = 2;
-	//tab_w_registers[2] = 300;
-	//tab_w_registers[3] = 0;
+	tab_w_registers[0] = 4;
+	tab_w_registers[1] = 0;
+	tab_w_registers[2] = 12;
+	tab_w_registers[3] = 1;
 
 
-	int rc = modbus_write_registers(ctx, 0x00,4, tab_w_registers);
+	int rc = modbus_write_registers(m_ctx, 0x1000,4, tab_w_registers);
 
 	memset(tab_r_registers, 0, 8 * 2);
-	rc = modbus_read_registers(ctx, 0x00, 8, tab_r_registers);
+	rc = modbus_read_registers(m_ctx, 0x1004, 16, tab_r_registers);
 
+	rc = modbus_read_registers(m_ctx, 0x1004, 8, tab_r_registers);
 }
