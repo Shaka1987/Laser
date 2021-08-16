@@ -14,7 +14,7 @@ def ifdefCheck(txt):
     if -1 != txt.find("#if"):
         global state, old_state
         old_state = state
-        state = 3
+        state = 4
         return True
     else:
         return False
@@ -25,8 +25,6 @@ def endifCheck(txt):
         state = old_state
         old_state = -1
 
-
-
 def nameCheck(txt):
     global parCount, state, outPut,paraJson
 
@@ -36,10 +34,10 @@ def nameCheck(txt):
     text = txt[posS + 2:posE-1]
     if parCount % 2 == 1:
         txtJson = {
-            "title": text,
+            "name": text,
             "description": text
         }
-        paraJson["param"].append(txtJson)
+        paraJson["text"].append(txtJson)
     # else:
     #     txtJson = {
     #         "title": text,
@@ -49,6 +47,25 @@ def nameCheck(txt):
     if(parCount <= 0):
         state = 0
         outPut.append(paraJson)
+
+def titleCheck(txt):
+    global parCount, state, outPut,paraJson
+
+    parCount = parCount-1
+    posS = txt.find("(")
+    posE = txt.rfind(")")
+    text = txt[posS + 2:posE-1]
+    if parCount % 2 == 1:
+        paraJson["title"]=text
+    # else:
+        # paraJson["title"]=text
+    if(parCount <= 0):
+        if(paraJson["bin"] ):
+            state = 3
+            parCount = 8*2
+        else:
+            state = 0
+            outPut.append(paraJson)
 
 def normalCheck(txt):
     if -1 != txt.find("//"):
@@ -60,29 +77,28 @@ def normalCheck(txt):
                 global paraJson 
                 paraJson = {
                     "index" : strs[0],
-                    "type" : "sys",
+                    "bin" : False,  #默认系统参数
                     "lines" : strs[1],
-                    "param" : []
+                    "title" : "",
                 }
                 global state
                 state = 1
 
 def typeCheck(txt):
     global parCount, state, paraJson
-    if -1 == txt.find("[9]"):
-        paraJson["type"] = "sys"
-        parCount = 1*2
-    else :#位参数        
-        paraJson["type"] = "bin"
-        parCount = 9*2
+    if -1 != txt.find("[9]"):#位参数 
+        paraJson["bin"] = True
+        paraJson["text"] = []
+    parCount = 2
     state = 2
 
 
 def CheckLine(num, txt):
     numbers = {
         1 : typeCheck,
-        2 : nameCheck,
-        3 : endifCheck
+        2 : titleCheck,
+        3 : nameCheck,
+        4 : endifCheck,
     }
     
     method = numbers.get(num, normalCheck)
@@ -99,7 +115,8 @@ while 1:
     if not lines:
         outputFile = open("SystemParameter.json","w")
         outPut.sort(key = lambda x:x["index"])
-        outputFile.write(json.dumps(outPut,ensure_ascii=False))
+        outputFile.write(json.dumps(outPut))      
+#        outputFile.write(json.dumps(outPut,ensure_ascii=False))
         inputFile.close()
         outputFile.close()
         break
