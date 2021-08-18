@@ -85,24 +85,19 @@ void CParameterWnd::AdjustLayout()
 
 }
 
-void CParameterWnd::InitPropList()
+void CParameterWnd::LoadParameterDescription()
 {
-	m_wndPropList.EnableHeaderCtrl(FALSE);
-	m_wndPropList.EnableDescriptionArea();
-	m_wndPropList.SetVSDotNetLook();
-	m_wndPropList.MarkModifiedProperties();
-
 	ifstream filePara(_T("Resources\\Parameter Data\\SystemParameter.json"));
 	stringstream buffer;
 	buffer << filePara.rdbuf();
 	string contents(buffer.str());
 	boost::json::error_code ec;
-	auto decode_val = boost::json::parse(contents,ec);
+	auto decode_val = boost::json::parse(contents, ec);
 	TRACE(CString(ec.message().c_str()));
 	auto groups = decode_val.as_array();
 	if (decode_val.is_array())
 	{
-		for(auto data: groups)
+		for (auto data : groups)
 		{
 			auto parameter = data.as_object();
 			auto lines = parameter["lines"].as_string().c_str();
@@ -142,11 +137,11 @@ void CParameterWnd::InitPropList()
 				pGroup = new CMFCPropertyGridProperty(title, _T("默认值"), title);
 			}
 			TRACE(title + _T("\n"));
-		
+
 			m_wndPropList.AddProperty(pGroup);
 		}
 	}
-	
+
 	////其他参数类型示例
 	//CMFCPropertyGridProperty* pGroupXXX = new CMFCPropertyGridProperty(_T("XXX 其他参数示例"));
 	//CMFCPropertyGridProperty* pPropInput = new CMFCPropertyGridProperty(_T("可输入参数"), _T("默认值"), _T("该参数为可输入参数，可以输入任意值，但会对值做一定检查"));
@@ -159,9 +154,20 @@ void CParameterWnd::InitPropList()
 	//pPropSelect->AllowEdit(false);
 	//pGroupXXX->AddSubItem(pPropSelect);
 	//m_wndPropList.AddProperty(pGroupXXX);
-	
+
+}
+void CParameterWnd::InitPropList()
+{
+	m_wndPropList.EnableHeaderCtrl(FALSE);
+	m_wndPropList.EnableDescriptionArea();
+	m_wndPropList.SetVSDotNetLook();
+	m_wndPropList.MarkModifiedProperties();
+
+	//LoadParameterDescription();
+
 	//PropList填充后操作
-//	m_wndPropList.ExpandAll();
+	//	m_wndPropList.ExpandAll();
+	
 }
 
 void CParameterWnd::OnSize(UINT nType, int cx, int cy)

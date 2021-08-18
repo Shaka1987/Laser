@@ -12,6 +12,8 @@ private:
 
 	void InitPropList();
 	void AdjustLayout();
+	void LoadParameterDescription();
+
 public:
 	CParameterWnd();
 	virtual ~CParameterWnd();
