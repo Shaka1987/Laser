@@ -254,23 +254,40 @@ void ClaserMachineApp::SaveCustomState()
 void ClaserMachineApp::OnBtnConnect()
 {
 
-	uint16_t tab_w_registers[4] = {0};
-	uint16_t tab_r_registers[16] = {0};
+	uint16_t tab_w_registers[8] = {0};
+	uint16_t tab_r_registers[101] = {0};
 	uint32_t *pData = (uint32_t*)tab_r_registers;
+	char name[8] = "SYS.PAR";
 
 
+	memset(tab_w_registers, 0, 8 * 2);
+	tab_w_registers[0] = 20;			//功能码
+	tab_w_registers[1] = 0;				//索引1	通道
+	tab_w_registers[2] = 0;				//索引2
+	tab_w_registers[3] = 2;				//子索引
+	memcpy(tab_w_registers + 4, name, 8);
 
-	memset(tab_w_registers, 0, 4 * 2);
-	tab_w_registers[0] = 4;
-	tab_w_registers[1] = 0;
-	tab_w_registers[2] = 12;
-	tab_w_registers[3] = 1;
+
+	int rc = modbus_write_registers(m_ctx, 0x2000,8, tab_w_registers);
+	uint16_t i = 1;
+	do
+	{
+		memset(tab_w_registers, 0, 8 * 2);
+		tab_w_registers[0] = 22;			//功能码
+		tab_w_registers[1] = 0;				//索引1	通道
+		tab_w_registers[2] = 0;				//索引2
+		tab_w_registers[3] = i++;				//子索引
+		//memcpy(tab_w_registers + 4, name, 8);
 
 
-	int rc = modbus_write_registers(m_ctx, 0x1000,4, tab_w_registers);
+		rc = modbus_write_registers(m_ctx, 0x2000, 4, tab_w_registers);
 
-	memset(tab_r_registers, 0, 8 * 2);
-	rc = modbus_read_registers(m_ctx, 0x1004, 16, tab_r_registers);
+		memset(tab_r_registers, 0, 101 * 2);
+		rc = modbus_read_registers(m_ctx, 0x2004, 100, tab_r_registers);
+		TRACE(CString((char*)(tab_r_registers +1)));
+	} while (rc == 100);
 
-	rc = modbus_read_registers(m_ctx, 0x1004, 8, tab_r_registers);
+	return;
+
+
 }
