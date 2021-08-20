@@ -154,22 +154,7 @@ BOOL ClaserMachineApp::InitInstance()
 
 	//Init communicate. Temporary code
 
-	uint32_t old_response_to_sec;
-	uint32_t old_response_to_usec;
-
-	m_ctx = modbus_new_rtu("COM4", 9600, 'O', 8, 1);
-	modbus_set_slave(m_ctx, 10);
-
-	//modbus_set_debug(ctx, TRUE);
-	//modbus_set_error_recovery(ctx, MODBUS_ERROR_RECOVERY_LINK | 	MODBUS_ERROR_RECOVERY_PROTOCOL);
-
-
-	modbus_get_response_timeout(m_ctx, &old_response_to_sec, &old_response_to_usec);
-	if (modbus_connect(m_ctx) == -1) {
-		fprintf(stderr, "Connection failed: %s\n", modbus_strerror(errno));
-		AfxMessageBox(_T("Connection failed"));
-		modbus_free(m_ctx);
-	}
+	
 
 	return TRUE;
 }
@@ -254,38 +239,7 @@ void ClaserMachineApp::SaveCustomState()
 void ClaserMachineApp::OnBtnConnect()
 {
 
-	uint16_t tab_w_registers[8] = {0};
-	uint16_t tab_r_registers[101] = {0};
-	uint32_t *pData = (uint32_t*)tab_r_registers;
-	char name[8] = "SYS.PAR";
-
-
-	memset(tab_w_registers, 0, 8 * 2);
-	tab_w_registers[0] = 20;			//功能码
-	tab_w_registers[1] = 0;				//索引1	通道
-	tab_w_registers[2] = 0;				//索引2
-	tab_w_registers[3] = 2;				//子索引
-	memcpy(tab_w_registers + 4, name, 8);
-
-
-	int rc = modbus_write_registers(m_ctx, 0x2000,8, tab_w_registers);
-	uint16_t i = 1;
-	do
-	{
-		memset(tab_w_registers, 0, 8 * 2);
-		tab_w_registers[0] = 22;			//功能码
-		tab_w_registers[1] = 0;				//索引1	通道
-		tab_w_registers[2] = 0;				//索引2
-		tab_w_registers[3] = i++;				//子索引
-		//memcpy(tab_w_registers + 4, name, 8);
-
-
-		rc = modbus_write_registers(m_ctx, 0x2000, 4, tab_w_registers);
-
-		memset(tab_r_registers, 0, 101 * 2);
-		rc = modbus_read_registers(m_ctx, 0x2004, 100, tab_r_registers);
-		TRACE(CString((char*)(tab_r_registers +1)));
-	} while (rc == 100);
+	
 
 	return;
 

@@ -5,7 +5,9 @@ public:
 
 	ICommunication();
 	~ICommunication();
-	virtual DWORD Connect();
+	virtual WORD Connect() = 0;
+	virtual WORD Disconnect() = 0;
+	virtual WORD GetParameter(WORD index, WORD line) = 0;
 	
 };
 

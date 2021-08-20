@@ -23,9 +23,6 @@
     <ClCompile Include="ICommunication.cpp">
       <Filter>Communication</Filter>
     </ClCompile>
-    <ClCompile Include="ModeBusRTU.cpp">
-      <Filter>Communication</Filter>
-    </ClCompile>
     <ClCompile Include="LaserProg.cpp">
       <Filter>Simulation</Filter>
     </ClCompile>
@@ -43,6 +40,12 @@
     </ClCompile>
     <ClCompile Include="NCProg.cpp">
       <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="NCExchange.cpp">
+      <Filter>Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="ModBus.cpp">
+      <Filter>Communication</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -70,9 +73,6 @@
     <ClInclude Include="ICommunication.h">
       <Filter>Communication</Filter>
     </ClInclude>
-    <ClInclude Include="ModeBusRTU.h">
-      <Filter>Communication</Filter>
-    </ClInclude>
     <ClInclude Include="LaserProg.h">
       <Filter>Simulation</Filter>
     </ClInclude>
@@ -92,6 +92,12 @@
       <Filter>Simulation</Filter>
     </ClInclude>
     <ClInclude Include="ParaModule.h" />
+    <ClInclude Include="NCExchange.h">
+      <Filter>Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="ModBus.h">
+      <Filter>Communication</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\buttons.bmp">

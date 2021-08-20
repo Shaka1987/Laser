@@ -2,13 +2,13 @@
 
 #include "ICommunication.h"
 
-enum class COMMUNICATION_TYPE { COM_RTU, COM_TCP};
+enum class COMMUNICATION_TYPE { COM_MODEBUS, COM_OTHER};
 class CFactoryCommunication
 {
 	CFactoryCommunication();
 	~CFactoryCommunication();
 
 public:
-	ICommunication* Create(COMMUNICATION_TYPE type);
+	static ICommunication* Create(COMMUNICATION_TYPE type);
 };
 

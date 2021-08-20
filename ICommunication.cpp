@@ -9,7 +9,7 @@ ICommunication::~ICommunication()
 {
 }
 
-DWORD ICommunication::Connect()
+WORD ICommunication::Connect()
 {
 	return 0;
 }

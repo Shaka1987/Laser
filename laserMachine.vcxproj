@@ -208,7 +208,8 @@
     <ClInclude Include="laserMachineView.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="LaserProg.h" />
-    <ClInclude Include="ModeBusRTU.h" />
+    <ClInclude Include="ModBus.h" />
+    <ClInclude Include="NCExchange.h" />
     <ClInclude Include="NCProg.h" />
     <ClInclude Include="OperateWnd.h" />
     <ClInclude Include="OutputWnd.h" />
@@ -234,7 +235,8 @@
     <ClCompile Include="laserMachineView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="LaserProg.cpp" />
-    <ClCompile Include="ModeBusRTU.cpp" />
+    <ClCompile Include="ModBus.cpp" />
+    <ClCompile Include="NCExchange.cpp" />
     <ClCompile Include="NCProg.cpp" />
     <ClCompile Include="OperateWnd.cpp" />
     <ClCompile Include="OutputWnd.cpp" />

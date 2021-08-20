@@ -45,7 +45,6 @@ public:
 	afx_msg void OnAppAbout();
 	DECLARE_MESSAGE_MAP()
 	afx_msg void OnBtnConnect();
-	modbus_t* m_ctx;
 };
 
 extern ClaserMachineApp theApp;
