@@ -31,21 +31,23 @@ WORD CModBus::GetParameter(WORD index, WORD line)
 {
 	return 0;
 }
-bool CModBus::SubjectData(WORD address, WORD type, WORD index2, WORD subIndex, WORD const* pData, WORD len_data, WORD index1)
+bool CModBus::SubjectAddress(WORD address, WORD type, WORD subIndex, WORD index2/* = 0*/, WORD const* const pData /*= nullptr*/, WORD len_data/* = 0*/, WORD index1/* = 0*/)
 {
 	uint16_t* p_write_registers = new uint16_t[len_data + 4];
 	memset(p_write_registers, 0, (len_data+4)* 2);
 
-	p_write_registers[0] = type;			//功能码
-	p_write_registers[1] = index1;				//索引1	通道
-	p_write_registers[2] = index2;				//索引2
-	p_write_registers[3] = subIndex;				//子索引
+	p_write_registers[TYPE] = type;			//功能码
+	p_write_registers[INDEX1] = index1;				//索引1	通道
+	p_write_registers[INDEX2] = index2;				//索引2
+	p_write_registers[SUBINDEX] = subIndex;				//子索引
 
 	if (pData != nullptr && len_data != 0)
 	{
 		memcpy(p_write_registers + 4, pData, len_data*2);
 	}
-	if(-1 != modbus_write_registers(m_ctx, address, len_data + 4, p_write_registers))
+	int rc = modbus_write_registers(m_ctx, address, len_data + 4, p_write_registers);
+	delete p_write_registers;
+	if(-1 != rc)
 	{
 		return true;
 	}
@@ -56,44 +58,69 @@ bool CModBus::SubjectData(WORD address, WORD type, WORD index2, WORD subIndex, W
 
 }
 
-bool CModBus::ReadData(WORD type, WORD index1, WORD index2, WORD subIndex, WORD const* pData)
+bool CModBus::ReadAddress(WORD address, WORD * const pData, WORD len_data, WORD type, WORD index2, WORD subIndex, WORD index1)
 {
-	uint16_t tab_w_registers[8] = { 0 };
+	WORD* p_read_registers = new WORD[len_data + 4];
+	bool return_state = false;
+
+	memset(p_read_registers, 0, (len_data + 4) * 2);
+	int rc = modbus_read_registers(m_ctx, address, len_data + 4, p_read_registers);
+	if (rc == -1)
+	{
+		//to do add log
+		goto return_label;
+	}
+	if (0 != type)	//validate
+	{
+		if (type != p_read_registers[TYPE] || index1 != p_read_registers[INDEX1] || index2 != p_read_registers[INDEX2] || subIndex != p_read_registers[SUBINDEX])
+		{
+			//to do add log "validate failed"
+			goto return_label;
+		}
+	}
+
+	memcpy(pData, p_read_registers + 4, len_data * 2);
+	return_state = true;
+
+return_label:
+	delete p_read_registers;
+	return return_state;
+}
+
+bool CModBus::ReadData(WORD address, WORD* const p_output_data, WORD len_output_data, WORD type, WORD subIndex, WORD index2/* = 0*/, WORD const* const p_input_data /*= nullptr*/, WORD len_input_data /*= 0*/, WORD index1 /*= 0*/)
+{
+	bool rb = SubjectAddress(address, type,  subIndex, index2, p_input_data, len_input_data, index1);
+	if (rb)
+	{
+		if (ReadAddress(address, p_output_data, len_output_data, type, index2, subIndex, index1))
+			return true;
+	}
 	return false;
 }
 
-bool CModBus::ReadFile(WORD open_method, CHAR* pName, WORD const* pData)
+bool CModBus::ReadFile(const char* pName, WORD len, std::string& data)
 {
-	//int len_file_name = strlen(pName);
-	//int len_buf = len_file_name/2 + 1 +4;
-	//uint16_t* p_write_registers = new uint16_t[len_buf];
-	//uint16_t tab_read_registers[101] = { 0 };
-	//memset(p_write_registers, 0, len_buf * 2);
+	uint16_t tab_read_registers[101] = { 0 };
+	if (!SubjectAddress(0x2000, NC_OPEN_FILE, 2, 0, (WORD*)pName, len / 2 + 1))	//open file
+		return false;
 
-	//p_write_registers[0] = 20;			//功能码
-	//p_write_registers[1] = 0;				//索引1	通道
-	//p_write_registers[2] = 0;				//索引2
-	//p_write_registers[3] = 2;				//子索引
-	//memcpy(p_write_registers + 4, pName, len_file_name);
+	int  count = 1;
+	size_t pos = std::string::npos;
+	std::string return_data;
+	do
+	{
+		if (!ReadData(0x2000, tab_read_registers, 100, NC_READ_FILE, count++)) // read file
+			return false;
+		std::string read_data = (char*)(tab_read_registers + 1);
+		pos = read_data.rfind("[END]");
+		return_data += read_data;
+		TRACE(CString(read_data.c_str()));
+	} while (std::string::npos == pos);
 
+	WORD zero = 0;
+	if (!SubjectAddress(0x2000, NC_CLOSE_FILE, 0, 0, &zero, 1))	//close file
+		return false;
 
-	//int rc = modbus_write_registers(m_ctx, 0x2000, len_buf, p_write_registers);
-	//uint16_t i = 1;
-	//do
-	//{
-	//	memset(tab_w_registers, 0, 8 * 2);
-	//	tab_w_registers[0] = 22;			//功能码
-	//	tab_w_registers[1] = 0;				//索引1	通道
-	//	tab_w_registers[2] = 0;				//索引2
-	//	tab_w_registers[3] = i++;				//子索引
-	//	//memcpy(tab_w_registers + 4, name, 8);
-
-
-	//	rc = modbus_write_registers(m_ctx, 0x2000, 4, tab_w_registers);
-
-	//	memset(tab_r_registers, 0, 101 * 2);
-	//	rc = modbus_read_registers(m_ctx, 0x2004, 100, tab_r_registers);
-	//	TRACE(CString((char*)(tab_r_registers + 1)));
-	//} while (rc == 100);
-	return false;
+	data = return_data;
+	return true;
 }
