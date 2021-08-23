@@ -41,6 +41,7 @@ END_MESSAGE_MAP()
 // ClaserMachineApp construction
 
 ClaserMachineApp::ClaserMachineApp() noexcept
+	:m_pNC(new CNCExchange()) 
 {
 	m_bHiColorIcons = TRUE;
 
@@ -69,6 +70,7 @@ ClaserMachineApp theApp;
 // ClaserMachineApp initialization
 
 BOOL ClaserMachineApp::InitInstance()
+	
 {
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
@@ -140,7 +142,7 @@ BOOL ClaserMachineApp::InitInstance()
 	// Parse command line for standard shell commands, DDE, file open
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
-
+	
 
 
 	// Dispatch commands specified on the command line.  Will return FALSE if
@@ -148,13 +150,11 @@ BOOL ClaserMachineApp::InitInstance()
 	if (!ProcessShellCommand(cmdInfo))
 		return FALSE;
 
+//	m_pNC->Init();
 	// The one and only window has been initialized, so show and update it
 	m_pMainWnd->ShowWindow(SW_SHOW);
 	m_pMainWnd->UpdateWindow();
-
-	//Init communicate. Temporary code
-
-	
+		
 
 	return TRUE;
 }
@@ -236,10 +236,13 @@ void ClaserMachineApp::SaveCustomState()
 
 
 
+CNCExchange* ClaserMachineApp::GetNCExchange()
+{
+	return m_pNC;
+}
+
 void ClaserMachineApp::OnBtnConnect()
 {
-
-	
 
 	return;
 

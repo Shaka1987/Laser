@@ -10,6 +10,8 @@
 #include <string>
 #include <boost/json.hpp>
 #include <boost/locale.hpp>
+#include <boost/algorithm/string.hpp>
+#include "NCExchange.h"
 //#include <boost/json/src.hpp>
 using namespace std;
 
@@ -156,6 +158,18 @@ void CParameterWnd::LoadParameterDescription()
 	//m_wndPropList.AddProperty(pGroupXXX);
 
 }
+
+void CParameterWnd::FillParameterData()
+{
+	CNCExchange* exchange = theApp.GetNCExchange();
+	string data = exchange->GetParameters();
+	vector<string> str_lines;
+	boost::split(str_lines, data, boost::is_any_of("\n"), boost::token_compress_on);
+	for (auto str : str_lines)
+	{
+		TRACE(CString(str.c_str()));
+	}
+}
 void CParameterWnd::InitPropList()
 {
 	m_wndPropList.EnableHeaderCtrl(FALSE);
@@ -164,11 +178,14 @@ void CParameterWnd::InitPropList()
 	m_wndPropList.MarkModifiedProperties();
 
 	//LoadParameterDescription();
-
+	FillParameterData();
+	// 
 	//PropListÌî³äºó²Ù×÷
 	//	m_wndPropList.ExpandAll();
 	
 }
+
+
 
 void CParameterWnd::OnSize(UINT nType, int cx, int cy)
 {

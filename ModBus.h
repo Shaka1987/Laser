@@ -1,8 +1,8 @@
 #pragma once
 #include "ICommunication.h"
-#include "modbus.h"
 
 #include <string>
+#include <modbus.h>
 class CModBus :
     public ICommunication
 {

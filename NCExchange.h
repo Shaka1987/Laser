@@ -4,23 +4,22 @@
 class CNCExchange
 {
 public:
-	CNCExchange();
-	~CNCExchange();
+	CNCExchange() noexcept;
 
 //connect
 private:
 	ICommunication *m_pCommunication;
 public:
-	void Init();
+	bool Init();
 	BOOL Connect();
 	BOOL Disconnect();
 
 public:
-	WORD GetParameterInt(WORD index, WORD line);
-	DOUBLE GetParamterFloat(WORD index, WORD line);
-	void* GetParameters();
-	void* GetParemeters(std::string filepath);
-	void* GetDiagData(WORD type);
+	//WORD GetParameterInt(WORD index, WORD line);
+	//DOUBLE GetParamterFloat(WORD index, WORD line);
+	std::string GetParameters();
+	//void* GetParemeters(std::string filepath);
+	//void* GetDiagData(WORD type);
 
 };
 

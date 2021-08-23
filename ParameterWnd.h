@@ -10,6 +10,8 @@ private:
 
 	CMFCPropertyGridCtrl m_wndPropList;
 
+	void FillParameterData();
+
 	void InitPropList();
 	void AdjustLayout();
 	void LoadParameterDescription();

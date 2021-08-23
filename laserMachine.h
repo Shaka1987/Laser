@@ -23,18 +23,20 @@
 // ClaserMachineApp:
 // See laserMachine.cpp for the implementation of this class
 //
-
+#include "NCExchange.h"
 class ClaserMachineApp : public CWinAppEx
 {
 public:
 	ClaserMachineApp() noexcept;
 
-
+	CNCExchange *m_pNC;
+	
 // Overrides
 public:
 	virtual BOOL InitInstance();
 	virtual int ExitInstance();
 
+	CNCExchange* GetNCExchange();
 // Implementation
 	BOOL  m_bHiColorIcons;
 
