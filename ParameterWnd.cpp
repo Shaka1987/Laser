@@ -161,13 +161,56 @@ void CParameterWnd::LoadParameterDescription()
 
 void CParameterWnd::FillParameterData()
 {
-	CNCExchange* exchange = theApp.GetNCExchange();
-	string data = exchange->GetParameters();
+	//read from low-machine
+	//CNCExchange* exchange = theApp.GetNCExchange();
+	//string data = exchange->GetParameters();
+
+	//read from communication
+	ifstream filePara(_T("Resources\\Parameter Data\\SYS.PAR"));
+	stringstream buffer;
+	buffer << filePara.rdbuf();
+	string data(buffer.str());
+
 	vector<string> str_lines;
 	boost::split(str_lines, data, boost::is_any_of("\n"), boost::token_compress_on);
+	int index = 0;
+	int line = 0;
+	int count = 1;
+	CMFCPropertyGridProperty* pProp = nullptr;
 	for (auto str : str_lines)
 	{
-		TRACE(CString(str.c_str()));
+		if (str.starts_with('[') && str.ends_with(']'))
+		{
+			pProp = m_wndPropList.GetProperty(index++);
+			count = pProp->GetSubItemsCount();
+			line = 0;
+		}
+		else {
+			CMFCPropertyGridProperty* pDataProp = nullptr;
+			if (count > 0)
+			{
+
+				pDataProp = pProp->GetSubItem(line++);
+			}
+			else
+			{
+				pDataProp = pProp;
+			}
+			int nCount = pDataProp->GetSubItemsCount();
+			if (nCount > 0)
+			{
+				int i = 0;
+				for (int i = 0; i < nCount;i++)
+				{
+					CMFCPropertyGridProperty* pBin = pDataProp->GetSubItem(i);
+					char bin = str.at(i);
+					COleVariant value  = pBin->GetValue();
+					pBin->SetValue(_variant_t(bin));
+				}
+			}
+
+		}
+		TRACE(CString(str.c_str())+_T("\n"));
 	}
 }
 void CParameterWnd::InitPropList()
@@ -177,7 +220,7 @@ void CParameterWnd::InitPropList()
 	m_wndPropList.SetVSDotNetLook();
 	m_wndPropList.MarkModifiedProperties();
 
-	//LoadParameterDescription();
+	LoadParameterDescription();
 	FillParameterData();
 	// 
 	//PropListÌî³äºó²Ù×÷
