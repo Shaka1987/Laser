@@ -3703,7 +3703,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	//LG_STR nszParSpdlInterlockSet[9][LG_NUM] =
 	{CN("主轴互锁相关设置")
 	EN("Spindle lock settings")},
-	{CN("SPQP 0/1:主轴启动时,不检测/检测"CHUNK_CN"夹紧")
+	{CN("SPQP 0/1:主轴启动时,不检测/检测"“卡盘夹紧")
     EN("SPQP 0/1:Not/detect chuck when spindle start")},
 	{CN("SPTS 0/1:主轴启动时,不检测/检测尾座进")
 	EN("SPTS 0/1:Not/detect tailstock when spindle start")},
@@ -4257,7 +4257,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
 //1300;123
 	//LG_STR nszParQPSet[9][LG_NUM] =
-	{CN(CHUNK_CN"相关设置")
+	{CN(“卡盘相关设置")
 	EN("Chuck settings")},
 	{CN("CLPP 0/1:夹紧输出为电平/脉冲")
 	EN("CLPP 0/1:Clamp pulse output")},
@@ -4267,7 +4267,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("QPCFC 0/1:Clamp fin is normal open/close")},
     {CN("QPUFC 0/1:松开到位为常开/常闭信号")
 	EN("QPUFC 0/1:Unclamp fin is normal open/close")},
-	{CN("QPD 0/1:"CHUNK_CN"内夹/外夹")
+	{CN("QPD 0/1:"“卡盘内夹/外夹")
     EN("QPD 0/1:Chuck clamp in/out")},
     {CN("XQPH 0/1:外接夹紧松开为脉冲/保持信号")
 	EN("XQPH 0/1:External Clamp and unclamp input signal is pulse/level")},
@@ -4277,7 +4277,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
 //1301;123
 	//LG_STR nszParQPLockSet[9][LG_NUM] =
-	{CN(CHUNK_CN"互锁相关设置")
+	{CN(“卡盘互锁相关设置")
 	EN("Chuck lock settings")},
 	{CN("QPSL 0/1:主轴转动时(通过输出状态判断),不可/可以执行自动松开")
 	EN("QPSL 0/1:Unclamp not/execute when spindle rotate(output status)")},
@@ -4297,7 +4297,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
 //1302;123
 	//LG_STR nszParQPPowerOnSet[9][LG_NUM] =
-	{CN(CHUNK_CN"上电相关设置")
+	{CN(“卡盘上电相关设置")
 	EN("Chuck power-on settings")},
 	{CN("QPRS 0/1:上电时,卡盘不/恢复断电前的状态")
     EN("QPRS 0/1:NOT/recover state to power-off when power-on")},
@@ -4317,51 +4317,51 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("")},
 //1310;123
 	//LG_STR nszParDOSpdlClp[LG_NUM] =
-	{CN(CHUNK_CN"夹紧输出口")
+	{CN(“卡盘夹紧输出口")
 	EN("Spindle clamp DO")},
 //1311;123
 	//LG_STR nszParDOSpdlUnclp[LG_NUM] =
-	{CN(CHUNK_CN"松开输出口")
+	{CN(“卡盘松开输出口")
 	EN("Spindle unclamp DO")},
 //1320;123
 	//LG_STR nszParDIExSpdlClp[LG_NUM] =
-	{CN("外接"CHUNK_CN"夹紧输入口")
+	{CN("外接"“卡盘夹紧输入口")
 	EN("Extern M10/M11 DI")},
 //1321;123
 	//LG_STR nszParDIExSpdlUclp[LG_NUM] =
-	{CN("外接"CHUNK_CN"松开输入口")
+	{CN("外接"“卡盘松开输入口")
 	EN("Extern M11 DI")},
 //1322;123
 	//LG_STR nszParDISpdlClpFin[LG_NUM] =
-	{CN(CHUNK_CN"夹紧到位输入口")
+	{CN(“卡盘夹紧到位输入口")
 	EN("Spindle clamp FIN DI")},
 //1323;123
 	//LG_STR nszParDISpdlUnclpFin[LG_NUM] =
-	{CN(CHUNK_CN"松开到位输入口")
+	{CN(“卡盘松开到位输入口")
 	EN("Spindle unclamp FIN DI")},
 //1330;123
 	//LG_STR nszParTimeM10FinWait[LG_NUM] =
-	{CN(CHUNK_CN"夹紧到位信号等待时间上限(ms)")
+	{CN(“卡盘夹紧到位信号等待时间上限(ms)")
 	EN("Clamp FIN wait max time(ms)")},
 //1331;123
 	//LG_STR nszParTimeM11FinWait[LG_NUM] =
-	{CN(CHUNK_CN"松开到位信号等待时间上限(ms)")
+	{CN(“卡盘松开到位信号等待时间上限(ms)")
 	EN("Unclamp FIN wait max time(ms)")},
-//1132;123
+//1332;123
 	//LG_STR nszParTimeM10FinDly[LG_NUM] =
-	{CN(CHUNK_CN"夹紧到位延时时间(ms)")
+	{CN(“卡盘夹紧到位延时时间(ms)")
 	EN("Clamp FIN delay time(ms)")},
 //1333;123
 	//LG_STR nszParTimeM11FinDly[LG_NUM] =
-	{CN(CHUNK_CN"松开到位延时时间(ms)")
+	{CN(“卡盘松开到位延时时间(ms)")
 	EN("Unclamp delay time(ms)")},
 //1340;123
     //LG_STR nszParM11SpdlSpeedMax[LG_NUM] =
-    {CN(CHUNK_CN"松开允许实际转速上限")
+    {CN(“卡盘松开允许实际转速上限")
     EN("Actual speed max for Unclamp")},
 //1341;123
     //LG_STR nszParM11SpdlArriveWaitTime[LG_NUM] =
-    {CN(CHUNK_CN"松开时,等待主轴低于允许转速的时间上限")
+    {CN(“卡盘松开时,等待主轴低于允许转速的时间上限")
     EN("Max wait time of spindle speed arrive when spindle Unclamp.")},
 //1056;123
     //LG_STR nszParSpdlStopActSpeed[LG_NUM] =
@@ -5689,7 +5689,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	//LG_STR nszParTimeM08[LG_NUM] =
 	{CN("M08延时时间(ms)")
 	EN("M08 delay time(ms)")},
-
+//3334;1
 	//LG_STR nszParDITriSwichLeft[LG_NUM] =
 	{CN("三位开关运行允许输入口")
 	EN("Tri-swich run enable DI")},
@@ -5933,6 +5933,10 @@ const CHAR *const aszStrTable[][LG_NUM] =
      //LG_STR nszParQMCNum[LG_NUM] =
     {CN("快捷宏指令调用的程序个数")
      EN("One-touch macro call num")},
+//9081;1
+     //LG_STR nszParQMCNum[LG_NUM] =
+    {CN("快捷宏指令调用的开头程序号")
+     EN("One-touch macro call header num")},
 //9085;1
      //LG_STR nszParEMCInput0[LG_NUM] =
     {CN("外接快捷宏调用入口0")
@@ -6076,7 +6080,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
- //5120;1
+//5120;1
     //LG_STR nszParMulCannedCycleSetting[9]][LG_NUM] =
     {CN("复合循环相关设置")
      EN("multiple canned cycles settings")},
@@ -6097,39 +6101,39 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	{CN("")
 	EN("")},
 
- //5110;1
+//5110;1
     //LG_STR nszParDrillCycRetVal[LG_NUM] =
     {CN("高速深孔循环的返回量r")
     EN("Return value of peck drilling cycle")},
- //5111;1
+//5111;1
     //LG_STR nszParDrillCycClearanceVal[LG_NUM] =
     {CN("深孔循环的进刀空程量c")
     EN("Clearance value in a peck drilling cycle")},
- //5130;1
+//5130;1
     //LG_STR nszParMulCycCutVal[LG_NUM] =
     {CN("G71和G72复合循环的切削量")
     EN("Depth of cut in multiple canned cycles G71 and G72")},
- //5131;1
+//5131;1
     //LG_STR nszParMulCycRetVal[LG_NUM] =
     {CN("G71和G72复合循环的返回量")
     EN("Escape in multiple canned cycles G71 and G72")},
- //5132;1
+//5132;1
     //LG_STR nszParMulCycClearanceVal[LG_NUM] =
     {CN("G71和G72复合循环的进刀空程量")
     EN("Clearance in multiple canned cycles G71 and G72")},
- //5133;1
+//5133;1
     //LG_STR nszParMulCycG73Retract1[LG_NUM] =
     {CN("复合形固定循环G73的回退距离(平面第1轴)")
      EN("Retraction distance in the multiple canned cycle G73(plane 1st axis)")},
- //5134;1
+//5134;1
     //LG_STR nszParMulCycG73Retract2[LG_NUM] =
     {CN("复合形固定循环G73的回退距离(平面第2轴)")
     EN("Retraction distance in the multiple canned cycle G73(plane 2rd axis)")},
- //5135;1
+//5135;1
     //LG_STR nszParMulCycG73DivNum[LG_NUM] =
     {CN("复合形固定循环G73的分割次数")
     EN("Number of divisions in the multiple canned cycle G73")},
- //5136;1
+//5136;1
     //LG_STR nszParMulCycG7475Retract[LG_NUM] =
     {CN("复合形固定循环G74和G75的返回量")
     EN("Return in multiple canned cycles G74 and G75")},
@@ -6158,7 +6162,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
- //5201;123
+//5201;123
     //LG_STR nszParRigidTapSpSetting[9]][LG_NUM] =
     {CN("刚性攻丝相关主轴设置")
      EN("Rigid tapping settings")},
@@ -6178,11 +6182,11 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
- //5211;1
+//5211;1
     //LG_STR nszParRTapCycRetVal[LG_NUM] =
     {CN("高速深孔攻丝循环的返回量r")
     EN("Return value of peck tapping cycle")},
- //5210;1
+//5210;1
     //LG_STR nszParTapMaxF[LG_NUM] =
     {CN("攻丝时最大导程(单位:mm, =0:不限制)")
     EN("Max tap lead(unit:mm, =0:No limit)")},
@@ -6190,31 +6194,31 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //LG_STR nszParRTapCycClearanceVal[LG_NUM] =
     {CN("高速深孔攻丝循环的进刀空程量")
     EN("Clearance value of peck tapping cycle")},
- //5225;1
+//5225;1
     //LG_STR nszParTapSpdlSpeedArriveRange[LG_NUM] =
     {CN("攻丝时,等待主轴转速到达窗口范围(百分比)")
     EN("Spindle speed arrive range when tapping(percent)")},
- //5226;1
+//5226;1
     //LG_STR nszParTapSpdlWaitTime[LG_NUM] =
     {CN("攻丝时,等待时间上限")
     EN("Tapping spdindle wait time max.")},
- //5230;123
+//5230;123
     //LG_STR nszParTapRefSpdlSpeed[LG_NUM] =
     {CN("变频攻丝时,主轴参考转速(rpm)")
     EN("Spdl referrence speed when tap(rpm)")},
- //5231;123
+//5231;123
     //LG_STR nszParTapRefSpdlSpeedStopTime[LG_NUM] =
     {CN("变频攻丝时,主轴参考转速的停止时间(ms)")
     EN("Spdl referrence speed stop time when tap(ms)")},
- //5232;1
+//5232;1
     //LG_STR nszParTapAxisFeedCompRatio[LG_NUM] =
     {CN("攻丝时,进给轴位置补偿系数")
     EN("Position loop comp. ratio when tap")},
- //5233;1
+//5233;1
     //LG_STR nszParTapAxisPosLoopGain[LG_NUM] =
     {CN("攻丝时,各轴伺服位置环增益(KP)(1/s)")
     EN("Axis servo position loop gain(KP) when tap(1/s)")},
- //5234;1
+//5234;1
     //LG_STR nszParTapAxisVelLoopGain[LG_NUM] =
     {CN("攻丝时,各轴系统速度回路增益")
     EN("Axis NC vel. loop gain when tap")},
@@ -9001,7 +9005,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	{CN("液压未启动或信号异常") //9
 	 EN("hydraulic pressure off or signal error")},
 
-	{CN(CHUNK_CN"1未夹紧") //10
+	{CN(“卡盘1未夹紧") //10
 	 EN("Spindle 1 not clamped")},
 	{CN("尾座1未前进") //11
 	 EN("Tailholder 1 not forward")},
@@ -9042,7 +9046,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	{CN("主轴1档位错误") //29
 	 EN("Spindle 1 gear error")},
 
-	{CN(CHUNK_CN"2未夹紧") //30
+	{CN(“卡盘2未夹紧") //30
 	 EN("Spindle 2 not clamped")},
 	{CN("尾座2未前进") //31
 	 EN("Tailholder 2 not forward")},
@@ -9084,7 +9088,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	 EN("Spindle 2 gear error")},
 
 
-	{CN(CHUNK_CN"3未夹紧") //50
+	{CN(“卡盘3未夹紧") //50
 	 EN("Spindle 3 not clamped")},
 	{CN("尾座3未前进") //51
 	 EN("Tailholder 3 not forward")},
@@ -9125,7 +9129,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	{CN("主轴3档位错误") //69
 	 EN("Spindle 3 gear error")},
 
-	{CN(CHUNK_CN"4未夹紧") //70
+	{CN(“卡盘4未夹紧") //70
 	 EN("Spindle 4 not clamped")},
 	{CN("尾座4未前进") //71
 	 EN("Tailholder 4 not forward")},

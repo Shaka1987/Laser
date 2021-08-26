@@ -162,55 +162,79 @@ void CParameterWnd::LoadParameterDescription()
 void CParameterWnd::FillParameterData()
 {
 	//read from low-machine
-	//CNCExchange* exchange = theApp.GetNCExchange();
-	//string data = exchange->GetParameters();
+	CNCExchange* exchange = theApp.GetNCExchange();
+	string data = exchange->GetParameters();
 
 	//read from communication
-	ifstream filePara(_T("Resources\\Parameter Data\\SYS.PAR"));
-	stringstream buffer;
-	buffer << filePara.rdbuf();
-	string data(buffer.str());
+	//ifstream filePara(_T("Resources\\Parameter Data\\SYS.PAR"));
+	//stringstream buffer;
+	//buffer << filePara.rdbuf();
+	//string data(buffer.str());
 
 	vector<string> str_lines;
 	boost::split(str_lines, data, boost::is_any_of("\n"), boost::token_compress_on);
 	int index = 0;
 	int line = 0;
 	int count = 1;
+	int list_count = m_wndPropList.GetPropertyCount();
 	CMFCPropertyGridProperty* pProp = nullptr;
+	//test
+	COleVariant title;
 	for (auto str : str_lines)
 	{
+
+		TRACE(CString(str.c_str()) + _T("\n"));
 		if (str.starts_with('[') && str.ends_with(']'))
 		{
+			if (str == "[END]" || index >= list_count)
+				break;
 			pProp = m_wndPropList.GetProperty(index++);
 			count = pProp->GetSubItemsCount();
+			title = pProp->GetName();
+
+			TRACE(_T("title:") + CString(title.bstrVal) + _T("\n"));
 			line = 0;
 		}
-		else {
+		else if(pProp != nullptr)
+		{
 			CMFCPropertyGridProperty* pDataProp = nullptr;
-			if (count > 0)
+			if (count > 0 )
 			{
+				if (line == count)
+					continue;
 
 				pDataProp = pProp->GetSubItem(line++);
 			}
-			else
+			else if (count == 0)
 			{
 				pDataProp = pProp;
 			}
-			int nCount = pDataProp->GetSubItemsCount();
-			if (nCount > 0)
+			if (pDataProp != nullptr)
 			{
-				int i = 0;
-				for (int i = 0; i < nCount;i++)
+				int nCount = pDataProp->GetSubItemsCount();
+				if (nCount > 0)	//bin parameter
 				{
-					CMFCPropertyGridProperty* pBin = pDataProp->GetSubItem(i);
-					char bin = str.at(i);
-					COleVariant value  = pBin->GetValue();
-					pBin->SetValue(_variant_t(bin));
+					int i = 0;
+					for (int i = 0; i < 8; i++)
+					{
+						CMFCPropertyGridProperty* pBin = pDataProp->GetSubItem(i);
+						char bin = str.at(i);
+						COleVariant value = pBin->GetValue();
+						pBin->SetValue(_variant_t(CString(bin)));
+						value = pBin->GetValue();
+					}
 				}
+				else //normal parameter
+				{
+					COleVariant value = pDataProp->GetValue();
+					pDataProp->SetValue(_variant_t(CString(str.c_str())));
+					value = pDataProp->GetValue();
+				}
+
 			}
+			
 
 		}
-		TRACE(CString(str.c_str())+_T("\n"));
 	}
 }
 void CParameterWnd::InitPropList()

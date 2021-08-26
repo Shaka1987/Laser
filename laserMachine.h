@@ -28,6 +28,7 @@ class ClaserMachineApp : public CWinAppEx
 {
 public:
 	ClaserMachineApp() noexcept;
+	~ClaserMachineApp();
 
 	CNCExchange *m_pNC;
 	

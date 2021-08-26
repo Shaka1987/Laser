@@ -61,6 +61,11 @@ ClaserMachineApp::ClaserMachineApp() noexcept
 	// TODO: add construction code here,
 	// Place all significant initialization in InitInstance
 }
+ClaserMachineApp::~ClaserMachineApp()
+{
+	delete m_pNC;
+	m_pNC = nullptr;
+}
 
 // The one and only ClaserMachineApp object
 
