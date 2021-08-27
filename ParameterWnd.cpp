@@ -34,6 +34,7 @@ BEGIN_MESSAGE_MAP(CParameterWnd, CDockablePane)
 	ON_WM_ERASEBKGND()
 	ON_WM_CREATE()
 	ON_WM_SIZE()
+	ON_REGISTERED_MESSAGE(AFX_WM_PROPERTY_CHANGED, OnParameterChanged)
 END_MESSAGE_MAP()
 
 
@@ -109,6 +110,7 @@ void CParameterWnd::LoadParameterDescription()
 			if (strlen(lines) > 1)
 			{
 				pGroup = new CMFCPropertyGridProperty(title);
+
 				for (int i = 0; i < strlen(lines); i++)
 				{
 					CString lineName;
@@ -136,7 +138,22 @@ void CParameterWnd::LoadParameterDescription()
 			}
 			else
 			{
-				pGroup = new CMFCPropertyGridProperty(title, _T("默认值"), title);
+				if (bBin)
+				{
+					pGroup = new CMFCPropertyGridProperty(title, 0, TRUE);
+					auto value_texts = parameter["text"].as_array();
+					for (auto value_text : value_texts)
+					{
+						auto text = value_text.as_object();
+						CString name = CString(boost::locale::conv::from_utf(text["name"].as_string().c_str(), "GBK").c_str());
+						CString description = CString(boost::locale::conv::from_utf(text["description"].as_string().c_str(), "GBK").c_str());
+						pGroup->AddSubItem(CFactoryParamType::CreateBinParameter(name, description));
+					}
+				}
+				else
+				{
+					pGroup = new CMFCPropertyGridProperty(title, _T("默认值"), title);
+				}
 			}
 			TRACE(title + _T("\n"));
 
@@ -198,42 +215,53 @@ void CParameterWnd::FillParameterData()
 		else if(pProp != nullptr)
 		{
 			CMFCPropertyGridProperty* pDataProp = nullptr;
-			if (count > 0 )
+			if (count > 0 )	//单行位参数 或 多行系统参数 ； 多行位参数
 			{
-				if (line == count)
-					continue;
-
-				pDataProp = pProp->GetSubItem(line++);
-			}
-			else if (count == 0)
-			{
-				pDataProp = pProp;
-			}
-			if (pDataProp != nullptr)
-			{
-				int nCount = pDataProp->GetSubItemsCount();
-				if (nCount > 0)	//bin parameter
+				
+				if (count == 8 && str.size() == 8)	//单行位参数
 				{
-					int i = 0;
 					for (int i = 0; i < 8; i++)
 					{
-						CMFCPropertyGridProperty* pBin = pDataProp->GetSubItem(i);
+						CMFCPropertyGridProperty* pBin = pProp->GetSubItem(i);
 						char bin = str.at(i);
 						COleVariant value = pBin->GetValue();
 						pBin->SetValue(_variant_t(CString(bin)));
 						value = pBin->GetValue();
 					}
 				}
-				else //normal parameter
+				else //多行
 				{
-					COleVariant value = pDataProp->GetValue();
-					pDataProp->SetValue(_variant_t(CString(str.c_str())));
-					value = pDataProp->GetValue();
+					if (line == count)		//导出的数据比显示的多
+						continue;
+					pDataProp = pProp->GetSubItem(line++);
+					int nCount = pDataProp->GetSubItemsCount();
+					if (nCount == 0)	//多行位系统参数
+					{
+						COleVariant value = pDataProp->GetValue();
+						pDataProp->SetValue(_variant_t(CString(str.c_str())));
+						value = pDataProp->GetValue();
+					}
+					else
+					{
+						assert(nCount == 8);	//多行位参数
+						for (int i = 0; i < 8; i++)
+						{
+							CMFCPropertyGridProperty* pBin = pDataProp->GetSubItem(i);
+							char bin = str.at(i);
+							COleVariant value = pBin->GetValue();
+							pBin->SetValue(_variant_t(CString(bin)));
+							value = pBin->GetValue();
+						}
+					}
 				}
 
 			}
-			
-
+			else if (count == 0)	//单行系统参数
+			{
+				COleVariant value = pProp->GetValue();
+				pProp->SetValue(_variant_t(CString(str.c_str())));
+				value = pProp->GetValue();
+			}
 		}
 	}
 }
@@ -258,4 +286,43 @@ void CParameterWnd::OnSize(UINT nType, int cx, int cy)
 {
 	CDockablePane::OnSize(nType, cx, cy);
 	AdjustLayout();
+}
+
+LRESULT CParameterWnd::OnParameterChanged(WPARAM, LPARAM lparam)
+{
+	CMFCPropertyGridProperty* pProp = (CMFCPropertyGridProperty*)lparam;
+	CMFCPropertyGridProperty *pParent = pProp->GetParent();
+	std::string value = _com_util::ConvertBSTRToString(pProp->GetValue().bstrVal);
+	std::string valueOrigin = _com_util::ConvertBSTRToString(pProp->GetOriginalValue().bstrVal);
+	int index = 0;
+	int line = 0;
+	if (pParent !=nullptr)	//单个系统参数
+	{
+		while (m_wndPropList.GetProperty(index) == pProp)
+		{
+			index++;
+		} 
+	}
+	else
+	{
+		CMFCPropertyGridProperty *pData = pParent;
+		pParent = pData->GetParent();
+		if (pParent != nullptr)	//多个系统参数 或者 单个位参数
+		{
+			int count = pData->GetSubItemsCount();
+			if (count = 8 && valueOrigin.size() == 1)	//单个位参数
+			{
+
+			}
+			else //多个系统参数
+			{
+
+			}
+		}
+		else //多个位参数
+		{
+
+		}
+	}
+	return LRESULT();
 }

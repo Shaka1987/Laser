@@ -4550,95 +4550,95 @@ const CHAR *const aszStrTable[][LG_NUM] =
     EN("T10C 0/1:T10 is normal open/close")},
 	{CN("T09C 0/1:T09为常开/常闭信号")
     EN("T09C 0/1:T09 is normal open/close")},
-//1510;123
+//1510;1
 	//LG_STR nszParPlcTType[LG_NUM] =
 	{CN("刀架类型(0:排刀,1:电动刀架)")
 	EN("Tool turret type")},
-//1511;123
+//1511;1
 	//LG_STR nszParPlcTNum[LG_NUM] =
 	{CN("刀具数量")
 	EN("Tool number")},
-//1520;123
+//1520;1
 	//LG_STR nszParT01DI[LG_NUM] =
 	{CN("T01输入口")
 	EN("T01 DI")},
-//1521;123
+//1521;1
 	//LG_STR nszParT02DI[LG_NUM] =
 	{CN("T02输入口")
 	EN("T02 DI")},
-//1522;123
+//1522;1
 	//LG_STR nszParT03DI[LG_NUM] =
 	{CN("T03输入口")
 	EN("T03 DI")},
-//1523;123
+//1523;1
 	//LG_STR nszParT04DI[LG_NUM] =
 	{CN("T04输入口")
 	EN("T04 DI")},
-//1524;123
+//1524;1
 	//LG_STR nszParT05DI[LG_NUM] =
 	{CN("T05输入口")
 	EN("T05 DI")},
-//1525;123
+//1525;1
 	//LG_STR nszParT06DI[LG_NUM] =
 	{CN("T06输入口")
 	EN("T06 DI")},
-//1526;123
+//1526;1
 	//LG_STR nszParT07DI[LG_NUM] =
 	{CN("T07输入口")
 	EN("T07 DI")},
-//1527;123
+//1527;1
 	//LG_STR nszParT08DI[LG_NUM] =
 	{CN("T08输入口")
 	EN("T08 DI")},
-//1528;123
+//1528;1
 	//LG_STR nszParT09DI[LG_NUM] =
 	{CN("T09输入口")
 	EN("T09 DI")},
-//1529;123
+//1529;1
 	//LG_STR nszParT10DI[LG_NUM] =
 	{CN("T10输入口")
 	EN("T10 DI")},
-//1530;123
+//1530;1
 	//LG_STR nszParT11DI[LG_NUM] =
 	{CN("T11输入口")
 	EN("T11 DI")},
-//1531;123
+//1531;1
 	//LG_STR nszParT12DI[LG_NUM] =
 	{CN("T12输入口")
 	EN("T12 DI")},
-//1532;123
+//1532;1
 	//LG_STR nszParTCPDI[LG_NUM] =
 	{CN("TCP输入口")
 	EN("TCP DI")},
-//1540;123
+//1540;1
 	//LG_STR nszParDOTFR[LG_NUM] =
 	{CN("刀架正转输出口")
 	EN("Tool turret CW DO")},
-//1541;123
+//1541;1
 	//LG_STR nszParDOTRV[LG_NUM] =
 	{CN("刀架反转输出口")
 	EN("Tool turret CCW DO")},
-//1542;123
+//1542;1
 	//LG_STR nszParDOTCLP[LG_NUM] =
 	{CN("刀架锁紧输出口")
 	EN("Tool turret clamp DO")},
-//1543;123
+//1543;1
 	//LG_STR nszParDOTUCLP[LG_NUM] =
 	{CN("刀架松开输出口")
 	EN("Tool turret unclamp DO")},
-//1550;123
+//1550;1
 	//LG_STR nszParTimeMaxT[LG_NUM] =
 	{CN("换刀时间上限(ms)")
 	EN("Max. time for tool change(ms)")},
-//1551;123
+//1551;1
 	//LG_STR nszParTimeTRVD[LG_NUM] =
 	{CN("换刀时正反转间的延时(ms)")
 	EN("Delay time for Tool backward(ms)")},
-//1552;123
+//1552;1
 	//LG_STR nszParTimeMaxTRVF[LG_NUM] =
 	{CN("换刀时反转到收到TCP时间上限(ms)")
 	EN("Max. time for Tool backward to TCP(ms)")},
-//1553;123
+//1553;1
 	//LG_STR nszParTimeDlyTRVF[LG_NUM] =
 	{CN("刀位到达(TCP)后反转保持时间(ms)")
 	EN("Delay time for TCP to stop backward(ms)")},
@@ -4646,7 +4646,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     //-------------------------------------------------------------------------
     // 润滑 ##LUB
     //-------------------------------------------------------------------------
-//1800;123
+//1800;1
 	//LG_STR nszParLutSet[9][LG_NUM] =
 	{CN("润滑相关设置")
 	EN("Lubricate settings")},
@@ -4666,27 +4666,27 @@ const CHAR *const aszStrTable[][LG_NUM] =
 	EN("")},
 	{CN("")
 	EN("")},
-//1810;123
+//1810;1
 	//LG_STR nszParDILubAlm[LG_NUM] =
 	{CN("润滑报警输入口")
 	EN("Lubricate alarm DI")},
-//1811;123
+//1811;1
 	//LG_STR nszParDOLub[LG_NUM] =
 	{CN("润滑输出口")
 	EN("Lubricate DO")},
-//1820;123
+//1820;1
 	//LG_STR nszParTimeM32Dly[LG_NUM] =
 	{CN("M32延时时间(ms)")
 	EN("M32 delay time(ms)")},
-//1821;123
+//1821;1
 	//LG_STR nszParTimeM33Dly[LG_NUM] =
 	{CN("M33延时时间(ms)")
 	EN("M33 delay time(ms)")},
-//1822;123
+//1822;1
 	//LG_STR nszParTimeLubO[LG_NUM] =
 	{CN("润滑输出时间(ms)")
 	EN("Lubricate time(ms)")},
-//1823;123
+//1823;1
 	//LG_STR nszParTimeAutoLubIntervel[LG_NUM] =
 	{CN("自动润滑间隔时间(ms)")
 	EN("Auto. lubricate interval time(ms)")},
@@ -4876,7 +4876,7 @@ const CHAR *const aszStrTable[][LG_NUM] =
     {CN("SEQ 0/1:关闭/打开编辑时自动插入行号")
     EN("SEQ 0/1:Disable/Enable automatic insert sequence numbers when edit")},
     {CN("")
-    EN("")},
+    EN("")},     
     {CN("")
     EN("")},
     {CN("")
