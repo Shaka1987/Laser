@@ -105,6 +105,7 @@ void CParameterWnd::LoadParameterDescription()
 			auto parameter = data.as_object();
 			auto lines = parameter["lines"].as_string().c_str();
 			auto bBin = parameter["bin"].as_bool();
+			DWORD index = atoi(parameter["index"].as_string().c_str());
 			CString title = CString(boost::locale::conv::from_utf(parameter["title"].as_string().c_str(), "GBK").c_str());
 			CMFCPropertyGridProperty* pGroup;
 			if (strlen(lines) > 1)
@@ -157,6 +158,7 @@ void CParameterWnd::LoadParameterDescription()
 			}
 			TRACE(title + _T("\n"));
 
+			pGroup->SetData(index);
 			m_wndPropList.AddProperty(pGroup);
 		}
 	}
@@ -179,14 +181,14 @@ void CParameterWnd::LoadParameterDescription()
 void CParameterWnd::FillParameterData()
 {
 	//read from low-machine
-	CNCExchange* exchange = theApp.GetNCExchange();
-	string data = exchange->GetParameters();
+	//CNCExchange* exchange = theApp.GetNCExchange();
+	//string data = exchange->GetParameters();
 
 	//read from communication
-	//ifstream filePara(_T("Resources\\Parameter Data\\SYS.PAR"));
-	//stringstream buffer;
-	//buffer << filePara.rdbuf();
-	//string data(buffer.str());
+	ifstream filePara(_T("Resources\\Parameter Data\\SYS.PAR"));
+	stringstream buffer;
+	buffer << filePara.rdbuf();
+	string data(buffer.str());
 
 	vector<string> str_lines;
 	boost::split(str_lines, data, boost::is_any_of("\n"), boost::token_compress_on);
@@ -296,33 +298,56 @@ LRESULT CParameterWnd::OnParameterChanged(WPARAM, LPARAM lparam)
 	std::string valueOrigin = _com_util::ConvertBSTRToString(pProp->GetOriginalValue().bstrVal);
 	int index = 0;
 	int line = 0;
-	if (pParent !=nullptr)	//单个系统参数
+	COleVariant revalue = pProp->GetValue();
+	DWORD data = 0;
+	if (pParent ==nullptr)	//单个系统参数
 	{
-		while (m_wndPropList.GetProperty(index) == pProp)
+		CMFCPropertyGridProperty* ptemp = m_wndPropList.GetProperty(index);
+		while (ptemp != pProp)
 		{
 			index++;
+			data = pProp->GetData();
+			ptemp = m_wndPropList.GetProperty(index);
 		} 
+		int w = 0;
 	}
 	else
 	{
 		CMFCPropertyGridProperty *pData = pParent;
 		pParent = pData->GetParent();
-		if (pParent != nullptr)	//多个系统参数 或者 单个位参数
+		if (pParent == nullptr)	//多个系统参数 或者 单个位参数
 		{
+			while (m_wndPropList.GetProperty(index) != pData)
+			{
+				index++;
+			}
+
 			int count = pData->GetSubItemsCount();
 			if (count = 8 && valueOrigin.size() == 1)	//单个位参数
 			{
-
+				
 			}
 			else //多个系统参数
 			{
-
+				while (pData->GetSubItem(line) != pProp)
+				{
+					line++;
+				}
 			}
 		}
 		else //多个位参数
 		{
-
+			CMFCPropertyGridProperty* pRoot = pParent;
+			while (m_wndPropList.GetProperty(index) != pRoot)
+			{
+				index++;
+			}
+			while (pRoot->GetSubItem(line++) != pData)
+			{
+				line++;
+			}
 		}
 	}
+	WORD old_value = theApp.GetNCExchange()->GetParameterInt32(index+1, line+1);
 	return LRESULT();
 }

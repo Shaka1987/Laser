@@ -8,8 +8,3 @@ ICommunication::ICommunication()
 ICommunication::~ICommunication()
 {
 }
-
-WORD ICommunication::Connect()
-{
-	return 0;
-}

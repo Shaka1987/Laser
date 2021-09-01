@@ -27,10 +27,7 @@ WORD CModBus::Disconnect()
 	return 0;
 }
 
-WORD CModBus::GetParameter(WORD index, WORD line)
-{
-	return 0;
-}
+
 bool CModBus::SubjectAddress(WORD address, WORD type, WORD subIndex, WORD index2/* = 0*/, WORD const* const pData /*= nullptr*/, WORD len_data/* = 0*/, WORD index1/* = 0*/)
 {
 	uint16_t* p_write_registers = new uint16_t[len_data + 4];
@@ -123,4 +120,10 @@ bool CModBus::ReadFile(const char* pName, WORD len, std::string& data)
 
 	data = return_data;
 	return true;
+}
+INT32 CModBus::GetParameterInt32(WORD index, WORD line)
+{
+	INT32 data;
+	ReadData(0x1000, (WORD *)&data, 2, NC_R_PARA_SYS_INT, line, index);
+	return data;
 }

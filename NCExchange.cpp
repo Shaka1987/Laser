@@ -35,3 +35,8 @@ std::string CNCExchange::GetParameters()
 	return data_parameter;
 }
 
+INT32 CNCExchange::GetParameterInt32(WORD index, WORD line)
+{
+	return m_pCommunication->GetParameterInt32(index, line);
+}
+

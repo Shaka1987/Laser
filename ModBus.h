@@ -9,7 +9,6 @@ class CModBus :
 public:
     WORD Connect();
     WORD Disconnect();
-    WORD GetParameter(WORD index, WORD line);
  protected:
     modbus_t* m_ctx;
 private:
@@ -49,5 +48,6 @@ private:
     bool ReadData(WORD address,  WORD* const p_output_data, WORD len_output_data, WORD type,  WORD subIndex, WORD index2 =0, WORD const* const p_input_data = nullptr, WORD len_input_data = 0, WORD index1 = 0);
 public: //to be deleted
     bool ReadFile(const char* pName, WORD len, std::string& data);
+    INT32 GetParameterInt32(WORD index, WORD line);
 };
 

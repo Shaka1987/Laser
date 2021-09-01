@@ -9,6 +9,6 @@ public:
 	virtual WORD Connect() = 0;
 	virtual WORD Disconnect() = 0;
 	virtual bool ReadFile(const char* pName, WORD len, std::string& data) = 0;
-	
+	virtual INT32 GetParameterInt32(WORD index, WORD line) = 0;
 };
 
