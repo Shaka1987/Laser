@@ -120,6 +120,7 @@ void CParameterWnd::LoadParameterDescription()
 					if (bBin)
 					{
 						CMFCPropertyGridProperty* pBins = new CMFCPropertyGridProperty(lineName, 0, TRUE);
+						pBins->SetData(index);
 						pGroup->AddSubItem(pBins);
 						auto value_texts = parameter["text"].as_array();
 						for (auto value_text : value_texts)
@@ -127,12 +128,13 @@ void CParameterWnd::LoadParameterDescription()
 							auto text = value_text.as_object();
 							CString name = CString(boost::locale::conv::from_utf(text["name"].as_string().c_str(), "GBK").c_str());
 							CString description = CString(boost::locale::conv::from_utf(text["description"].as_string().c_str(), "GBK").c_str());
-							pBins->AddSubItem(CFactoryParamType::CreateBinParameter(name, description));
+							pBins->AddSubItem(CFactoryParamType::CreateBinParameter(name, description, index));
 						}
 					}
 					else
 					{
 						CMFCPropertyGridProperty* pPropInput = new CMFCPropertyGridProperty(lineName, _T("默认值"), title);
+						pPropInput->SetData(index);
 						pGroup->AddSubItem(pPropInput);
 					}
 				}
@@ -142,23 +144,24 @@ void CParameterWnd::LoadParameterDescription()
 				if (bBin)
 				{
 					pGroup = new CMFCPropertyGridProperty(title, 0, TRUE);
+					pGroup->SetData(index);
 					auto value_texts = parameter["text"].as_array();
 					for (auto value_text : value_texts)
 					{
 						auto text = value_text.as_object();
 						CString name = CString(boost::locale::conv::from_utf(text["name"].as_string().c_str(), "GBK").c_str());
 						CString description = CString(boost::locale::conv::from_utf(text["description"].as_string().c_str(), "GBK").c_str());
-						pGroup->AddSubItem(CFactoryParamType::CreateBinParameter(name, description));
+						pGroup->AddSubItem(CFactoryParamType::CreateBinParameter(name, description,index));
 					}
 				}
 				else
 				{
 					pGroup = new CMFCPropertyGridProperty(title, _T("默认值"), title);
+					pGroup->SetData(index);
 				}
 			}
 			TRACE(title + _T("\n"));
 
-			pGroup->SetData(index);
 			m_wndPropList.AddProperty(pGroup);
 		}
 	}
@@ -227,6 +230,7 @@ void CParameterWnd::FillParameterData()
 						CMFCPropertyGridProperty* pBin = pProp->GetSubItem(i);
 						char bin = str.at(i);
 						COleVariant value = pBin->GetValue();
+						pBin->SetOriginalValue(_variant_t(CString(bin)));
 						pBin->SetValue(_variant_t(CString(bin)));
 						value = pBin->GetValue();
 					}
@@ -240,6 +244,7 @@ void CParameterWnd::FillParameterData()
 					if (nCount == 0)	//多行位系统参数
 					{
 						COleVariant value = pDataProp->GetValue();
+						pDataProp->SetOriginalValue(_variant_t(CString(str.c_str())));
 						pDataProp->SetValue(_variant_t(CString(str.c_str())));
 						value = pDataProp->GetValue();
 					}
@@ -251,6 +256,7 @@ void CParameterWnd::FillParameterData()
 							CMFCPropertyGridProperty* pBin = pDataProp->GetSubItem(i);
 							char bin = str.at(i);
 							COleVariant value = pBin->GetValue();
+							pBin->SetOriginalValue(_variant_t(CString(bin)));
 							pBin->SetValue(_variant_t(CString(bin)));
 							value = pBin->GetValue();
 						}
@@ -261,6 +267,7 @@ void CParameterWnd::FillParameterData()
 			else if (count == 0)	//单行系统参数
 			{
 				COleVariant value = pProp->GetValue();
+				pProp->SetOriginalValue(_variant_t(CString(str.c_str())));
 				pProp->SetValue(_variant_t(CString(str.c_str())));
 				value = pProp->GetValue();
 			}
@@ -296,20 +303,14 @@ LRESULT CParameterWnd::OnParameterChanged(WPARAM, LPARAM lparam)
 	CMFCPropertyGridProperty *pParent = pProp->GetParent();
 	std::string value = _com_util::ConvertBSTRToString(pProp->GetValue().bstrVal);
 	std::string valueOrigin = _com_util::ConvertBSTRToString(pProp->GetOriginalValue().bstrVal);
-	int index = 0;
+	bool bIntType = (std::string::npos == valueOrigin.find('.'));
+	int index = pProp->GetData();
 	int line = 0;
 	COleVariant revalue = pProp->GetValue();
 	DWORD data = 0;
 	if (pParent ==nullptr)	//单个系统参数
 	{
-		CMFCPropertyGridProperty* ptemp = m_wndPropList.GetProperty(index);
-		while (ptemp != pProp)
-		{
-			index++;
-			data = pProp->GetData();
-			ptemp = m_wndPropList.GetProperty(index);
-		} 
-		int w = 0;
+
 	}
 	else
 	{
@@ -317,11 +318,6 @@ LRESULT CParameterWnd::OnParameterChanged(WPARAM, LPARAM lparam)
 		pParent = pData->GetParent();
 		if (pParent == nullptr)	//多个系统参数 或者 单个位参数
 		{
-			while (m_wndPropList.GetProperty(index) != pData)
-			{
-				index++;
-			}
-
 			int count = pData->GetSubItemsCount();
 			if (count = 8 && valueOrigin.size() == 1)	//单个位参数
 			{
@@ -338,16 +334,19 @@ LRESULT CParameterWnd::OnParameterChanged(WPARAM, LPARAM lparam)
 		else //多个位参数
 		{
 			CMFCPropertyGridProperty* pRoot = pParent;
-			while (m_wndPropList.GetProperty(index) != pRoot)
-			{
-				index++;
-			}
-			while (pRoot->GetSubItem(line++) != pData)
+			while (pRoot->GetSubItem(line) != pData)
 			{
 				line++;
 			}
 		}
 	}
-	WORD old_value = theApp.GetNCExchange()->GetParameterInt32(index+1, line+1);
+	if(bIntType)
+	{
+		INT32 old_value = theApp.GetNCExchange()->GetParameterInt32(index, line + 1);
+	}
+	else
+	{
+		DOUBLE old_value = theApp.GetNCExchange()->GetParameterFloat64(index, line + 1);
+	}
 	return LRESULT();
 }

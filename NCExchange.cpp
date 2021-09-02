@@ -40,3 +40,7 @@ INT32 CNCExchange::GetParameterInt32(WORD index, WORD line)
 	return m_pCommunication->GetParameterInt32(index, line);
 }
 
+double CNCExchange::GetParameterFloat64(WORD index, WORD line)
+{
+	return m_pCommunication->GetParameterFloat64(index, line);
+}

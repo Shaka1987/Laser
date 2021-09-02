@@ -4,7 +4,7 @@ class CFactoryParamType
 	CFactoryParamType();
 	~CFactoryParamType();
 public:
-	static CMFCPropertyGridProperty* CreateBinParameter(const CString& strName = _T(""), LPCTSTR lpszDescr = _T("´ý¶¨"));
+	static CMFCPropertyGridProperty* CreateBinParameter(const CString& strName = _T(""), LPCTSTR lpszDescr = _T("´ý¶¨"), DWORD index_data =0);
 
 };
 

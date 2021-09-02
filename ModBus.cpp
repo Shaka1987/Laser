@@ -127,3 +127,10 @@ INT32 CModBus::GetParameterInt32(WORD index, WORD line)
 	ReadData(0x1000, (WORD *)&data, 2, NC_R_PARA_SYS_INT, line, index);
 	return data;
 }
+
+double CModBus::GetParameterFloat64(WORD index, WORD line)
+{
+	INT64 data;
+	ReadData(0x1000, (WORD*)&data, 4, NC_R_PARA_SYS_DOUBLE, line, index);
+	return (double)data;
+}

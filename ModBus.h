@@ -49,5 +49,6 @@ private:
 public: //to be deleted
     bool ReadFile(const char* pName, WORD len, std::string& data);
     INT32 GetParameterInt32(WORD index, WORD line);
+    double GetParameterFloat64(WORD index, WORD line);
 };
 

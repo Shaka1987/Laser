@@ -19,6 +19,7 @@ public:
 	//DOUBLE GetParamterFloat(WORD index, WORD line);
 	std::string GetParameters();
 	INT32 GetParameterInt32(WORD index, WORD line);
+	double GetParameterFloat64(WORD index, WORD line);
 	//void* GetParemeters(std::string filepath);
 	//void* GetDiagData(WORD type);
 
