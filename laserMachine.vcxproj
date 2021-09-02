@@ -213,6 +213,7 @@
     <ClInclude Include="NCProg.h" />
     <ClInclude Include="OperateWnd.h" />
     <ClInclude Include="OutputWnd.h" />
+    <ClInclude Include="ParaJson.h" />
     <ClInclude Include="ParameterWnd.h" />
     <ClInclude Include="ParaModule.h" />
     <ClInclude Include="PLCWnd.h" />
@@ -240,6 +241,7 @@
     <ClCompile Include="NCProg.cpp" />
     <ClCompile Include="OperateWnd.cpp" />
     <ClCompile Include="OutputWnd.cpp" />
+    <ClCompile Include="ParaJson.cpp" />
     <ClCompile Include="ParameterWnd.cpp" />
     <ClCompile Include="PLCWnd.cpp" />
     <ClCompile Include="stdafx.cpp">

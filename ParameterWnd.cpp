@@ -6,15 +6,13 @@
 #include "ParameterWnd.h"
 #include "FactoryParamType.h"
 #include <fstream>
-//#include <sstream>  
 #include <string>
 #include <boost/json.hpp>
 #include <boost/locale.hpp>
 #include <boost/algorithm/string.hpp>
 #include "NCExchange.h"
-//#include <boost/json/src.hpp>
-using namespace std;
 
+using namespace std;
 // CParameterWnd
 
 IMPLEMENT_DYNAMIC(CParameterWnd, CDockablePane)
@@ -70,6 +68,7 @@ int CParameterWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		TRACE0("Failed to create Properties Grid \n");
 		return -1;      // fail to create
 	}
+	InitParaList();
 	InitPropList();
 	AdjustLayout();
 	return 0;
@@ -90,50 +89,35 @@ void CParameterWnd::AdjustLayout()
 
 void CParameterWnd::LoadParameterDescription()
 {
-	ifstream filePara(_T("Resources\\Parameter Data\\SystemParameter.json"));
-	stringstream buffer;
-	buffer << filePara.rdbuf();
-	string contents(buffer.str());
-	boost::json::error_code ec;
-	auto decode_val = boost::json::parse(contents, ec);
-	TRACE(CString(ec.message().c_str()));
-	auto groups = decode_val.as_array();
-	if (decode_val.is_array())
-	{
-		for (auto data : groups)
+	
+		for (auto para : m_paralist)
 		{
-			auto parameter = data.as_object();
-			auto lines = parameter["lines"].as_string().c_str();
-			auto bBin = parameter["bin"].as_bool();
-			DWORD index = atoi(parameter["index"].as_string().c_str());
-			CString title = CString(boost::locale::conv::from_utf(parameter["title"].as_string().c_str(), "GBK").c_str());
+	
+			auto lines = para.m_lines.c_str();
+			DWORD index = para.m_index;
 			CMFCPropertyGridProperty* pGroup;
 			if (strlen(lines) > 1)
 			{
-				pGroup = new CMFCPropertyGridProperty(title);
+				pGroup = new CMFCPropertyGridProperty(para.m_title);
 
 				for (int i = 0; i < strlen(lines); i++)
 				{
 					CString lineName;
 					lineName.Format(_T("%c"), lines[i]);
 
-					if (bBin)
+					if (para.m_bBin)
 					{
 						CMFCPropertyGridProperty* pBins = new CMFCPropertyGridProperty(lineName, 0, TRUE);
 						pBins->SetData(index);
 						pGroup->AddSubItem(pBins);
-						auto value_texts = parameter["text"].as_array();
-						for (auto value_text : value_texts)
+						for (auto bin : para.m_binArray)
 						{
-							auto text = value_text.as_object();
-							CString name = CString(boost::locale::conv::from_utf(text["name"].as_string().c_str(), "GBK").c_str());
-							CString description = CString(boost::locale::conv::from_utf(text["description"].as_string().c_str(), "GBK").c_str());
-							pBins->AddSubItem(CFactoryParamType::CreateBinParameter(name, description, index));
+							pBins->AddSubItem(CFactoryParamType::CreateBinParameter(bin.name, bin.description, index));
 						}
 					}
 					else
 					{
-						CMFCPropertyGridProperty* pPropInput = new CMFCPropertyGridProperty(lineName, _T("默认值"), title);
+						CMFCPropertyGridProperty* pPropInput = new CMFCPropertyGridProperty(lineName, _T("默认值"), para.m_title);
 						pPropInput->SetData(index);
 						pGroup->AddSubItem(pPropInput);
 					}
@@ -141,30 +125,25 @@ void CParameterWnd::LoadParameterDescription()
 			}
 			else
 			{
-				if (bBin)
+				if (para.m_bBin)
 				{
-					pGroup = new CMFCPropertyGridProperty(title, 0, TRUE);
+					pGroup = new CMFCPropertyGridProperty(para.m_title, 0, TRUE);
 					pGroup->SetData(index);
-					auto value_texts = parameter["text"].as_array();
-					for (auto value_text : value_texts)
+					for (auto bin : para.m_binArray)
 					{
-						auto text = value_text.as_object();
-						CString name = CString(boost::locale::conv::from_utf(text["name"].as_string().c_str(), "GBK").c_str());
-						CString description = CString(boost::locale::conv::from_utf(text["description"].as_string().c_str(), "GBK").c_str());
-						pGroup->AddSubItem(CFactoryParamType::CreateBinParameter(name, description,index));
+						pGroup->AddSubItem(CFactoryParamType::CreateBinParameter(bin.name, bin.description, index));
 					}
 				}
 				else
 				{
-					pGroup = new CMFCPropertyGridProperty(title, _T("默认值"), title);
+					pGroup = new CMFCPropertyGridProperty(para.m_title, _T("默认值"), para.m_title);
 					pGroup->SetData(index);
 				}
 			}
-			TRACE(title + _T("\n"));
+			TRACE(para.m_title + _T("\n"));
 
 			m_wndPropList.AddProperty(pGroup);
 		}
-	}
 
 	////其他参数类型示例
 	//CMFCPropertyGridProperty* pGroupXXX = new CMFCPropertyGridProperty(_T("XXX 其他参数示例"));
@@ -274,6 +253,29 @@ void CParameterWnd::FillParameterData()
 		}
 	}
 }
+void CParameterWnd::InitParaList()
+{
+	ifstream filePara(_T("Resources\\Parameter Data\\SystemParameter.json"));
+	stringstream buffer;
+	buffer << filePara.rdbuf();
+	string contents(buffer.str());
+	boost::json::error_code ec;
+	auto decode_val = boost::json::parse(contents, ec);
+	TRACE(CString(ec.message().c_str()));
+	if (decode_val.is_array())
+	{
+		auto groups = decode_val.as_array();
+		for (auto para : groups)
+		{
+			m_paralist.push_back(boost::json::value_to<ParameterSpace::CParaJson>(para));
+		}
+	}
+
+	
+
+
+	
+}
 void CParameterWnd::InitPropList()
 {
 	m_wndPropList.EnableHeaderCtrl(FALSE);
@@ -301,9 +303,9 @@ LRESULT CParameterWnd::OnParameterChanged(WPARAM, LPARAM lparam)
 {
 	CMFCPropertyGridProperty* pProp = (CMFCPropertyGridProperty*)lparam;
 	CMFCPropertyGridProperty *pParent = pProp->GetParent();
-	std::string value = _com_util::ConvertBSTRToString(pProp->GetValue().bstrVal);
-	std::string valueOrigin = _com_util::ConvertBSTRToString(pProp->GetOriginalValue().bstrVal);
-	bool bIntType = (std::string::npos == valueOrigin.find('.'));
+	string value = _com_util::ConvertBSTRToString(pProp->GetValue().bstrVal);
+	string valueOrigin = _com_util::ConvertBSTRToString(pProp->GetOriginalValue().bstrVal);
+	bool bIntType = (string::npos == valueOrigin.find('.'));
 	int index = pProp->GetData();
 	int line = 0;
 	COleVariant revalue = pProp->GetValue();

@@ -1,17 +1,17 @@
 #pragma once
 
-
+#include"ParaJson.h"
 // CParameterWnd
-
+#include <vector>
 class CParameterWnd : public CDockablePane
 {
 	DECLARE_DYNAMIC(CParameterWnd)
 private:
 
 	CMFCPropertyGridCtrl m_wndPropList;
-
+	std::vector<ParameterSpace::CParaJson> m_paralist;
 	void FillParameterData();
-
+	void InitParaList();
 	void InitPropList();
 	void AdjustLayout();
 	void LoadParameterDescription();
