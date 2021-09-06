@@ -24,12 +24,16 @@
 // See laserMachine.cpp for the implementation of this class
 //
 #include "NCExchange.h"
+#define _cfg "./log/logsetting.ini"
 class ClaserMachineApp : public CWinAppEx
 {
 public:
 	ClaserMachineApp() noexcept;
 	~ClaserMachineApp();
 
+private:
+	bool InitLog();
+	bool StartConsole();
 	CNCExchange *m_pNC;
 	
 // Overrides

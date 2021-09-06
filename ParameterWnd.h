@@ -3,11 +3,20 @@
 #include"ParaJson.h"
 // CParameterWnd
 #include <vector>
+#include <string>
+#include <boost/log/trivial.hpp>
+#include <boost/log/sources/severity_channel_logger.hpp>
+
+namespace logging = boost::log;
+using namespace logging::trivial;
+namespace src = boost::log::sources;
+
 class CParameterWnd : public CDockablePane
 {
 	DECLARE_DYNAMIC(CParameterWnd)
 private:
 
+	src::severity_channel_logger<severity_level, std::string> scl;
 	CMFCPropertyGridCtrl m_wndPropList;
 	std::vector<ParameterSpace::CParaJson> m_paralist;
 	void FillParameterData();

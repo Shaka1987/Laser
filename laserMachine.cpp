@@ -18,6 +18,17 @@
 #include "laserMachine.h"
 #include "MainFrm.h"
 
+#include <fstream>
+#include <io.h>
+#include <fcntl.h>
+
+#include <boost/filesystem.hpp>
+#include <boost/log/trivial.hpp>
+#include <boost/log/utility/setup/common_attributes.hpp>
+#include <boost/log/utility/setup/from_stream.hpp>
+#include <boost/log/utility/setup/formatter_parser.hpp>
+#include <boost/log/utility/setup/filter_parser.hpp>
+
 #include "laserMachineDoc.h"
 #include "laserMachineView.h"
 #ifdef _DEBUG
@@ -65,6 +76,48 @@ ClaserMachineApp::~ClaserMachineApp()
 {
 	delete m_pNC;
 	m_pNC = nullptr;
+}
+
+
+
+bool ClaserMachineApp::InitLog()
+{
+	namespace logging = boost::log;
+	using namespace logging::trivial;
+
+	if (!boost::filesystem::exists("./log/"))
+	{
+		boost::filesystem::create_directory("./log/");
+	}
+	logging::add_common_attributes();
+
+	logging::register_simple_formatter_factory<severity_level, char>("Severity");
+	logging::register_simple_filter_factory<severity_level, char>("Severity");
+
+	std::ifstream file(_cfg);
+	
+	try
+	{
+		logging::init_from_stream(file);
+	}
+	catch (const std::exception& e)
+	{
+		std::string str_error = "init_logger is fail, read log config file fail. curse: " + std::string(e.what());
+		TRACE(CString(str_error.c_str()));
+		exit(-2);
+	}
+	return true;
+}
+
+bool ClaserMachineApp::StartConsole()
+{
+
+	AllocConsole();
+	FILE* p;
+	freopen_s(&p,"CONIN$", "r", stdin);
+	freopen_s(&p,"CONOUT$", "w", stdout);
+	freopen_s(&p,"CONOUT$", "w", stderr);
+	return true;
 }
 
 // The one and only ClaserMachineApp object
@@ -126,6 +179,10 @@ BOOL ClaserMachineApp::InitInstance()
 	InitKeyboardManager();
 
 	InitTooltipManager();
+#ifdef _DEBUG
+	StartConsole();
+#endif
+	InitLog();
 	CMFCToolTipInfo ttParams;
 	ttParams.m_bVislManagerTheme = TRUE;
 	theApp.GetTooltipManager()->SetTooltipParams(AFX_TOOLTIP_TYPE_ALL,
@@ -159,7 +216,6 @@ BOOL ClaserMachineApp::InitInstance()
 	// The one and only window has been initialized, so show and update it
 	m_pMainWnd->ShowWindow(SW_SHOW);
 	m_pMainWnd->UpdateWindow();
-		
 
 	return TRUE;
 }
@@ -168,7 +224,9 @@ int ClaserMachineApp::ExitInstance()
 {
 	//TODO: handle additional resources you may have added
 	AfxOleTerm(FALSE);
-
+#ifdef _DEBUG
+	FreeConsole();
+#endif
 	return CWinAppEx::ExitInstance();
 }
 

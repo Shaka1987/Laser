@@ -48,3 +48,4 @@
 /Backup
 /boost
 /Resources/Parameter Data/.vscode/c_cpp_properties.json
+/log/*.log
