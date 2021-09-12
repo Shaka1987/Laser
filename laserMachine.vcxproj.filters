@@ -104,6 +104,7 @@
     <ClInclude Include="ParaJson.h">
       <Filter>Parameter</Filter>
     </ClInclude>
+    <ClInclude Include="LogSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\buttons.bmp">

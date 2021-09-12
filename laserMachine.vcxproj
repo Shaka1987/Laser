@@ -206,6 +206,7 @@
     <ClInclude Include="laserMachine.h" />
     <ClInclude Include="laserMachineDoc.h" />
     <ClInclude Include="laserMachineView.h" />
+    <ClInclude Include="LogSystem.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="LaserProg.h" />
     <ClInclude Include="ModBus.h" />

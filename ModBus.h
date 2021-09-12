@@ -1,22 +1,30 @@
 #pragma once
 #include "ICommunication.h"
-
+#include "LogSystem.h"
 #include <string>
+#include <sstream>
 #include <modbus.h>
+#include <map>
+
+
+
 class CModBus :
     public ICommunication
 {
 public:
-    WORD Connect();
-    WORD Disconnect();
+    CModBus();
+    bool Connect();
+    bool Disconnect();
  protected:
     modbus_t* m_ctx;
 private:
+    std::stringstream OutPutData(WORD const* const pData, WORD len_data);
+    src::severity_channel_logger<severity_level, std::string> scl;
+    std::map<std::string, WORD>  m_mapSubjectAddress;
     const WORD TYPE = 0;
     const WORD INDEX1 = 1;
     const WORD INDEX2 = 2;
     const WORD SUBINDEX = 3;
-
 
     const WORD NC_WR_PLC = 1;
     const WORD NC_R_SYS = 2;
@@ -41,14 +49,17 @@ private:
     const WORD NC_CLOSE = 31;
     const WORD NC_R_FILE_LIST = 32;
 
-    bool SubjectAddress(WORD address, WORD type,  WORD subIndex, WORD index2=0, WORD const* const pData = nullptr, WORD len_data = 0,  WORD index1 = 0);
+    bool SetAddress(WORD address, WORD type, WORD subIndex, WORD index2 = 0, WORD const* const pData = nullptr, WORD len_data = 0, WORD index1 = 0);
+    bool ReadAddress(WORD address, WORD* const pData, WORD len_data, WORD type, WORD subIndex, WORD index2, WORD index1 = 0);
 
-    bool ReadAddress(WORD address, WORD * const pData, WORD len_data, WORD type, WORD index2, WORD subIndex, WORD index1);
-
+    bool SubjectAddress(std::string name, WORD address, WORD type, WORD subIndex, WORD index2 = 0, WORD const* const pData = nullptr, WORD len_data = 0, WORD index1 = 0);
     bool ReadData(WORD address,  WORD* const p_output_data, WORD len_output_data, WORD type,  WORD subIndex, WORD index2 =0, WORD const* const p_input_data = nullptr, WORD len_input_data = 0, WORD index1 = 0);
+    bool FindSubjectAddress(std::string name, WORD& address);
+    bool ReadCoordinateData(double *pData, WORD len, std::string name, WORD line, WORD index);
 public: //to be deleted
     bool ReadFile(const char* pName, WORD len, std::string& data);
     INT32 GetParameterInt32(WORD index, WORD line);
     double GetParameterFloat64(WORD index, WORD line);
+    bool GetCoordinates(double* pData, WORD len, COORDINATES_TYPE type, WORD index);
 };
 

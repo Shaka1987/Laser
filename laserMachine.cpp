@@ -52,7 +52,7 @@ END_MESSAGE_MAP()
 // ClaserMachineApp construction
 
 ClaserMachineApp::ClaserMachineApp() noexcept
-	:m_pNC(new CNCExchange()) 
+	
 {
 	m_bHiColorIcons = TRUE;
 
@@ -133,6 +133,13 @@ BOOL ClaserMachineApp::InitInstance()
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
 	// visual styles.  Otherwise, any window creation will fail.
+
+//#ifdef _DEBUG
+	StartConsole();
+//#endif
+	InitLog();
+	m_pNC = new CNCExchange();
+
 	INITCOMMONCONTROLSEX InitCtrls;
 	InitCtrls.dwSize = sizeof(InitCtrls);
 	// Set this to include all the common control classes you want to use
@@ -179,10 +186,6 @@ BOOL ClaserMachineApp::InitInstance()
 	InitKeyboardManager();
 
 	InitTooltipManager();
-#ifdef _DEBUG
-	StartConsole();
-#endif
-	InitLog();
 	CMFCToolTipInfo ttParams;
 	ttParams.m_bVislManagerTheme = TRUE;
 	theApp.GetTooltipManager()->SetTooltipParams(AFX_TOOLTIP_TYPE_ALL,
@@ -227,6 +230,11 @@ int ClaserMachineApp::ExitInstance()
 #ifdef _DEBUG
 	FreeConsole();
 #endif
+	if (m_pNC != nullptr)
+	{
+		delete m_pNC;
+		m_pNC = nullptr;
+	}
 	return CWinAppEx::ExitInstance();
 }
 
@@ -306,7 +314,7 @@ CNCExchange* ClaserMachineApp::GetNCExchange()
 
 void ClaserMachineApp::OnBtnConnect()
 {
-
+	GetNCExchange()->GetCoordinates(COORDINATES_TYPE::MACHINE, 0);
 	return;
 
 
