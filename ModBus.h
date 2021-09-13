@@ -55,11 +55,11 @@ private:
     bool SubjectAddress(std::string name, WORD address, WORD type, WORD subIndex, WORD index2 = 0, WORD const* const pData = nullptr, WORD len_data = 0, WORD index1 = 0);
     bool ReadData(WORD address,  WORD* const p_output_data, WORD len_output_data, WORD type,  WORD subIndex, WORD index2 =0, WORD const* const p_input_data = nullptr, WORD len_input_data = 0, WORD index1 = 0);
     bool FindSubjectAddress(std::string name, WORD& address);
-    bool ReadCoordinateData(double *pData, WORD len, std::string name, WORD line, WORD index);
+    bool ReadCoordinateData(INT32 *pData, WORD len, std::string name, WORD line, WORD index);
 public: //to be deleted
     bool ReadFile(const char* pName, WORD len, std::string& data);
     INT32 GetParameterInt32(WORD index, WORD line);
     double GetParameterFloat64(WORD index, WORD line);
-    bool GetCoordinates(double* pData, WORD len, COORDINATES_TYPE type, WORD index);
+    bool GetCoordinates(INT32 * pData, WORD len, COORDINATES_TYPE type, WORD index);
 };
 

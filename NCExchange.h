@@ -9,13 +9,14 @@ public:
 
 //connect
 private:
+	const int update_time;
 	src::severity_channel_logger<severity_level, std::string> scl;
 	ICommunication *m_pCommunication;
 	boost::asio::io_context m_io;
 	boost::asio::strand<boost::asio::io_context::executor_type> m_strand;
 	boost::asio::steady_timer m_update_timer;
-	double m_machine_coordinate[4];
-	double m_workpiece_coordinate[4];
+	INT32 m_machine_coordinate[4];
+	INT32 m_workpiece_coordinate[4];
 public:
 	bool Init();
 	BOOL Connect();

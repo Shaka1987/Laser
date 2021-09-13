@@ -143,8 +143,8 @@ void CParameterWnd::LoadParameterDescription()
 			}
 			//TRACE(para.m_title + _T("\n"));
 
-			BOOST_LOG_SEV(scl, trace) << __FUNCTION__ << ":" << __LINE__ 
-				<< "titlle:" << ws2s(para.m_title.GetString());
+			//BOOST_LOG_SEV(scl, trace) << __FUNCTION__ << ":" << __LINE__ 
+			//	<< "titlle:" << ws2s(para.m_title.GetString());
 
 			m_wndPropList.AddProperty(pGroup);
 		}
@@ -197,9 +197,8 @@ void CParameterWnd::FillParameterData()
 			count = pProp->GetSubItemsCount();
 			title = pProp->GetName();
 
-			//TRACE(_T("title:") + CString(title.bstrVal) + _T("\n"));
-			BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__ 
-				<< "titlle:" << ws2s(title.bstrVal);
+			//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__ 
+			//	<< "titlle:" << ws2s(title.bstrVal);
 			line = 0;
 		}
 		else if(pProp != nullptr)

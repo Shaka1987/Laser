@@ -59,17 +59,23 @@ bool CModBus::SetAddress(WORD address, WORD type, WORD subIndex, WORD index2/* =
 	p_write_registers[INDEX1] = index1;				//索引1	通道
 	p_write_registers[INDEX2] = index2;				//索引2
 	p_write_registers[SUBINDEX] = subIndex;				//子索引
+	boost::mutex::scoped_lock lock(mu);
 
+	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+		<< "this thread" << boost::this_thread::get_id();
 	if (pData != nullptr && len_data != 0)
 	{
 		memcpy(p_write_registers + 4, pData, len_data*2);
 	}
+
 	int rc = modbus_write_registers(m_ctx, address, len_data + 4, p_write_registers);
 
 
-	BOOST_LOG_SEV(scl, trace) << __FUNCTION__ << ":" << __LINE__ <<
-		" Type:" << type << " Index1:" << index1 << " index2:" << index2 << " subindex:" << subIndex <<
-		" return:" << rc << OutPutData(pData, len_data).str();
+	BOOST_LOG_SEV(scl, trace) << __FUNCTION__ << ":" << __LINE__ 
+		<< "this thread" << boost::this_thread::get_id()
+		<< " Address:" << setiosflags(ios::uppercase) << hex << "0X" << setw(2) << setfill('0') << address
+		<< " Type:" << type << " Index1:" << index1 << " index2:" << index2 << " subindex:" << subIndex
+		<< " return:" << rc << OutPutData(pData, len_data).str();
 
 
 	delete[] p_write_registers;
@@ -96,10 +102,15 @@ bool CModBus::ReadAddress(WORD address, WORD * const pData, WORD len_data, WORD 
 {
 	WORD* p_read_registers = new WORD[len_data + 4];
 	bool return_state = false;
+	boost::mutex::scoped_lock lock(mu);
 
+	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+		<< "this thread" << boost::this_thread::get_id();
 	memset(p_read_registers, 0, (len_data + 4) * 2);
 	int rc = modbus_read_registers(m_ctx, address, len_data + 4, p_read_registers);
 	BOOST_LOG_SEV(scl, trace) << __FUNCTION__ << ":" << __LINE__ 
+		<< "this thread" << boost::this_thread::get_id()
+		<< " Address:" << setiosflags(ios::uppercase) << hex << "0X" << setw(2) << setfill('0') << address
 		<< " Type:" << p_read_registers[TYPE] << " Index1:" << p_read_registers[INDEX1] 
 		<< " index2:" << p_read_registers[INDEX2] << " subindex:" << p_read_registers[SUBINDEX]
 		<< " return:" << rc << OutPutData(p_read_registers + 4, len_data).str();
@@ -143,7 +154,7 @@ bool CModBus::FindSubjectAddress(std::string name, WORD &address)
 	{
 		if (add.second == address)
 		{
-			address++;
+			address+=0x100;
 		}
 		if (add.first == name)
 		{
@@ -201,9 +212,10 @@ double CModBus::GetParameterFloat64(WORD index, WORD line)
 	return (double)data;
 }
 
-bool CModBus::ReadCoordinateData(double* pData, WORD len, std::string name, WORD line, WORD index)
+bool CModBus::ReadCoordinateData(INT32 * pData, WORD len, std::string name, WORD line, WORD index)
 {
 	WORD address = 0;
+
 	if (!FindSubjectAddress(name, address))
 	{
 		SubjectAddress(name, address, NC_R_DIA_INT, 1, line);
@@ -220,7 +232,7 @@ bool CModBus::ReadCoordinateData(double* pData, WORD len, std::string name, WORD
 	return false;
 }
 
-bool CModBus::GetCoordinates(double* pData, WORD len, COORDINATES_TYPE type, WORD index)
+bool CModBus::GetCoordinates(INT32  * pData, WORD len, COORDINATES_TYPE type, WORD index)
 {
 	switch (type)
 	{
