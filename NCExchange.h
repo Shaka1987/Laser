@@ -9,7 +9,7 @@ public:
 
 //connect
 private:
-	const int update_time;
+	const int UPDATE_TIME;
 	src::severity_channel_logger<severity_level, std::string> scl;
 	ICommunication *m_pCommunication;
 	boost::asio::io_context m_io;

@@ -38,13 +38,15 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_COMMAND(ID_VIEW_PARAMETERWND, &CMainFrame::OnViewParameterwnd)
 	ON_UPDATE_COMMAND_UI(ID_VIEW_PARAMETERWND, &CMainFrame::OnUpdateViewParameterwnd)
 	ON_COMMAND_RANGE(ID_MODE_START, ID_MODE_END, &CMainFrame::OnSwitchMode)
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 // CMainFrame construction/destruction
 
 CMainFrame::CMainFrame() noexcept
+	: scl(logging::keywords::channel = "ClaserMachineView")
 {
-	// TODO: add member initialization code here
+
 }
 
 CMainFrame::~CMainFrame()
@@ -85,7 +87,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// set the visual manager used to draw all user interface elements
 	CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows7));
 	m_wndRibbonBar.SetWindows7Look(TRUE);
-
+	SetTimer(0, 200, nullptr);
 	return 0;
 }
 
@@ -243,6 +245,26 @@ void CMainFrame::UpdateMousePosition(CPoint point)
 	//OutputDebugString(strMousePosition);
 }
 
+
+void CMainFrame::UpdateAxesData()
+{
+	CMFCRibbonStatusBarPane* pPane = (CMFCRibbonStatusBarPane*)m_wndStatusBar.FindByID(ID_STATUSBAR_AXES_POSITION);
+	if (pPane == nullptr)
+		return;
+	static int i = 0;
+
+	CNCExchange* exchange = theApp.GetNCExchange();
+
+	CString str;
+	str.Format(_T("X:%.3f Y:%.3f Z:%.3f A:%.3f"), exchange->GetCoordinates(COORDINATES_TYPE::MACHINE, 0)
+										, exchange->GetCoordinates(COORDINATES_TYPE::MACHINE, 1)
+										, exchange->GetCoordinates(COORDINATES_TYPE::MACHINE, 2)
+										, exchange->GetCoordinates(COORDINATES_TYPE::MACHINE, 3));
+	pPane->SetText(str);
+	m_wndStatusBar.RecalcLayout();
+	pPane->Redraw();
+}
+
 void CMainFrame::SwitchOperatePane(BOOL bShow)
 {
 	if (m_wndOperate.IsVisible() != bShow)
@@ -338,4 +360,17 @@ void CMainFrame::OnUpdateViewParameterwnd(CCmdUI *pCmdUI)
 void CMainFrame::OnSwitchMode(UINT nID)
 {
 	m_wndOperate.OnSwitchMode(nID);
+}
+
+
+void CMainFrame::OnTimer(UINT_PTR nIDEvent)
+{
+	switch (nIDEvent)
+	{
+	case 0:
+		CMainFrame::UpdateAxesData();
+		break;
+	default:
+		break;
+	}CFrameWndEx::OnTimer(nIDEvent);
 }

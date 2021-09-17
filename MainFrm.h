@@ -37,6 +37,7 @@ public:
 	void UpdateMousePosition(CPoint point);
 	void SwitchOperatePane(BOOL bShow);
 	void UpdateProgram();
+	void UpdateAxesData();
 // Overrides
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
@@ -83,6 +84,11 @@ public:
 	afx_msg void OnViewParameterwnd();
 	afx_msg void OnUpdateViewParameterwnd(CCmdUI *pCmdUI);
 	afx_msg void OnSwitchMode(UINT nID);
+
+private:
+	src::severity_channel_logger<severity_level, std::string> scl;
+public:
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
 
 
