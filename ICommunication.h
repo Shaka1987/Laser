@@ -8,7 +8,7 @@ class ICommunication
 public:
 
 	ICommunication();
-	~ICommunication();
+	virtual ~ICommunication();
 	virtual bool Connect() = 0;
 	virtual bool Disconnect() = 0;
 	virtual bool ReadFile(const char* pName, WORD len, std::string& data) = 0;

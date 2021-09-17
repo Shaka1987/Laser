@@ -27,12 +27,8 @@ CNCExchange::~CNCExchange()
 	//m_update_timer.cancel();
 	//m_update_timer2.cancel();
 
-	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__ << "22222222222222222";
 	if (m_pCommunication != nullptr)
 	{
-
-
-		BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__ << "33333333333333";
 
 		delete m_pCommunication;
 	}
@@ -48,7 +44,6 @@ bool CNCExchange::Init()
 		
 		//t.join();
 		//m_io.run();
-		int* a = new int();
 		return true;
 	}
 	return false;
