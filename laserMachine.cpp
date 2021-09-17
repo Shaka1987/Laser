@@ -52,6 +52,7 @@ END_MESSAGE_MAP()
 // ClaserMachineApp construction
 
 ClaserMachineApp::ClaserMachineApp() noexcept
+	:m_pNC(nullptr)
 	
 {
 	m_bHiColorIcons = TRUE;
@@ -74,8 +75,11 @@ ClaserMachineApp::ClaserMachineApp() noexcept
 }
 ClaserMachineApp::~ClaserMachineApp()
 {
-	delete m_pNC;
-	m_pNC = nullptr;
+	if (m_pNC != nullptr)
+	{
+		delete m_pNC;
+		m_pNC = nullptr;
+	}
 }
 
 
@@ -138,8 +142,11 @@ BOOL ClaserMachineApp::InitInstance()
 	StartConsole();
 //#endif
 	InitLog();
-	m_pNC = new CNCExchange();
-
+	if (m_pNC == nullptr)
+	{
+		m_pNC = new CNCExchange();
+	}
+	
 	INITCOMMONCONTROLSEX InitCtrls;
 	InitCtrls.dwSize = sizeof(InitCtrls);
 	// Set this to include all the common control classes you want to use
@@ -230,6 +237,7 @@ int ClaserMachineApp::ExitInstance()
 #ifdef _DEBUG
 	FreeConsole();
 #endif
+	m_pNC->Disconnect();
 	if (m_pNC != nullptr)
 	{
 		delete m_pNC;

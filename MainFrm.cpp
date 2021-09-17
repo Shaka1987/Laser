@@ -254,13 +254,15 @@ void CMainFrame::UpdateAxesData()
 	static int i = 0;
 
 	CNCExchange* exchange = theApp.GetNCExchange();
-
-	CString str;
-	str.Format(_T("X:%.3f Y:%.3f Z:%.3f A:%.3f"), exchange->GetCoordinates(COORDINATES_TYPE::MACHINE, 0)
-										, exchange->GetCoordinates(COORDINATES_TYPE::MACHINE, 1)
-										, exchange->GetCoordinates(COORDINATES_TYPE::MACHINE, 2)
-										, exchange->GetCoordinates(COORDINATES_TYPE::MACHINE, 3));
-	pPane->SetText(str);
+	if (exchange != nullptr)
+	{
+		CString str;
+		str.Format(_T("X:%.3f Y:%.3f Z:%.3f A:%.3f"), exchange->GetCoordinates(COORDINATES_TYPE::MACHINE, 0)
+											, exchange->GetCoordinates(COORDINATES_TYPE::MACHINE, 1)
+											, exchange->GetCoordinates(COORDINATES_TYPE::MACHINE, 2)
+											, exchange->GetCoordinates(COORDINATES_TYPE::MACHINE, 3));
+		pPane->SetText(str);
+	}
 	m_wndStatusBar.RecalcLayout();
 	pPane->Redraw();
 }

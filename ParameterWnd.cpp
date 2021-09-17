@@ -168,6 +168,10 @@ void CParameterWnd::FillParameterData()
 {
 	//read from low-machine
 	CNCExchange* exchange = theApp.GetNCExchange();
+	if (exchange == nullptr)
+	{
+		return;
+	}
 	string data = exchange->GetParameters();
 
 	//read parameter data from File
@@ -348,13 +352,18 @@ LRESULT CParameterWnd::OnParameterChanged(WPARAM, LPARAM lparam)
 			}
 		}
 	}
+	CNCExchange* pExchange = theApp.GetNCExchange();
+	if (pExchange != nullptr)
+	{
+		return LRESULT();
+	}
 	if(bIntType)
 	{
-		INT32 old_value = theApp.GetNCExchange()->GetParameterInt32(index, line + 1);
+		INT32 old_value = pExchange->GetParameterInt32(index, line + 1);
 	}
 	else
 	{
-		DOUBLE old_value = theApp.GetNCExchange()->GetParameterFloat64(index, line + 1);
+		DOUBLE old_value = pExchange->GetParameterFloat64(index, line + 1);
 	}
 	return LRESULT();
 }

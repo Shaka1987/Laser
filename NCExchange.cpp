@@ -7,25 +7,48 @@
 
 
 CNCExchange::CNCExchange() noexcept
-: UPDATE_TIME(50)	//通讯需要时间，所以小于50没有效果
+: UPDATE_TIME(10)	//通讯需要时间，所以小于50没有效果
 , m_strand(boost::asio::make_strand(m_io))
 , m_update_timer(m_io, boost::asio::chrono::milliseconds(UPDATE_TIME))
+, m_strand2(boost::asio::make_strand(m_io2))
+, m_update_timer2(m_io2, boost::asio::chrono::milliseconds(UPDATE_TIME))
 , scl(logging::keywords::channel = "CNCExchange")
 {
 	m_pCommunication = CFactoryCommunication::Create(COMMUNICATION_TYPE::COM_MODEBUS);
-	m_update_timer.async_wait(boost::asio::bind_executor(m_strand,boost::bind(&CNCExchange::UpdateData, this)));
+	//m_update_timer.async_wait(boost::asio::bind_executor(m_strand,boost::bind(&CNCExchange::UpdateData, this)));
+	//m_update_timer2.async_wait(boost::asio::bind_executor(m_strand2, boost::bind(&CNCExchange::UpdateData2, this)));
 
 	Init();
+}
+
+CNCExchange::~CNCExchange()
+{
+	//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__<< "11111111111111";
+	//m_update_timer.cancel();
+	//m_update_timer2.cancel();
+
+	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__ << "22222222222222222";
+	if (m_pCommunication != nullptr)
+	{
+
+
+		BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__ << "33333333333333";
+
+		delete m_pCommunication;
+	}
 }
 
 bool CNCExchange::Init()
 {
 	if (Connect())
 	{
-		boost::thread t(boost::bind(&boost::asio::io_context::run, &m_io));
-		//t.interrupt();
+		//m_t = boost::thread(boost::bind(&boost::asio::io_context::run, &m_io));
+
+		//m_t2 = boost::thread(boost::bind(&boost::asio::io_context::run, &m_io2));
+		
 		//t.join();
 		//m_io.run();
+		int* a = new int();
 		return true;
 	}
 	return false;
@@ -68,11 +91,18 @@ double CNCExchange::GetCoordinates(COORDINATES_TYPE type, WORD index)
 void CNCExchange::UpdateData()
 {
 //	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__<< "this thread" <<	boost::this_thread::get_id();
-	m_pCommunication->GetCoordinates(m_machine_coordinate, 4, COORDINATES_TYPE::MACHINE, 1);
-	m_pCommunication->GetCoordinates(m_workpiece_coordinate, 4, COORDINATES_TYPE::WORKPIECE, 1);
-	m_update_timer.expires_at(m_update_timer.expiry() + boost::asio::chrono::milliseconds(UPDATE_TIME));
 
-	m_update_timer.async_wait(boost::asio::bind_executor(m_strand,
-		boost::bind(&CNCExchange::UpdateData, this)));
+	m_pCommunication->GetCoordinates(m_machine_coordinate, 4, COORDINATES_TYPE::MACHINE, 1);
+	//m_update_timer.expires_at(m_update_timer.expiry() + boost::asio::chrono::milliseconds(UPDATE_TIME));
+	//m_update_timer.async_wait(boost::asio::bind_executor(m_strand, boost::bind(&CNCExchange::UpdateData, this)));
 	
+}
+
+void CNCExchange::UpdateData2()
+{
+	//	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__<< "this thread" <<	boost::this_thread::get_id();
+	m_pCommunication->GetCoordinates(m_workpiece_coordinate, 4, COORDINATES_TYPE::WORKPIECE, 1);
+	/*m_update_timer2.expires_at(m_update_timer2.expiry() + boost::asio::chrono::milliseconds(UPDATE_TIME));
+	m_update_timer2.async_wait(boost::asio::bind_executor(m_strand2, boost::bind(&CNCExchange::UpdateData2, this)));*/
+
 }

@@ -37,6 +37,7 @@ bool CModBus::Connect()
 
 bool CModBus::Disconnect()
 {
+	modbus_free(m_ctx);
 	return 0;
 }
 
@@ -108,6 +109,7 @@ bool CModBus::ReadAddress(WORD address, WORD * const pData, WORD len_data, WORD 
 		<< "this thread" << boost::this_thread::get_id();
 	memset(p_read_registers, 0, (len_data + 4) * 2);
 	int rc = modbus_read_registers(m_ctx, address, len_data + 4, p_read_registers);
+	//一次通讯50毫秒左右
 	BOOST_LOG_SEV(scl, trace) << __FUNCTION__ << ":" << __LINE__ 
 		<< "this thread" << boost::this_thread::get_id()
 		<< " Address:" << setiosflags(ios::uppercase) << hex << "0X" << setw(2) << setfill('0') << address
@@ -159,13 +161,13 @@ bool CModBus::FindSubjectAddress(std::string name, WORD &address)
 		if (add.first == name)
 		{
 			address = add.second;
-			BOOST_LOG_SEV(scl, trace) << __FUNCTION__ << ":" << __LINE__
+			BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
 				<< "Function " << name << "has subject in address 0x" 
 				<< setiosflags(ios::uppercase) << hex << "0X" << setw(2) << setfill('0') << add.second;
 			return true;
 		}
 	}
-	BOOST_LOG_SEV(scl, trace) << __FUNCTION__ << ":" << __LINE__
+	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
 		<< "Don't find Function " << name << ", the address "
 		<< setiosflags(ios::uppercase) << hex << "0X" << setw(2) << setfill('0') << address
 		<< "is empty, can be used to subject";
