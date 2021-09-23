@@ -75,6 +75,7 @@ protected:
 	BOOL CreateParamerWnd(const CRect& rect);
 	BOOL CreatePLCWnd(const CRect& rect);
 	BOOL CreateOperateWnd();
+	BOOL CreateMonitorWnd();
 	BOOL CreateDockingWindows();
 	void SetOutPutWindowIcons(BOOL bHiColorIcons);
 	void AddElementToStatusBar(UINT ID, UINT tipID, BOOL bExtennd);

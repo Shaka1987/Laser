@@ -5,6 +5,7 @@
 #define ID_EDIT_FEEDRATE_OVERRIDE       4
 #define IDD_ABOUTBOX                    100
 #define IDP_OLE_INIT_FAILED             100
+#define IDD_MONITOR                     101
 #define IDP_SOCKETS_INIT_FAILED         104
 #define IDB_WRITESMALL                  110
 #define IDB_WRITELARGE                  111
@@ -67,42 +68,42 @@
 #define ID_VIEW_OPERATEWND              316
 #define IDC_EDIT3                       1009
 #define IDC_RICHEDIT21                  1018
-
-
-#define ID_MODE_START	                32500
+#define IDC_TITLE_T                     1020
+#define IDC_REALV_T                     1021
+#define IDC_TITLE_T2                    1022
+#define IDC_SETV_T                      1022
+#define ID_MODE_START                   32500
 #define ID_BUTTON_MAUTO                 32501
 #define ID_BUTTON_MJOG                  32502
 #define ID_BUTTON_MMDI                  32503
 #define ID_BUTTON_MINC                  32504
 #define ID_BUTTON_MREFER                32505
 #define ID_BUTTON_MWHEEL                32506
-#define ID_MODE_END		                32507
-
-#define IDC_OPERATE_START				32600
+#define ID_MODE_END                     32507
+#define IDC_OPERATE_START               32600
 #define IDC_BTN_CYCLESTART              32601
 #define IDC_BTN_CYCLEINTERUPT           32602
 #define IDC_BTN_CYCLERESET              32603
-#define IDC_BTN_ROLLBACK				32604
-#define ID_BUTTON_XPLUS                	32605
-#define ID_BUTTON_XMINUS               	32606
-#define ID_BUTTON_YPLUS                	32607
-#define ID_BUTTON_YMINUS               	32608
-#define ID_BUTTON_ZPLUS                	32609
-#define ID_BUTTON_ZMINUS               	32610
-#define ID_BUTTON_APLUS                	32611
-#define ID_BUTTON_AMINUS               	32612
-#define ID_BUTTON_BPLUS                	32613
-#define ID_BUTTON_BMINUS               	32614
-#define ID_CHECK_INC_CUT               	32615
-#define ID_EDIT_INC_VALUE              	32616
-#define ID_EDIT_RAPID_VALUE            	32617
-#define ID_COMBO_INCR_VALUE            	32618
-#define ID_CHECK_INC                   	32619
-#define ID_CHECK_RAPID                 	32620
+#define IDC_BTN_ROLLBACK                32604
+#define ID_BUTTON_XPLUS                 32605
+#define ID_BUTTON_XMINUS                32606
+#define ID_BUTTON_YPLUS                 32607
+#define ID_BUTTON_YMINUS                32608
+#define ID_BUTTON_ZPLUS                 32609
+#define ID_BUTTON_ZMINUS                32610
+#define ID_BUTTON_APLUS                 32611
+#define ID_BUTTON_AMINUS                32612
+#define ID_BUTTON_BPLUS                 32613
+#define ID_BUTTON_BMINUS                32614
+#define ID_CHECK_INC_CUT                32615
+#define ID_EDIT_INC_VALUE               32616
+#define ID_EDIT_RAPID_VALUE             32617
+#define ID_COMBO_INCR_VALUE             32618
+#define ID_CHECK_INC                    32619
+#define ID_CHECK_RAPID                  32620
 #define IDC_RICHEDIT_MDI                32621
 #define IDC_CHECK_STEPRUN               32622
 #define IDC_OPERATE_END                 32622
-
 #define ID_WRITE_PASTEASHYPERLINK       32770
 #define ID_SLIDER_FEEDRATE_OVERRIDE     32796
 #define ID_EDIT_FEED                    32799
@@ -112,9 +113,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        315
+#define _APS_NEXT_RESOURCE_VALUE        316
 #define _APS_NEXT_COMMAND_VALUE         32809
-#define _APS_NEXT_CONTROL_VALUE         1019
+#define _APS_NEXT_CONTROL_VALUE         1022
 #define _APS_NEXT_SYMED_VALUE           317
 #endif
 #endif
