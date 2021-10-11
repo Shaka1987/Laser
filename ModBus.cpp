@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "ModBus.h"
 #include <iomanip>
+#include <SetupAPI.h>
+#include <devguid.h>
+
 
 using namespace std;
 CModBus::CModBus()
@@ -14,8 +17,8 @@ bool CModBus::Connect()
 {
 	uint32_t old_response_to_sec;
 	uint32_t old_response_to_usec;
-
-	m_ctx = modbus_new_rtu("COM4", 9600, 'O', 8, 1);
+	bool bFind = ScanCom();
+	m_ctx = modbus_new_rtu("COM3", 57600, 'O', 8, 1);
 	modbus_set_slave(m_ctx, 10);
 
 	//modbus_set_debug(ctx, TRUE);
@@ -37,8 +40,108 @@ bool CModBus::Connect()
 
 bool CModBus::Disconnect()
 {
+	modbus_close(m_ctx);
 	modbus_free(m_ctx);
 	return 0;
+}
+
+bool CModBus::ScanCom()
+{
+	HDEVINFO hDevInfo = SetupDiGetClassDevsA(&GUID_DEVCLASS_PORTS, NULL, NULL, 0);
+	if (!hDevInfo)
+	{
+		BOOST_LOG_SEV(scl, error) << __FUNCTION__ << ":" << __LINE__
+			<< "Can't find devinfo: ";
+		return false;
+	}
+		
+	SP_DEVINFO_DATA DeviceInfoData;
+	DeviceInfoData.cbSize = sizeof(SP_DEVINFO_DATA);
+	for (int i = 0; SetupDiEnumDeviceInfo(hDevInfo, i, &DeviceInfoData); i++)
+	{
+		DCB dcb;
+		GetCommState(HANDLE (DeviceInfoData.DevInst), &dcb);
+
+		DWORD DataT = 0;
+		char buffer[256] = { 0 };
+		DWORD buffersize = sizeof(buffer);
+
+		UINT IDs[] = {
+			SPDRP_DEVICEDESC
+			, SPDRP_HARDWAREID
+			, SPDRP_COMPATIBLEIDS
+			, SPDRP_UNUSED0
+			, SPDRP_SERVICE
+			, SPDRP_UNUSED1
+			, SPDRP_UNUSED2
+			, SPDRP_CLASS
+			, SPDRP_CLASSGUID
+			, SPDRP_DRIVER
+			, SPDRP_CONFIGFLAGS
+			, SPDRP_MFG
+			, SPDRP_FRIENDLYNAME
+			, SPDRP_LOCATION_INFORMATION
+			, SPDRP_PHYSICAL_DEVICE_OBJECT_NAME
+			, SPDRP_CAPABILITIES
+			, SPDRP_UI_NUMBER
+			, SPDRP_UPPERFILTERS
+			, SPDRP_LOWERFILTERS
+			, SPDRP_BUSTYPEGUID
+			, SPDRP_LEGACYBUSTYPE
+			, SPDRP_BUSNUMBER
+			, SPDRP_ENUMERATOR_NAME
+			, SPDRP_SECURITY
+			, SPDRP_SECURITY_SDS
+			, SPDRP_DEVTYPE
+			, SPDRP_EXCLUSIVE
+			, SPDRP_CHARACTERISTICS
+			, SPDRP_ADDRESS
+			, SPDRP_UI_NUMBER_DESC_FORMAT
+			, SPDRP_DEVICE_POWER_DATA
+			, SPDRP_REMOVAL_POLICY
+			, SPDRP_REMOVAL_POLICY_HW_DEFAULT
+			, SPDRP_REMOVAL_POLICY_OVERRIDE
+			, SPDRP_INSTALL_STATE
+			, SPDRP_LOCATION_PATHS
+			, SPDRP_BASE_CONTAINERID
+			, SPDRP_MAXIMUM_PROPERTY
+		};
+
+			for (UINT id : IDs)
+			{
+				memset(buffer, 0, 256);
+				while (!SetupDiGetDeviceRegistryPropertyA(hDevInfo, &DeviceInfoData, id, &DataT, (PBYTE)buffer, buffersize, &buffersize))
+				{
+					if (GetLastError() == ERROR_INSUFFICIENT_BUFFER)
+					{
+						// Change the buffer size.   
+						//if (buffer) LocalFree(buffer);   
+					}
+					else
+					{
+						// Insert error handling here. 
+		//cout << "Friend Name is " << buffer << endl;
+						break;
+					}
+				}
+				BOOST_LOG_SEV(scl, info) << __FUNCTION__ << ":" << __LINE__
+					<< id<<" is " << buffer;
+			}
+
+
+		if (buffer)
+		{
+			LocalFree(buffer);
+		}
+	}
+	if (GetLastError() != NO_ERROR && GetLastError() != ERROR_NO_MORE_ITEMS)
+	{
+		return false;
+	}
+
+	// Cleanup   
+	SetupDiDestroyDeviceInfoList(hDevInfo);
+	return true;
 }
 
 std::stringstream CModBus::OutPutData(WORD const* const pData, WORD len_data)

@@ -17,6 +17,8 @@ public:
     bool Disconnect();
  protected:
     modbus_t* m_ctx;
+private://for configuration
+    bool ScanCom();
 private:
     std::stringstream OutPutData(WORD const* const pData, WORD len_data);
     src::severity_channel_logger<severity_level, std::string> scl;
