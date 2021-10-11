@@ -144,9 +144,7 @@ BOOL CMainFrame::CreatePLCWnd(const CRect& rect)
 
 BOOL CMainFrame::CreateOperateWnd()
 {
-	LPWSTR str = MAKEINTRESOURCE(IDD_OPERATE);
-	DWORD error = GetLastError();
-	if (!m_wndOperate.Create(_T("操作面板"), this, TRUE, MAKEINTRESOURCE(IDD_OPERATE), WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI, ID_VIEW_OPERATEWND, AFX_CBRS_REGULAR_TABS,  AFX_CBRS_CLOSE| AFX_CBRS_AUTOHIDE))
+	if (!m_wndOperate.Create(_T("操作面板"), this, TRUE, MAKEINTRESOURCE(IDD_OPERATE), WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI, IDD_OPERATE, AFX_CBRS_REGULAR_TABS,  AFX_CBRS_CLOSE| AFX_CBRS_AUTOHIDE))
 	{
 		return FALSE;
 	}
@@ -155,7 +153,11 @@ BOOL CMainFrame::CreateOperateWnd()
 
 BOOL CMainFrame::CreateMonitorWnd()
 {
-	return 0;
+	if (!m_wndMonitor.Create(_T("监控面板"), this, TRUE, MAKEINTRESOURCE(IDD_MONITOR), WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI, IDD_MONITOR, AFX_CBRS_REGULAR_TABS, AFX_CBRS_CLOSE | AFX_CBRS_AUTOHIDE))
+	{
+		return FALSE;
+	}
+	return TRUE;
 }
 
 
@@ -182,11 +184,16 @@ BOOL CMainFrame::CreateDockingWindows()
 		TRACE0("Failed to create Operate window\n");
 		return FALSE;
 	}
-
+	if (!CreateMonitorWnd())
+	{
+		TRACE0("Failed to create Monitor window\n");
+		return FALSE;
+	}
 	m_wndOutput.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndParameter.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndPLC.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndOperate.EnableDocking(CBRS_ALIGN_ANY);
+	m_wndMonitor.EnableDocking(CBRS_ALIGN_ANY);
 
 	EnableDocking(CBRS_ALIGN_ANY);
 
@@ -194,9 +201,12 @@ BOOL CMainFrame::CreateDockingWindows()
 	DockPane(&m_wndParameter);
 	DockPane(&m_wndPLC);
 	DockPane(&m_wndOperate);
-	ShowPane(&m_wndOperate,TRUE, FALSE, TRUE);
-	m_wndParameter.DockToWindow(&m_wndPLC, CBRS_TOP);
+	DockPane(&m_wndMonitor);
 
+	m_wndParameter.DockToWindow(&m_wndPLC, CBRS_TOP);
+	ShowPane(&m_wndOperate, TRUE, FALSE, TRUE);
+	ShowPane(&m_wndMonitor, TRUE, FALSE, TRUE);
+	m_wndOperate.DockToWindow(&m_wndMonitor, CBRS_TOP);
 	return TRUE;
 }
 
@@ -376,6 +386,8 @@ void CMainFrame::OnTimer(UINT_PTR nIDEvent)
 	case 0:
 		CMainFrame::UpdateAxesData();
 		break;
+	case 1:
+		BOOST_LOG_SEV(scl, trace) << __FUNCTION__ << ":" << __LINE__ << "this thread" << boost::this_thread::get_id();
 	default:
 		break;
 	}CFrameWndEx::OnTimer(nIDEvent);

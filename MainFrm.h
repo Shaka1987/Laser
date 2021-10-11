@@ -17,6 +17,7 @@
 #include "ParameterWnd.h"
 #include "PLCWnd.h"
 #include "OperateWnd.h"
+#include "MonitorWnd.h"
 #include "Resource.h"
 
 #define ID_MESSAGE_UPDATE (WM_USER+100)
@@ -59,6 +60,7 @@ protected:  // control bar embedded members
 	CParameterWnd m_wndParameter;
 	CPLCWnd m_wndPLC;
 	COperateWnd m_wndOperate;
+	CMonitorWnd m_wndMonitor;
 
 // Generated message map functions
 protected:

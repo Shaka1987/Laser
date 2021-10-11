@@ -50,6 +50,7 @@
     <ClCompile Include="ParaJson.cpp">
       <Filter>Parameter</Filter>
     </ClCompile>
+    <ClCompile Include="MonitorWnd.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calendarbar.h" />
@@ -105,6 +106,7 @@
       <Filter>Parameter</Filter>
     </ClInclude>
     <ClInclude Include="LogSystem.h" />
+    <ClInclude Include="MonitorWnd.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\buttons.bmp">

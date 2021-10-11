@@ -89,6 +89,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnabled>false</VcpkgEnabled>
+    <VcpkgManifestInstall>false</VcpkgManifestInstall>
+    <VcpkgAutoLink>false</VcpkgAutoLink>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -98,10 +103,11 @@
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalIncludeDirectories>.\include;.\boost\include\boost-1_76;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>modbus.lib</AdditionalDependencies>
+      <AdditionalDependencies>modbus.lib;Setupapi.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -210,6 +216,7 @@
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="LaserProg.h" />
     <ClInclude Include="ModBus.h" />
+    <ClInclude Include="MonitorWnd.h" />
     <ClInclude Include="NCExchange.h" />
     <ClInclude Include="NCProg.h" />
     <ClInclude Include="OperateWnd.h" />
@@ -238,6 +245,7 @@
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="LaserProg.cpp" />
     <ClCompile Include="ModBus.cpp" />
+    <ClCompile Include="MonitorWnd.cpp" />
     <ClCompile Include="NCExchange.cpp" />
     <ClCompile Include="NCProg.cpp" />
     <ClCompile Include="OperateWnd.cpp" />

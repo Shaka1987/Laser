@@ -7,7 +7,7 @@
 
 
 CNCExchange::CNCExchange() noexcept
-: UPDATE_TIME(10)	//通讯需要时间，所以小于50没有效果
+: UPDATE_TIME(1)	//通讯需要时间，所以小于50没有效果
 , m_strand(boost::asio::make_strand(m_io))
 , m_update_timer(m_io, boost::asio::chrono::milliseconds(UPDATE_TIME))
 , m_strand2(boost::asio::make_strand(m_io2))
@@ -15,7 +15,7 @@ CNCExchange::CNCExchange() noexcept
 , scl(logging::keywords::channel = "CNCExchange")
 {
 	m_pCommunication = CFactoryCommunication::Create(COMMUNICATION_TYPE::COM_MODEBUS);
-	//m_update_timer.async_wait(boost::asio::bind_executor(m_strand,boost::bind(&CNCExchange::UpdateData, this)));
+	m_update_timer.async_wait(boost::asio::bind_executor(m_strand,boost::bind(&CNCExchange::UpdateData, this)));
 	//m_update_timer2.async_wait(boost::asio::bind_executor(m_strand2, boost::bind(&CNCExchange::UpdateData2, this)));
 
 	Init();
@@ -23,8 +23,8 @@ CNCExchange::CNCExchange() noexcept
 
 CNCExchange::~CNCExchange()
 {
-	//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__<< "11111111111111";
-	//m_update_timer.cancel();
+	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__<< "11111111111111";
+	m_update_timer.cancel();
 	//m_update_timer2.cancel();
 
 	if (m_pCommunication != nullptr)
@@ -85,11 +85,11 @@ double CNCExchange::GetCoordinates(COORDINATES_TYPE type, WORD index)
 
 void CNCExchange::UpdateData()
 {
-//	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__<< "this thread" <<	boost::this_thread::get_id();
+	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__<< "this thread" <<	boost::this_thread::get_id();
 
 	m_pCommunication->GetCoordinates(m_machine_coordinate, 4, COORDINATES_TYPE::MACHINE, 1);
-	//m_update_timer.expires_at(m_update_timer.expiry() + boost::asio::chrono::milliseconds(UPDATE_TIME));
-	//m_update_timer.async_wait(boost::asio::bind_executor(m_strand, boost::bind(&CNCExchange::UpdateData, this)));
+	m_update_timer.expires_at(m_update_timer.expiry() + boost::asio::chrono::milliseconds(UPDATE_TIME));
+	m_update_timer.async_wait(boost::asio::bind_executor(m_strand, boost::bind(&CNCExchange::UpdateData, this)));
 	
 }
 
