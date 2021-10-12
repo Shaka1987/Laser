@@ -1,51 +1,12 @@
-# Prerequisites
-*.d
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-#*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-#*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-/Debug
-/laserMachine.sln
-/laserMachine.vcxproj.user
-/.vs/Laser/v15/ipch/AutoPCH/63ee682329820ac5
-/.vs/laserMachine/v15/ipch
-/.vs/laserMachine/v15
-/.vs/VSWorkspaceState.json
-/laserMachine.vcxproj.filters
-*.aps
-/Release
-/.vs/laserMachine/v16
-/BUnitTest/Debug
-
-\.vs/
-/BUnitTest/Release
-/Backup
+/.vs
 /boost
-/Resources/Parameter Data/.vscode/c_cpp_properties.json
-/log/*.log
+/BUnitTest/Debug
+/BUnitTest/Release/BUnitTest.tlog
+/BUnitTest/Release
+/Debug
+/laserMachine/x64/Debug
+/Resources/Parameter Data/.vscode
