@@ -38,17 +38,16 @@ bool CModBus::Connect()
 		if (modbus_connect(m_ctx) == -1) 
 		{
 			BOOST_LOG_SEV(scl, error) << __FUNCTION__ << ":" << __LINE__ << com <<" connection failed: " << modbus_strerror(errno);
-			//AfxMessageBox(_T("Connection failed"));
 			modbus_free(m_ctx);
 			continue;
 		}
 		else
 		{
+			m_status = COMMUNICATION_STATUS::CS_CONNECTED;
 			WORD slaveNo = GetParameterInt32(2116, 1);
 			
 			if (slaveNo == 10)
 			{
-				m_status = COMMUNICATION_STATUS::CS_CONNECTED;
 				m_com = com;
 				break;
 			}
@@ -58,6 +57,8 @@ bool CModBus::Connect()
 
 				modbus_close(m_ctx);
 				modbus_free(m_ctx);
+
+				m_status = COMMUNICATION_STATUS::CS_UNCONNECTED;
 			}
 		}
 	}
@@ -68,8 +69,12 @@ bool CModBus::Connect()
 
 bool CModBus::Disconnect()
 {
+	boost::mutex::scoped_lock lock(mu);
 	modbus_close(m_ctx);
 	modbus_free(m_ctx);
+	BOOST_LOG_SEV(scl, info) << __FUNCTION__ << ":" << __LINE__ << "Cancle the connection!";
+
+	m_status = COMMUNICATION_STATUS::CS_UNCONNECTED;
 	return 0;
 }
 
@@ -141,6 +146,9 @@ std::stringstream CModBus::OutPutData(WORD const* const pData, WORD len_data)
 
 bool CModBus::SetAddress(WORD address, WORD type, WORD subIndex, WORD index2/* = 0*/, WORD const* const pData /*= nullptr*/, WORD len_data/* = 0*/, WORD index1/* = 0*/)
 {
+	boost::mutex::scoped_lock lock(mu);
+	if (m_status == COMMUNICATION_STATUS::CS_UNCONNECTED)
+		return false;
 	uint16_t* p_write_registers = new uint16_t[len_data + 4];
 	memset(p_write_registers, 0, (len_data+4)* 2);
 
@@ -148,8 +156,7 @@ bool CModBus::SetAddress(WORD address, WORD type, WORD subIndex, WORD index2/* =
 	p_write_registers[INDEX1] = index1;				//索引1	通道
 	p_write_registers[INDEX2] = index2;				//索引2
 	p_write_registers[SUBINDEX] = subIndex;				//子索引
-	boost::mutex::scoped_lock lock(mu);
-
+	
 	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
 		<< "this thread" << boost::this_thread::get_id();
 	if (pData != nullptr && len_data != 0)
@@ -189,9 +196,11 @@ bool CModBus::SubjectAddress(std::string name,WORD address, WORD type, WORD subI
 
 bool CModBus::ReadAddress(WORD address, WORD * const pData, WORD len_data, WORD type, WORD subIndex, WORD index2,WORD index1)
 {
+	boost::mutex::scoped_lock lock(mu);
+	if (m_status == COMMUNICATION_STATUS::CS_UNCONNECTED)
+		return false;
 	WORD* p_read_registers = new WORD[len_data + 4];
 	bool return_state = false;
-	boost::mutex::scoped_lock lock(mu);
 
 	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
 		<< "this thread" << boost::this_thread::get_id();

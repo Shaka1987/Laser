@@ -53,6 +53,7 @@ END_MESSAGE_MAP()
 
 ClaserMachineApp::ClaserMachineApp() noexcept
 	:m_pNC(nullptr)
+	, scl(logging::keywords::channel = "ClaserMachineApp")
 	
 {
 	m_bHiColorIcons = TRUE;
@@ -234,15 +235,18 @@ int ClaserMachineApp::ExitInstance()
 {
 	//TODO: handle additional resources you may have added
 	AfxOleTerm(FALSE);
-#ifdef _DEBUG
-	FreeConsole();
-#endif
+
 	m_pNC->Disconnect();
 	if (m_pNC != nullptr)
 	{
 		delete m_pNC;
 		m_pNC = nullptr;
 	}
+
+#ifdef _DEBUG
+	BOOST_LOG_SEV(scl, info) << __FUNCTION__ << ":" << __LINE__ << "Cancle the log console!";
+	FreeConsole();
+#endif
 	return CWinAppEx::ExitInstance();
 }
 

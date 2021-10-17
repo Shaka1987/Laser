@@ -24,6 +24,7 @@
 // See laserMachine.cpp for the implementation of this class
 //
 #include "NCExchange.h"
+#include "LogSystem.h"
 #define _cfg "log/logsetting.ini"
 class ClaserMachineApp : public CWinAppEx
 {
@@ -35,6 +36,7 @@ private:
 	bool InitLog();
 	bool StartConsole();
 	CNCExchange *m_pNC;
+	src::severity_channel_logger<severity_level, std::string> scl;
 	
 // Overrides
 public:

@@ -47,6 +47,7 @@ bool CNCExchange::Init()
 		//m_io.run();
 		return true;
 	}
+	AfxMessageBox(_T("下位机连接失败！"));
 	return false;
 }
 
@@ -89,8 +90,12 @@ void CNCExchange::UpdateData()
 	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__<< "this thread" <<	boost::this_thread::get_id();
 
 	m_pCommunication->GetCoordinates(m_machine_coordinate, 4, COORDINATES_TYPE::MACHINE, 1);
-	m_update_timer.expires_at(m_update_timer.expiry() + boost::asio::chrono::milliseconds(UPDATE_TIME));
-	m_update_timer.async_wait(boost::asio::bind_executor(m_strand, boost::bind(&CNCExchange::UpdateData, this)));
+	if (m_pCommunication->Connected())
+	{
+		m_update_timer.expires_at(m_update_timer.expiry() + boost::asio::chrono::milliseconds(UPDATE_TIME));
+		m_update_timer.async_wait(boost::asio::bind_executor(m_strand, boost::bind(&CNCExchange::UpdateData, this)));
+	}
+
 	
 }
 

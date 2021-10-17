@@ -11,6 +11,7 @@ public:
 	virtual ~ICommunication();
 	virtual bool Connect() = 0;
 	virtual bool Disconnect() = 0;
+	bool Connected();
 	virtual bool ReadFile(const char* pName, WORD len, std::string& data) = 0;
 	virtual INT32 GetParameterInt32(WORD index, WORD line) = 0;
 	virtual double GetParameterFloat64(WORD index, WORD line) = 0;
