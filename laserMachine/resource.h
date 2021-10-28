@@ -108,13 +108,23 @@
 #define ID_SLIDER_FEEDRATE_OVERRIDE     32796
 #define ID_EDIT_FEED                    32799
 #define ID_BTN_CONNECT                  32808
+#define ID_MACHINE_STATUS               32809
+#define IDR_X_POS                       32810
+#define IDR_Y_POS                       32811
+#define IDR_X_FEED                      32812
+#define IDR_Y_FEED                      32813
+#define IDR_PROGRESS                    32814
+#define IDR_FEEDRATE_VALUE              32816
+#define IDR_FEED                        32818
+#define IDR_FEEDRATE_SLIDER             32819
+#define IDR_PROGRESS_TITLE              32820
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        316
-#define _APS_NEXT_COMMAND_VALUE         32809
+#define _APS_NEXT_COMMAND_VALUE         32822
 #define _APS_NEXT_CONTROL_VALUE         1022
 #define _APS_NEXT_SYMED_VALUE           317
 #endif

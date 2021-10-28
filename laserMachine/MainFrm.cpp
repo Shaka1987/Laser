@@ -60,7 +60,9 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	
 	m_wndRibbonBar.Create(this);
 	m_wndRibbonBar.LoadFromResource(IDR_RIBBON);
-
+	m_wndRibbonBar.ShowContextCategories(ID_MACHINE_STATUS);
+	CMFCRibbonContextCaption*pCate = (CMFCRibbonContextCaption *) m_wndRibbonBar.GetCategory(4);
+	pCate->GetColor();
 	//create status bar
 	if (!CreateStatusBar())
 	{
