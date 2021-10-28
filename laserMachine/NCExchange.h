@@ -11,16 +11,20 @@ public:
 //connect
 private:
 	const int UPDATE_TIME;
+	boost::thread m_t;
 	src::severity_channel_logger<severity_level, std::string> scl;
 	ICommunication *m_pCommunication;
 	boost::asio::io_context m_io;
-	boost::asio::io_context m_io2;
 	boost::asio::strand<boost::asio::io_context::executor_type> m_strand;
-	boost::asio::strand<boost::asio::io_context::executor_type> m_strand2;
 	boost::asio::steady_timer m_update_timer;
-	boost::asio::steady_timer m_update_timer2;
 	INT32 m_machine_coordinate[4];
 	INT32 m_workpiece_coordinate[4];
+	unsigned char m_plcX[128];
+	unsigned char m_plcY[128];
+	unsigned char m_plcF[1000];
+	unsigned char m_plcG[1000];
+
+	void UpdateData();
 public:
 	bool Init();
 	BOOL Connect();
@@ -33,10 +37,8 @@ public:
 	INT32 GetParameterInt32(WORD index, WORD line);
 	double GetParameterFloat64(WORD index, WORD line);
 	double GetCoordinates(COORDINATES_TYPE type, WORD index);
-	void UpdateData();
-	void UpdateData2();
-	boost::thread m_t;
-	boost::thread m_t2;
+	unsigned char GetPLCTableF(WORD index);
+	
 	//void* GetParemeters(std::string filepath);
 	//void* GetDiagData(WORD type);
 

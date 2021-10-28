@@ -28,6 +28,8 @@ COperateWnd::COperateWnd(CWnd* pParent /*=nullptr*/)
 	
 	, m_wheelVector({})
 
+	, scl(logging::keywords::channel = "COperateWnd")
+
 	/*: CPaneDialog(IDD_OPERATE, pParent)*/
 {
 	m_mapMode[ID_BUTTON_MAUTO] =  MODE_TYPE::MODE_AUTO;
@@ -59,6 +61,8 @@ BEGIN_MESSAGE_MAP(COperateWnd, CPaneDialog)
 	ON_WM_PAINT()
 	ON_WM_ERASEBKGND()
 	ON_UPDATE_COMMAND_UI_RANGE(IDC_OPERATE_START, IDC_OPERATE_END, &COperateWnd::OnSwitchOperateMode)
+	ON_WM_TIMER()
+	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 
@@ -95,11 +99,43 @@ BOOL COperateWnd::OnEraseBkgnd(CDC* pDC)
 
 void COperateWnd::OnSwitchOperateMode(CCmdUI* pCmdUI)
 {
+
+	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__;
+	boost::this_thread::get_id();
 	std::vector<UINT>* pV = &m_mapModeCtl[m_emode];
 	pCmdUI->Enable(std::find(pV->begin(), pV->end(), pCmdUI->m_nID) != pV->end());
 }
 
 void COperateWnd::OnSwitchMode(UINT nID)
 {
-	m_emode = m_mapMode[nID];
+	CNCExchange* exchange = theApp.GetNCExchange();
+	if (exchange->GetPLCTableF(3) & (0x01 << 2))
+	{
+		m_emode = MODE_TYPE::MODE_JOG;
+	}
+	if (exchange->GetPLCTableF(3) & (0x01 << 5))
+	{
+		m_emode = MODE_TYPE::MODE_AUTO;
+	}
+
+	//m_emode = m_mapMode[nID];
+}
+
+
+void COperateWnd::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: Add your message handler code here and/or call default
+	OnSwitchMode(0);
+	CPaneDialog::OnTimer(nIDEvent);
+}
+
+
+int COperateWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
+{
+	if (CPaneDialog::OnCreate(lpCreateStruct) == -1)
+		return -1;
+
+	// TODO:  Add your specialized creation code here
+	SetTimer(0, 100, nullptr);
+	return 0;
 }

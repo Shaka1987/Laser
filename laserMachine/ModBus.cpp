@@ -49,6 +49,7 @@ bool CModBus::Connect()
 			if (slaveNo == 10)
 			{
 				m_com = com;
+				BOOST_LOG_SEV(scl, info) << __FUNCTION__ << ":" << __LINE__ << com << " is connected successfully";
 				break;
 			}
 			else
@@ -189,8 +190,8 @@ bool CModBus::SetAddress(WORD address, WORD type, WORD subIndex, WORD index2/* =
 
 bool CModBus::SubjectAddress(std::string name,WORD address, WORD type, WORD subIndex, WORD index2/* = 0*/, WORD const* const pData /*= nullptr*/, WORD len_data/* = 0*/, WORD index1/* = 0*/)
 {
+	m_mapSubjectAddress.insert(make_pair(address, name));
 	bool bRet = SetAddress(address, type, subIndex, index2, pData, len_data, index1);
-	m_mapSubjectAddress.insert(make_pair(name, address));
 	return bRet;
 }
 
@@ -251,13 +252,20 @@ bool CModBus::FindSubjectAddress(std::string name, WORD &address)
 	address = 0x1000;
 	for (auto add : m_mapSubjectAddress)
 	{
-		if (add.second == address)
+		if (add.first == address)
 		{
-			address+=0x100;
+			address+=0x10;
 		}
-		if (add.first == name)
+		if (address > 0x1FF0)
 		{
-			address = add.second;
+			address = 0; 
+			BOOST_LOG_SEV(scl, error) << __FUNCTION__ << ":" << __LINE__
+				<< "Subject group is full!!! ";
+			return false;
+		}
+		if (add.second == name)
+		{
+			address = add.first;
 			BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
 				<< "Function " << name << "has subject in address 0x" 
 				<< setiosflags(ios::uppercase) << hex << "0X" << setw(2) << setfill('0') << add.second;
@@ -311,15 +319,15 @@ double CModBus::GetParameterFloat64(WORD index, WORD line)
 	return (double)data;
 }
 
-bool CModBus::ReadCoordinateData(INT32 * pData, WORD len, std::string name, WORD line, WORD index)
+bool CModBus::ReadCoordinateData(INT32 * pData, WORD len, std::string name, WORD DiaNo)
 {
 	WORD address = 0;
 
 	if (!FindSubjectAddress(name, address))
 	{
-		SubjectAddress(name, address, NC_R_DIA_INT, 1, line);
+		SubjectAddress(name, address, NC_R_DIA_INT, 1, DiaNo);
 	}
-	if (ReadAddress(address, (WORD*)pData, len * 2, NC_R_DIA_INT, 1, line))
+	if (ReadAddress(address, (WORD*)pData, len * 2, NC_R_DIA_INT, 1, DiaNo))
 	{
 		BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
 			<< name
@@ -331,24 +339,104 @@ bool CModBus::ReadCoordinateData(INT32 * pData, WORD len, std::string name, WORD
 	return false;
 }
 
-bool CModBus::GetCoordinates(INT32  * pData, WORD len, COORDINATES_TYPE type, WORD index)
+bool CModBus::ReadPLCData(unsigned char* pData, WORD len, std::string name, char table, WORD index)
+{
+	WORD address = 0;
+
+	if (!FindSubjectAddress(name, address))
+	{
+		if (address == 0)
+		{
+			return false;
+		}
+		SubjectAddress(name, address, NC_WR_PLC, index, (WORD)table);
+	}
+	if (ReadAddress(address, (WORD*)pData, len/2, NC_WR_PLC, index, (WORD)table))
+	{
+		BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+			<< " plc table" << table
+			<< pData[0] << pData[1] << pData[2] << pData[3]
+			<< pData[4] << pData[5] << pData[6] << pData[7]
+			<< pData[8] << pData[9] << pData[10] << pData[11]
+			<< pData[12] << pData[13] << pData[14] << pData[15]
+			<< pData[16] << pData[17] << pData[18] << pData[19];
+		return true;
+	}
+	return false;
+}
+
+bool CModBus::GetCoordinates(INT32  * pData, WORD len, COORDINATES_TYPE type)
 {
 	switch (type)
 	{
 	case COORDINATES_TYPE::MACHINE:
-		return ReadCoordinateData(pData, len, "machine_coordinate", 302, index);
+		return ReadCoordinateData(pData, len, "machine_coordinate", 302);
+	case COORDINATES_TYPE::WORKPIECE:
+		return ReadCoordinateData(pData, len,"workpiece_coordinate", 300);
 	case COORDINATES_TYPE::INCREASE:
 		//to do
-		return 0.0;
+		//return 0.0;
 	case COORDINATES_TYPE::RESIDUAL:
 		//to do
-		return 0.0;
-	case COORDINATES_TYPE::WORKPIECE:
-		return ReadCoordinateData(pData, len,"workpiece_coordinate", 300, index);
+		//return 0.0;
 	default:
 		break;
 	}
 
 	BOOST_LOG_SEV(scl, error) << __FUNCTION__ << ":" << __LINE__ << "Unexpected oorrdinate type";
+	return false;
+}
+
+bool CModBus::GetPLCData(unsigned char* pData, WORD len, PLC_TABLE_TYPE type)
+{
+	switch (type)
+	{
+	case PLC_TABLE_TYPE::X:
+		for (int i = 0; i < len; i += MAX_EXCHANGE_LEN)
+		{
+			string name = "plc_table_X" + to_string(i);
+			WORD count = i + MAX_EXCHANGE_LEN < len ? MAX_EXCHANGE_LEN : len - i;
+			if (!ReadPLCData(pData + i, count, name, 'X', i))
+				return false;
+		}
+		return true;
+	case PLC_TABLE_TYPE::Y:
+		for (int i = 0; i < len; i += MAX_EXCHANGE_LEN)
+		{
+			string name = "plc_table_Y" + to_string(i);
+			WORD count = i + MAX_EXCHANGE_LEN < len ? MAX_EXCHANGE_LEN : len - i;
+			if (!ReadPLCData(pData + i, count, name, 'Y', i))
+				return false;
+		}
+		return true;
+	case PLC_TABLE_TYPE::F:
+		for (int i = 0; i < len; i += MAX_EXCHANGE_LEN)
+		{
+			string name = "plc_table_F" + to_string(i);
+			WORD count = i + MAX_EXCHANGE_LEN < len ? MAX_EXCHANGE_LEN : len - i;
+			if (!ReadPLCData(pData+i, count, name, 'F', i))
+				return false;
+		}
+		return true;
+//	case PLC_TABLE_TYPE::D:
+//		break;
+//	case PLC_TABLE_TYPE::R:
+//		break;
+	case PLC_TABLE_TYPE::G:
+		for (int i = 0; i < len; i += MAX_EXCHANGE_LEN)
+		{
+			string name = "plc_table_G" + to_string(i);
+			WORD count = i + MAX_EXCHANGE_LEN < len ? MAX_EXCHANGE_LEN : len - i;
+			if (!ReadPLCData(pData + i, count, name, 'G', i))
+				return false;
+		}
+		return true;
+//	case PLC_TABLE_TYPE::A:
+//		break;
+//	case PLC_TABLE_TYPE::K:
+//		break;
+	default:
+		break;
+	}
 	return false;
 }

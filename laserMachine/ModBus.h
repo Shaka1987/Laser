@@ -24,7 +24,7 @@ private://for configuration
 private:
     std::stringstream OutPutData(WORD const* const pData, WORD len_data);
     src::severity_channel_logger<severity_level, std::string> scl;
-    std::map<std::string, WORD>  m_mapSubjectAddress;
+    std::map<WORD, std::string>  m_mapSubjectAddress;
     const WORD TYPE = 0;
     const WORD INDEX1 = 1;
     const WORD INDEX2 = 2;
@@ -53,17 +53,22 @@ private:
     const WORD NC_CLOSE = 31;
     const WORD NC_R_FILE_LIST = 32;
 
+    const WORD MAX_EXCHANGE_LEN = 24;
+
     bool SetAddress(WORD address, WORD type, WORD subIndex, WORD index2 = 0, WORD const* const pData = nullptr, WORD len_data = 0, WORD index1 = 0);
     bool ReadAddress(WORD address, WORD* const pData, WORD len_data, WORD type, WORD subIndex, WORD index2, WORD index1 = 0);
 
     bool SubjectAddress(std::string name, WORD address, WORD type, WORD subIndex, WORD index2 = 0, WORD const* const pData = nullptr, WORD len_data = 0, WORD index1 = 0);
     bool ReadData(WORD address,  WORD* const p_output_data, WORD len_output_data, WORD type,  WORD subIndex, WORD index2 =0, WORD const* const p_input_data = nullptr, WORD len_input_data = 0, WORD index1 = 0);
     bool FindSubjectAddress(std::string name, WORD& address);
-    bool ReadCoordinateData(INT32 *pData, WORD len, std::string name, WORD line, WORD index);
+    bool ReadCoordinateData(INT32 *pData, WORD len, std::string name, WORD DiaNo);
+    bool ReadPLCData(unsigned char* pData, WORD len, std::string name, char table, WORD index);
 public: //to be deleted
     bool ReadFile(const char* pName, WORD len, std::string& data);
     INT32 GetParameterInt32(WORD index, WORD line);
     double GetParameterFloat64(WORD index, WORD line);
-    bool GetCoordinates(INT32 * pData, WORD len, COORDINATES_TYPE type, WORD index);
+    bool GetCoordinates(INT32 * pData, WORD len, COORDINATES_TYPE type);
+
+    bool GetPLCData(unsigned char* pData, WORD len, PLC_TABLE_TYPE type);
 };
 

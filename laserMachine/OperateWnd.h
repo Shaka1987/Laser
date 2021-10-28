@@ -4,8 +4,8 @@
 // COperateWnd
 
 #include <map>
-
 #include <vector>
+#include "LogSystem.h"
 class COperateWnd : public CPaneDialog
 {
 	DECLARE_DYNAMIC(COperateWnd)
@@ -37,6 +37,7 @@ private:
 	std::vector<UINT> m_incVector;
 	std::vector<UINT> m_refVector;
 	std::vector<UINT> m_wheelVector;
+	src::severity_channel_logger<severity_level, std::string> scl;
 public:
 	afx_msg void OnPaint();
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
@@ -44,6 +45,8 @@ public:
 
 public:
 	void OnSwitchMode(UINT nID);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 };
 
 
