@@ -5,6 +5,7 @@
 #include "laserMachine.h"
 #include "OperateWnd.h"
 #include <algorithm>
+#include "MainFrm.h"
 
 using namespace std;
 // COperateWnd dialog
@@ -17,17 +18,17 @@ COperateWnd::COperateWnd(CWnd* pParent /*=nullptr*/)
 
 	, m_jogVector({ ID_BUTTON_XPLUS, ID_BUTTON_XMINUS, ID_BUTTON_YPLUS, ID_BUTTON_YMINUS,ID_BUTTON_ZPLUS, ID_BUTTON_ZMINUS,
 				ID_BUTTON_APLUS, ID_BUTTON_AMINUS, ID_BUTTON_BPLUS, ID_BUTTON_BMINUS,ID_CHECK_RAPID, ID_EDIT_RAPID_VALUE })
-	
-	, m_mdiVector({ IDC_BTN_CYCLESTART, IDC_BTN_CYCLEINTERUPT, IDC_BTN_CYCLERESET, IDC_RICHEDIT_MDI})
-	
+
+	, m_mdiVector({ IDC_BTN_CYCLESTART, IDC_BTN_CYCLEINTERUPT, IDC_BTN_CYCLERESET, IDC_RICHEDIT_MDI })
+
 	, m_incVector({ ID_BUTTON_XPLUS, ID_BUTTON_XMINUS, ID_BUTTON_YPLUS, ID_BUTTON_YMINUS, ID_BUTTON_ZPLUS, ID_BUTTON_ZMINUS,
 				ID_BUTTON_APLUS, ID_BUTTON_AMINUS, ID_BUTTON_BPLUS, ID_BUTTON_BMINUS, ID_CHECK_INC_CUT, ID_CHECK_INC, ID_EDIT_INC_VALUE })
-	
+
 	, m_refVector({ ID_BUTTON_XPLUS, ID_BUTTON_XMINUS, ID_BUTTON_YPLUS, ID_BUTTON_YMINUS, ID_BUTTON_ZPLUS, ID_BUTTON_ZMINUS,
 				ID_BUTTON_APLUS, ID_BUTTON_AMINUS, ID_BUTTON_BPLUS, ID_BUTTON_BMINUS })
-	
-	, m_wheelVector({})
 
+	, m_wheelVector({})
+	, m_modeGroup({ MODE_TYPE::MODE_INC, MODE_TYPE::MODE_WHEEL, MODE_TYPE::MODE_JOG, MODE_TYPE::MODE_MDI, MODE_TYPE::MODE_AUTO, MODE_TYPE::MODE_EDIT, MODE_TYPE::MODE_UNKNOWN })
 	, scl(logging::keywords::channel = "COperateWnd")
 
 	/*: CPaneDialog(IDD_OPERATE, pParent)*/
@@ -103,21 +104,34 @@ void COperateWnd::OnSwitchOperateMode(CCmdUI* pCmdUI)
 	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__;
 	boost::this_thread::get_id();
 	std::vector<UINT>* pV = &m_mapModeCtl[m_emode];
-	pCmdUI->Enable(std::find(pV->begin(), pV->end(), pCmdUI->m_nID) != pV->end());
+	if (pV)
+	{
+		pCmdUI->Enable(std::find(pV->begin(), pV->end(), pCmdUI->m_nID) != pV->end());
+	}
 }
 
 void COperateWnd::OnSwitchMode(UINT nID)
 {
 	CNCExchange* exchange = theApp.GetNCExchange();
-	if (exchange->GetPLCTableF(3) & (0x01 << 2))
-	{
-		m_emode = MODE_TYPE::MODE_JOG;
-	}
-	if (exchange->GetPLCTableF(3) & (0x01 << 5))
-	{
-		m_emode = MODE_TYPE::MODE_AUTO;
-	}
+	unsigned char F0003 = exchange->GetPLCTableF(3);
+	unsigned char bit = 0;
 
+	while (!(F0003 & (0x01 << bit)) && bit < 8)
+	{
+		bit++;
+	}
+	m_emode = m_modeGroup[bit];
+	
+	//if (exchange->GetPLCTableF(3) & (0x01 << 2))
+	//{
+	//	m_emode = MODE_TYPE::MODE_JOG;
+	//}
+	//if (exchange->GetPLCTableF(3) & (0x01 << 5))
+	//{
+	//	m_emode = MODE_TYPE::MODE_AUTO;
+	//}
+	CMainFrame* pMain = (CMainFrame*)GetParent();
+	pMain->SetOperationMode(m_emode);
 	//m_emode = m_mapMode[nID];
 }
 

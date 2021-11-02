@@ -6,6 +6,8 @@
 #include <map>
 #include <vector>
 #include "LogSystem.h"
+enum class MODE_TYPE {MODE_UNKNOWN, MODE_AUTO, MODE_JOG, MODE_REFER, MODE_INC, MODE_WHEEL, MODE_MDI, MODE_EDIT };
+
 class COperateWnd : public CPaneDialog
 {
 	DECLARE_DYNAMIC(COperateWnd)
@@ -18,8 +20,7 @@ public:
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_OPERATE };
 #endif
-	enum class MODE_TYPE {MODE_AUTO, MODE_JOG, MODE_REFER, MODE_INC, MODE_WHEEL, MODE_MDI};
-
+	
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
@@ -29,6 +30,7 @@ public:
 
 private:
 	MODE_TYPE m_emode;
+	std::array<MODE_TYPE, 9> m_modeGroup;
 	std::map<UINT, MODE_TYPE> m_mapMode;
 	std::map<MODE_TYPE, std::vector<UINT>> m_mapModeCtl;
 	std::vector<UINT> m_autoVector;
