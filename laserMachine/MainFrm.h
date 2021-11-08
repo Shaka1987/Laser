@@ -19,6 +19,7 @@
 #include "OperateWnd.h"
 #include "MonitorWnd.h"
 #include "Resource.h"
+#include "ExRibbonBar.h"
 
 #define ID_MESSAGE_UPDATE (WM_USER+100)
 
@@ -52,7 +53,7 @@ public:
 #endif
 
 protected:  // control bar embedded members
-	CMFCRibbonBar     m_wndRibbonBar;
+	CExRibbonBar     m_wndRibbonBar;
 	CMFCRibbonApplicationButton m_MainButton;
 	CMFCToolBarImages m_PanelImages;
 	CMFCRibbonStatusBar  m_wndStatusBar;
@@ -92,6 +93,7 @@ private:
 	src::severity_channel_logger<severity_level, std::string> scl;
 public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	void SetOperationMode(MODE_TYPE type);
 };
 
 

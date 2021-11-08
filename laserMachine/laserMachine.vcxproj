@@ -204,6 +204,8 @@
     <ClInclude Include="calendarbar.h" />
     <ClInclude Include="CCAMProg.h" />
     <ClInclude Include="DrawBoard.h" />
+    <ClInclude Include="ExRibbonBar.h" />
+    <ClInclude Include="ExRibbonContextCaption.h" />
     <ClInclude Include="FactoryCommunication.h" />
     <ClInclude Include="FactoryLaserProg.h" />
     <ClInclude Include="FactoryParamType.h" />
@@ -234,6 +236,8 @@
     <ClCompile Include="calendarbar.cpp" />
     <ClCompile Include="CCAMProg.cpp" />
     <ClCompile Include="DrawBoard.cpp" />
+    <ClCompile Include="ExRibbonBar.cpp" />
+    <ClCompile Include="ExRibbonContextCaption.cpp" />
     <ClCompile Include="FactoryCommunication.cpp" />
     <ClCompile Include="FactoryLaserProg.cpp" />
     <ClCompile Include="FactoryParamType.cpp" />
