@@ -17,6 +17,7 @@
 #include "laserMachineDoc.h"
 
 #include "MainFrm.h"
+#include "ExRibbonContextCaption.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -61,8 +62,6 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_wndRibbonBar.Create(this);
 	m_wndRibbonBar.LoadFromResource(IDR_RIBBON);
 	m_wndRibbonBar.ShowContextCategories(ID_MACHINE_STATUS);
-	CMFCRibbonContextCaption*pCate = (CMFCRibbonContextCaption *) m_wndRibbonBar.GetCategory(4);
-	pCate->GetColor();
 	//create status bar
 	if (!CreateStatusBar())
 	{
@@ -242,8 +241,9 @@ BOOL CMainFrame::CreateStatusBar()
 	{
 		return FALSE;      // fail to create
 	}
-	AddElementToStatusBar(ID_STATUSBAR_MACHINE_STATUS, IDS_MACHINE_STATUS, FALSE);
-	AddElementToStatusBar(ID_STATUSBAR_AXES_POSITION, IDS_AXES_POSITION, FALSE);
+	AddElementToStatusBar(ID_STATUSBAR_OPERATE_MODE, IDS_MACHINE_MODE_JOG, FALSE);
+	AddElementToStatusBar(ID_STATUSBAR_MACHINE_STATUS, IDS_MACHINE_STATUS_STANDBY, FALSE);
+	AddElementToStatusBar(ID_STATUSBAR_AXES_POSITION, IDS_AXES_POSITION, TRUE);
 	AddElementToStatusBar(ID_STATUSBAR_MOUSE_POSITION, IDS_MOUSE_POSITION, TRUE);
 
 	return TRUE;
@@ -281,6 +281,57 @@ void CMainFrame::UpdateAxesData()
 	}
 	m_wndStatusBar.RecalcLayout();
 	pPane->Redraw();
+}
+
+void CMainFrame::UpdateMachineStatus()
+{
+	CNCExchange* exchange = theApp.GetNCExchange();
+	unsigned char F0000 = exchange->GetPLCTableF(0);
+	unsigned char F0001 = exchange->GetPLCTableF(1);
+	CMFCRibbonCategory* pCate = (CMFCRibbonCategory*)m_wndRibbonBar.GetCategory(4);
+	CExRibbonContextCaption* pCC = (CExRibbonContextCaption*)m_wndRibbonBar.GetConextCaption(0);
+	CMFCRibbonStatusBarPane* pPane = (CMFCRibbonStatusBarPane*)m_wndStatusBar.FindByID(ID_STATUSBAR_MACHINE_STATUS);
+	CString strMachineStatus;
+
+	if (F0001 & (0x01 <<1))
+	{
+		pCC->SetColor(AFX_CategoryColor_Indigo);
+		pCate->SetTabColor(AFX_CategoryColor_Indigo);
+		strMachineStatus.LoadString(IDS_MACHINE_STATUS_RESET);
+	}
+	else if (F0001 & 0x01)
+	{
+		pCC->SetColor(AFX_CategoryColor_Red);
+		pCate->SetTabColor(AFX_CategoryColor_Red);
+	}
+	else if (F0000 & (0x01 << 7))
+	{
+		if (F0000 & (0x01 << 5))
+		{
+			pCC->SetColor(AFX_CategoryColor_Green);
+			pCate->SetTabColor(AFX_CategoryColor_Green);
+			strMachineStatus.LoadString(IDS_MACHINE_STATUS_RUN);
+		}	
+		else
+		{
+			pCC->SetColor(AFX_CategoryColor_Yellow);
+			pCate->SetTabColor(AFX_CategoryColor_Yellow);
+			strMachineStatus.LoadString(IDS_MACHINE_STATUS_STOP);
+		}
+	}
+	else
+	{
+		pCC->SetColor(AFX_CategoryColor_None);
+		pCate->SetTabColor(AFX_CategoryColor_None );
+		strMachineStatus.LoadString(IDS_MACHINE_STATUS_STANDBY);
+	}
+	
+
+	pPane->SetText(strMachineStatus);
+	pPane->Redraw();
+	m_wndStatusBar.RecalcLayout();
+	m_wndRibbonBar.Invalidate();
+	
 }
 
 void CMainFrame::SwitchOperatePane(BOOL bShow)
@@ -386,11 +437,52 @@ void CMainFrame::OnTimer(UINT_PTR nIDEvent)
 	switch (nIDEvent)
 	{
 	case 0:
-		CMainFrame::UpdateAxesData();
+		UpdateAxesData();
+		UpdateMachineStatus();
 		break;
 	case 1:
 		BOOST_LOG_SEV(scl, trace) << __FUNCTION__ << ":" << __LINE__ << "this thread" << boost::this_thread::get_id();
 	default:
 		break;
 	}CFrameWndEx::OnTimer(nIDEvent);
+}
+
+void CMainFrame::SetOperationMode(MODE_TYPE type)
+{
+	CExRibbonContextCaption* pCC = (CExRibbonContextCaption*)m_wndRibbonBar.GetConextCaption(0);
+	CMFCRibbonStatusBarPane* pPane = (CMFCRibbonStatusBarPane*)m_wndStatusBar.FindByID(ID_STATUSBAR_OPERATE_MODE);
+	CString strMachineMode;
+
+	pCC->GetContextCategoryCount();
+	switch (type)
+	{
+	case MODE_TYPE::MODE_AUTO:
+		strMachineMode.LoadString(IDS_MACHINE_MODE_AUTO);
+		break;
+	case MODE_TYPE::MODE_JOG:
+		strMachineMode.LoadString(IDS_MACHINE_MODE_JOG);
+		break;
+	case MODE_TYPE::MODE_REFER:
+		strMachineMode.LoadString(IDS_MACHINE_MODE_REFER);
+		break;
+	case MODE_TYPE::MODE_INC:
+		strMachineMode.LoadString(IDS_MACHINE_MODE_INC);
+		break;
+	case MODE_TYPE::MODE_WHEEL:
+		strMachineMode.LoadString(IDS_MACHINE_MODE_WHEEL);
+		break;
+	case MODE_TYPE::MODE_MDI:
+		strMachineMode.LoadString(IDS_MACHINE_MODE_MDI);
+		break;
+	case MODE_TYPE::MODE_EDIT:
+		strMachineMode.LoadString(IDS_MACHINE_MODE_EDIT);
+	default:
+		break;
+	}
+
+	pPane->SetText(strMachineMode);
+	m_wndStatusBar.RecalcLayout();
+	pPane->Redraw();
+	pCC->SetText(strMachineMode);
+	m_wndRibbonBar.Invalidate();
 }

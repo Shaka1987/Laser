@@ -40,6 +40,7 @@ public:
 	void SwitchOperatePane(BOOL bShow);
 	void UpdateProgram();
 	void UpdateAxesData();
+	void UpdateMachineStatus();
 // Overrides
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);

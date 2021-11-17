@@ -114,13 +114,25 @@ void COperateWnd::OnSwitchMode(UINT nID)
 {
 	CNCExchange* exchange = theApp.GetNCExchange();
 	unsigned char F0003 = exchange->GetPLCTableF(3);
+	unsigned char F0004 = exchange->GetPLCTableF(4);
 	unsigned char bit = 0;
 
 	while (!(F0003 & (0x01 << bit)) && bit < 8)
 	{
 		bit++;
 	}
-	m_emode = m_modeGroup[bit];
+	if (bit < 8)
+	{
+		m_emode = m_modeGroup[bit];
+	}
+	else if (F0004 & (0x01 << 5))
+	{
+		m_emode = MODE_TYPE::MODE_REFER;
+	}
+	else
+	{
+		m_emode = MODE_TYPE::MODE_UNKNOWN;
+	}
 	
 	//if (exchange->GetPLCTableF(3) & (0x01 << 2))
 	//{
