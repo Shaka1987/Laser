@@ -88,7 +88,7 @@ protected:
 public:
 	afx_msg void OnViewParameterwnd();
 	afx_msg void OnUpdateViewParameterwnd(CCmdUI *pCmdUI);
-	afx_msg void OnSwitchMode(UINT nID);
+	afx_msg void OnRibbonButton(UINT nID);
 
 private:
 	src::severity_channel_logger<severity_level, std::string> scl;

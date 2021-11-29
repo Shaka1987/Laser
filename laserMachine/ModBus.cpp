@@ -365,6 +365,36 @@ bool CModBus::ReadPLCData(unsigned char* pData, WORD len, std::string name, char
 	return false;
 }
 
+bool CModBus::SetPLCData(std::string name, char table, WORD index, unsigned char bit)
+{
+	WORD address = 0;
+	WORD original_data = 0;
+	WORD original_data1 = 0;
+	if (!FindSubjectAddress(name, address))
+	{
+		if (address == 0)
+		{
+			return false;
+		}
+		SetAddress(address, NC_WR_PLC, index, (WORD)table);
+	}
+	if (ReadAddress(address, &original_data, 1, NC_WR_PLC, index, (WORD)table))
+	{
+		unsigned char* pData = (unsigned char*)&original_data;
+		BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+			<< " plc table" << table << "original data is" << pData[0];
+		pData[0] = pData[0] | (1<< bit);
+		if (SetAddress(address, NC_WR_PLC, index, (WORD)table, &original_data, 1))
+		{
+			ReadAddress(address, &original_data1, 1, NC_WR_PLC, index, (WORD)table);
+			BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+				<< "Set plc table" << table << "bit"<< bit << "successfully";
+		}
+		return true;
+	}
+	return false;
+}
+
 bool CModBus::GetCoordinates(INT32  * pData, WORD len, COORDINATES_TYPE type)
 {
 	switch (type)

@@ -16,7 +16,6 @@ CNCExchange::CNCExchange() noexcept
 
 	Init();
 	m_update_timer.async_wait(boost::asio::bind_executor(m_strand,boost::bind(&CNCExchange::UpdateData, this)));
-	//m_update_timer2.async_wait(boost::asio::bind_executor(m_strand2, boost::bind(&CNCExchange::UpdateData2, this)));
 
 }
 
@@ -85,6 +84,11 @@ unsigned char CNCExchange::GetPLCTableF(WORD index)
 	return m_plcF[index];
 }
 
+bool CNCExchange::SetPLCTableG(WORD index, unsigned char bit)
+{
+	return m_pCommunication->SetPLCData("wplc_table_G", 'G', index, bit);
+}
+
 void CNCExchange::UpdateData()
 {
 	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__<< "this thread" <<	boost::this_thread::get_id();
@@ -92,8 +96,8 @@ void CNCExchange::UpdateData()
 	m_pCommunication->GetCoordinates(m_machine_coordinate, 4, COORDINATES_TYPE::MACHINE);
 //	m_pCommunication->GetPLCData(m_plcX, 128, PLC_TABLE_TYPE::X);
 //	m_pCommunication->GetPLCData(m_plcY, 128, PLC_TABLE_TYPE::Y);
-	m_pCommunication->GetPLCData(m_plcF, 300, PLC_TABLE_TYPE::F);	
-//	m_pCommunication->GetPLCData(m_plcG, 1000, PLC_TABLE_TYPE::G);
+	m_pCommunication->GetPLCData(m_plcF, 20, PLC_TABLE_TYPE::F);	
+//	m_pCommunication->GetPLCData(m_plcG, 200, PLC_TABLE_TYPE::G);
 	if (m_pCommunication->Connected())
 	{
 		m_update_timer.expires_at(m_update_timer.expiry() + boost::asio::chrono::milliseconds(UPDATE_TIME));

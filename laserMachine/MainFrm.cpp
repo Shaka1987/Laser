@@ -38,7 +38,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_MESSAGE(ID_MESSAGE_UPDATE, &CMainFrame::OnCmdUpdate)
 	ON_COMMAND(ID_VIEW_PARAMETERWND, &CMainFrame::OnViewParameterwnd)
 	ON_UPDATE_COMMAND_UI(ID_VIEW_PARAMETERWND, &CMainFrame::OnUpdateViewParameterwnd)
-	ON_COMMAND_RANGE(ID_MODE_START, ID_MODE_END, &CMainFrame::OnSwitchMode)
+	//ON_COMMAND_RANGE(ID_MODE_START, ID_MODE_END, &CMainFrame::OnSwitchMode)
+	ON_COMMAND_RANGE(ID_BUTTON_XPLUS, ID_BUTTON_XMINUS,&CMainFrame::OnRibbonButton)
 	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
@@ -426,9 +427,14 @@ void CMainFrame::OnUpdateViewParameterwnd(CCmdUI *pCmdUI)
 	pCmdUI->SetCheck(m_wndParameter.IsVisible());
 }
 
-void CMainFrame::OnSwitchMode(UINT nID)
+void CMainFrame::OnRibbonButton(UINT nID)
 {
-	m_wndOperate.OnSwitchMode(nID);
+	//m_wndOperate.OnSwitchMode(nID);
+	if (nID == ID_BUTTON_XMINUS)
+	{
+		CNCExchange* exchange = theApp.GetNCExchange();
+		exchange->SetPLCTableG(100, 0);
+	}
 }
 
 

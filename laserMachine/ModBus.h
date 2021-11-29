@@ -63,6 +63,7 @@ private:
     bool FindSubjectAddress(std::string name, WORD& address);
     bool ReadCoordinateData(INT32 *pData, WORD len, std::string name, WORD DiaNo);
     bool ReadPLCData(unsigned char* pData, WORD len, std::string name, char table, WORD index);
+    bool SetPLCData(std::string name, char table, WORD index, unsigned char bit);
 public: //to be deleted
     bool ReadFile(const char* pName, WORD len, std::string& data);
     INT32 GetParameterInt32(WORD index, WORD line);
