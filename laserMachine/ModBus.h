@@ -62,8 +62,9 @@ private:
     bool ReadData(WORD address,  WORD* const p_output_data, WORD len_output_data, WORD type,  WORD subIndex, WORD index2 =0, WORD const* const p_input_data = nullptr, WORD len_input_data = 0, WORD index1 = 0);
     bool FindSubjectAddress(std::string name, WORD& address);
     bool ReadCoordinateData(INT32 *pData, WORD len, std::string name, WORD DiaNo);
-    bool ReadPLCData(unsigned char* pData, WORD len, std::string name, char table, WORD index);
-    bool SetPLCData(std::string name, char table, WORD index, unsigned char bit);
+    bool ReadPLCData(unsigned char* pData, WORD len, std::string name, char table, WORD index, WORD* address =nullptr, bool bSubject = true);
+    bool SetPLCData(std::string name, char table, WORD index, unsigned char data);
+    bool SetPLCBit(std::string name, char table, WORD index, unsigned char bit);
 public: //to be deleted
     bool ReadFile(const char* pName, WORD len, std::string& data);
     INT32 GetParameterInt32(WORD index, WORD line);

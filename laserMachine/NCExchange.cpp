@@ -84,11 +84,14 @@ unsigned char CNCExchange::GetPLCTableF(WORD index)
 	return m_plcF[index];
 }
 
-bool CNCExchange::SetPLCTableG(WORD index, unsigned char bit)
+bool CNCExchange::SetPLCBitTableG(WORD index, unsigned char bit)
 {
-	return m_pCommunication->SetPLCData("wplc_table_G", 'G', index, bit);
+	return m_pCommunication->SetPLCBit("wplc_table_G", 'G', index, bit);
 }
-
+bool CNCExchange::SetPLCTableG(WORD index, unsigned char data)
+{
+	return m_pCommunication->SetPLCData("wplc_table_G", 'G', index, data);
+}
 void CNCExchange::UpdateData()
 {
 	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__<< "this thread" <<	boost::this_thread::get_id();

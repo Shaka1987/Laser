@@ -338,8 +338,7 @@ bool CModBus::ReadCoordinateData(INT32 * pData, WORD len, std::string name, WORD
 	}
 	return false;
 }
-
-bool CModBus::ReadPLCData(unsigned char* pData, WORD len, std::string name, char table, WORD index)
+bool CModBus::ReadPLCData(unsigned char* pData, WORD len, std::string name, char table, WORD index, WORD* out_address /*=nullptr*/, bool bSubject/*=true*/)
 {
 	WORD address = 0;
 
@@ -349,7 +348,14 @@ bool CModBus::ReadPLCData(unsigned char* pData, WORD len, std::string name, char
 		{
 			return false;
 		}
-		SubjectAddress(name, address, NC_WR_PLC, index, (WORD)table);
+		if (bSubject)
+		{
+			SubjectAddress(name, address, NC_WR_PLC, index, (WORD)table);
+		}
+		else
+		{
+			SetAddress(address, NC_WR_PLC, index, (WORD)table);
+		}
 	}
 	if (ReadAddress(address, (WORD*)pData, len/2, NC_WR_PLC, index, (WORD)table))
 	{
@@ -360,40 +366,56 @@ bool CModBus::ReadPLCData(unsigned char* pData, WORD len, std::string name, char
 			<< pData[8] << pData[9] << pData[10] << pData[11]
 			<< pData[12] << pData[13] << pData[14] << pData[15]
 			<< pData[16] << pData[17] << pData[18] << pData[19];
+		if(out_address)
+		{
+			*out_address = address;
+		}
 		return true;
 	}
 	return false;
 }
 
-bool CModBus::SetPLCData(std::string name, char table, WORD index, unsigned char bit)
+bool CModBus::SetPLCData(std::string name, char table, WORD index, unsigned char data)
 {
 	WORD address = 0;
 	WORD original_data = 0;
 	WORD original_data1 = 0;
-	if (!FindSubjectAddress(name, address))
+	if (ReadPLCData((unsigned char *)&original_data, 2, name, table, index, &address, false))
 	{
-		if (address == 0)
-		{
-			return false;
-		}
-		SetAddress(address, NC_WR_PLC, index, (WORD)table);
-	}
-	if (ReadAddress(address, &original_data, 1, NC_WR_PLC, index, (WORD)table))
-	{
-		unsigned char* pData = (unsigned char*)&original_data;
+		unsigned char *pData = (unsigned char*)&original_data;
 		BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
-			<< " plc table" << table << "original data is" << pData[0];
-		pData[0] = pData[0] | (1<< bit);
+			<< " plc table" << table << "original data is" << original_data;
+		pData[0] = data;
 		if (SetAddress(address, NC_WR_PLC, index, (WORD)table, &original_data, 1))
 		{
 			ReadAddress(address, &original_data1, 1, NC_WR_PLC, index, (WORD)table);
 			BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
-				<< "Set plc table" << table << "bit"<< bit << "successfully";
+				<< "Set plc table" << table << "data" << data << "successfully";
 		}
-		return true;
 	}
 	return false;
 }
+bool CModBus::SetPLCBit(std::string name, char table, WORD index, unsigned char bit)
+{
+	WORD address = 0;
+	WORD original_data = 0;
+	WORD original_data1 = 0;
+	if (ReadPLCData((unsigned char*)&original_data, 2, name, table, index, &address, false))
+	{
+		unsigned char* pData = (unsigned char*)&original_data;
+		BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+			<< " plc table" << table << "original data is" << original_data;
+		pData[0] = pData[0] | (1 << bit);
+		if (SetAddress(address, NC_WR_PLC, index, (WORD)table, &original_data, 1))
+		{
+			ReadAddress(address, &original_data1, 1, NC_WR_PLC, index, (WORD)table);
+			BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+				<< "Set plc table" << table << "data" << original_data1 << "successfully";
+		}
+	}
+	return false;
+}
+
 
 bool CModBus::GetCoordinates(INT32  * pData, WORD len, COORDINATES_TYPE type)
 {

@@ -38,7 +38,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_MESSAGE(ID_MESSAGE_UPDATE, &CMainFrame::OnCmdUpdate)
 	ON_COMMAND(ID_VIEW_PARAMETERWND, &CMainFrame::OnViewParameterwnd)
 	ON_UPDATE_COMMAND_UI(ID_VIEW_PARAMETERWND, &CMainFrame::OnUpdateViewParameterwnd)
-	//ON_COMMAND_RANGE(ID_MODE_START, ID_MODE_END, &CMainFrame::OnSwitchMode)
+	ON_COMMAND_RANGE(ID_MODE_START, ID_MODE_END, &CMainFrame::OnSwitchMode)
 	ON_COMMAND_RANGE(ID_BUTTON_XPLUS, ID_BUTTON_XMINUS,&CMainFrame::OnRibbonButton)
 	ON_WM_TIMER()
 END_MESSAGE_MAP()
@@ -429,11 +429,55 @@ void CMainFrame::OnUpdateViewParameterwnd(CCmdUI *pCmdUI)
 
 void CMainFrame::OnRibbonButton(UINT nID)
 {
-	//m_wndOperate.OnSwitchMode(nID);
+	CNCExchange* exchange = theApp.GetNCExchange();
+
 	if (nID == ID_BUTTON_XMINUS)
 	{
-		CNCExchange* exchange = theApp.GetNCExchange();
-		exchange->SetPLCTableG(100, 0);
+		exchange->SetPLCBitTableG(100, 0);
+	}
+
+}
+
+void CMainFrame::OnSwitchMode(UINT nID)
+{
+//-----------------------------------------------------------------------------
+//            0x80 0x40 0x20 0x10 0x08 0x04 0x02 0x01
+//            ZRN       DNCI EXT       MD4  MD2  MD1
+// 01) MMDI    0         0    0    0    0    0    0
+// 02) MMEM    0         0    0    0    0    0    1
+// 03) MDNC    0         1    0    0    0    0    1
+// 04) MEDT    0         0    0    0    0    1    1
+// 05) MH      0         0    0    0    1    0    0
+// 06) MINC    0         0    1    0    1    0    0
+// 07) MJOG    0         0    0    0    1    0    1
+// 08) MZRN    1         0    0    0    1    0    1
+// 09) MPZRN   1         0    1    0    1    0    1
+// 09) MTJOG   0         0    0    0    1    1    0
+// 10) MTHND   0         0    0    0    1    1    1
+//-----------------------------------------------------------------------------
+	CNCExchange* exchange = theApp.GetNCExchange();
+	switch (nID)
+	{
+	case ID_BUTTON_MAUTO:
+		exchange->SetPLCTableG(43, 0x01);//MMEM
+		break;
+	case ID_BUTTON_MJOG:
+		exchange->SetPLCTableG(43, 0x05);
+		break;
+	case ID_BUTTON_MINC:
+		exchange->SetPLCTableG(43, 0x14);
+		break;
+	case ID_BUTTON_MMDI:
+		exchange->SetPLCTableG(43, 0x00);
+		break;
+	case ID_BUTTON_MREFER:
+		exchange->SetPLCTableG(43, 0x85);
+		break;
+	case ID_BUTTON_MWHEEL:
+		exchange->SetPLCTableG(43, 0x04);
+		break;
+	default:
+		break;
 	}
 }
 

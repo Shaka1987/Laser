@@ -38,8 +38,8 @@ public:
 	double GetParameterFloat64(WORD index, WORD line);
 	double GetCoordinates(COORDINATES_TYPE type, WORD index);
 	unsigned char GetPLCTableF(WORD index);
-
 	bool SetPLCTableG(WORD index, unsigned char bit);
+	bool SetPLCBitTableG(WORD index, unsigned char bit);
 	
 	//void* GetParemeters(std::string filepath);
 	//void* GetDiagData(WORD type);

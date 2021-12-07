@@ -20,7 +20,8 @@ public:
 	virtual double GetParameterFloat64(WORD index, WORD line) = 0;
 	virtual bool GetCoordinates(INT32 * pData, WORD len, COORDINATES_TYPE type) = 0;
 	virtual bool GetPLCData(unsigned char* pData, WORD len, PLC_TABLE_TYPE type) = 0;
-	virtual	bool SetPLCData(std::string name, char table, WORD index, unsigned char bit) = 0;
+	virtual	bool SetPLCData(std::string name, char table, WORD index, unsigned char data) = 0;
+	virtual	bool SetPLCBit(std::string name, char table, WORD index, unsigned char bit) = 0;
 protected:
 	COMMUNICATION_STATUS m_status;
 	boost::mutex mu;
