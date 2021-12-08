@@ -18,6 +18,7 @@
 
 #include "MainFrm.h"
 #include "ExRibbonContextCaption.h"
+#include "CPLCRibbonButton.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -39,7 +40,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_COMMAND(ID_VIEW_PARAMETERWND, &CMainFrame::OnViewParameterwnd)
 	ON_UPDATE_COMMAND_UI(ID_VIEW_PARAMETERWND, &CMainFrame::OnUpdateViewParameterwnd)
 	ON_COMMAND_RANGE(ID_MODE_START, ID_MODE_END, &CMainFrame::OnSwitchMode)
-	ON_COMMAND_RANGE(ID_BUTTON_XPLUS, ID_BUTTON_XMINUS,&CMainFrame::OnRibbonButton)
+	//ON_COMMAND_RANGE(ID_BUTTON_XPLUS, ID_BUTTON_XMINUS,&CMainFrame::OnRibbonButton)
 	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
@@ -90,6 +91,13 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows7));
 	m_wndRibbonBar.SetWindows7Look(TRUE);
 	SetTimer(0, 200, nullptr);
+	
+	CMFCRibbonCategory* pCategory = m_wndRibbonBar.GetCategory(1);
+	CMFCRibbonPanel* pPanel = pCategory->GetPanel(0);
+	pPanel->Insert(new  CPLCRibbonButton(ID_BUTTON_XMINUS, _T("X-"), 1, 1), 0);
+	CRect rc = pPanel->GetRect();
+	pPanel->RecalcWidths(m_wndRibbonBar.GetDC(), rc.Height());
+	pCategory->ReposPanels(m_wndRibbonBar.GetDC());
 	return 0;
 }
 
@@ -535,4 +543,14 @@ void CMainFrame::SetOperationMode(MODE_TYPE type)
 	pPane->Redraw();
 	pCC->SetText(strMachineMode);
 	m_wndRibbonBar.Invalidate();
+}
+
+
+
+
+void CMainFrame::DoDataExchange(CDataExchange* pDX)
+{
+	// TODO: Add your specialized code here and/or call the base class
+
+	CFrameWndEx::DoDataExchange(pDX);
 }

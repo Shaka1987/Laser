@@ -54,6 +54,7 @@ COperateWnd::~COperateWnd()
 void COperateWnd::DoDataExchange(CDataExchange* pDX)
 {
 	CPaneDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, ID_BUTTON_XMINUS, m_btn_XMinus);
 }
 
 
@@ -101,8 +102,8 @@ BOOL COperateWnd::OnEraseBkgnd(CDC* pDC)
 void COperateWnd::OnSwitchOperateMode(CCmdUI* pCmdUI)
 {
 
-	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__;
-	boost::this_thread::get_id();
+	//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__;
+	//boost::this_thread::get_id();
 	std::vector<UINT>* pV = &m_mapModeCtl[m_emode];
 	if (pV)
 	{

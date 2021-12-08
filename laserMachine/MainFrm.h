@@ -96,6 +96,8 @@ private:
 public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	void SetOperationMode(MODE_TYPE type);
+	virtual void DoDataExchange(CDataExchange* pDX);
+
 };
 
 

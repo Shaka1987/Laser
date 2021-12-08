@@ -158,8 +158,8 @@ bool CModBus::SetAddress(WORD address, WORD type, WORD subIndex, WORD index2/* =
 	p_write_registers[INDEX2] = index2;				//索引2
 	p_write_registers[SUBINDEX] = subIndex;				//子索引
 	
-	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
-		<< "this thread" << boost::this_thread::get_id();
+	//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+	//	<< "this thread" << boost::this_thread::get_id();
 	if (pData != nullptr && len_data != 0)
 	{
 		memcpy(p_write_registers + 4, pData, len_data*2);
@@ -203,8 +203,8 @@ bool CModBus::ReadAddress(WORD address, WORD * const pData, WORD len_data, WORD 
 	WORD* p_read_registers = new WORD[len_data + 4];
 	bool return_state = false;
 
-	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
-		<< "this thread" << boost::this_thread::get_id();
+	//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+	//	<< "this thread" << boost::this_thread::get_id();
 	memset(p_read_registers, 0, (len_data + 4) * 2);
 	int rc = modbus_read_registers(m_ctx, address, len_data + 4, p_read_registers);
 	//一次通讯50毫秒左右
@@ -266,16 +266,16 @@ bool CModBus::FindSubjectAddress(std::string name, WORD &address)
 		if (add.second == name)
 		{
 			address = add.first;
-			BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
-				<< "Function " << name << "has subject in address 0x" 
-				<< setiosflags(ios::uppercase) << hex << "0X" << setw(2) << setfill('0') << add.second;
+			//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+			//	<< "Function " << name << "has subject in address 0x" 
+			//	<< setiosflags(ios::uppercase) << hex << "0X" << setw(2) << setfill('0') << add.second;
 			return true;
 		}
 	}
-	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
-		<< "Don't find Function " << name << ", the address "
-		<< setiosflags(ios::uppercase) << hex << "0X" << setw(2) << setfill('0') << address
-		<< "is empty, can be used to subject";
+	//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+	//	<< "Don't find Function " << name << ", the address "
+	//	<< setiosflags(ios::uppercase) << hex << "0X" << setw(2) << setfill('0') << address
+	//	<< "is empty, can be used to subject";
 	return false;
 }
 
@@ -295,7 +295,7 @@ bool CModBus::ReadFile(const char* pName, WORD len, std::string& data)
 		std::string read_data = (char*)(tab_read_registers + 1);
 		pos = read_data.rfind("[END]");
 		return_data += read_data;
-		BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__ << read_data.c_str();
+		//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__ << read_data.c_str();
 	} while (std::string::npos == pos);
 
 	WORD zero = 0;
@@ -329,10 +329,10 @@ bool CModBus::ReadCoordinateData(INT32 * pData, WORD len, std::string name, WORD
 	}
 	if (ReadAddress(address, (WORD*)pData, len * 2, NC_R_DIA_INT, 1, DiaNo))
 	{
-		BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
-			<< name
-			<< "X " << pData[0] << "Y " << pData[1]
-			<< "Z " << pData[2] << "Z " << pData[3];
+		//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+		//	<< name
+		//	<< "X " << pData[0] << "Y " << pData[1]
+		//	<< "Z " << pData[2] << "Z " << pData[3];
 
 		return true;
 	}
@@ -359,13 +359,13 @@ bool CModBus::ReadPLCData(unsigned char* pData, WORD len, std::string name, char
 	}
 	if (ReadAddress(address, (WORD*)pData, len/2, NC_WR_PLC, index, (WORD)table))
 	{
-		BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
-			<< " plc table" << table
-			<< pData[0] << pData[1] << pData[2] << pData[3]
-			<< pData[4] << pData[5] << pData[6] << pData[7]
-			<< pData[8] << pData[9] << pData[10] << pData[11]
-			<< pData[12] << pData[13] << pData[14] << pData[15]
-			<< pData[16] << pData[17] << pData[18] << pData[19];
+		//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+		//	<< " plc table" << table
+		//	<< pData[0] << pData[1] << pData[2] << pData[3]
+		//	<< pData[4] << pData[5] << pData[6] << pData[7]
+		//	<< pData[8] << pData[9] << pData[10] << pData[11]
+		//	<< pData[12] << pData[13] << pData[14] << pData[15]
+		//	<< pData[16] << pData[17] << pData[18] << pData[19];
 		if(out_address)
 		{
 			*out_address = address;
@@ -383,14 +383,14 @@ bool CModBus::SetPLCData(std::string name, char table, WORD index, unsigned char
 	if (ReadPLCData((unsigned char *)&original_data, 2, name, table, index, &address, false))
 	{
 		unsigned char *pData = (unsigned char*)&original_data;
-		BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
-			<< " plc table" << table << "original data is" << original_data;
+		//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+		//	<< " plc table" << table << "original data is" << original_data;
 		pData[0] = data;
 		if (SetAddress(address, NC_WR_PLC, index, (WORD)table, &original_data, 1))
 		{
 			ReadAddress(address, &original_data1, 1, NC_WR_PLC, index, (WORD)table);
-			BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
-				<< "Set plc table" << table << "data" << data << "successfully";
+			//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__
+			//	<< "Set plc table" << table << "data" << data << "successfully";
 		}
 	}
 	return false;

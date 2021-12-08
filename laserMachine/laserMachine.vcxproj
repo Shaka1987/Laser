@@ -203,6 +203,7 @@
     <ClInclude Include="AdditionalFunction.h" />
     <ClInclude Include="calendarbar.h" />
     <ClInclude Include="CCAMProg.h" />
+    <ClInclude Include="CPLCRibbonButton.h" />
     <ClInclude Include="DrawBoard.h" />
     <ClInclude Include="ExRibbonBar.h" />
     <ClInclude Include="ExRibbonContextCaption.h" />
@@ -226,6 +227,7 @@
     <ClInclude Include="ParaJson.h" />
     <ClInclude Include="ParameterWnd.h" />
     <ClInclude Include="ParaModule.h" />
+    <ClInclude Include="PLCButton.h" />
     <ClInclude Include="PLCWnd.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -235,6 +237,7 @@
     <ClCompile Include="AdditionalFunction.cpp" />
     <ClCompile Include="calendarbar.cpp" />
     <ClCompile Include="CCAMProg.cpp" />
+    <ClCompile Include="CPLCRibbonButton.cpp" />
     <ClCompile Include="DrawBoard.cpp" />
     <ClCompile Include="ExRibbonBar.cpp" />
     <ClCompile Include="ExRibbonContextCaption.cpp" />
@@ -256,6 +259,7 @@
     <ClCompile Include="OutputWnd.cpp" />
     <ClCompile Include="ParaJson.cpp" />
     <ClCompile Include="ParameterWnd.cpp" />
+    <ClCompile Include="PLCButton.cpp" />
     <ClCompile Include="PLCWnd.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -94,7 +94,7 @@ bool CNCExchange::SetPLCTableG(WORD index, unsigned char data)
 }
 void CNCExchange::UpdateData()
 {
-	BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__<< "this thread" <<	boost::this_thread::get_id();
+	//BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__<< "this thread" <<	boost::this_thread::get_id();
 
 	m_pCommunication->GetCoordinates(m_machine_coordinate, 4, COORDINATES_TYPE::MACHINE);
 //	m_pCommunication->GetPLCData(m_plcX, 128, PLC_TABLE_TYPE::X);
