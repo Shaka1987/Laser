@@ -21,7 +21,6 @@
 #include "Resource.h"
 #include "ExRibbonBar.h"
 
-#define ID_MESSAGE_UPDATE (WM_USER+100)
 
 class CMainFrame : public CFrameWndEx
 {
@@ -72,7 +71,8 @@ protected:
 	afx_msg void OnFilePrintPreview();
 	afx_msg void OnUpdateFilePrintPreview(CCmdUI* pCmdUI);
 	afx_msg void OnSettingChange(UINT uFlags, LPCTSTR lpszSection);
-	LRESULT OnCmdUpdate(WPARAM wparam, LPARAM lparam);
+	LRESULT OnPLCLBdown(WPARAM wparam, LPARAM lparam);
+	LRESULT OnPLCLBup(WPARAM wparam, LPARAM lparam);
 	DECLARE_MESSAGE_MAP()
 
 	BOOL CreateOutPutWnd();
@@ -88,11 +88,11 @@ protected:
 public:
 	afx_msg void OnViewParameterwnd();
 	afx_msg void OnUpdateViewParameterwnd(CCmdUI *pCmdUI);
-	afx_msg void OnRibbonButton(UINT nID);
 	afx_msg void OnSwitchMode(UINT nID);
 
 private:
 	src::severity_channel_logger<severity_level, std::string> scl;
+	UINT_PTR m_plcTimer;
 public:
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	void SetOperationMode(MODE_TYPE type);

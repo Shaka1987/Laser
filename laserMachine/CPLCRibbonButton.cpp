@@ -9,18 +9,21 @@
 
 void CPLCRibbonButton::OnLButtonDown(CPoint point)
 {
-	int i = 0;
+	AfxGetApp()->GetMainWnd()->SendMessage(WM_PLC_LBDOWN, (WPARAM)m_nID);
+	CMFCRibbonButton::OnLButtonDown(point);
 }
 
 void CPLCRibbonButton::OnLButtonUp(CPoint point)
 {
-	int i = 0;
+	AfxGetApp()->GetMainWnd()->SendMessage(WM_PLC_LBUP, (WPARAM)m_nID);
+	CMFCRibbonButton::OnLButtonUp(point);
 }
 
 CPLCRibbonButton::CPLCRibbonButton()
 {
 }
-CPLCRibbonButton::CPLCRibbonButton(UINT nID, LPCTSTR lpszText, int nSmallImageIndex, int nLargeImageIndex, BOOL bAlwaysShowDescription):CMFCRibbonButton( nID,  lpszText,  nSmallImageIndex , nLargeImageIndex, bAlwaysShowDescription)
+CPLCRibbonButton::CPLCRibbonButton(UINT nID, LPCTSTR lpszText, int nSmallImageIndex, int nLargeImageIndex, BOOL bAlwaysShowDescription)
+	:CMFCRibbonButton(nID, lpszText, nSmallImageIndex, nLargeImageIndex, bAlwaysShowDescription)
 {
 }
 CPLCRibbonButton::~CPLCRibbonButton()

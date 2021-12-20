@@ -23,11 +23,13 @@ CPLCButton::~CPLCButton()
 
 void CPLCButton::OnLButtonDown(UINT nFlags, CPoint point)
 {
+	AfxGetApp()->GetMainWnd()->SendMessage(WM_PLC_LBDOWN, (WPARAM)GetDlgCtrlID());
 	CMFCButton::OnLButtonDown(nFlags, point);
 }
 
 void CPLCButton::OnLButtonUp(UINT nFlags, CPoint point)
 {
+	AfxGetApp()->GetMainWnd()->SendMessage(WM_PLC_LBUP, (WPARAM)GetDlgCtrlID());
 	CMFCButton::OnLButtonUp(nFlags, point);
 }
 

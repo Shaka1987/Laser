@@ -36,11 +36,11 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CMainFrame::OnFilePrintPreview)
 	ON_UPDATE_COMMAND_UI(ID_FILE_PRINT_PREVIEW, &CMainFrame::OnUpdateFilePrintPreview)
 	ON_WM_SETTINGCHANGE()
-	ON_MESSAGE(ID_MESSAGE_UPDATE, &CMainFrame::OnCmdUpdate)
 	ON_COMMAND(ID_VIEW_PARAMETERWND, &CMainFrame::OnViewParameterwnd)
 	ON_UPDATE_COMMAND_UI(ID_VIEW_PARAMETERWND, &CMainFrame::OnUpdateViewParameterwnd)
 	ON_COMMAND_RANGE(ID_MODE_START, ID_MODE_END, &CMainFrame::OnSwitchMode)
-	//ON_COMMAND_RANGE(ID_BUTTON_XPLUS, ID_BUTTON_XMINUS,&CMainFrame::OnRibbonButton)
+	ON_MESSAGE(WM_PLC_LBDOWN, OnPLCLBdown)
+	ON_MESSAGE(WM_PLC_LBUP, OnPLCLBup)
 	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
@@ -48,6 +48,7 @@ END_MESSAGE_MAP()
 
 CMainFrame::CMainFrame() noexcept
 	: scl(logging::keywords::channel = "ClaserMachineView")
+	, m_plcTimer(0)
 {
 
 }
@@ -410,17 +411,27 @@ void CMainFrame::OnSettingChange(UINT uFlags, LPCTSTR lpszSection)
 	m_wndOutput.UpdateFonts();
 }
 
-
-LRESULT CMainFrame::OnCmdUpdate(WPARAM wparam, LPARAM lparam)
+LRESULT CMainFrame::OnPLCLBdown(WPARAM wparam, LPARAM lparam)
 {
-	UINT type = (UINT)wparam;
-	switch (type)
+	if (m_plcTimer)
 	{
-	default:
-		break;
+		KillTimer(m_plcTimer);
 	}
-	return 0;
+	m_plcTimer = SetTimer(UINT_PTR(wparam), 1, nullptr);
+	
+	return LRESULT();
 }
+
+LRESULT CMainFrame::OnPLCLBup(WPARAM wparam, LPARAM lparam)
+{
+	if (m_plcTimer)
+	{
+		KillTimer(m_plcTimer);
+	}
+	return LRESULT();
+}
+
+
 
 
 void CMainFrame::OnViewParameterwnd()
@@ -435,16 +446,7 @@ void CMainFrame::OnUpdateViewParameterwnd(CCmdUI *pCmdUI)
 	pCmdUI->SetCheck(m_wndParameter.IsVisible());
 }
 
-void CMainFrame::OnRibbonButton(UINT nID)
-{
-	CNCExchange* exchange = theApp.GetNCExchange();
 
-	if (nID == ID_BUTTON_XMINUS)
-	{
-		exchange->SetPLCBitTableG(100, 0);
-	}
-
-}
 
 void CMainFrame::OnSwitchMode(UINT nID)
 {
@@ -492,14 +494,16 @@ void CMainFrame::OnSwitchMode(UINT nID)
 
 void CMainFrame::OnTimer(UINT_PTR nIDEvent)
 {
+	CNCExchange* exchange = theApp.GetNCExchange();
 	switch (nIDEvent)
 	{
 	case 0:
 		UpdateAxesData();
 		UpdateMachineStatus();
 		break;
-	case 1:
-		BOOST_LOG_SEV(scl, trace) << __FUNCTION__ << ":" << __LINE__ << "this thread" << boost::this_thread::get_id();
+	case ID_BUTTON_XMINUS:
+		exchange->SetPLCBitTableG(100, 0);
+		BOOST_LOG_SEV(scl, debug) << __FUNCTION__ << ":" << __LINE__ << "this thread" << boost::this_thread::get_id();
 	default:
 		break;
 	}CFrameWndEx::OnTimer(nIDEvent);
