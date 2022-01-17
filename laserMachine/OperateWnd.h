@@ -6,6 +6,7 @@
 #include <map>
 #include <vector>
 #include "LogSystem.h"
+#include "PLCButton.h"
 enum class MODE_TYPE {MODE_UNKNOWN, MODE_AUTO, MODE_JOG, MODE_REFER, MODE_INC, MODE_WHEEL, MODE_MDI, MODE_EDIT };
 
 class COperateWnd : public CPaneDialog
@@ -49,6 +50,7 @@ public:
 	void OnSwitchMode(UINT nID);
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	CPLCButton m_btn_XMinus;
 };
 
 

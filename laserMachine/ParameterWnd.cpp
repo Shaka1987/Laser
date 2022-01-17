@@ -68,8 +68,8 @@ int CParameterWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		TRACE0("Failed to create Properties Grid \n");
 		return -1;      // fail to create
 	}
-	//InitParaList();
-	//InitPropList();
+	InitParaList();
+	InitPropList();
 	AdjustLayout();
 	return 0;
 }

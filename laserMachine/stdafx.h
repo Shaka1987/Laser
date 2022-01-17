@@ -72,4 +72,6 @@
 #define tstring_view string_view
 #endif
 
-#define WM_MY_MESSAGE (WM_USER+100) 
+#define WM_MY_MESSAGE				(WM_USER+100) 
+#define WM_PLC_LBDOWN	(WM_USER+101)
+#define WM_PLC_LBUP		(WM_USER+102)
