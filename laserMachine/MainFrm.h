@@ -75,7 +75,7 @@ protected:
 	LRESULT OnPLCLBup(WPARAM wparam, LPARAM lparam);
 	DECLARE_MESSAGE_MAP()
 
-	BOOL CreateOutPutWnd();
+	BOOL CreateOutPutWnd(const CRect& rect);
 	BOOL CreateParamerWnd(const CRect& rect);
 	BOOL CreatePLCWnd(const CRect& rect);
 	BOOL CreateOperateWnd();
@@ -86,8 +86,8 @@ protected:
 	BOOL CreateStatusBar();
 
 public:
-	afx_msg void OnViewParameterwnd();
-	afx_msg void OnUpdateViewParameterwnd(CCmdUI *pCmdUI);
+	afx_msg void OnViewSwitch(UINT nID);
+	afx_msg void OnUpdateViewSwitch(CCmdUI *pCmdUI);
 	afx_msg void OnSwitchMode(UINT nID);
 
 private:

@@ -36,8 +36,10 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CMainFrame::OnFilePrintPreview)
 	ON_UPDATE_COMMAND_UI(ID_FILE_PRINT_PREVIEW, &CMainFrame::OnUpdateFilePrintPreview)
 	ON_WM_SETTINGCHANGE()
-	ON_COMMAND(ID_VIEW_PARAMETERWND, &CMainFrame::OnViewParameterwnd)
-	ON_UPDATE_COMMAND_UI(ID_VIEW_PARAMETERWND, &CMainFrame::OnUpdateViewParameterwnd)
+	ON_COMMAND_RANGE(ID_VIEW_OUTPUTWND, ID_VIEW_MONITORWND, &CMainFrame::OnViewSwitch)
+	ON_UPDATE_COMMAND_UI_RANGE(ID_VIEW_OUTPUTWND, ID_VIEW_MONITORWND, &CMainFrame::OnUpdateViewSwitch)
+
+
 	ON_COMMAND_RANGE(ID_MODE_START, ID_MODE_END, &CMainFrame::OnSwitchMode)
 	ON_MESSAGE(WM_PLC_LBDOWN, OnPLCLBdown)
 	ON_MESSAGE(WM_PLC_LBUP, OnPLCLBup)
@@ -117,14 +119,14 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 	return TRUE;
 }
 
-BOOL CMainFrame::CreateOutPutWnd()
+BOOL CMainFrame::CreateOutPutWnd(const CRect& rect)
 {
 	BOOL bNameValid;
 	// Create output window
 	CString strOutputWnd;
 	bNameValid = strOutputWnd.LoadString(IDS_OUTPUT_WND);
 	ASSERT(bNameValid);
-	if (!m_wndOutput.Create(strOutputWnd, this, CRect(0, 0, 100, 100), TRUE, ID_VIEW_OUTPUTWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_BOTTOM | CBRS_FLOAT_MULTI))
+	if (!m_wndOutput.Create(strOutputWnd, this, rect, TRUE, ID_VIEW_OUTPUTWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_BOTTOM | CBRS_FLOAT_MULTI))
 	{
 		return FALSE; // failed to create
 	}
@@ -146,7 +148,7 @@ BOOL CMainFrame::CreateParamerWnd(const CRect &rect)
 
 BOOL CMainFrame::CreatePLCWnd(const CRect& rect)
 {
-	if (!m_wndPLC.Create(_T("PLC ÌÝÐÎÍ¼"), this, rect, TRUE, ID_VIEW_PLCWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI))
+	if (!m_wndPLC.Create(_T("PLC ÌÝÐÎÍ¼"), this, rect, TRUE, ID_VIEW_PLCWND, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_BOTTOM | CBRS_FLOAT_MULTI))
 	{
 		return FALSE;
 	}
@@ -155,7 +157,7 @@ BOOL CMainFrame::CreatePLCWnd(const CRect& rect)
 
 BOOL CMainFrame::CreateOperateWnd()
 {
-	if (!m_wndOperate.Create(_T("²Ù×÷Ãæ°å"), this, TRUE, MAKEINTRESOURCE(IDD_OPERATE), WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI, IDD_OPERATE, AFX_CBRS_REGULAR_TABS,  AFX_CBRS_CLOSE| AFX_CBRS_AUTOHIDE))
+	if (!m_wndOperate.Create(_T("²Ù×÷Ãæ°å"), this, TRUE, MAKEINTRESOURCE(IDD_OPERATE), WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI, IDD_OPERATE/*, AFX_CBRS_REGULAR_TABS,  AFX_CBRS_CLOSE| AFX_CBRS_AUTOHIDE*/))
 	{
 		return FALSE;
 	}
@@ -164,7 +166,7 @@ BOOL CMainFrame::CreateOperateWnd()
 
 BOOL CMainFrame::CreateMonitorWnd()
 {
-	if (!m_wndMonitor.Create(_T("¼à¿ØÃæ°å"), this, TRUE, MAKEINTRESOURCE(IDD_MONITOR), WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_RIGHT | CBRS_FLOAT_MULTI, IDD_MONITOR, AFX_CBRS_REGULAR_TABS, AFX_CBRS_CLOSE | AFX_CBRS_AUTOHIDE))
+	if (!m_wndMonitor.Create(_T("¼à¿ØÃæ°å"), this, TRUE, MAKEINTRESOURCE(IDD_MONITOR), WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | CBRS_LEFT | CBRS_FLOAT_MULTI, IDD_MONITOR/*, AFX_CBRS_REGULAR_TABS, AFX_CBRS_CLOSE | AFX_CBRS_AUTOHIDE*/))
 	{
 		return FALSE;
 	}
@@ -175,7 +177,8 @@ BOOL CMainFrame::CreateMonitorWnd()
 BOOL CMainFrame::CreateDockingWindows()	 
 {
 	CRect rectLeft(0, 0, 600, 100);
-	if (!CreateOutPutWnd())
+	CRect rectBottom(0, 0, 600, 200);
+	if (!CreateOutPutWnd(rectBottom))
 	{
 		TRACE0("Failed to create Output window\n");
 		return FALSE;
@@ -185,7 +188,7 @@ BOOL CMainFrame::CreateDockingWindows()
 		TRACE0("Failed to create Parameter window\n");
 		return FALSE;
 	}
-	if (!CreatePLCWnd(rectLeft))
+	if (!CreatePLCWnd(rectBottom))
 	{
 		TRACE0("Failed to create PLC window\n");
 		return FALSE;
@@ -207,17 +210,18 @@ BOOL CMainFrame::CreateDockingWindows()
 	m_wndMonitor.EnableDocking(CBRS_ALIGN_ANY);
 
 	EnableDocking(CBRS_ALIGN_ANY);
-
+	CDockablePane* pTabbedBar = NULL;
 	DockPane(&m_wndOutput);
-	DockPane(&m_wndParameter);
-	DockPane(&m_wndPLC);
-	DockPane(&m_wndOperate);
-	DockPane(&m_wndMonitor);
 
-	m_wndParameter.DockToWindow(&m_wndPLC, CBRS_TOP);
-	ShowPane(&m_wndOperate, TRUE, FALSE, TRUE);
-	ShowPane(&m_wndMonitor, TRUE, FALSE, TRUE);
-	m_wndOperate.DockToWindow(&m_wndMonitor, CBRS_TOP);
+	DockPane(&m_wndMonitor);
+	DockPane(&m_wndParameter);
+	m_wndMonitor.DockToWindow(&m_wndParameter, CBRS_TOP);
+
+
+	DockPane(&m_wndOperate);
+
+	DockPane(&m_wndPLC);
+
 	return TRUE;
 }
 
@@ -434,16 +438,61 @@ LRESULT CMainFrame::OnPLCLBup(WPARAM wparam, LPARAM lparam)
 
 
 
-void CMainFrame::OnViewParameterwnd()
+void CMainFrame::OnViewSwitch(UINT nID)
 {
-	m_wndParameter.ShowWindow(m_wndParameter.IsVisible() ? SW_HIDE : SW_SHOW);
+	CDockablePane* pDock = nullptr;
+	switch (nID)
+	{
+	case ID_VIEW_PARAMETERWND:
+		pDock = &m_wndParameter;
+		break;
+	case ID_VIEW_PLCWND:
+		pDock = &m_wndPLC;
+		break;
+	case ID_VIEW_OUTPUTWND:
+		pDock = &m_wndOutput;
+		break;
+	case ID_VIEW_OPERATERWND:
+		pDock = &m_wndOperate;
+		break;
+	case ID_VIEW_MONITORWND:
+		pDock = &m_wndMonitor;
+		break;
+	default:
+		break;
+	}
+	if (pDock)
+		pDock->ShowWindow(pDock->IsVisible() ? SW_HIDE : SW_SHOW);
+
 	RecalcLayout(FALSE);
 }
 
 
-void CMainFrame::OnUpdateViewParameterwnd(CCmdUI *pCmdUI)
+void CMainFrame::OnUpdateViewSwitch(CCmdUI *pCmdUI)
 {
-	pCmdUI->SetCheck(m_wndParameter.IsVisible());
+	CDockablePane* pDock = nullptr;
+	switch (pCmdUI->m_nID)
+	{
+	case ID_VIEW_PARAMETERWND:
+		pDock = &m_wndParameter;
+		break;
+	case ID_VIEW_PLCWND:
+		pDock = &m_wndPLC;
+		break;
+	case ID_VIEW_OUTPUTWND:
+		pDock = &m_wndOutput;
+		break;
+	case ID_VIEW_OPERATERWND:
+		pDock = &m_wndOperate;
+		break;
+	case ID_VIEW_MONITORWND:
+		pDock = &m_wndMonitor;
+		break;
+	default:
+		break;
+	}
+	if (pDock)
+		pCmdUI->SetCheck(pDock->IsVisible());
 }
 
 

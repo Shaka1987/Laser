@@ -25,7 +25,6 @@
 #define IDR_MAINFRAME                   128
 #define IDR_MAINFRAME_256               129
 #define IDR_laserMachineTYPE            130
-#define ID_VIEW_OUTPUTWND               149
 #define IDR_PASTE_MENU                  151
 #define IDR_WINDOWS_MENU                152
 #define IDS_OUTPUT_WND                  157
@@ -65,9 +64,6 @@
 #define ID_STATUSBAR_AXES_POSITION      310
 #define IDB_OPERATION_LARGE             311
 #define IDD_OPERATE                     312
-#define ID_VIEW_PARAMETERWND            314
-#define ID_VIEW_PLCWND                  315
-#define ID_VIEW_OPERATEWND              316
 #define IDS_MACHINE_STATUS_RUN          316
 #define ID_STATUSBAR_OPERATE_MODE       317
 #define IDS_MACHINE_STATUS_STOP         317
@@ -79,6 +75,12 @@
 #define IDS_MACHINE_MODE_WHEEL          323
 #define IDS_MACHINE_MODE_EDIT           324
 #define IDS_MACHINE_MODE_MDI            325
+
+#define ID_VIEW_OUTPUTWND               400
+#define ID_VIEW_PARAMETERWND            401
+#define ID_VIEW_PLCWND                  402
+#define ID_VIEW_OPERATERWND             403
+#define ID_VIEW_MONITORWND              404
 #define IDC_EDIT3                       1009
 #define IDC_RICHEDIT21                  1018
 #define IDC_TITLE_T                     1020
@@ -131,13 +133,14 @@
 #define IDR_FEED                        32818
 #define IDR_FEEDRATE_SLIDER             32819
 #define IDR_PROGRESS_TITLE              32820
+#define ID_CHECK5                       32825
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        317
-#define _APS_NEXT_COMMAND_VALUE         32822
+#define _APS_NEXT_COMMAND_VALUE         32826
 #define _APS_NEXT_CONTROL_VALUE         1022
 #define _APS_NEXT_SYMED_VALUE           318
 #endif
