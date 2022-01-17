@@ -30,22 +30,9 @@
 *.exe
 *.out
 *.app
-/Debug
-/laserMachine.sln
-/laserMachine.vcxproj.user
-/.vs/Laser/v15/ipch/AutoPCH/63ee682329820ac5
-/.vs/laserMachine/v15/ipch
-/.vs/laserMachine/v15
-/.vs/VSWorkspaceState.json
-/laserMachine.vcxproj.filters
 *.aps
+/.vs
+/Debug
 /Release
-/.vs/laserMachine/v16
-/BUnitTest/Debug
-
-\.vs/
-/BUnitTest/Release
-/Backup
-/boost
-/Resources/Parameter Data/.vscode/c_cpp_properties.json
+/Resources/Parameter Data/.vscode/
 /log/*.log

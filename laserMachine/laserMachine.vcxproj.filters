@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="calendarbar.cpp" />
+    <ClCompile Include="laserMachine.cpp" />
+    <ClCompile Include="laserMachineDoc.cpp" />
+    <ClCompile Include="laserMachineView.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="OutputWnd.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="PLCWnd.cpp" />
+    <ClCompile Include="OperateWnd.cpp" />
+    <ClCompile Include="AdditionalFunction.cpp" />
+    <ClCompile Include="ParameterWnd.cpp">
+      <Filter>Parameter</Filter>
+    </ClCompile>
+    <ClCompile Include="FactoryParamType.cpp">
+      <Filter>Parameter</Filter>
+    </ClCompile>
+    <ClCompile Include="FactoryCommunication.cpp">
+      <Filter>Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="ICommunication.cpp">
+      <Filter>Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="LaserProg.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphPoint.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawBoard.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="CCAMProg.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="FactoryLaserProg.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="NCProg.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="NCExchange.cpp">
+      <Filter>Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="ModBus.cpp">
+      <Filter>Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="ParaJson.cpp">
+      <Filter>Parameter</Filter>
+    </ClCompile>
+    <ClCompile Include="MonitorWnd.cpp" />
+    <ClCompile Include="ExRibbonContextCaption.cpp" />
+    <ClCompile Include="ExRibbonBar.cpp" />
+    <ClCompile Include="PLCButton.cpp" />
+    <ClCompile Include="CPLCRibbonButton.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="calendarbar.h" />
+    <ClInclude Include="laserMachine.h" />
+    <ClInclude Include="laserMachineDoc.h" />
+    <ClInclude Include="laserMachineView.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="OutputWnd.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="PLCWnd.h" />
+    <ClInclude Include="OperateWnd.h" />
+    <ClInclude Include="AdditionalFunction.h" />
+    <ClInclude Include="ParameterWnd.h">
+      <Filter>Parameter</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryParamType.h">
+      <Filter>Parameter</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryCommunication.h">
+      <Filter>Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommunication.h">
+      <Filter>Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="LaserProg.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphPoint.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawBoard.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="CCAMProg.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryLaserProg.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="NCProg.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="ParaModule.h" />
+    <ClInclude Include="NCExchange.h">
+      <Filter>Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="ModBus.h">
+      <Filter>Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="ParaJson.h">
+      <Filter>Parameter</Filter>
+    </ClInclude>
+    <ClInclude Include="LogSystem.h" />
+    <ClInclude Include="MonitorWnd.h" />
+    <ClInclude Include="ExRibbonContextCaption.h" />
+    <ClInclude Include="ExRibbonBar.h" />
+    <ClInclude Include="PLCButton.h" />
+    <ClInclude Include="CPLCRibbonButton.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\buttons.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\filelarge.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\filesmall.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\info.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\laserMachine.ico">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\nav_large.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\nav_large_hc.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\operation_large.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\output_wnd.ico">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\output_wnd_hc.ico">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\pages.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\pages_hc.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\pages_small.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\pages_small_hc.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\Toolbar256.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\writelarge.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\writesmall.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\main.bmp">
+      <Filter>Res</Filter>
+    </Image>
+    <Image Include="res\laserMachineDoc.ico">
+      <Filter>Res</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\laserMachine.rc2">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="res\ribbon.mfcribbon-ms">
+      <Filter>Res</Filter>
+    </None>
+    <None Include="Resources\Parameter Data\SystemParameter.json">
+      <Filter>Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Res">
+      <UniqueIdentifier>{1ef3a206-bcf7-4093-92ff-332e9d2b1ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Parameter">
+      <UniqueIdentifier>{cf587273-857c-489c-a036-33cf5f7d2627}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Communication">
+      <UniqueIdentifier>{5835ce6d-0169-4b80-b9ce-b6a81a3a8fef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Simulation">
+      <UniqueIdentifier>{feda1d7d-0647-42fc-8ece-5ee53826a6f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{8f8f932c-4f57-44be-91f7-7d7f65453457}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="laserMachine.rc">
+      <Filter>Res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

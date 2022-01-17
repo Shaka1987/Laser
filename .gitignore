@@ -5,7 +5,6 @@
 /.vs
 /boost
 /BUnitTest/Debug
-/BUnitTest/Release/BUnitTest.tlog
 /BUnitTest/Release
 /Debug
 /laserMachine/x64/Debug
