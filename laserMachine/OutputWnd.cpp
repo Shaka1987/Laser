@@ -123,6 +123,7 @@ void COutputWnd::UpdateFonts()
 
 void COutputWnd::UpdateProgram(boost::shared_ptr<CLaserProg> pProg)
 {
+	m_wndProgram.ResetContent();
 	if (pProg)
 	{
 		auto prog_list = pProg->GetProgramList();

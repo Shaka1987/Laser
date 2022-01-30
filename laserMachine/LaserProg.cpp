@@ -11,6 +11,8 @@ CLaserProg::CLaserProg()
 
 CLaserProg::~CLaserProg()
 {
+	ResetPoints();
+	m_strList.clear();
 }
 
 void CLaserProg::Init(tstring_view fileName)
@@ -23,7 +25,7 @@ void CLaserProg::Init(tstring_view fileName)
 		m_strList.push_back(boost::make_shared<string>(str));
 	}
 	i.close();
-
+	Convert();
 }
 
 void CLaserProg::ResetPoints()

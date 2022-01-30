@@ -1,10 +1,94 @@
 #include "stdafx.h"
 #include "NCProg.h"
+#include "AdditionalFunction.h"
 void CNCProg::InitGFunction(UCHAR groupGFunction[])
 {
 	groupGFunction[G_TraceMode] = 0;					//G0
 	groupGFunction[G_Increase] = 0;						//G91
 	groupGFunction[G_Position] = 0;						//not G92
+}
+void CNCProg::SaveTypeData(char type, string strData, UCHAR groupG[], sptPoint currentPoint)
+{
+	switch (type)
+	{
+	case 'X':
+	{
+		
+		double fValue = stringToNum<double>(strData);
+		if (groupG[G_Increase] == 0 || groupG[G_Position] == 1)
+		{
+			currentPoint->SetX(fValue);
+		}
+		else
+		{
+			currentPoint->SetX(fValue + currentPoint->GetX());
+		}
+
+		BOOST_LOG_SEV(scl, info) << __FUNCTION__ << ":" << __LINE__ << "X" << currentPoint->GetX();
+	}
+	break;
+	case 'Y':
+	{
+		double fValue = stringToNum<double>(strData);
+		if (groupG[G_Increase] == 0 || groupG[G_Position] == 1)
+		{
+			currentPoint->SetY(fValue);
+		}
+		else
+		{
+			currentPoint->SetY(fValue + currentPoint->GetX());
+
+		}
+		BOOST_LOG_SEV(scl, info) << __FUNCTION__ << ":" << __LINE__ << "Y" << currentPoint->GetY();
+	}
+	break;
+	case 'Z':
+		break;
+	case 'G':
+	{
+		//to do val with dot
+		int val = stringToNum<int>(strData);
+		switch (val)
+		{
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+			groupG[G_TraceMode] = val;
+			break;
+		case 92:
+			groupG[G_Position] = 1;
+			break;
+		case 90:
+			groupG[G_Increase] = 0;
+			break;
+		case 91:
+			groupG[G_Increase] = 1;
+			break;
+		default:
+
+			break;
+		}
+		break;
+	}
+	
+	case 'R':
+		break;
+	case 'N':
+		//todo save line(N) information
+
+		BOOST_LOG_SEV(scl, info) << __FUNCTION__ << ":" << __LINE__ << "N" << strData;
+		break;
+	default:
+		break;
+	}
+}
+CNCProg::CNCProg()
+:scl(logging::keywords::channel = "CNCProg")
+{
+}
+CNCProg::~CNCProg()
+{
 }
 BOOL CNCProg::Convert()
 {
@@ -16,23 +100,23 @@ BOOL CNCProg::Convert()
 
 	auto current_point = boost::make_shared<CGraphPoint>();
 	UCHAR groupGFunction[64] = { 0 };
+
 	for (sptString str : m_strList)
 	{
-		m_ptList.push_back(CoverntStr2Point(str, current_point, groupGFunction));
+		/*current_point = */
+		CoverntStr2Point(str, current_point, groupGFunction);
+		m_ptList.push_back(current_point);
 	}
-	TRACE(_T("class CNCProg"));
 	return 0;
 }
 
 sptPoint CNCProg::CoverntStr2Point(sptString str, sptPoint current_point, UCHAR groupG[])
 {
 	sptPoint point = boost::make_shared<CGraphPoint>();
-	int value = 0;
 	char type = 0;
-	bool bNeg = false;
-	short dotPos = 0;
+	string strData;
 
-	
+	//todo use spilt regex or ranges
 
 	for (auto c : *str)
 	{
@@ -41,81 +125,27 @@ sptPoint CNCProg::CoverntStr2Point(sptString str, sptPoint current_point, UCHAR 
 
 		if (isalpha(c))
 		{
-			double fValue = (double)value / (double)dotPos;
-			switch (type)
-			{
-			case 'X':
-				if (groupG[G_Increase] == 0 || groupG[G_Position] == 1)
-				{
-					point->SetX(fValue);
-					current_point->SetX(fValue);
-				}
-				//else
-				//{
-				//	//point->SetX(fValue +)
-				//	return;
-				//}
-				break;
-			case 'Y':
-				break;
-			case 'Z':
-				break;
-			case 'G':
-				switch (auto val = value / dotPos)
-				{
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-					groupG[G_TraceMode] = val;
-					break;
-				case 92:
-					groupG[G_Position] = 1;
-					break;
-				case 90:
-					groupG[G_Increase] = 0;
-					break;
-				case 91:
-					groupG[G_Increase] = 1;
-					break;
-				default:
-					break;
-				}
-				break;
-			case 'R':
-				break;
-			case 'N':
-				break;
-			default:
-				break;
-			}			
-			value = 0;
-			bNeg = false;
-			dotPos = 0;
+			//Save the privous type data 
+			SaveTypeData(type, strData, groupG, current_point);
+			
+			//start a new type
+			strData.erase();
 			type = toupper(c);
 		}
-		else if (isdigit(c))
+		else 
 		{
-			value = value * 10 + (c - '0');
-			if (dotPos != 0) dotPos*=10;
-		}
-		else
-		{
-			switch (c)
+			if(c == ';')
 			{
-			case ';'://the content after ; will not be handled
-				//save status 
-				return point;
-			case '-':
-				bNeg = true;
+				//the content after ; will not be handled
+				//save status
 				break;
-			case '.':
-				dotPos = 1;
-				break;
-			default:
-				break;
+			}
+			else
+			{
+				strData += c;
 			}
 		}
 	}
+	SaveTypeData(type, strData, groupG, current_point);
 	return point;
 }

@@ -165,7 +165,6 @@ void ClaserMachineDoc::OnFileOpen()
 	if (dlg.DoModal() == IDOK)
 	{
 		m_CurrentProg =  CFactoryLaserProg::Create(dlg.GetPathName().GetBuffer(0));
-		m_CurrentProg->Convert();
 		((CMainFrame*)AfxGetApp()->m_pMainWnd)->UpdateProgram();
 		UpdateAllViews(NULL);
 	}
