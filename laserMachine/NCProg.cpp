@@ -23,7 +23,6 @@ void CNCProg::SaveTypeData(char type, string strData, UCHAR groupG[], sptPoint c
 		{
 			currentPoint->SetX(fValue + currentPoint->GetX());
 		}
-
 		BOOST_LOG_SEV(scl, info) << __FUNCTION__ << ":" << __LINE__ << "X" << currentPoint->GetX();
 	}
 	break;
@@ -55,9 +54,11 @@ void CNCProg::SaveTypeData(char type, string strData, UCHAR groupG[], sptPoint c
 		case 2:
 		case 3:
 			groupG[G_TraceMode] = val;
+			currentPoint->SetGType(val);
 			break;
 		case 92:
 			groupG[G_Position] = 1;
+			currentPoint->SetStart(true);
 			break;
 		case 90:
 			groupG[G_Increase] = 0;
@@ -99,20 +100,23 @@ BOOL CNCProg::Convert()
 	//m_ptList.push_back(boost::make_shared<CGraphPoint>(100.0, 100.0));
 
 	auto current_point = boost::make_shared<CGraphPoint>();
+	current_point->SetStart(true);
 	UCHAR groupGFunction[64] = { 0 };
 
 	for (sptString str : m_strList)
 	{
-		/*current_point = */
-		CoverntStr2Point(str, current_point, groupGFunction);
-		m_ptList.push_back(current_point);
+		
+		m_ptList.push_back(CoverntStr2Point(str, current_point, groupGFunction));
+
+		
+		groupGFunction[G_Position] = 0;
+		current_point->SetStart(false);
 	}
 	return 0;
 }
 
 sptPoint CNCProg::CoverntStr2Point(sptString str, sptPoint current_point, UCHAR groupG[])
 {
-	sptPoint point = boost::make_shared<CGraphPoint>();
 	char type = 0;
 	string strData;
 
@@ -147,5 +151,5 @@ sptPoint CNCProg::CoverntStr2Point(sptString str, sptPoint current_point, UCHAR 
 		}
 	}
 	SaveTypeData(type, strData, groupG, current_point);
-	return point;
+	return boost::make_shared<CGraphPoint>(*current_point.get());;
 }

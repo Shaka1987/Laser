@@ -20,9 +20,12 @@ CDrawBoard::~CDrawBoard()
 
 void CDrawBoard::Draw(CDC* pDC)
 {
-	CPen pen, * pOldPen;
-	pen.CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-	pOldPen = pDC->SelectObject(&pen);
+	CPen penRed, penBlack, * pOldPen;
+	penRed.CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+	penBlack.CreatePen(PS_SOLID, 2, RGB(0, 0, 0));
+	pOldPen = pDC->SelectObject(&penRed);
+	UCHAR oldGType = -1;
+
 	
 	auto pProg = ((ClaserMachineDoc*)m_pView->GetDocument())->GetCurrentProg();
 	if (pProg)
@@ -33,7 +36,21 @@ void CDrawBoard::Draw(CDC* pDC)
 			if (pt->IsStart())
 				pDC->MoveTo(m_ptBase.x + (pt->GetX() + m_ptOffset.GetX()) * m_scale, m_ptBase.y - (pt->GetY() + m_ptOffset.GetY()) * m_scale);
 			else
+			{
+				if (pt->getGType() != oldGType)//±ÜÃâÆµ·±ÉèÖÃ
+				{
+					oldGType = pt->getGType();
+					if(oldGType ==0)
+					{
+						pDC->SelectObject(&penBlack);//G0
+					}
+					else
+					{
+						pDC->SelectObject(&penRed);
+					}
+				}
 				pDC->LineTo(m_ptBase.x + (pt->GetX() + m_ptOffset.GetX()) * m_scale, m_ptBase.y - (pt->GetY() + m_ptOffset.GetY()) * m_scale);
+			}
 		}
 	}
 	
