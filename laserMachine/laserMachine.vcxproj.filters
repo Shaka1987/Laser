@@ -32,15 +32,6 @@
     <ClCompile Include="DrawBoard.cpp">
       <Filter>Simulation</Filter>
     </ClCompile>
-    <ClCompile Include="CCAMProg.cpp">
-      <Filter>Simulation</Filter>
-    </ClCompile>
-    <ClCompile Include="FactoryLaserProg.cpp">
-      <Filter>Simulation</Filter>
-    </ClCompile>
-    <ClCompile Include="NCProg.cpp">
-      <Filter>Simulation</Filter>
-    </ClCompile>
     <ClCompile Include="NCExchange.cpp">
       <Filter>Communication</Filter>
     </ClCompile>
@@ -55,6 +46,15 @@
     <ClCompile Include="ExRibbonBar.cpp" />
     <ClCompile Include="PLCButton.cpp" />
     <ClCompile Include="CPLCRibbonButton.cpp" />
+    <ClCompile Include="NCGraph.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="CAMGraph.cpp">
+      <Filter>Simulation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calendarbar.h" />
@@ -90,15 +90,6 @@
     <ClInclude Include="DrawBoard.h">
       <Filter>Simulation</Filter>
     </ClInclude>
-    <ClInclude Include="CCAMProg.h">
-      <Filter>Simulation</Filter>
-    </ClInclude>
-    <ClInclude Include="FactoryLaserProg.h">
-      <Filter>Simulation</Filter>
-    </ClInclude>
-    <ClInclude Include="NCProg.h">
-      <Filter>Simulation</Filter>
-    </ClInclude>
     <ClInclude Include="ParaModule.h" />
     <ClInclude Include="NCExchange.h">
       <Filter>Communication</Filter>
@@ -115,6 +106,16 @@
     <ClInclude Include="ExRibbonBar.h" />
     <ClInclude Include="PLCButton.h" />
     <ClInclude Include="CPLCRibbonButton.h" />
+    <ClInclude Include="GraphMethod.h" />
+    <ClInclude Include="NCGraph.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="CAMGraph.h">
+      <Filter>Simulation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\buttons.bmp">

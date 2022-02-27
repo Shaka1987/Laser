@@ -202,14 +202,15 @@
   <ItemGroup>
     <ClInclude Include="AdditionalFunction.h" />
     <ClInclude Include="calendarbar.h" />
-    <ClInclude Include="CCAMProg.h" />
+    <ClInclude Include="CAMGraph.h" />
     <ClInclude Include="CPLCRibbonButton.h" />
     <ClInclude Include="DrawBoard.h" />
     <ClInclude Include="ExRibbonBar.h" />
     <ClInclude Include="ExRibbonContextCaption.h" />
     <ClInclude Include="FactoryCommunication.h" />
-    <ClInclude Include="FactoryLaserProg.h" />
     <ClInclude Include="FactoryParamType.h" />
+    <ClInclude Include="Graph.h" />
+    <ClInclude Include="GraphMethod.h" />
     <ClInclude Include="GraphPoint.h" />
     <ClInclude Include="ICommunication.h" />
     <ClInclude Include="laserMachine.h" />
@@ -221,7 +222,7 @@
     <ClInclude Include="ModBus.h" />
     <ClInclude Include="MonitorWnd.h" />
     <ClInclude Include="NCExchange.h" />
-    <ClInclude Include="NCProg.h" />
+    <ClInclude Include="NCGraph.h" />
     <ClInclude Include="OperateWnd.h" />
     <ClInclude Include="OutputWnd.h" />
     <ClInclude Include="ParaJson.h" />
@@ -236,14 +237,14 @@
   <ItemGroup>
     <ClCompile Include="AdditionalFunction.cpp" />
     <ClCompile Include="calendarbar.cpp" />
-    <ClCompile Include="CCAMProg.cpp" />
+    <ClCompile Include="CAMGraph.cpp" />
     <ClCompile Include="CPLCRibbonButton.cpp" />
     <ClCompile Include="DrawBoard.cpp" />
     <ClCompile Include="ExRibbonBar.cpp" />
     <ClCompile Include="ExRibbonContextCaption.cpp" />
     <ClCompile Include="FactoryCommunication.cpp" />
-    <ClCompile Include="FactoryLaserProg.cpp" />
     <ClCompile Include="FactoryParamType.cpp" />
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GraphPoint.cpp" />
     <ClCompile Include="ICommunication.cpp" />
     <ClCompile Include="laserMachine.cpp" />
@@ -254,7 +255,7 @@
     <ClCompile Include="ModBus.cpp" />
     <ClCompile Include="MonitorWnd.cpp" />
     <ClCompile Include="NCExchange.cpp" />
-    <ClCompile Include="NCProg.cpp" />
+    <ClCompile Include="NCGraph.cpp" />
     <ClCompile Include="OperateWnd.cpp" />
     <ClCompile Include="OutputWnd.cpp" />
     <ClCompile Include="ParaJson.cpp" />

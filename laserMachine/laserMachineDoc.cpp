@@ -21,7 +21,6 @@
 
 #include "laserMachineDoc.h"
 #include "LaserProg.h"
-#include "FactoryLaserProg.h"
 
 #include <propkey.h>
 #include "MainFrm.h"
@@ -164,7 +163,8 @@ void ClaserMachineDoc::OnFileOpen()
 	CFileDialog dlg(TRUE, NULL, NULL, OFN_EXPLORER/*|OFN_HIDEREADONLY*/ | OFN_ENABLESIZING | OFN_FILEMUSTEXIST | OFN_NOCHANGEDIR, strFilter);
 	if (dlg.DoModal() == IDOK)
 	{
-		m_CurrentProg =  CFactoryLaserProg::Create(dlg.GetPathName().GetBuffer(0));
+		m_CurrentProg = boost::make_shared<CLaserProg>(dlg.GetPathName().GetBuffer(0));
+		m_CurrentProg->Build();
 		((CMainFrame*)AfxGetApp()->m_pMainWnd)->UpdateProgram();
 		UpdateAllViews(NULL);
 	}

@@ -2,32 +2,28 @@
 #include <afx.h>
 #include <list>
 #include <boost/smart_ptr.hpp>
-#include "GraphPoint.h"
 #include <string_view>
+#include "Graph.h"
 
 using namespace std;
-
-using sptPoint = boost::shared_ptr<CGraphPoint>;
-using sptString = boost::shared_ptr<string>;
-using point_list = std::list<sptPoint>;
-using string_list = std::list<sptString>;
+//
+//using string_list = std::list<sptString>;
+using sptGraph = boost::shared_ptr<CGraph>;
+using graph_list = std::list<sptGraph>;
 
 class CLaserProg
 {
 public:
-	CLaserProg();
+	CLaserProg(tstring_view fileName);
 	~CLaserProg();
 
-	void Init(tstring_view fileName);
-	void ResetPoints();
-	virtual BOOL Convert();
-	inline point_list* GetPointList() { return &m_ptList; };
-	inline string_list* GetProgramList() { return &m_strList; };
-private:
-	string m_strNC;
+	void Build();
+
+	inline graph_list* GetProgramList() { return &m_graphList; };
 
 protected:
-	point_list m_ptList;
-	string_list m_strList;
+	sptGraph CreateGraph(sptString string);
+	graph_list m_graphList;
+	tstring_view m_fileName;
 };
 
