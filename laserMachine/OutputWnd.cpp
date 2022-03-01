@@ -126,12 +126,12 @@ void COutputWnd::UpdateProgram(boost::shared_ptr<CLaserProg> pProg)
 	m_wndProgram.ResetContent();
 	if (pProg)
 	{
-		auto prog_list = pProg->GetProgramList();
-		for (auto str: *prog_list)
+		auto graph_list = pProg->GetGraphList();
+		for (auto graph: *graph_list)
 		{
 
 #ifdef _UNICODE
-			wstring strw = s2ws(*str);
+			wstring strw = s2ws(*graph->GetCode().get());
 			m_wndProgram.AddString(LPCTSTR(strw.data()));
 #else
 			m_wndProgram.AddString(LPCTSTR(str->data()));

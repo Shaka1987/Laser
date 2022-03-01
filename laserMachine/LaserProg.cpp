@@ -11,26 +11,26 @@ CLaserProg::CLaserProg()
 
 CLaserProg::~CLaserProg()
 {
-	ResetPoints();
-	m_strList.clear();
+	ResetGraphes();
+	m_groupList.clear();
 }
 
 void CLaserProg::Init(tstring_view fileName)
 {
-	m_strList.clear();
+	m_groupList.clear();
 	ifstream i(fileName.data());
 	string str;
 	while (getline(i, str))
 	{
-		m_strList.push_back(boost::make_shared<string>(str));
+		m_groupList.push_back(boost::make_shared<CGraph>(str));
 	}
 	i.close();
 	Convert();
 }
 
-void CLaserProg::ResetPoints()
+void CLaserProg::ResetGraphes()
 {
-	m_ptList.clear();
+	m_groupList.clear();
 }
 
 BOOL CLaserProg::Convert()

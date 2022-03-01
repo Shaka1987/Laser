@@ -55,6 +55,7 @@
     <ClCompile Include="ExRibbonBar.cpp" />
     <ClCompile Include="PLCButton.cpp" />
     <ClCompile Include="CPLCRibbonButton.cpp" />
+    <ClCompile Include="Graph.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calendarbar.h" />
@@ -115,6 +116,7 @@
     <ClInclude Include="ExRibbonBar.h" />
     <ClInclude Include="PLCButton.h" />
     <ClInclude Include="CPLCRibbonButton.h" />
+    <ClInclude Include="Graph.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\buttons.bmp">

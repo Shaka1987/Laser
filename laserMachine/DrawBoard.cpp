@@ -30,17 +30,19 @@ void CDrawBoard::Draw(CDC* pDC)
 	auto pProg = ((ClaserMachineDoc*)m_pView->GetDocument())->GetCurrentProg();
 	if (pProg)
 	{
-		auto pList = pProg->GetPointList();
-		for (auto pt : *pList)
+		auto graphList = pProg->GetGraphList();
+		for (auto graph : *graphList)
 		{
-			if (pt->IsStart())
-				pDC->MoveTo(m_ptBase.x + (pt->GetX() + m_ptOffset.GetX()) * m_scale, m_ptBase.y - (pt->GetY() + m_ptOffset.GetY()) * m_scale);
-			else
+			auto pointList = graph->GetPointList();
+			auto pt = pointList->begin();
+
+			pDC->MoveTo(m_ptBase.x + ((*pt)->GetX() + m_ptOffset.GetX()) * m_scale, m_ptBase.y - ((*pt)->GetY() + m_ptOffset.GetY()) * m_scale);
+			for (pt++; pt != pointList->end(); pt++)
 			{
-				if (pt->getGType() != oldGType)//±ÜÃâÆµ·±ÉèÖÃ
+				if ((*pt)->getGType() != oldGType)//±ÜÃâÆµ·±ÉèÖÃ
 				{
-					oldGType = pt->getGType();
-					if(oldGType ==0)
+					oldGType = (*pt)->getGType();
+					if (oldGType == 0)
 					{
 						pDC->SelectObject(&penBlack);//G0
 					}
@@ -49,8 +51,18 @@ void CDrawBoard::Draw(CDC* pDC)
 						pDC->SelectObject(&penRed);
 					}
 				}
-				pDC->LineTo(m_ptBase.x + (pt->GetX() + m_ptOffset.GetX()) * m_scale, m_ptBase.y - (pt->GetY() + m_ptOffset.GetY()) * m_scale);
+				if ((*pt)->IsStart())
+				{
+					pDC->MoveTo(m_ptBase.x + ((*pt)->GetX() + m_ptOffset.GetX()) * m_scale, m_ptBase.y - ((*pt)->GetY() + m_ptOffset.GetY()) * m_scale);
+				}
+				else
+				{
+
+					pDC->LineTo(m_ptBase.x + ((*pt)->GetX() + m_ptOffset.GetX()) * m_scale, m_ptBase.y - ((*pt)->GetY() + m_ptOffset.GetY()) * m_scale);
+				}
 			}
+
+
 		}
 	}
 	

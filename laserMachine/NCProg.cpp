@@ -93,7 +93,7 @@ CNCProg::~CNCProg()
 }
 BOOL CNCProg::Convert()
 {
-	ResetPoints();
+//	ResetGraphes();
 
 	////test
 	//m_ptList.push_back(boost::make_shared<CGraphPoint>(0.0, 0.0, true));
@@ -103,10 +103,12 @@ BOOL CNCProg::Convert()
 	current_point->SetStart(true);
 	UCHAR groupGFunction[64] = { 0 };
 
-	for (sptString str : m_strList)
+	for (auto graph : m_groupList)
 	{
 		
-		m_ptList.push_back(CoverntStr2Point(str, current_point, groupGFunction));
+		graph->AddPoint(current_point);
+		current_point = CoverntStr2Point(graph->GetCode(), current_point, groupGFunction);
+		graph->AddPoint(current_point);
 
 		
 		groupGFunction[G_Position] = 0;
@@ -119,7 +121,7 @@ sptPoint CNCProg::CoverntStr2Point(sptString str, sptPoint current_point, UCHAR 
 {
 	char type = 0;
 	string strData;
-
+	sptPoint point = boost::make_shared<CGraphPoint>(*current_point.get());
 	//todo use spilt regex or ranges
 
 	for (auto c : *str)
@@ -130,7 +132,7 @@ sptPoint CNCProg::CoverntStr2Point(sptString str, sptPoint current_point, UCHAR 
 		if (isalpha(c))
 		{
 			//Save the privous type data 
-			SaveTypeData(type, strData, groupG, current_point);
+			SaveTypeData(type, strData, groupG, point);
 			
 			//start a new type
 			strData.erase();
@@ -150,6 +152,6 @@ sptPoint CNCProg::CoverntStr2Point(sptString str, sptPoint current_point, UCHAR 
 			}
 		}
 	}
-	SaveTypeData(type, strData, groupG, current_point);
-	return boost::make_shared<CGraphPoint>(*current_point.get());;
+	SaveTypeData(type, strData, groupG, point);
+	return point;
 }
